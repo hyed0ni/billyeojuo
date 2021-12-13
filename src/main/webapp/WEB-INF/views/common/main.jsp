@@ -77,7 +77,7 @@
             </a>
 
             <div class="more" >
-                <a href="promotion.html" >+ 더보기</a>
+                <a href="${contextPath}/promotion" >+ 더보기</a>
             </div>
         </div>
     </section>
