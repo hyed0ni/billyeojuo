@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        /* font느림 */
+        /* @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); */
+        /* common.css */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: "Noto Sans KR", sans-serif !important;
+            font-size: 15px;
+            color: #656565;
+        }
+
+        header {
+            white-space: nowrap;
+            height: 80px;
+            background-color: #fff;
+            line-height: 78px;
+            width: 100%;
+            min-width: 1140px;
+            border-bottom: 1px solid black;
+            position: fixed;
+            display: flex;
+        }
+
+        main {
+            width: 1140px;
+            margin: auto;
+            margin-top: 80px;
+        }
+
+        footer {
+            width: 100%;
+            height: 300px;
+        }
+
+        a {
+            color: rgba(114, 114, 114, 1);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        /* button, selectbox, input 태그 사용시 아래 클래스 추가 */
+        .btn {
+            font-size: 20px;
+        }
+
+        .selectBox {
+            width: 150px;
+            height: 40px;
+        }
+
+        .input {
+            border: 1px solid rgba(176, 176, 176, 1);
+            background-color: #f6f6f6;
+        }
+
+        /* color, background-color */
+        .purple {
+            color: #704de4;
+        }
+
+        .yellow {
+            color: #ffd014
+        }
+
+        .gray {
+            color: rgba(114, 114, 114, 1);
+        }
+
+        .bgPurple {
+            background-color: #704de4;
+        }
+
+        .bgYellow {
+            background-color: #ffd014
+        }
+
+        .bgGray {
+            background-color: rgba(114, 114, 114, 1);
+        }
+
+        /* 
+            css 파일 따로 만들것
+            js 파일 따로 만들것
+
+            common.css, common.js 모든페이지에서 공통으로 쓸거에요
+        */
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+<body>
+    <!-- side menu -->
+    <div class="modal"></div>
+
+    <div class="sideMenu">
+        <div style="height:180px;" class="bgYellow">
+            <div class="closeMenu"><img src="../imagesheader/right_arrow.png"></div>
+            <a href="javascript:alert('로그인')">
+                <div style="width:100%; height:100%;">
+                    <div style="position:absolute; height:180px;">
+                        <img src="../images/header/defaultUser.jpg"
+                            style="width:110px; height:110px; border-radius: 55px; margin:35px 30px;">
+                    </div>
+                    <div style="width:175px; margin-left:170px; position:relative; top:70px;">
+                        <strong style="font-size:22px; color:black;">로그인/회원가입</strong>
+                    </div>
+                    <!-- 로그인 시
+                <div style="width:175px; margin-left:170px; position:relative; top:58px;">
+                    <div style="margin-bottom:7px;"><strong style="font-size:22px; color:black;">닉네임</strong></div>
+                    <div><strong style="font-size:14px; color:black;">프로필 관리</strong></div>
+                </div> 
+                -->
+                </div>
+            </a>
+        </div>
+
+        <div style="height:120px; display:flex; background-color:#fff;">
+            <div style="width:33.3%; height:100%; display:inline-block;">
+                <a href="javascript:alert('예약리스트')">
+                    <div style="text-align: center; position:relative; top:30px;">
+                        <img src="../images/header/ico_reservationlist.png" style="width:34px; height:34px;">
+                        <div>예약 리스트</div>
+                    </div>
+                </a>
+            </div>
+            <div style="width:33.3%; height:100%; display:inline-block;">
+                <a href="javascript:alert('예약리스트')">
+                    <div style="text-align: center; position:relative; top:30px;">
+                        <img src="../images/header/ico_manage.png" style="width:34px; height:34px;">
+                        <div>
+                            이용후기<br>
+                            Q&amp;A관리
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div style="width:33.3%; height:100%; display:inline-block;">
+                <a href="javascript:alert('찜한공간')">
+                    <div style="text-align: center; position:relative; top:30px;">
+                        <img src="../images/header/ico_zzim.png" style="width:34px; height:34px;">
+                        <div>찜한공간</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div style="height:70px; margin-bottom:10px;" class="bgPurple">
+            <a href="javascript:alert('기획전');">
+                <div style="color:white; height:70px; line-height:68px; font-size:20px; margin-left:30px;">이달의 기획전</div>
+            </a>
+        </div>
+
+
+        <div>
+            <ul>
+                <li style="border-top:1px solid #ebebeb; background:#fff; font-size:18px; padding: 21px 25px 20px;">
+                    스페이드클라우드 홈<span
+                        style="background: url(../images/header/ico_right_arrow.png) no-repeat 0.15em/50% 50%; padding: 14px 14px; white-space: nowrap; position: absolute; display: inline-block; right: 0;"></span>
+                </li>
+                <li style="border-top:1px solid #ebebeb; background:#fff; font-size:18px; padding: 21px 25px 20px;">
+                    공지사항<span
+                        style="background: url(../images/header/ico_right_arrow.png) no-repeat 0.15em/50% 50%; padding: 14px 14px; white-space: nowrap; position: absolute; display: inline-block; right: 0;"></span>
+                </li>
+                <li style="border-top:1px solid #ebebeb; background:#fff; font-size:18px; padding: 21px 25px 20px;">
+                    도움말<span
+                        style="background: url(../images/header/ico_right_arrow.png) no-repeat 0.15em/50% 50%; padding: 14px 14px; white-space: nowrap; position: absolute; display: inline-block; right: 0;"></span>
+                </li>
+                <li style="border-top:1px solid #ebebeb; background:#fff; font-size:18px; padding: 21px 25px 20px;">
+                    1:1문의<span
+                        style="background: url(../images/header/ico_right_arrow.png) no-repeat 0.15em/50% 50%; padding: 14px 14px; white-space: nowrap; position: absolute; display: inline-block; right: 0;"></span>
+                </li>
+                <li style="border-top:1px solid #ebebeb; background:#fff; font-size:18px; padding: 21px 25px 20px;">
+                    서비스 정보<span
+                        style="background: url(../images/header/ico_down_arrow.png) no-repeat 0.15em/50% 50%; padding: 14px 14px; white-space: nowrap; position: absolute; display: inline-block; right: 0;"></span>
+                    <ul>
+                        <li>서비스 소개</li>
+                        <li>이용약관</li>
+                        <li>개인정보처리방침</li>
+                        <li>운영정책</li>
+                    </ul>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+    <!-- header랑 sidemenu는 변경 가능성이 있습니다. -->
+    <header>
+        <div style="width:180px; text-align:center; font-size:28px; color:black; font-weight:bold;">빌려듀오</div>
+        <div style="width:calc(100% - 260px);">
+            <img src="../images/header/search-gray.png" style="position:absolute; top:28px; left:10px;">
+            <input type="text" class="input"
+                style="height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;"
+                placeholder="지역, 공간유형, 공간명으로 찾아보세요">
+            <img src="../images/header/search-cancel.png" style="position:absolute; top:32px; left:450px;">
+        </div>
+        <div style="width:80px; text-align:center;"><img src="../images/header/menu.png" class="menuIcon"></div>
+    </header>
+
+    <main>
+        <div id="contents">
+            <div class="box">
+                <div class="top-title-wrap">
+                    <h2 class="title">회원가입</h2>
+                </div>
+                <div class="login-box">
+                    <div class="login-method">
+                        <a href="#self">네이버로 로그인</a>
+                        <a href="#self">구글로 로그인</a>
+                    </div>
+                    <div class="login-divide">또는</div>
+                    <div class="login-input-wrap">
+                        <input type="text" placeholder="닉네임" class="login-input">
+                        <input type="text" placeholder="이메일" class="login-input">
+                        <input type="text" placeholder="비밀번호" class="login-input">
+                        <input type="text" placeholder="비밀번호 확인" class="login-input">
+                    </div>
+                    <div class="login-options">
+                        <label><input type="checkbox"> 아래 약관에 모두 동의합니다.</label>
+                    </div>
+                    <div class="divide"></div>
+                    <div class="login-options agree-terms">
+                        <label><input type="checkbox"> 서비스 이용약관 (필수)</label>
+                        <label><input type="checkbox"> 개인정보 처리 방침 (필수)</label>
+                        <label><input type="checkbox"> 이벤트 등 프로모션 알림 SMS 수신 (선택)</label>
+                        <label><input type="checkbox"> 이벤트 등 프로모션 알림 SMS 수신 (선택)</label>
+                    </div>
+                    <a href="#self" class="login-btn">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+<footer></footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+
+        // common.js
+        $(function () {
+            $(".menuIcon").on("click", function () {
+                if ($(".sideMenu").hasClass("active")) {
+                    $(".sideMenu").removeClass("active");
+
+                    $(".modal").hide();
+                } else {
+                    $(".sideMenu").addClass("active");
+                    $(".modal").show();
+                }
+            });
+
+            $(".modal").on("click", function () {
+                $(".sideMenu").removeClass("active");
+                $(".modal").hide();
+            });
+
+            $(".closeMenu").on("click", function () {
+                $(".sideMenu").removeClass("active");
+                $(".modal").hide();
+            });
+        });
+    </script>
+</body>
+
+</html>
