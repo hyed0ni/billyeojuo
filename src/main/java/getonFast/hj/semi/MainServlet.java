@@ -26,6 +26,8 @@ public class MainServlet extends HttpServlet {
 //		req.setAttribute("today", sdf.format(today));
 		
 		// jsp로 요청 위임
+		req.setAttribute("css", "main");
+		
 		String path = "/WEB-INF/views/common/main.jsp";
 		RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 		dispatcher.forward(req, resp);

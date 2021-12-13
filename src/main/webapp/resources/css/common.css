@@ -31,7 +31,7 @@ ul{padding:0; margin:0; list-style-type:none;}
 header > .logo_area{width:180px; text-align:center; font-size:28px; color:black; font-weight:bold;}
 
 header > .search_area{width:calc(100% - 260px); display:inline-block; height:80px; margin:0; padding:0; position:relative;}
-header > .search_area > .search{height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;}
+header > .search_area > .search{height:46px; width:480px; font-size:16px; padding:0 38px; border-radius:25px;}
 header > .search_area > .ico_search{position:absolute; top:28px; left:10px;}
 header > .search_area > .ico_cancel{position:absolute; top:32px; left:450px;}
 
