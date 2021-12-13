@@ -99,16 +99,16 @@
 }
 
 .promotion > a:nth-child(1){
-  background-image: url("/images/main_body/promotion_pic_01.jpg");
+  background-image: url("../images/main_body/promotion_pic_01.jpg");
 }
 .promotion > a:nth-child(2){
-  background-image: url("/images/main_body/promotion_pic_02.png");
+  background-image: url("../images/main_body/promotion_pic_02.png");
 }
 .promotion > a:nth-child(3){
-  background-image: url("/images/main_body/promotion_pic_03.png");
+  background-image: url("../images/main_body/promotion_pic_03.png");
 }
 .promotion > a:nth-child(4){
-  background-image: url("/images/main_body/promotion_pic_04.png");
+  background-image: url("../images/main_body/promotion_pic_04.png");
 }
 
 
@@ -174,7 +174,7 @@
 }
 
 .img-box:nth-child(1){
-  background-image: url("/images/main_body/recommend_img_01.jpeg");
+  background-image: url("../images/main_body/recommend_img_01.jpeg");
 }
 
 
@@ -244,12 +244,12 @@
 }
 
 .icon-people{
-  background-image:url("/images/main_body/icon_people.svg");
+  background-image:url("../images/main_body/icon_people.svg");
 }
 .icon-comment{
-  background-image:url("/images/main_body/icon_comment.svg");
+  background-image:url("../images/main_body/icon_comment.svg");
 
 }
 .icon-like{
-  background-image:url("/images/main_body/icon_like.svg");
+  background-image:url("../images/main_body/icon_like.svg");
 }
