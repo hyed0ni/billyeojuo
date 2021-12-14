@@ -36,6 +36,12 @@
                 </div>
             </div> -->
             <div class="list_area">
+            
+            	<c:forEach var="review" items="${reviewList}">
+            		${review.revNo}
+            	</c:forEach>
+            	
+            	
                 <div style="box-sizing:border-box; border:1px solid black; padding:10px; width:100%; margin-bottom:10px;">
                     <div style="display:inline-block;"><img src="${contextPath}/resources/images/space_img/sadang.jpg" style="width:230px; height:150px; object-fit:cover;"></div>
                     <div style="display:inline-block; width:75%; padding:10px 20px; vertical-align:top;">
