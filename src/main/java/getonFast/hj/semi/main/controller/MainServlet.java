@@ -1,4 +1,4 @@
-package getonFast.hj.semi;
+package getonFast.hj.semi.main.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
