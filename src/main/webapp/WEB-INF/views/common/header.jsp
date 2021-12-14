@@ -28,7 +28,7 @@
 <div class="side_menu">
     <div class="bg_yellow login_area">
         <div class="close_menu"><img src="${contextPath}/resources/images/header/right_arrow.png"></div>
-        <a href="javascript:alert('로그인')">
+        <a href="${contextPath}/member/login">
             <div class="profile_area">
                 <div class="profile_img">
                     <img src="${contextPath}/resources/images/header/defaultUser.jpg">
