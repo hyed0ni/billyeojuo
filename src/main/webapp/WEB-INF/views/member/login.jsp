@@ -31,7 +31,7 @@
                 <a href="#self" class="login-btn">이메일로 로그인</a>
                 <div class="sign-up-wrap">
                     <span>아직 빌려주오의 회원이 아니신가요?</span>
-                    <a href="../views/sign_up.html">회원가입</a>
+                    <a href="${contextPath}/member/signup">회원가입</a>
                 </div>
             </div>
         </div>
