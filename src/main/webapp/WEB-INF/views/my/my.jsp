@@ -10,31 +10,32 @@
 <jsp:include page="../common/header.jsp"/>
 
 <main>
-    <section class="my" style="width:980px; margin:auto;">
+    <section class="my">
         <div class="title" style="letter-spacing:-.5px;">프로필 관리</div>
         <div class="my_area">
-            <div style="width:300px; display:inline-block; background-color:#fff; text-align:center; position:relative; vertical-align:top;">
-                <div style="padding:20px;">
+            <div class="contents">
+                <div class="img_area">
                     <div>
-                        <img src="${contextPath}/resources/images/header/defaultUser.jpg" style="width:150px; height:150px; margin:10px;">
+                        <img src="${contextPath}/resources/images/header/defaultUser.jpg">
                     </div>
-                    <div style="font-weight:bold; height:30px; line-height:28px; margin-bottom:30px; padding:10px; border-bottom:1px solid #ccc;">닉네임</div>
+                    <div class="contents_nickname">닉네임</div>
                 </div>
             </div>
             
-            <div style="background-color: bisque; width:610px; padding:20px; display:inline-block; background-color:#fff; position:relative; margin-left:24px;">
-                <div style="text-align:center; margin-bottom:30px;">
+            <div class="my_detail">
+                <div class="profile_area">
                     <div>
-                        <img src="${contextPath}/resources/images/header/defaultUser.jpg" style="width:100px; height:100px; margin:10px;">
+                        <img src="${contextPath}/resources/images/header/defaultUser.jpg">
                     </div>
-                    <div style="font-weight:bold; height:30px; line-height:28px;">닉네임</div>
-                    <div><input type="button" class="input" value="프로필 사진 변경" style="color:#656565; font-size:12px; height:26px; padding:0 10px;">
+                    <div class="profile_nickname">닉네임</div>
+                    <div>
+                    	<input type="button" class="input profile_change" value="프로필 사진 변경">
                     </div>
                 </div>
 
-                <div style="border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:20px 0; margin-bottom:30px;">
+                <div class="detail_area">
                     <form>
-                        <table style="width:100%; font-size:14px;">
+                        <table class="detail_table">
                             <!-- <tr>
                                 <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">닉네임</th>
                                 <td style="vertical-align:top; padding:20px 0; position:relative;">
@@ -43,37 +44,37 @@
                                 </td>
                             </tr> -->
                             <tr>
-                                <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">닉네임</th>
-                                <td style="vertical-align:top; padding:20px 0; position:relative;">
+                                <th class="table_th">닉네임</th>
+                                <td class="table_td">
                                     <div>nickname juo<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;">변경하기</a></div>
                                     
                                 </td>
                             </tr>
                             <tr>
-                                <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">이메일</th>
-                                <td style="vertical-align:top; padding:20px 0; position:relative;">
+                                <th class="table_th">이메일</th>
+                                <td class="table_td">
                                     <div>stage107@naver.com</div>
                                     <a href="#" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4">인증하기</a>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">연락처</th>
-                                <td style="vertical-align:top; padding:20px 0; position:relative;">
+                                <th class="table_th">연락처</th>
+                                <td class="table_td">
                                     <div>010-1234-1234<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;">변경하기</a></div>
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">비밀번호</th>
-                                <td style="vertical-align:top; padding:20px 0; position:relative;">
+                                <th class="table_th">비밀번호</th>
+                                <td class="table_td">
                                     <div><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;">변경하기</a></div>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">마케팅 수신동의</th>
-                                <td style="vertical-align:top; padding:20px 0; position:relative;" class="switch_area">
-                                    <div>이메일</div>
-                                    <div class="switch_btn" style="position:absolute; z-index:3; top:20px; right:0; padding:0 4px; width:40px; border-radius:25px; background-color:#ebebeb; height:22px; border:1px solid #ebebeb; box-sizing:border-box; cursor:pointer;">
+                                <th class="table_th">마케팅 수신동의</th>
+                                <td class="table_td switch_area">
+                                    <div>이메일 동의</div>
+                                    <div class="switch_btn">
                                         <a href="javascript:void(0);" class="tag"></a>
                                     </div>
                                 </td>
@@ -81,7 +82,7 @@
                         </table>
                     </form>
                 </div>
-                <div style="text-align:center;">
+                <div class="secede">
                     <a href="#">서비스 탈퇴하기</a>
                 </div>
             </div>
