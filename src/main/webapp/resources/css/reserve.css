@@ -1,0 +1,19 @@
+.reserve > .title{font-size:35px; font-weight:bold; color:black; text-align:center; padding:40px 0 20px;}
+
+.reserve > .reserve_area > .sort_area{text-align:right;}
+.reserve > .reserve_area > .list_area{margin-top:20px;}
+.reserve > .reserve_area > .list_area > a > .list{display:inline-block; width:545px; border:1px solid rgba(176, 176, 176, 1); height:80px; margin-bottom:20px; position:relative; padding:20px 10px;}
+.reserve > .reserve_area > .list_area > a > .list > div{display:flex;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_img{display:inline-block; height:80px; width:100px;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_img > img{width:80px; height:80px;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_description{display:inline-block; height:80px; width:calc(100% - 100px);}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_description > .tag_area{height:24px;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_description > .tag_area > .tag{font-size:10px; display: inline-block; width: 60px; text-align: center; height:16px; line-height:15px;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_description > .title{color:#000; font-weight:bold;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_description > .date{font-size:10px; letter-spacing: 1px;}
+.reserve > .reserve_area > .list_area > a > .list > div > .list_description > .pay{font-size:14px;}
+
+.reserve .approve{border:1px solid #03b565; border-radius:10px; background-color:#03b565; color:#fff;}
+.reserve .cancel{border:1px solid #fb4d88; border-radius:10px; background-color:#fb4d88; color:#fff;}
+.reserve .payment{border:1px solid #4d4d4d; border-radius:10px; background-color:#4d4d4d; color:#fff;}
+.reserve .used{border:1px solid #efefef; border-radius:10px; background-color:#efefef;}
