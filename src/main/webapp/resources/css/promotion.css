@@ -1,0 +1,85 @@
+
+*:not(body,html){
+  /* border: 0.1px solid grey; */
+  /* box-sizing: border-box; */
+}
+
+.space{
+  clear: both;
+  height: 70px;
+}
+
+#promotion-page{
+  text-align: center;
+}
+
+#promotion-page>h1{
+  font-size: 34px;
+  color: black;
+  margin: 0px;
+}
+
+#promotion-page>p{
+  font-size: 18px;
+  font-weight: lighter;
+  margin-top: 5px;
+  color: black;
+}
+
+.promotion-list-wrap{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.promotion-list-wrap>.box-size{
+  width: 370px;
+  height: 340px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  
+  
+}
+
+.promotion-list-wrap>.box-size>.list-img{
+  background-size: cover;
+  background-position: 40%;
+  transition: all 0.2s;
+}
+.promotion-list-wrap>.box-size>.list-img:hover{
+  background-size: cover;
+  transition: all 0.2s;
+  transform: scale(1.1);
+  background-position: 40%;
+}
+
+.promotion-list-wrap>.box-size>div>a{
+  display: block;
+  padding-top: 90px;
+  padding-bottom: 110px;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+.promotion-list-wrap>.box-size>div>a:hover{
+  display: block;
+  padding-top: 90px;
+  padding-bottom: 110px;
+  box-sizing: border-box;
+  transition: all 0.2s;
+  transform: scale(0.85);
+  
+}
+
+.promotion-list-wrap>.box-size>div>a>h3{
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: white;
+}
+.promotion-list-wrap>.box-size>div>a>p{
+  font-size: 15px;
+  margin: 0px;
+  color: white;
+}
+
