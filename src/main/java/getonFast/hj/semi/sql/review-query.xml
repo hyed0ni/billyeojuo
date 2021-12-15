@@ -3,7 +3,7 @@
 
 <properties>
 	<entry key="reviewList">
-		SELECT * FROM REVIEW
+		SELECT * FROM REVIEW ORDER BY REV_DT DESC
 	</entry>
 	
 </properties>
