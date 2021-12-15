@@ -1,0 +1,235 @@
+*:not(body,html){
+
+}
+.space{
+  clear: both;
+  height: 70px;
+}
+
+
+#booking-wrap{
+  width: 100%;
+}
+
+/* ************예약 내역 타이틀 설정***************** */
+#booking-wrap>.booking-title{
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  display: table;
+}
+
+/* 사진 설정 */
+#booking-wrap>.booking-title>.booking-img{
+  width: 100%;
+  min-height:100%;
+  background:url("../images/main_body/recomend_img_01.jepg") #52279395;
+  background-size:cover;
+  background-position: center center;
+  background-blend-mode:soft-light;
+  display: table-cell; vertical-align: middle;
+}
+
+#booking-wrap>.booking-title>.booking-img>*{
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  text-shadow: #52279395 1.5px 1.5px ;
+  margin: 0px;
+}
+/* ************예약 내역 타이틀 설정 끝***************** */
+
+
+
+/* ************예약 내역 내용 설정***************** */
+/* 왼쪽 예약 내용*/
+#booking-wrap>#booking-info{
+  width: 65%;
+  float: left;
+  margin-top: 40px;
+}
+
+#booking-wrap>#booking-info >article{
+  margin-bottom: 40px;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid darkgrey;
+}
+
+/* 예약번호 박스 설정 */
+#booking-wrap>#booking-info >article>div>.bookingNo{
+  width: 140px;
+  height: 25px;
+  color: grey;
+  background-color: white;
+  text-align: center;
+  line-height: 24px;
+  position: relative;
+  right: 20px;
+  top: 12px;
+  border-radius: 15px;
+  border: 1px solid rgb(162, 162, 162);
+  font-size: 13px;
+}
+
+#booking-wrap>#booking-info >.booking-table>div{
+  width: 100%;
+  height: 45px;
+  line-height: 43px;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+#booking-wrap>#booking-info >.booking-table>div:nth-child(1){
+  height: 50px;
+  line-height: 48px;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+
+#booking-wrap>#booking-info >.booking-table>div:nth-child(1){
+  background-color: rgb(220, 220, 220);
+  border-bottom: 0px;
+}
+
+#booking-wrap>#booking-info >.booking-table>div:nth-last-child(1){
+  border-bottom: 0px;
+}
+
+#booking-wrap>#booking-info >.booking-table>div>*{
+  margin: 0px;
+  float: left;
+  margin-left: 20px;
+  font-size: 14px;
+  color: black;
+}
+
+#booking-wrap>#booking-info >.booking-table>div>h4{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#booking-wrap>#booking-info >.booking-table> div>h5{
+  width: 70px;
+  color: rgb(145, 145, 145);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+#booking-wrap>#booking-info > .booking-table:nth-child(3) > div:nth-child(2){
+  height: 250px;
+  overflow: auto;
+}
+/* 지도 */
+
+#booking-wrap>#booking-info > .booking-table:nth-child(4) > div:nth-child(1){
+  margin-top: 10px;
+}
+#booking-wrap>#booking-info > .booking-table:nth-child(4) > div:nth-child(2){
+  height: 100px;
+  border: 0px;
+}
+
+#booking-wrap>#booking-info > .booking-table:nth-child(4) > div:nth-child(3){
+  margin-top: 10px;
+  height: 50px;
+  width: 650px;
+  position: relative;
+  left: 23px;
+  border: 0px;
+}
+#booking-wrap>#booking-info > .booking-table:nth-child(4) > div:nth-child(3)>a{
+  width: 300px;
+  border: 2px solid #704de4;
+  border-radius: 25px;
+  color:#704de4;
+  font-size: 20px;
+  text-align: center;
+}
+
+#booking-wrap>#booking-info >.booking-table:nth-child(4) > .map-aip{
+  margin-top: 20px;
+  height: 550px;
+  background-color: bisque;
+}
+/* #booking-wrap>#booking-info > .booking-table:nth-child(4) > div:nth-child(3)>a:nth-child(1){
+  clear: both;
+} */
+
+/* 오른쪽  ASIDE 내용*/
+
+.cancel-bdPurple{
+  border-top: 3px solid #704de4;
+}
+
+#booking-wrap>#cancel-control{
+  width: 34%;
+  float: right;
+}
+
+
+#booking-wrap>#cancel-control>.cancel-info-box{
+  margin-left: 20px;
+  margin-top: 40px;
+  margin: none;
+  width: 90%;
+}
+#booking-wrap>#cancel-control>.cancel-info-box>div:nth-child(1)>h4{
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+#booking-wrap>#cancel-control>.cancel-info-box >.cancel-info-wrap{
+  background-color: white;
+}
+
+#booking-wrap>#cancel-control>.cancel-info-box >.cancel-info-wrap > div >*{
+  margin: 0px;
+  float: left;
+  margin-left: 15px;
+  line-height: 48px;
+  
+}
+
+#booking-wrap>#cancel-control>.cancel-info-box >.cancel-info-wrap > div >h5{
+  width: 60px;
+  font-size: 14px;
+  color: rgb(145, 145, 145);
+  font-weight: 400;
+}
+#booking-wrap>#cancel-control>.cancel-info-box >.cancel-info-wrap > div >p{
+  color: black;
+}
+#booking-wrap>#cancel-control>.cancel-info-box >.cancel-info-wrap > div{
+  clear: left;
+  height: 45px;
+}
+
+#booking-wrap>#cancel-control>.cancel-info-box>#cancel-btn{
+  clear: left;
+  height: 55px;
+  text-align: center;
+  background-color: rgb(83, 83, 83);
+}
+
+#booking-wrap>#cancel-control>.cancel-info-box >.cancel-info-wrap > div:nth-child(4)>*{
+  color: #704de4;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#booking-wrap>#cancel-control>.cancel-info-box>#cancel-btn>a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 53px;
+  color: white;
+}
+
+
+/* ************예약 내역 내용 설정 끝***************** */
+footer{
+  clear: both;
+}

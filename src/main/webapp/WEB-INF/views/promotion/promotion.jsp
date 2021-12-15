@@ -18,7 +18,7 @@
       <div class="promotion-list-wrap">
         <article class="box-size">
           <div class="list-img" style="background-image: url('${contextPath}/resources/images/main_body/promotion_list_01.png')">
-            <a href="">
+            <a href="promotion_detail">
               <h3>따뜻하고 특별한 <br> 프라이빗 데이트 공간</h3>
               <p>노잼도시를 구하라 WEEK5</p>
             </a>  
