@@ -26,7 +26,6 @@ http://localhost:8080/getonFast/
 
 기획전
 - http://localhost:8080/getonFast/promotion
-
 기획전 세부목록 
 - http://localhost:8080/getonFast/promotion_detail
 ```
