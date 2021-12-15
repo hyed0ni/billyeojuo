@@ -4,6 +4,7 @@
   /* box-sizing: border-box; */
 }
 
+
 .space{
   clear: both;
   height: 70px;
@@ -39,11 +40,10 @@
   height: 340px;
   margin-bottom: 20px;
   overflow: hidden;
-  
-  
 }
 
 .promotion-list-wrap>.box-size>.list-img{
+  height: 340px;
   background-size: cover;
   background-position: 40%;
   transition: all 0.2s;
@@ -53,23 +53,24 @@
   transition: all 0.2s;
   transform: scale(1.1);
   background-position: 40%;
+  
 }
 
 .promotion-list-wrap>.box-size>div>a{
   display: block;
-  padding-top: 90px;
-  padding-bottom: 110px;
+    padding-top: 30%;
+    padding-bottom: 32%;
   box-sizing: border-box;
   transition: all 0.2s;
 }
 .promotion-list-wrap>.box-size>div>a:hover{
   display: block;
-  padding-top: 90px;
-  padding-bottom: 110px;
+    padding-top: 30%;
+    padding-bottom: 32%;
   box-sizing: border-box;
   transition: all 0.2s;
   transform: scale(0.85);
-  
+
 }
 
 .promotion-list-wrap>.box-size>div>a>h3{
