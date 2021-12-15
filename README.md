@@ -10,7 +10,7 @@ http://localhost:8080/getonFast/
 예약내역
 - http://localhost:8080/getonFast/my/reserve
 예약 세부내역
-- http://localhost:8080/getonFast/my/reserv
+- http://localhost:8080/getonFast/my/reservation_detail
 문의관리
 - http://localhost:8080/getonFast/my/qna
 프로필 관리
