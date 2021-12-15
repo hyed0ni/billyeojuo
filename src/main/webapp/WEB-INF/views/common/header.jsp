@@ -13,7 +13,7 @@
 <title>Semi Project</title>
 
 <!-- Bootstrap4 CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
 
 <link rel="stylesheet" href="${contextPath}/resources/css/common.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/${css}.css">
@@ -28,7 +28,7 @@
 <div class="side_menu">
     <div class="bg_yellow login_area">
         <div class="close_menu"><img src="${contextPath}/resources/images/header/right_arrow.png"></div>
-        <a href="javascript:alert('로그인')">
+        <a href="${contextPath}/member/login">
             <div class="profile_area">
                 <div class="profile_img">
                     <img src="${contextPath}/resources/images/header/defaultUser.jpg">

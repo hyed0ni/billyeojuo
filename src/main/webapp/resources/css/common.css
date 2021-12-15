@@ -8,7 +8,7 @@ body : background-color : #f6f6f6 줘야 할까?
 html, body{margin:0; padding:0; overflow-x:hidden; font-family: "Noto Sans KR", sans-serif !important; font-size:15px; color:#656565; background-color:#f6f6f6;}
 header{white-space:nowrap; height:80px; background-color:#fff; line-height:78px; width:100%; min-width:1140px; border-bottom:1px solid black; position:fixed; display: flex; z-index:2000;}
 main{width:1140px; margin:80px auto 40px;}
-footer{width:100%; padding-top:40px; background-color:#ebebeb;}
+footer{width:100%; padding:40px 0; background-color:#ebebeb;}
 a{color:rgba(114, 114, 114, 1); text-decoration:none;}
 a:hover{text-decoration:none;}
 ul{padding:0; margin:0; list-style-type:none;}
@@ -31,7 +31,7 @@ ul{padding:0; margin:0; list-style-type:none;}
 header > .logo_area{width:180px; text-align:center; font-size:28px; color:black; font-weight:bold;}
 
 header > .search_area{width:calc(100% - 260px); display:inline-block; height:80px; margin:0; padding:0; position:relative;}
-header > .search_area > .search{height:46px; width:480px; font-size:16px; padding:0 38px; border-radius:25px;}
+header > .search_area > .search{height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;}
 header > .search_area > .ico_search{position:absolute; top:28px; left:10px;}
 header > .search_area > .ico_cancel{position:absolute; top:32px; left:450px;}
 

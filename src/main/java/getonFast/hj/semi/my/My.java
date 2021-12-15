@@ -1,4 +1,4 @@
-package getonFast.hj.semi.review;
+package getonFast.hj.semi.my;
 
 import java.io.IOException;
 
@@ -8,15 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/my/review")
-public class ReviewController extends HttpServlet {
-	
+@WebServlet("/my")
+public class My extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("css",	"my");
 		
-		req.setAttribute("css", "review");
-		
-		String path = "/WEB-INF/views/review/review.jsp";
+		String path = "/WEB-INF/views/my/my.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 

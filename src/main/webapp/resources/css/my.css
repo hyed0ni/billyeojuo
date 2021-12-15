@@ -1,0 +1,31 @@
+.my > .title{font-size:35px; font-weight:bold; color:black; text-align:center; padding:40px 0 20px; letter-spacing:-.5px;}
+
+.my > .my_area{margin-top:20px;}
+.my > .my_area > .non_list_area{height:400px; padding:90px 50px 60px; font-size:22px; color:#000;}
+.my > .my_area > .non_list_area > .non_list{text-align:center; padding:171px;}
+
+.my{width:980px; margin:auto;}
+.my > .my_area > .contents{width:300px; display:inline-block; background-color:#fff; text-align:center; position:relative; vertical-align:top;}
+.my > .my_area > .contents > .img_area{padding:20px;}
+.my > .my_area > .contents > .img_area > div > img{width:150px; height:150px; margin:10px;}
+.my > .my_area > .contents > .img_area > .contents_nickname{font-weight:bold; height:30px; line-height:28px; margin-bottom:30px; padding:10px; border-bottom:1px solid #ccc;}
+
+.my > .my_area > .my_detail{background-color: bisque; width:610px; padding:20px; display:inline-block; background-color:#fff; position:relative; margin-left:24px;}
+.my > .my_area > .my_detail > .profile_area{text-align:center; margin-bottom:30px;}
+.my > .my_area > .my_detail > .profile_area > div > img{width:100px; height:100px; margin:10px;}
+
+.my > .my_area > .my_detail > .profile_area > .profile_nickname{font-weight:bold; height:30px; line-height:28px;}
+.my > .my_area > .my_detail > .profile_area > div > .profile_change{color:#656565; font-size:12px; height:26px; padding:0 10px;}
+.my > .my_area > .my_detail > .detail_area{border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:20px 0; margin-bottom:30px;}
+
+.my > .my_area > .my_detail > .detail_area .detail_table{width:100%; font-size:14px;}
+
+.my > .my_area > .my_detail > .detail_area .detail_table .table_th{width:120px; text-align:left; vertical-align:top; padding:20px 0;}
+.my > .my_area > .my_detail > .detail_area .detail_table .table_td{vertical-align:top; padding:20px 0; position:relative;}
+.my > .my_area > .my_detail > .detail_area .detail_table .switch_area .switch_btn{position:absolute; z-index:3; top:20px; right:0; padding:0 4px; width:40px; border-radius:25px; background-color:#ebebeb; height:22px; border:1px solid #ebebeb; box-sizing:border-box; cursor:pointer;}
+
+.my > .my_area > .my_detail > .secede{text-align:center;}
+
+/* 스위치 */
+.switch_area > .switch_btn > .tag{position:absolute; z-index:4; top:-1px; right:15px; padding:0 4px; width:25px; border-radius:25px; background-color:#fff; height:22px; border:1px solid #ebebeb; box-sizing:border-box; transform:translate(0%, 0); transition:all ease 0.3s;}
+.switch_area > .switch_btn > .tag.active{transform:translate(65%, 0);}
