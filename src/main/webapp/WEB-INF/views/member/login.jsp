@@ -26,7 +26,7 @@
                 </div>
                 <div class="login-options">
                     <label><input type="checkbox"> 로그인 기억하기</label>
-                    <a href="../views/find_password.html">비밀번호 찾기</a>
+                    <a href="${contextPath}/member/findPwd">비밀번호 찾기</a>
                 </div>
                 <a href="#self" class="login-btn">이메일로 로그인</a>
                 <div class="sign-up-wrap">
