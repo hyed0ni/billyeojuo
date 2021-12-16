@@ -1,0 +1,325 @@
+header {width:100%; height:80px; z-index: 100;} 
+body{width:100%}
+footer{width:100%; height:300px}
+em{font-style: initial;}
+
+/* @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+} */
+
+/*********************************************************************************************************/
+
+main{z-index: 1; width: 1140px;}
+.detail-forms{ padding-right: 395px; position: relative; margin-top: 30px; width:763px; }
+.inner-width{ width:100%; }
+
+/* 공간명 */
+.space-name{ font-size: 35px;}
+
+/* 부제-1 */
+.sub-desc{ font-size: 22px;}
+
+/* 태그 */
+.tag{
+  margin: 6px 6px 6px 0;
+  padding: 0 15px;
+  height: 29px;
+  font-size: 14px;
+  line-height: 29px;
+  border-radius: 29px;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  color: #656565;
+}
+
+/* 이미지 및 내용을 감싸는 div 영역*/
+.photo-box-wrap{  padding: 0;  width: 100%;  height: 100%;  margin-top: 16px;}
+
+/* 이미지 감싸는 영역 */
+.detail-box{  width:763px;   height: 450px;  position: relative; margin: 42px -5px 0;}
+
+/* 공간 이미지 */
+.space-img{
+  width:763px; 
+  height:450px; 
+  background-image: url("https://moplqfgeemqv2103108.cdn.ntruss.com/pstatic-scloud/20190326_287/1553568292117Ufz9n_JPEG/929DD57E-980B-4A9D-8478-4B11C3D3CA33.jpeg?type=m&w=900&h=900&autorotate=true&quality=90");
+}
+
+/* 부제-2 영역  */
+.text-box{  word-break: keep-all;  word-wrap: break-word; margin-bottom: 50px; border: 1px solid transparent;}
+
+/* 부제-2 */
+.h-copy{  margin: 0;  padding: 50px 100px 0 0;  font-size: 48px;  line-height: 60px;}
+
+/* 메뉴 탭 영역 */
+.nav-wrapper{ float:left; }
+.nav-area{
+  padding: 0;
+  display: table;
+  position: relative;
+  width: 100%;
+  table-layout: fixed;
+  list-style: none;
+}
+
+/* 메뉴 탭 */
+.nav-area li{
+  font-size: 16px;
+  height: 50px;
+  padding: 11px 15px;
+  position: relative;
+  display: table-cell;
+  text-align: center;
+  vertical-align: top;
+  border-bottom: 1px solid #704de4;
+  box-sizing: border-box;
+  
+}
+
+/* 메뉴 */
+.nav-area a{  text-decoration: none;  display: block;  color: #656565;}
+/* 메뉴 탭 중간 보라색 세로 구분선 */
+.nav-area li:not(li:last-of-type):after {
+    content: " ";
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 0.7px;
+    height: 20px;
+    background-color: #704de4;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 메뉴 선택 시 배경색 */
+.nav-area li.seleted{ background-color: #ffd014; }
+
+/* 공간소개, 시설안내, 유의사항, Q&A, 이용후기 작성 부분 */
+.meetspace{ padding-top: 51px; }
+
+/* 공간 소개 영역 */
+#s-intro{  padding-top : 50px; }
+
+/* 공간소개, 시설안내, 유의사항, Q&A, 이용후기 제목 */
+.text-box .h-intro {
+  position: relative;
+  padding-bottom: 16px;
+  margin: 74px 0 28px;
+  color: #000;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+/* 공간소개, 시설안내, 유의사항, Q&A, 이용후기 내용 */
+.p-intro{  font-size: 16px;  line-height: 28px; }
+
+ul, ol{  list-style: none; padding-left: 0;}
+
+/* 영업 시간, 휴무일 리스트 */
+.p-intro+.info-list{  margin-top: 35px;}
+
+/* 영업 시간, 휴무일 li 태그 */
+.info-list.officehours li {
+  padding: 10px 0 8px 76px;
+  font-size: 16px;
+  position: relative;
+  line-height: 28px;
+}
+
+/* 영업 시간, 휴무일 제목 */
+.info-list li .tit {
+  position: absolute;
+  left: 0;
+  padding-top: 1px;
+}
+
+/* 영업 시간, 휴무일 값 */
+.info-list li .data {
+  color: #656565;
+  line-height: 28px;
+}
+
+/* li태그 구분선 */
+.info-list li:not(li:first-of-type){
+  border-top : 1px solid #ebebeb;
+}
+
+/* 시설 안내, 유의사항 번호 */
+ol.info-list li { padding: 10px 0 8px;  padding-left: 29px;}
+
+/* 환불규정 안내 */
+.txt-notice.refund{padding-bottom: 20px}
+
+/* 경고 */
+.warn{color: #ff3a48; font: inherit;}
+
+/* 환불 규정 */
+#s-refund .info-list .data {  margin-left: 70px;}
+
+/* 지도 영역 */
+.map-box{margin-top: 78px;  margin-left: 0;  margin-right: 0;}
+
+/* 지도 공간 프로필 영역*/
+.host-profile { margin-top: 80px;  border-bottom: 1px solid #e0e0e0;}
+
+/* 공간프로필 내부 패딩 */
+.host-profile .inner{  padding: 33px 30px 38px; }
+
+/* 공간명, 주소 */
+.sp-location{ padding: 0;  margin-bottom: 0; font-size: 16px;  color: #656565;}
+
+/* 공간명 */
+.sp-name{font-size: 24px;  line-height: 26px;  color: #000; margin: 0;}
+
+/* 주소 */
+.sp-address{margin-top: 20px;}
+
+/* 전화걸기, 길 찾기 버튼 */
+a{cursor: pointer;}
+.host-profile .row{ margin: 33px -6px 0; }
+.host-profile .row .col{  width: 50%;  padding: 0 6px; box-sizing: border-box; float: left; text-align: center;}
+.host-profile .row::after{    content: ""; display: table; clear: both;}
+.btn{display: inline-block;  text-align: center;  font-size: 20px; text-decoration: none; width: 100%;}
+.btn-rounded{  height: 50px;    color: #704de4;    line-height: 50px;    border-radius: 50px; border: 1px solid #704de4;}
+
+
+/* 지도 영역 */
+.map-box{ height: auto;}
+.map{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 640px;
+  border: 1px solid #e0e0e0;
+  border-top: 0;
+}
+
+/* 지도 */
+#map{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Q&A 영역 */
+#s-qna{ position: relative;}
+
+.txt-primary{  color: #6d3afb; }
+
+/* 질문 작성하기 버튼 */
+.btn-qna-write{
+  padding: 5px 17px 3px;
+  font-size: 14px;
+  line-height: 25px;
+  top: 70px;
+  position: absolute;
+  right: 0;
+  color: #fff;
+  border-radius: 100px;
+  background-color: #704de4;
+}
+
+
+/* Q&A, 이용 후기 */
+.review_box .rlist:first-child {
+  border-top: 0;
+  padding: 24px 0 0;
+}
+
+.review_box .rlist {
+  padding: 24px 0 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+/* 게스트, 호스트 글 영역 */
+.rbox-mine, .rbox-reply{  padding: 0 0 24px 110px;  position: relative;}
+
+
+/* 프로필 이미지 */
+.pf-img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  background-size: cover;
+  background-position: 50%;
+}
+
+/* 글 작성 시간 */
+.time-info{ font-size: 12px; color: #b2b2b2;}
+
+/* 호스트 답글 */
+.rbox-reply{ padding-top: 11px;}
+
+.p-tit-reply{
+  font-size: 18px;
+  color: #6d3afb;
+}
+
+
+/* Q&A 페이징  */
+.paging{text-align: center;}
+
+.paging a {
+  display: inline-block;
+  color: #656565;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.paging .btn{
+  width: 42px;
+  height: 42px;
+  border: 1px solid#656565;
+  line-height: 36px;
+}
+
+.btn_prev_list{margin-left: -6px;}
+.btn_next_list{margin-right: -6px;}
+
+/* 리뷰 */
+#s-review{position: relative;}
+
+
+/* 사진 후기만 보기 버튼 */
+.switch-item{
+  position: absolute;
+  display: block;
+  top: 70px;
+  right: 0;
+}
+
+/* 사진 후기만 보기 버튼 동작 */
+.shitch+label{  width: 45px;  height: 21px; }
+
+.shitch+label:after {
+  content: "off";
+}
+
+.shitch:checked+label:after{
+  content: "on";
+}
+
+
+/* 평점 영역*/
+.rate_area{ position: absolute; right: 0;}
+
+.rate{width: 18px; height: 16px; display: inline-block;}
+
+
+/* 리뷰 이미지 */
+.box.box_space{width: 33.3%; padding-bottom: 33.3%; position: relative;}
+.box_space .img{
+  background: no-repeat 50%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
