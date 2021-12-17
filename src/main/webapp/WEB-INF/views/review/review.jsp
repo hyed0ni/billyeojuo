@@ -9,34 +9,6 @@
 <!-- header include -->
 <jsp:include page="../common/header.jsp"/>
 
-<style>
-.review > .review_area > .review_header{width:100%; margin-bottom:50px;}
-.review > .review_area > .review_header > .header_tab_area{height:48px;}
-.review > .review_area > .review_header > .header_tab_area .header_tab{width:50%; float:left; text-align:center; font-size:20px; padding:10px 0; border-top:1px solid #704de4; background-color:#ebebeb; color:#949494;}
-.review > .review_area > .review_header > .header_tab_area .header_tab.active{border-top:1px solid #704de4; background-color:#704de4; color:#fff;}
-
-.review > .review_area > .review_header > .search_area{box-sizing:border-box; border:3px solid #704de4; height:100px; margin-top:40px;}
-.review > .review_area > .review_header > .search_area > .search_title{width:15%; float:left; line-height:94px; text-align:center; font-weight:bold;}
-.review > .review_area > .review_header > .search_area > .input_area{width:70%; float:left; line-height:94px; text-align:center;}
-.review > .review_area > .review_header > .search_area > .input_area > .search_input{height:46px; width:96%; padding:0 2%; font-size:16px;}
-.review > .review_area > .review_header > .search_area > .btn_area{width:15%; float:left; line-height:94px; text-align:center;}
-.review > .review_area > .review_header > .search_area > .btn_area > .search_btn{width:120px; height:48px; line-height:46px; vertical-align:middle; background-color:#704de4; color:#fff; font-size:20px; border:0; cursor:pointer;}
-
-.review > .review_area > .list_area > .list{box-sizing:border-box; border:1px solid black; padding:10px; width:100%; margin-bottom:10px;}
-.review > .review_area > .list_area > .list > .img_area{display:inline-block;}
-
-.review > .review_area > .list_area > .list > .img_area > .list_img{width:230px; height:150px; object-fit:cover;}
-.review > .review_area > .list_area > .list > .content_area{display:inline-block; width:75%; padding:10px 20px; vertical-align:top;}
-.review > .review_area > .list_area > .list > .content_area .title{font-size:18px; font-weight:bold; margin-bottom:5px;}
-.review > .review_area > .list_area > .list > .content_area .content{margin-bottom:5px;}
-.review > .review_area > .list_area > .list > .content_area .date{font-size:12px;}
-
-.review > .review_area > .list_area > .list > .content_area > .comment_area{margin:10px 0 0 15px;}
-.review > .review_area > .list_area > .list > .content_area > .comment_area > .comment_title{font-size:18px; color:#704de4; margin-bottom:5px;}
-
-
-</style>
-
 <main>
     <section class="review">
         <div class="title" style="letter-spacing:-.5px;">이용 후기 관리</div>

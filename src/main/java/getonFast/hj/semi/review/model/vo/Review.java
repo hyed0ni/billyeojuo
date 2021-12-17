@@ -1,11 +1,9 @@
 package getonFast.hj.semi.review.model.vo;
 
-import java.sql.Date;
-
 public class Review {
 	private int revNo;
 	private String revContent;
-	private Date revDt;
+	private String revDt;
 	private int revSt;
 	private int resNo;
 	
@@ -27,11 +25,11 @@ public class Review {
 		this.revContent = revContent;
 	}
 
-	public Date getRevDt() {
+	public String getRevDt() {
 		return revDt;
 	}
 
-	public void setRevDt(Date revDt) {
+	public void setRevDt(String revDt) {
 		this.revDt = revDt;
 	}
 
