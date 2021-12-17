@@ -12,40 +12,40 @@
 
 <main>
     <section class="main-pic">
-        <img src="${contextPath}/resources/images/main_body/mainpage_img.jpg">
+        <img src="${contextPath}/resources/images/main/mainpage_img.jpg">
     </section>
 
     <section id="icons">
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/broadcasting.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/broadcasting.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/cafe.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/cafe.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/gathering.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/gathering.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/instrumental_room.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/instrumental_room.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/outdoor.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/outdoor.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/performance.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/performance.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/workingout.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/workingout.png" alt="">
         </a>
 
         <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/main_icon/workingout.png" alt="">
+            <img src="${contextPath}/resources/images/space_type/workingout.png" alt="">
         </a>
 
     </section>

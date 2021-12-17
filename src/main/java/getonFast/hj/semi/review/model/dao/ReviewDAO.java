@@ -59,7 +59,7 @@ public class ReviewDAO {
 				
 				review.setRevNo(rs.getInt("REV_NO"));
 				review.setRevContent(rs.getString("REV_CONTENT"));
-				review.setRevDt(rs.getDate("REV_DT"));
+				review.setRevDt(rs.getString("REV_DT"));
 				review.setRevSt(rs.getInt("REV_ST"));
 				review.setResNo(rs.getInt("RES_NO"));
 				
