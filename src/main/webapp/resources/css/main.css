@@ -1,10 +1,13 @@
-
 *:not(body,html){
   /* border: 0.1px solid grey; */
   /* box-sizing: border-box; */
 }
+
+body{background-color:#fff;}
+
 .main-pic>img{
   width: 100%;
+  margin-bottom:20px;
 }
 .space{
   clear: both;
@@ -33,6 +36,8 @@
   width: 100%;
   height: 100%;
 }
+
+#icons > .icon-a > .main-icons-text{margin-top:12px; font-size:18px; position:relative; letter-spacing:-0.5px; text-align:center; color:#000;}
 /* ---------- 아이콘 설정 끝 ----------- */
 
 

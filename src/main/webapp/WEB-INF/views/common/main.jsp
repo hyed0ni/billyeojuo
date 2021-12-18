@@ -16,38 +16,12 @@
     </section>
 
     <section id="icons">
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/broadcasting.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/cafe.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/gathering.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/instrumental_room.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/outdoor.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/performance.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/workingout.png" alt="">
-        </a>
-
-        <a href="#" class="icon-a">
-            <img src="${contextPath}/resources/images/space_type/workingout.png" alt="">
-        </a>
-
+    	<c:forEach items="${spaceTypeList}" var="spaceType">
+	    	<a href="#" class="icon-a">
+	            <img src="${contextPath}/resources/images/space_type/${spaceType.spaceTypeImg}.png" alt="">
+	            <div class="main-icons-text">${spaceType.spaceTypeNm}</div>
+	        </a>
+    	</c:forEach>
     </section>
 
     <section class="space"></section>
