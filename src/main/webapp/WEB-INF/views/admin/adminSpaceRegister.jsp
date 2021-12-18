@@ -49,20 +49,50 @@
             <div class="spaceWrap">
               <label for="spaceCategory">공간유형</label> 
               <select	 id="spaceCategory" name="spaceCategory" style="width: 150px; height: 25px;" required>
-                <option>1 </option>
+                <option>1</option>
               </select>
             </div>
           </article>
 
-          <article class="spacePic">
-            <div class="boardImg">
-              <label for="img0" style="margin-top: 20%;">공간이미지</label>
+          <article class="spaceMap">
+              <label for="map0">지도이미지</label>
+            <div class="mapImg">
               <img>
             </div>
-            <div id="fileArea">
-              <input type="file" name="img0" onchange="loadImg(this,0)"> 
+          </article>
+          
+           <label style="margin-top: 20%; clear: left;">공간이미지</label>
+          <article class="spacePic">
+            <div class="spaceImg">
+         	  <label style="margin-top: 20%;">+이미지추가</label>
+              <img>
+            </div>
+
+            <div class="spaceImg">
+          	 <label style="margin-top: 20%;">+이미지추가</label>
+              <img>
+            </div>
+          
+            <div class="spaceImg">
+	           <label style="margin-top: 20%;">+이미지추가</label>
+              <img>
+            </div>
+          
+            <div class="spaceImg" style="margin-right: 0px">
+	           <label style="margin-top: 20%;">+이미지추가</label>
+              <img>
+              
             </div>
           </article>
+          
+          <div id="fileArea">
+            <input type="file" name="map0" onchange="loadMap(this,0)"> 
+            <input type="file" name="img0" onchange="loadImg(this,0)"> 
+            <input type="file" name="img1" onchange="loadImg(this,1)"> 
+            <input type="file" name="img2" onchange="loadImg(this,2)"> 
+            <input type="file" name="img3" onchange="loadImg(this,3)"> 
+          </div>
+       
 
           <article class="spaceInfo02">
             <div class="spaceWrap02">
