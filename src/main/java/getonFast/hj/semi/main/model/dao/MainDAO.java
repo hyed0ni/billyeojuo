@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import getonFast.hj.semi.main.model.vo.Exhibit;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 
 public class MainDAO {
@@ -66,6 +67,43 @@ public class MainDAO {
 		}
 		
 		return spaceTypeList;
+	}
+
+	/**
+	 * 기획전 조회
+	 * @param conn
+	 * @return exhibitList
+	 * @throws Exception
+	 */
+	public List<Exhibit> selectExhibit(Connection conn) throws Exception {
+		List<Exhibit> exhibitList = new ArrayList<Exhibit>();
+		
+		try {
+			String sql = prop.getProperty("selectExhibit");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Exhibit exhibit = new Exhibit();
+				
+				exhibit.setExNo(rs.getInt("EX_NO"));
+				exhibit.setExNm(rs.getString("EX_NM"));
+				exhibit.setExSubNm(rs.getString("EX_SUB_NM"));
+				exhibit.setExImg(rs.getString("EX_IMG"));
+				
+				exhibitList.add(exhibit);
+				
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+				
+		return exhibitList;
 	}
 
 

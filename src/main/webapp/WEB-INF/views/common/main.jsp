@@ -30,25 +30,12 @@
         <h1 class="title">기획전</h1>
         <p style="margin-top: 0px; text-align: center;">지금 딱 내가 찾는 공간</p>
         <div class="promotion">
-            <a href="#">
-                <h3 class="promotion-title">원테이블 레스토랑은 이곳에,<br>오늘은 내가 일일 쉐프</h3><br>
-                <p>노잼도시를 구하라</p>
-            </a>
-
-            <a href="#">
-                <h3 class="promotion-title">원테이블 레스토랑은 이곳에,<br>오늘은 내가 일일 쉐프</h3><br>
-                <p>노잼도시를 구하라</p>
-            </a>
-
-            <a href="#">
-                <h3 class="promotion-title">원테이블 레스토랑은 이곳에,<br>오늘은 내가 일일 쉐프</h3><br>
-                <p>노잼도시를 구하라</p>
-            </a>
-
-            <a href="#">
-                <h3 class="promotion-title">원테이블 레스토랑은 이곳에,<br>오늘은 내가 일일 쉐프</h3><br>
-                <p>노잼도시를 구하라</p>
-            </a>
+            <c:forEach items="${exhibitList}" var="exhibit">
+	        	<a href="#" style="background-image: url(${contextPath}/resources/images/exhibit/${exhibit.exImg}.png)">
+	                <h3 class="promotion-title">${exhibit.exNm}</h3><br>
+	                <p>${exhibit.exSubNm}</p>
+	            </a>
+	        </c:forEach>
 
             <div class="more" >
                 <a href="${contextPath}/promotion" >+ 더보기</a>
