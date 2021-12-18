@@ -7,98 +7,61 @@
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 
 <!-- header include -->
-<jsp:include page="admin_header.jsp"/>
+<jsp:include page="../adminCommon/admin_header.jsp"/>
   <main>
     <div class="contents">
       <section class="right">
         <form action="#" method="post"  enctype="multipart/form-data" role="form" onsubmit="return spaceValidate();">
-          <h2 style="text-align: center;">공간등록</h2>
-          <div class="spaceWrap">
-            <label for="spaceName">공간명</label> 
-            <input type="text" id="spaceName" name="spaceName" style="width: 90%;" required >
-          </div>
-            
-          <div class="spaceWrap">
-            <label for="spaceSubName">공간부제</label> 
-            <input type="text" id="spaceSubName" name="spaceSubName"  style="width: 90%;" >
-          </div>
+          <h2 style="text-align: center;">공간 타입등록</h2>
           
-          <article class="spaceInfo01">
-            <div class="spaceWrap">
-              <label for="spaceAddr">공간주소</label> 
-              <input type="text" id="spaceAddr" name="spaceAddr"  required>
-            </div>
+          <article class="roomTypeWrap">
+            <article class="roomInfo01">
+              <div class="roomWrap">
+                <label for="spaceName">공간 타입 이름</label> 
+                <input type="text" id="spaceName" name="spaceName" style="width: 80%; text-align: left;" required >
+              </div>
+              <div class="roomWrap">
+                <label for="spaceSubName">가격</label> 
+                <input type="text" id="spaceSubName" name="spaceSubName" required> 원
+              </div>
+              <div class="roomWrap">
+                <label for="spaceAddr">최대 수용인원</label> 
+                <input type="text" id="spaceAddr" name="spaceAddr" required > 명
+              </div>
 
-            <div class="spaceWrap">
-              <label for="spacePhone">전화번호</label> 
-              <input type="text" id="spacePhone" name="spacePhone" required>
-            </div>
+              <div class="roomWrap">
+                <label for="roomOption">공간옵션</label> 
+                <input type="radio" name="roomOption" class="roomRadio"> 금연
+                <input type="radio" name="roomOption" class="roomRadio"> 취사가능
+                <input type="radio" name="roomOption" class="roomRadio"> 금연
+                <input type="radio" name="roomOption" class="roomRadio"> 금연
+                <input type="radio" name="roomOption" class="roomRadio"> 금연
 
-            <div class="spaceWrap">
-              <label for="spaceTime">영업시간</label> 
-              <input type="text" id="spaceTime" name="spaceTime" required>
-            </div>
+              </div>
+            </article>
 
-            <div class="spaceWrap">
-              <label for="spaceClosedDt">휴무일</label> 
-              <input type="text" id="spaceClosedDt" name="spaceClosedDt" required>
-            </div>
-
-            <div class="spaceWrap">
-              <label for="spaceCategory">공간유형</label> 
-              <select	 id="spaceCategory" name="spaceCategory" style="width: 150px; height: 25px;" required>
-                <option>1 </option>
-              </select>
+          <article article class="roomInfo02">
+            <div class="roomWrap02">
+              <div>
+                <label for="roomBasic">공간소개</label>
+              </div>
+              <textarea class="roomInfoForm" id="roomBasic" name="roomBasic"></textarea>
             </div>
           </article>
 
-          <article class="spacePic">
-            <div class="boardImg">
-              <label for="img0" style="margin-top: 20%;">공간이미지</label>
-              <img>
-            </div>
-            <div id="fileArea">
-              <input type="file" name="img0" onchange="loadImg(this,0)"> 
-            </div>
-          </article>
+            <button> + 룸 타입 추가</button>
 
-          <article class="spaceInfo02">
-            <div class="spaceWrap02">
-              <div>
-                <label for="spaceBasic">공간소개</label>
-              </div>
-              <textarea class="infoForm" id="spaceBasic" name="spaceBasic"></textarea>
-            </div>
-
-            <div class="spaceWrap02">
-              <div>
-                <label for="spaceFacility">시설안내</label>
-              </div>
-              <textarea class="infoForm" id="spaceFacility" name="spaceFacility"></textarea>
-            </div>
-
-            <div class="spaceWrap02">
-              <div>
-                <label for="spaceCaution">주의사항</label>
-              </div>
-              <textarea class="infoForm" id="spaceCaution" name="spaceCaution"></textarea>
-            </div>
-
-            <div class="spaceWrap02">
-              <div>
-                <label for="spaceRefund">환불규정</label>
-              </div>
-              <textarea class="infoForm" id="spaceRefund" name="spaceRefund"></textarea>
-            </div>
-          </article>
 
           <article style="margin-top: 40px; margin-bottom: 40px; text-align: center;">
-            <button class="btn" onclick="">다음</button>
+            <button class="btn" onclick="">뒤로가기</button>
+            <button class="btn" onclick="">등록하기</button>
             <button class="btn">취소</button>
           </article>
         </form>
-        
+
       </section>
-    </main>
+    </div>
+  </main>
 </body>
+
 </html>

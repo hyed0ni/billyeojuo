@@ -7,97 +7,100 @@
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 
 <!-- header include -->
-<jsp:include page="admin_header.jsp"/>
+<jsp:include page="../adminCommon/admin_header.jsp"/>
 
 
   <main>
     <div class="contents">
-      <section class="left">
-        <article class="menu-wrap">
-          <div class="menu">
-            <h3>주요 기능</h3>
-          </div>
-          <div class="menu">
-            <h3>회원 관리</h3>
-          </div>
-          <div class="menu">
-            <h3>예약 관리</h3>
-          </div>
-          <div class="menu">
-            <h3>대여장소 관리</h3>
-          </div>
-          <div class="menu">
-            <h3>게시글 관리</h3>
-          </div>
-          <div class="menu">
-            <h3>세부 관리</h3>
-              <div class="sub-menu">
-                <h4>기획전 관리</h4>
-              </div>
-              <div  class="sub-menu">
-                <h4>추천공간 관리</h4>
-              </div>
-              <div  class="sub-menu">
-                <h4>문의사항 관리</h4>
-              </div>
-          </div>
-        </article>
-      </section>
-
       <section class="right">
         <form action="#" method="post"  enctype="multipart/form-data" role="form" onsubmit="return spaceValidate();">
-          <h2 style="text-align: center;">공간 타입등록</h2>
+          <h2 style="text-align: center;">공간등록</h2>
+          <div class="spaceWrap">
+            <label for="spaceName">공간명</label> 
+            <input type="text" id="spaceName" name="spaceName" style="width: 90%;" required >
+          </div>
+            
+          <div class="spaceWrap">
+            <label for="spaceSubName">공간부제</label> 
+            <input type="text" id="spaceSubName" name="spaceSubName"  style="width: 90%;" >
+          </div>
           
-          <article class="roomTypeWrap">
-            <article class="roomInfo01">
-              <div class="roomWrap">
-                <label for="spaceName">공간 타입 이름</label> 
-                <input type="text" id="spaceName" name="spaceName" style="width: 80%; text-align: left;" required >
-              </div>
-              <div class="roomWrap">
-                <label for="spaceSubName">가격</label> 
-                <input type="text" id="spaceSubName" name="spaceSubName" required> 원
-              </div>
-              <div class="roomWrap">
-                <label for="spaceAddr">최대 수용인원</label> 
-                <input type="text" id="spaceAddr" name="spaceAddr" required > 명
-              </div>
+          <article class="spaceInfo01">
+            <div class="spaceWrap">
+              <label for="spaceAddr">공간주소</label> 
+              <input type="text" id="spaceAddr" name="spaceAddr"  required>
+            </div>
 
-              <div class="roomWrap">
-                <label for="roomOption">공간옵션</label> 
-                <input type="radio" name="roomOption" class="roomRadio"> 금연
-                <input type="radio" name="roomOption" class="roomRadio"> 취사가능
-                <input type="radio" name="roomOption" class="roomRadio"> 금연
-                <input type="radio" name="roomOption" class="roomRadio"> 금연
-                <input type="radio" name="roomOption" class="roomRadio"> 금연
+            <div class="spaceWrap">
+              <label for="spacePhone">전화번호</label> 
+              <input type="text" id="spacePhone" name="spacePhone" required>
+            </div>
 
-              </div>
-            </article>
+            <div class="spaceWrap">
+              <label for="spaceTime">영업시간</label> 
+              <input type="text" id="spaceTime" name="spaceTime" required>
+            </div>
 
-          <article article class="roomInfo02">
-            <div class="roomWrap02">
-              <div>
-                <label for="roomBasic">공간소개</label>
-              </div>
-              <textarea class="roomInfoForm" id="roomBasic" name="roomBasic"></textarea>
+            <div class="spaceWrap">
+              <label for="spaceClosedDt">휴무일</label> 
+              <input type="text" id="spaceClosedDt" name="spaceClosedDt" required>
+            </div>
+
+            <div class="spaceWrap">
+              <label for="spaceCategory">공간유형</label> 
+              <select	 id="spaceCategory" name="spaceCategory" style="width: 150px; height: 25px;" required>
+                <option>1 </option>
+              </select>
             </div>
           </article>
 
-            <button> + 룸 타입 추가</button>
+          <article class="spacePic">
+            <div class="boardImg">
+              <label for="img0" style="margin-top: 20%;">공간이미지</label>
+              <img>
+            </div>
+            <div id="fileArea">
+              <input type="file" name="img0" onchange="loadImg(this,0)"> 
+            </div>
+          </article>
 
+          <article class="spaceInfo02">
+            <div class="spaceWrap02">
+              <div>
+                <label for="spaceBasic">공간소개</label>
+              </div>
+              <textarea class="infoForm" id="spaceBasic" name="spaceBasic"></textarea>
+            </div>
+
+            <div class="spaceWrap02">
+              <div>
+                <label for="spaceFacility">시설안내</label>
+              </div>
+              <textarea class="infoForm" id="spaceFacility" name="spaceFacility"></textarea>
+            </div>
+
+            <div class="spaceWrap02">
+              <div>
+                <label for="spaceCaution">주의사항</label>
+              </div>
+              <textarea class="infoForm" id="spaceCaution" name="spaceCaution"></textarea>
+            </div>
+
+            <div class="spaceWrap02">
+              <div>
+                <label for="spaceRefund">환불규정</label>
+              </div>
+              <textarea class="infoForm" id="spaceRefund" name="spaceRefund"></textarea>
+            </div>
+          </article>
 
           <article style="margin-top: 40px; margin-bottom: 40px; text-align: center;">
-            <button class="btn" onclick="">등록하기</button>
-            <button class="btn">취소</button>
+            <button class="btn" onclick="adminRegisterRoomtype">다음</button>
+            <button class="btn" conclick="">취소</button>
           </article>
         </form>
-
         
       </section>
     </main>
-
-
-
 </body>
-
 </html>

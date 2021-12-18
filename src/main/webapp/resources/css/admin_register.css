@@ -1,0 +1,45 @@
+
+input{
+  width: 70%;
+  height: 25px;
+}
+
+label{
+  width: 20%;
+}
+
+label{
+  font-size: 17px;
+  line-height: 38px;
+  font-weight: 500;
+  text-align: left;
+  width: 100px;
+}
+.spaceInfo01{
+  width: 53%;
+  margin-top: 30px;
+  float:left;
+  box-sizing: border-box;
+}
+.spacePic{
+  width: 45%;
+  height: 240px;
+  float: left;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.spaceWrap02{
+  margin-top: 10px;
+}
+
+.spaceInfo02>.spaceWrap02 >.infoForm{
+  width: 100%;
+  height: 200px;
+  
+}
+
