@@ -19,16 +19,14 @@ label{
   float:left;
   box-sizing: border-box;
 }
-.spaceMap{
-  width: 47%;
+.spaceMap>.spaceImg{
+  width: 260px;
   height: 200px;
-  float: left;
+  display: inline-block;
   margin-bottom: 20px;
-  margin-top: 30px;
-  border: 1px solid black;
+  margin-right:0px;
+  border: 1px solid #ced4da;
   background-color: rgb(255, 255, 255);
-  box-sizing: border-box;
-  text-align: center;
 	cursor: pointer;
 }
 
@@ -45,8 +43,8 @@ label{
 	border: 1px solid #ced4da;
 	background-color: white;
 	position: relative;
-	margin-right: 20px;
-	margin-top: 10px;
+	overflow:auto;
+	margin-right: 15px;
 }
 
 .spaceImg>img {
