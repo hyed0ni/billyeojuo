@@ -40,6 +40,15 @@ http://localhost:8080/getonFast/
 기획전 목록 
 - http://localhost:8080/getonFast/promotion_detail
 
+***********************************************************************
+관리자 
+
+-공간등록 
+http://localhost:8080/getonFast/adminSpaceRegister
+
+-룸타입 등록 
+http://localhost:8080/getonFast/adminRegisterRoomtype
+
 
 >>>>>>> f9155308ecc7ec30b295564045fd10fbf1a6cb09
 ```
