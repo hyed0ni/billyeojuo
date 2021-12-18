@@ -1,0 +1,136 @@
+main{
+  width: 100%;
+  margin: 0px;
+  margin-top: 70px;
+}
+
+/* -----------헤더 ----------- */
+header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 70px;
+}
+
+.header-title {
+margin-left: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.top-header {
+  background: #704de4;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.top-header>div {
+display: flex;
+justify-content: space-between;
+height: 100%;
+align-items: center;
+padding: 0 30px 0 30px;
+}
+
+
+
+#logout {
+  height: 35px;
+  width: 130px;
+  background: #fff;
+  border: 1px solid #ababab;
+  font-weight: bolder;
+  color: #704de4;;
+  size: 15px;
+  border-radius: 8px;
+}
+
+/* -----------메뉴----------- */
+
+.left {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 15%;
+  float: left;
+}
+.menu {
+  text-align: center;
+  padding: 6%;
+  background-color: #dbdbdb;
+  width: 120px;
+  height: 20px;
+  line-height: 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.menu >h3{
+  font-size: 1em;
+  margin: 0px;
+}
+
+.menu:hover{
+  text-align: center;
+  padding: 6%;
+  color: white;
+  background-color: #704de4;
+  min-width: 100px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.menu>.sub-menu{
+  color: #704de4;
+}
+
+.menu-wrap{
+  margin-left: 20px;
+  margin-top: 20px;
+  align-items: center;
+  min-height: 700px;
+  gap: 15px;
+}
+
+/* -----------내용 ----------- */
+.right {
+  width: 83%;
+  min-height: 900px;
+  float: left;
+  color: black;
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+.roomWrap>*{
+  display: inline-block;
+}
+
+.spaceWrap>*{
+  display: inline-block;
+}
+
+.roomWrap, .roomWrap02{
+  width: 100%;
+}
+
+.spaceInfo02{
+  clear: left;
+}
+
+.roomWrap02{
+  height: 250px;
+}
+
+.spaceWrap02>textarea{
+  overflow: scroll;
+}
+
+.spaceInfo02>.spaceWrap02 >.infoForm{
+  width: 100%;
+  height: 200px;
+}
+
