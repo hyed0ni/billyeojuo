@@ -9,4 +9,11 @@
 		WHERE SPACE_TYPE_ST = 1
 	</entry>
 	
+	<entry key="selectExhibit">
+		SELECT * FROM (
+			SELECT ROWNUM RNUM, EX_NO, EX_NM, EX_SUB_NM, EX_IMG FROM EXHIBIT
+		)
+		WHERE RNUM <![CDATA[ <= ]]> 4
+	</entry>
+	
 </properties>

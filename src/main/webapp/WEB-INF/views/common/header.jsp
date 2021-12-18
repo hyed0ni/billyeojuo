@@ -27,7 +27,7 @@
 <!-- side menu -->
 <div class="side_menu">
     <div class="bg_yellow login_area">
-        <div class="close_menu"><img src="${contextPath}/resources/images/header/rightarrow.svg"></div>
+        <div class="close_menu"><img src="${contextPath}/resources/images/header/right_arrow.svg"></div>
         <a href="${contextPath}/member/login">
             <div class="profile_area">
                 <div class="profile_img">
