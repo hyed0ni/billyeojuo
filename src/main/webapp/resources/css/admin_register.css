@@ -4,11 +4,9 @@ input{
   height: 25px;
 }
 
-label{
-  width: 20%;
-}
 
 label{
+  width: 20%;
   font-size: 17px;
   line-height: 38px;
   font-weight: 500;
@@ -21,18 +19,44 @@ label{
   float:left;
   box-sizing: border-box;
 }
-.spacePic{
-  width: 45%;
-  height: 240px;
-  float: left;
+.spaceMap>.spaceImg{
+  width: 260px;
+  height: 200px;
+  display: inline-block;
   margin-bottom: 20px;
-  margin-top: 30px;
-  border: 1px solid black;
+  margin-right:0px;
+  border: 1px solid #ced4da;
   background-color: rgb(255, 255, 255);
-  box-sizing: border-box;
-  text-align: center;
+	cursor: pointer;
 }
 
+#fileArea {
+	display: none;
+}
+
+
+.spaceImg{
+	display: inline-block;
+	cursor: pointer;
+	width: 260px;
+	height: 180px;
+	border: 1px solid #ced4da;
+	background-color: white;
+	position: relative;
+	overflow:auto;
+	margin-right: 15px;
+}
+
+.spaceImg>img {
+	max-width: 100%;
+	max-height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
 .spaceWrap02{
   margin-top: 10px;
 }

@@ -19,13 +19,4 @@ public class XSS {
 		return parameter;
 	}
 	
-	// <br>태그 -> 줄바꿈 변경
-	public static String newLineParameter(String parameter) {
-		
-		if (parameter != null) {
-			parameter = parameter.replaceAll("<br>", "\r\n;");
-		}
-		
-		return parameter;
-	}
 }

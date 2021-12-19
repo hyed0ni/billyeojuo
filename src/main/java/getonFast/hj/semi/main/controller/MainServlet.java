@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.main.model.service.MainService;
+import getonFast.hj.semi.main.model.vo.Exhibit;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 
 @WebServlet("/main")
@@ -22,12 +23,15 @@ public class MainServlet extends HttpServlet {
 		
 		try {
 			MainService service = new MainService();
+			
+			// 공간 타입
 			List<SpaceType> spaceTypeList = service.selectSpaceType();
-			
-			String uri = req.getRequestURI();
-			String contextPath = req.getContextPath();
-			
 			req.setAttribute("spaceTypeList", spaceTypeList);
+			
+			List<Exhibit> exhibitList = service.selectExhibit();
+			
+			req.setAttribute("exhibitList", exhibitList);
+			
 			
 			// jsp로 요청 위임
 			req.setAttribute("css", "main");
