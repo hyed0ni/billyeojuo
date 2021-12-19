@@ -13,13 +13,14 @@ public class ReviewService {
 
 	/**
 	 * 리뷰 목록
+	 * @param memberNo 
 	 * @return reviewlist
 	 * @throws Exception
 	 */
-	public List<Review> reviewList() throws Exception {
+	public List<Review> reviewList(int memberNo) throws Exception {
 		Connection conn = getConnection();
 		
-		List<Review> reviewList = dao.reviewList(conn);
+		List<Review> reviewList = dao.reviewList(memberNo, conn);
 		
 		close(conn);
 		

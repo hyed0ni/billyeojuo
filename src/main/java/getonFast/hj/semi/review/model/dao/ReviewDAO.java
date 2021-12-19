@@ -40,11 +40,12 @@ public class ReviewDAO {
 
 	/**
 	 * 리뷰 목록
+	 * @param memberNo 
 	 * @param conn
 	 * @return reviewList
 	 * @throws Exception
 	 */
-	public List<Review> reviewList(Connection conn) throws Exception {
+	public List<Review> reviewList(int memberNo, Connection conn) throws Exception {
 		List<Review> reviewList = new ArrayList<Review>();
 		
 		try {
