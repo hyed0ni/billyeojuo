@@ -19,4 +19,10 @@ public class PromotionDetailController extends HttpServlet{
 		req.getRequestDispatcher(path).forward(req, resp);
 		
 	}
+	
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 }

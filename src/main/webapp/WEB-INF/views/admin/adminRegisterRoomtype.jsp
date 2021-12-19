@@ -48,8 +48,11 @@
               <textarea class="roomInfoForm" id="roomBasic" name="roomBasic"></textarea>
             </div>
           </article>
+          </article>
+          
+          
 
-            <button> + 룸 타입 추가</button>
+            <button id="addRoomtype"> + 룸 타입 추가 </button>
 
 
           <article style="margin-top: 40px; margin-bottom: 40px; text-align: center;">
@@ -62,6 +65,9 @@
       </section>
     </div>
   </main>
+  
+  <jsp:include page="../adminCommon/admin_footer.jsp"/>
+  <script src="${contextPath}/resources/js/adminSpaceRegister.js"></script>
+  
 </body>
-
 </html>
