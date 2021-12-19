@@ -93,6 +93,7 @@
     padding: 15px 0;
     border-radius: 5px;
     margin: 30px 0;
+    width: 100%;
 }
 
 .sign-up-wrap {
@@ -115,4 +116,10 @@
     height: 1px;
     background: #bbbbbb;
     margin: 20px 0;
+}
+
+
+.chkarea{
+	margin-bottom : 20px;
+	display: none;
 }
