@@ -35,4 +35,10 @@ function loadImg(value, num) {
 
   }
 
+
+//addRoomType btn누르면 룸타입 작성 요소 추가 생성
+document.getElementById("addRoomType").addEventListener("click", function(){
+	
+})
+
 }

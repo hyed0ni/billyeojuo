@@ -26,6 +26,15 @@
           </div>
           
           <article class="spaceInfo01">
+          
+          
+            <div class="spaceWrap">
+              <label for="spaceCategory">공간유형</label> 
+              <select	 id="spaceCategory" name="spaceCategory" style="width: 150px; height: 25px;" required>
+                <option>1</option>
+              </select>
+            </div>
+          
             <div class="spaceWrap">
               <label for="spaceAddr">공간주소</label> 
               <input type="text" id="spaceAddr" name="spaceAddr"  required>
@@ -46,12 +55,6 @@
               <input type="text" id="spaceClosedDt" name="spaceClosedDt" required>
             </div>
 
-            <div class="spaceWrap">
-              <label for="spaceCategory">공간유형</label> 
-              <select	 id="spaceCategory" name="spaceCategory" style="width: 150px; height: 25px;" required>
-                <option>1</option>
-              </select>
-            </div>
           </article>
 
             <label style="margin-top: 20%;">지도이미지</label>
@@ -132,7 +135,10 @@
         
       </section>
     </main>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+  <jsp:include page="../adminCommon/admin_footer.jsp"/>
   <script src="${contextPath}/resources/js/adminSpaceRegister.js"></script>
+ 
+
 </body>
 </html>
