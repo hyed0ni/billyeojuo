@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
 
-<title>게시판</title>
 <jsp:include page="../common/header.jsp"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
 
 <main>
     <section class="cont detail-forms">
@@ -15,13 +13,6 @@
 
             <!-- 부제-1 -->
             <p class="sub-desc">홍대가 한눈에 내려다보이는 통창과 아늑한 복층</p>
-            <div class="tags">
-                <span class="tag">#홍대파티룸</span>
-                <span class="tag">#복층파티룸</span>
-                <span class="tag">#홍대입구역파티룸</span>
-                <span class="tag">#브라이덜샤워</span>
-                <span class="tag">#스튜디오</span>
-            </div>
         </section>
         <section class="detail-forms">
             <!-- height:400px;  -->
@@ -365,17 +356,7 @@
                     <div id="s-review" class="text-box">
                         <h4 class="h-intro">
                             이용 후기<strong class="txt-primary"><em>6</em>개</strong>
-                            <span>
-                                평균 평점<strong class="txt-primary"><em>5.0</em></strong>
-                            </span>
                         </h4>
-
-                        <!-- 사진 후기만 보기 -->
-                        <!-- 이미지 필요 -->
-                        <div class="switch-item">
-                            <input id="photo-list-view" type="checkbox" class="shitch">
-                            <label for="photo-list-view">사진 후기만 보기</label>
-                        </div>
 
                     </div>
                     <div class="review_box">
@@ -389,28 +370,10 @@
                                     <span class="pf-img"
                                         style="background-image: url('https://kr.object.ncloudstorage.com/scloud-service/service/163854526_f97d3d748b273f6b8f062d90a949e0c6.jpeg');"></span>
                                     <strong class="guest-name">달려라방탄</strong>
-
-                                    <!-- 평점 -->
-                                    <!-- 별 이미지 필요 -->
-                                    <span class="rate_area">
-                                        <span class="rate active">★</span>
-                                        <span class="rate active">★</span>
-                                        <span class="rate active">★</span>
-                                        <span class="rate active">★</span>
-                                        <span class="rate">☆</span>
-                                    </span>
                                    
                                     <p class="p-review">
                                         음. 이걸 뭐라고 할까요. 공간은 진짜 좋았는데 인터넷이 완전 똥망입니다 온라인 콘 보려고 일부러 홍대에 티비로 볼 수 있는 공간 찾아서 예약했는데 정말 WTF 🤯🤬😡인터넷때문에 4K로도 볼 수 없었어요 깨끗한 공간을 찾으시는 분에겐 정말 딱인데요 온라인콘이나 안정적인 인터넷을 원하시는 분은 비추입니다
                                     </p>
-
-                                    <!-- 리뷰 이미지 -->
-                                    <article class="box box_space">
-                                        <span class="img" style='background-image: url("https://moplqfgeemqv2103108.cdn.ntruss.com/service/163854176_44687629786b4a0c540a5dd480e3305d.jpeg?type=m&w=900&h=900&autorotate=true&quality=90");'>
-
-                                        </span>
-
-                                    </article>
 
                                     <div class="rbox-info-base">
                                         <span class="time-info">2021.12.04 00:29:38</span>

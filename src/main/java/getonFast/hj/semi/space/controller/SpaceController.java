@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import getonFast.hj.semi.space.model.service.SpaceService;
+import getonFast.hj.semi.space.model.vo.Space;
+
 @WebServlet("/space/*")
 public class SpaceController extends HttpServlet {
 
@@ -28,9 +31,15 @@ public class SpaceController extends HttpServlet {
       RequestDispatcher dispatcher = null;
       String message = null;
    
+      SpaceService service = new SpaceService();
+      
       try {
          
-         if(command.equals("detail")) {
+         if (command.equals("detail")) {
+        	 
+        	int spaceNo = Integer.parseInt(req.getParameter("no"));
+        	
+        	Space space = service.selectSpace(spaceNo);
             
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
@@ -38,7 +47,7 @@ public class SpaceController extends HttpServlet {
             
          }
          
-         else if(command.equals("search")) {
+         else if (command.equals("search")) {
             req.setAttribute("css",   "space-search");
             
             path = "/WEB-INF/views/space/space_search.jsp";
@@ -47,7 +56,7 @@ public class SpaceController extends HttpServlet {
             
          }
          
-         else if(command.equals("reservation")) {
+         else if (command.equals("reservation")) {
             
             path = "/WEB-INF/views/space/space_reservation.jsp";
             dispatcher = req.getRequestDispatcher(path);
