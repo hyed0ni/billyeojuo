@@ -1,12 +1,12 @@
-package getonFast.hj.semi.main.model.vo;
+package getonFast.hj.semi.promotion.model.vo;
 
-public class Exhibit {
+public class Promotion {
 	private int exNo;
 	private String exNm;
 	private String exSubNm;
 	private String exImg;
 	
-	private void Exhibit() {
+	private void Promotion() {
 		
 	}
 
@@ -41,7 +41,4 @@ public class Exhibit {
 	public void setExImg(String exImg) {
 		this.exImg = exImg;
 	}
-	
-	
-
 }

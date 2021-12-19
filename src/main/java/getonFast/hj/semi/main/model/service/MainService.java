@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.util.List;
 
 import getonFast.hj.semi.main.model.dao.MainDAO;
-import getonFast.hj.semi.main.model.vo.Exhibit;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 
 public class MainService {
@@ -24,21 +23,6 @@ public class MainService {
 		close(conn);
 		
 		return spaceTypeList;
-	}
-
-	/**
-	 * 기획전 조회
-	 * @return exhibitList
-	 * @throws Exception
-	 */
-	public List<Exhibit> selectExhibit() throws Exception {
-		Connection conn = getConnection();
-		
-		List<Exhibit> exhibitList = dao.selectExhibit(conn);
-		
-		close(conn);
-		
-		return exhibitList;
 	}
 
 }

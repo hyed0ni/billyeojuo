@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 
 <!-- header include -->
-<jsp:include page="header.jsp"/>
+<jsp:include page="../common/header.jsp"/>
 
 
 <main>
@@ -30,10 +30,10 @@
         <h1 class="title">기획전</h1>
         <p style="margin-top: 0px; text-align: center;">지금 딱 내가 찾는 공간</p>
         <div class="promotion">
-            <c:forEach items="${exhibitList}" var="exhibit">
-	        	<a href="#" style="background-image: url(${contextPath}/resources/images/exhibit/${exhibit.exImg}.png)">
-	                <h3 class="promotion-title">${exhibit.exNm}</h3><br>
-	                <p>${exhibit.exSubNm}</p>
+            <c:forEach items="${promotionList}" var="promotion">
+	        	<a href="${contextPath}/promotion_detail?no=${promotion.exNo}" style="background-image: url(${contextPath}/resources/images/promotion/${promotion.exImg}.png)">
+	                <h3 class="promotion-title">${promotion.exNm}</h3><br>
+	                <p>${promotion.exSubNm}</p>
 	            </a>
 	        </c:forEach>
 
@@ -248,5 +248,5 @@
 </main>
 
 <!-- footer include -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../common/footer.jsp"/>
 

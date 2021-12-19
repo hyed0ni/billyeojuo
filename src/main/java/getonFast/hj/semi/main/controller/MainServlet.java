@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.main.model.service.MainService;
-import getonFast.hj.semi.main.model.vo.Exhibit;
 import getonFast.hj.semi.main.model.vo.SpaceType;
+import getonFast.hj.semi.promotion.model.service.PromotionService;
+import getonFast.hj.semi.promotion.model.vo.Promotion;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
@@ -28,15 +29,18 @@ public class MainServlet extends HttpServlet {
 			List<SpaceType> spaceTypeList = service.selectSpaceType();
 			req.setAttribute("spaceTypeList", spaceTypeList);
 			
-			List<Exhibit> exhibitList = service.selectExhibit();
 			
-			req.setAttribute("exhibitList", exhibitList);
+			PromotionService promotionService = new PromotionService();
+			
+			List<Promotion> promotionList = promotionService.selectPromotionList();
+			
+			req.setAttribute("promotionList", promotionList.subList(0, 4));
 			
 			
 			// jsp로 요청 위임
 			req.setAttribute("css", "main");
 			
-			String path = "/WEB-INF/views/common/main.jsp";
+			String path = "/WEB-INF/views/main/main.jsp";
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			dispatcher.forward(req, resp);
 			

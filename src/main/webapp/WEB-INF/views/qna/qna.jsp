@@ -15,8 +15,8 @@
         <div class="qna_area">
             <div class="qna_header">
                 <ul class="header_tab_area">
-                    <li><a href="#" class="header_tab">이용후기</a></li>
-                    <li><a href="#" class="header_tab active">Q&A</a></li>
+                    <li><a href="${contextPath}/my/review" class="header_tab">이용후기</a></li>
+                    <li><a href="${contextPath}/my/qna" class="header_tab active">Q&A</a></li>
                 </ul>
                 <div class="search_area">
                     <select class="selectbox select_area">
