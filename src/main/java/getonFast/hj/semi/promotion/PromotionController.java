@@ -17,6 +17,11 @@ public class PromotionController extends HttpServlet{
 		String path = "/WEB-INF/views/promotion/promotion.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 }
 
 
