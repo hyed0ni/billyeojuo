@@ -32,7 +32,7 @@ public class SpaceController extends HttpServlet {
          
          if(command.equals("detail")) {
             
-            path = "/WEB-INF/views/space/spaceDetail.jsp";
+            path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);
             
