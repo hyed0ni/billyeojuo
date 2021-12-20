@@ -36,7 +36,7 @@ import getonFast.hj.semi.wrapper.EncryptWrapper;
 // 1. urlPatterns 경로 설정
 // 2. /wrapper.EncryptWrapper 에 parameter 변수명 수정
 
-@WebFilter(filterName="encryptFilter", urlPatterns= {"/member/login"})
+@WebFilter(filterName="encryptFilter", urlPatterns= {"/test"})
 public class EncryptFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {
