@@ -601,12 +601,12 @@ ALTER TABLE EXHIBIT MODIFY EX_NM VARCHAR2(100);
 
 -- 기획전
 SET DEFINE OFF;
-INSERT INTO EXHIBIT VALUES(1, '원테이블 레스토랑은 이곳에,&lt;br&gt;오늘은 내가 일일 쉐프', '노잼도시를 구하라 WEEK6', 'promotion_pic_01');
-INSERT INTO EXHIBIT VALUES(2, '댕댕이와 함께라면!&lt;br&gt;반려동물 동반 공간 기획전', '노잼도시를 구하라 WEEK5', 'promotion_pic_02');
-INSERT INTO EXHIBIT VALUES(3, '최애 직관은 못 참아!&lt;br&gt;안방 1열 온라인 콘서트 공간', '노잼도시를 구하라 WEEK4', 'promotion_pic_03');
-INSERT INTO EXHIBIT VALUES(4, '연말에 추천하는 공간&lt;br&gt;BEST', '노잼도시를 구하라 WEEK3', 'promotion_pic_04');
-INSERT INTO EXHIBIT VALUES(5, '라이브 장송을 위한&lt;br&gt;시간당 2만원3ㅐ 역세권 공간들', '노잼도시를 구하라 WEEK2', 'promotion_pic_05');
-INSERT INTO EXHIBIT VALUES(6, '나만의 부케 만나기!&lt;br&gt;도심 속 이색 파티룸', '노잼도시를 구하라 WEEK1', 'promotion_pic_06');
+INSERT INTO EXHIBIT VALUES(1, '원테이블 레스토랑은 이곳에,<br>오늘은 내가 일일 쉐프', '노잼도시를 구하라 WEEK6', 'promotion_pic_01');
+INSERT INTO EXHIBIT VALUES(2, '댕댕이와 함께라면!<br>반려동물 동반 공간 기획전', '노잼도시를 구하라 WEEK5', 'promotion_pic_02');
+INSERT INTO EXHIBIT VALUES(3, '최애 직관은 못 참아!<br>안방 1열 온라인 콘서트 공간', '노잼도시를 구하라 WEEK4', 'promotion_pic_03');
+INSERT INTO EXHIBIT VALUES(4, '연말에 추천하는 공간<br>BEST', '노잼도시를 구하라 WEEK3', 'promotion_pic_04');
+INSERT INTO EXHIBIT VALUES(5, '라이브 장송을 위한<br>시간당 2만원3ㅐ 역세권 공간들', '노잼도시를 구하라 WEEK2', 'promotion_pic_05');
+INSERT INTO EXHIBIT VALUES(6, '나만의 부케 만나기!<br>도심 속 이색 파티룸', '노잼도시를 구하라 WEEK1', 'promotion_pic_06');
 
 
 -- 시퀀스
