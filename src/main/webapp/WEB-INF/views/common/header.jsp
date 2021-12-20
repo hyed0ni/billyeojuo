@@ -31,9 +31,11 @@
         <div class="close_menu"><img src="${contextPath}/resources/images/header/right_arrow.svg"></div>
         <a href="${contextPath}/member/login">
             <div class="profile_area">
-                <!-- 로그인 시 -->
 				<c:choose>
 					<c:when test="${empty sessionScope.loginMember}">
+						<div class="profile_img">
+						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
+						</div>
 						<div class="profile_txt">
 						    <strong>로그인/회원가입</strong>
 						</div>
@@ -43,11 +45,13 @@
 						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
 						</div>
 						<div class="profile_txt login">
-						    <div class="nickname"><strong>닉네임</strong></div>
+						    <div class="nickname"><strong>${sessionScope.loginMember.memberName}</strong></div>
 						    <div class="amend"><strong>프로필 관리</strong></div>
+						    
 						</div>
 					</c:otherwise>
 				</c:choose>
+
             </div>
         </a>
     </div>
@@ -109,6 +113,18 @@
                 </ul>
             </li>
         </ul>
+	    <div class="logout-wrapper">
+	    	<c:choose>
+				<c:when test="${empty sessionScope.loginMember}">
+					<a href="${contextPath}/member/login">로그인</a>
+				</c:when>
+				<c:otherwise>
+					<a href="${contextPath}/member/logout">로그 아웃</a>
+				</c:otherwise>
+			</c:choose>
+    	
+	    	<p class="copyright" style="margin-top: 17px; font-size: 13px;">designed by © SpaceCloud.</p>
+	    </div>
     </div>
 </div>
 

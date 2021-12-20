@@ -77,6 +77,7 @@ header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}
 #notice > ul > li > .service_sub{display:none;}
 #notice > ul > li > .service_sub.active{display:block;}
 
+.logout-wrapper{padding: 39px 0 38px; text-align: center; color: #949494; font-weight: bold;}
 
 
 /* footer */

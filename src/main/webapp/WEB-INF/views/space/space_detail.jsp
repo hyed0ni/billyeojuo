@@ -30,13 +30,14 @@
                 </div>
 
                 <!-- 메뉴 탭 영역 -->
-                <div class="nav-wrapper">
+                <div class="nav-wrapper" style="background-color: white">
                     <ul class="nav-area">
-                        <li><a href="#">공간소개</a></li>
-                        <li><a href="#">시설안내</a></li>
-                        <li><a href="#">유의사항</a></li>
-                        <li><a href="#">Q&A</a></li>
-                        <li><a href="#">이용후기</a></li>
+                        <li><a title="s-intro">공간소개</a></li>
+                        <li><a title="s-info">시설안내</a></li>
+                        <li><a title="s-cautoion">유의사항</a></li>
+                        <li><a title="s-refund">환불정책</a></li>
+                        <li><a title="s-qna">Q&A</a></li>
+                        <li><a title="s-review">이용후기</a></li>
                     </ul>
                 </div>
 
@@ -216,8 +217,9 @@
                             <div class="sp-location">
                                 <p class="sp-name">${space.spaceNm}</p>
                                 <p class="sp-address">${space.spaceAddr}</p>
+                                <p class="sp-phone">${space.spacePno}</p>
                             </div>
-                            <div class="row">
+<!--                             <div class="row">
                                 <div class="col">
                                     <a class="btn btn-rounded btn-call">
                                         <span class="btn_inner">전화걸기</span>
@@ -228,7 +230,7 @@
                                         <span class="btn_inner way">길찾기</span>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -577,9 +579,38 @@
         })
 
 
-        
+        sticky(); // 페이지 로딩 시 sticky 함수 호출
+        $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
     });
+    
+    // 메뉴 스크롤 시 붙이기
+    
+    const nav = document.getElementsByClassName("nav-wrapper");
+    const standard = nav[0].offsetTop +180;
+    
+    function sticky() {
+       //console.log(window.pageYOffset +" / " +standard )
+      if(window.pageYOffset > standard) {
+        nav[0].classList.add("nav-fixed");
+      } else {
+        nav[0].classList.remove("nav-fixed");
+      }
+    }
+    
+    
+    // 메뉴 클릭 시 이동
+    $(".nav-area  a").on("click", function(){
+       
+       // 클릭 배경색 변경
+       $(".nav-area  a").parent().removeClass("selected");
+         $(this).parent().addClass("selected");       
+       
+       // 해당 메뉴 내용 위치로 이동
+       const id = $(this).attr("title");
+       $(window).scrollTop($("#"+id).offset().top - 120)
+       
+    })
 </script>
 </body>
 </html>

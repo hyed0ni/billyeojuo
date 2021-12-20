@@ -43,8 +43,8 @@ public class loginServlet extends HttpServlet{
 		
 		
 		
-		System.out.println(req.getParameter("email"));
-		System.out.println(req.getParameter("pwd1"));
+		
+		
 		
 	
 		
@@ -57,9 +57,11 @@ public class loginServlet extends HttpServlet{
 			
 			Member loginMember = service.login(memberEmail, memberPw);
 			
+			System.out.println(loginMember);
 			
 			HttpSession session = req.getSession();
 			
+			System.out.println(loginMember);
 			
 			if(loginMember != null) {
 				
@@ -70,7 +72,8 @@ public class loginServlet extends HttpServlet{
 					
 					session.setAttribute("loginMember", loginMember);
 					
-				
+					System.out.println(loginMember);
+					
 					session.setMaxInactiveInterval(60*60*24);
 					
 					
@@ -85,7 +88,7 @@ public class loginServlet extends HttpServlet{
 					}else { 
 						
 						
-						cookie.setMaxAge(0); // 0초
+						cookie.setMaxAge(0); 
 						
 						
 					}
