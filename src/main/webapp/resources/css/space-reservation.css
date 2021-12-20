@@ -1,0 +1,306 @@
+header {width:100%; height:80px; z-index: 100;} 
+body{width:100%}
+footer{width:100%; height:300px}
+em{font-style: initial;}
+
+/* @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+  font-family: "Noto Sans KR", sans-serif !important;
+} */
+
+/*********************************************************************************************************/
+
+main{z-index: 1; width: 1140px;}
+.detail-forms{ padding-right: 395px; position: relative; margin-top: 30px; width:763px; }
+.inner-width{ width:100%; }
+
+.reservation-heading{	padding-top: 120px;text-align: center; }
+.reservation-heading > h2{	font-size: 34px; }
+
+	
+/* 예약하기 화면 각 영역 구분하는 스타일 */
+.box-form{  padding: 0;  width: 100%;  height: 100%;  margin-top: 16px; background-color: white;}
+
+.box-form > .heading{height: 40px; line-height: 38px; font-weight: bold; color: #000; border-bottom: 3px solid #704de4; background-color: #f6f6f6;}
+
+.box-form:not(:first-of-type){margin-top:89px;}
+
+.box-form .option{float:right; font-size:12px; color: #949494; }
+
+.box-form .option .txt-price{font-size:16px; color: #704de4; }
+.box-form .option .txt-required{font-size:16px; color: #ff3a48; }
+
+
+	
+.list_detail{margin-left:30px; border-bottom: 1px solid #ebebeb;}
+.list_detail li:before {
+   content: "";
+   position: absolute;
+   left: 0;
+   background-color: #656565;
+   top: 50%;
+   width: 4px;
+   height: 4px;
+   margin-top: -2px;
+}
+	
+.list_detail li {
+   position: relative;
+   padding: 17px 0 15px 104px;
+   font-size: 16px;
+   border-top: 1px solid #ebebeb;
+}
+
+.list_detail li .tit {
+    position: absolute;
+    left: 8px;
+    margin-left : 10px;
+}
+
+	
+
+.meetspace-reserve-info{padding:0 30px; background-color: white;}
+
+.meetspace-reserve-info p{margin:0;}
+
+.meetspace-reserve-date {
+    padding: 20px 0;
+    color: #000;
+    position: relative;
+    font-size: 16px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.meetspace-reserve-price {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    font-size: 16px;
+    color: #656565;
+}
+
+.meetspace-reserve-date:last-child { border-bottom: none; }
+
+
+.meetspace-reserve-help {
+    padding-top: 16px;
+    color: #6d3afb;
+    font-size: 16px;
+    margin:0;
+    background-color: #f6f6f6;
+}
+
+
+.reserve_person_wrap { padding-top: 30px; background-color: #f6f6f6;}
+.flex_box {
+ 	  position: relative;
+    display: table;
+    width: 100%;
+    padding: 0;
+}
+
+.reserve_person_wrap .flex_box .tit { width: 88px;  padding-top: 15px; color: #656565; float:left; height:35px; 
+																			color: #656565; font-size:16px; font-weight:bold;}
+.ico_required { font-size: 12px; color: #ff3a48;}
+
+.reserve_person_wrap .flex_box .flex { float:left; margin:0; width:675px; height:50px;}
+.reserve_person_wrap .flex_box .flex .input {width:100%; height:100%}
+.reserve_person_wrap .flex_box .flex input {box-sizing:border-box; padding:0 16px; width:100%; height:100%;
+																						outline: none;  border: 1px solid #e0e0e0;}
+
+.flex.mobile .row{width:675px; float:left}
+.row .col4{ box-sizing:border-box; width: 33.333%; height:50px; float:left; padding: 0 8px;}
+.row .col4:nth-of-type(1){ margin-left:-8px;}
+.row .col4:nth-of-type(2){ margin-left:4px;}
+.row .col4:nth-of-type(3){ float:right; padding-right:0}
+
+.row .col4 .select{display: inline-block; position: relative; width: 100%; height:100%;  background-color: #fff;}
+
+#phone1{width: 100%; height:100%; font-size:16px; padding-left : 10px;}
+
+.flex input{font-size:16px;}
+
+#request{box-sizing:border-box;  height: 100%; width: 100%; }
+
+.input {
+    border: 1px solid rgba(176, 176, 176, 1);
+    background-color: #f6f6f6;
+}
+
+.p_guide.normal {
+    font-size: 14px;
+    line-height: 18px;
+    padding-left: 23px;
+    color: #656565;
+    padding-top: 21px;
+    background-color: #f6f6f6;
+    margin:0;
+}
+
+#request{outline: none;  border: 1px solid #e0e0e0;}
+
+
+.box_notice {
+    margin-top: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    padding: 0;
+   	border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+
+.box_notice .heading {
+    padding: 20px 30px;
+    font-size: 18px;
+    position: relative;
+    width: 100%;
+    background-color: #ebebeb;
+    border-bottom: 0;
+    box-sizing: border-box;
+}
+
+.box_notice .heading h3{margin:0; padding:0; font-size:18px; color:black;}
+.box_notice .list_wrap {
+    border-left: 1px solid #e0e0e0;
+		border-right: 1px solid #e0e0e0;
+		padding: 16px 30px;
+    line-height: 1.5;
+}
+
+.box_notice ol.notice_list li {
+    padding: 11px 0 10px;
+    padding-left: 37px;
+    font-size: 16px;
+    border-top: 0;
+    color:black;
+    position: relative;
+    border-top: 1px solid #ebebeb;
+}
+
+.box_notice ol.notice_list li:first-of-type{border-top : none;}
+
+.box_notice .notice_list>li .num {
+    position: absolute;
+    left: 0;
+    color: #656565;
+}
+
+.box_notice .option {
+    font-size: 18px;
+    line-height: 20px;
+    top: 14px;
+    right: 15px;
+    color: #656565;
+    position: absolute;
+}
+
+input[type=checkbox]+label, input[type=radio]+label {  cursor: pointer; }
+.checkbox+label {
+    position: relative;
+    height: 32px;
+    line-height: 36px;
+}
+
+.option > [type=checkbox] {width:24px; height:24px; margin:-4px 0 0 0; vertical-align:middle;}
+.option > label {font-size: 20px;}
+
+.notice_list  [type=checkbox] {width:24px; height:24px; margin:-4px 0 0 0; vertical-align:middle;}
+.terms_wrap .notice_list>li { padding: 20px 0; }
+
+.notice_list .checkbox+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+    height: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    font-size:18px;
+}
+
+
+.terms_wrap .btn_view_terms {
+    position: absolute;
+    right: -30px;
+    padding: 28px 30px 28px 50px;
+    line-height: 0;
+    top: 0px;
+}
+
+
+.box_notice .notice_list>li {
+    position: relative;
+    padding: 12px 0 11px;
+    border-top: 1px solid #ebebeb;
+    color: #000;
+    font-size: 16px;
+}
+
+
+.terms_wrap .scroll_box {
+    margin-top: 20px;
+    padding-top: 30px;
+}
+
+.terms_wrap .scroll_box {
+    display: none;
+    overflow-y: scroll;
+    padding-top: 15px;
+    margin-top: 13px;
+    height: 144px;
+    border-top: 1px solid #e0e0e0;
+    color: #656565;
+    line-height: 26px;
+    font-size : 14px;
+    position: relative;
+}
+
+.terms_wrap .terms .sub_term, .terms_wrap .terms li ol, .terms_wrap .terms li ul {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    line-height: 16px;
+}
+
+.scroll_box * {margin:0;}
+
+.reserve_price_wrap { padding: 0 20px; background-color: white; }
+.reserve_price_wrap .basic_box { padding-right: 84px; position: relative;}
+.reserve_price_wrap .basic_box dl:first-child, .reserve_price_wrap .basic_box dl:last-child { border-top: 0;}
+.reserve_price_wrap dl {padding: 17px 0 15px 75px; line-height:1.5}
+.reserve_price_wrap dl dd, .reserve_price_wrap dl dt { font-size: 16px;   min-height: 24px; margin:0;}
+.reserve_price_wrap .basic_box dl dt { position: absolute; left: 0; width: 75px;}
+.reserve_price_wrap .basic_box dl { border-top: 1px solid #ebebeb;}
+.reserve_price_wrap .basic_box dl:last-child {  padding-left: 0; } 
+.reserve_price_wrap .info_price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    padding-bottom: 9px;
+    margin:0;
+}
+.reserve_price_wrap .info_price dd {
+    width: 100%;
+    height: 100%;
+    display: table;
+    text-align: right;
+}
+
+.reserve_price_wrap .txt_price {font-size: 16px;}
+.reserve_price_wrap .info_price .txt_price {  display: table-cell;  vertical-align: middle; }
+.total_box { border-top: 3px solid #704de4;}
+.total_box .pull_box { padding: 19px 0 23px; height:38px;}
+.pull_left{width: 30px; float:left;}
+.pull_right{float:right;}
+.pull_box .txt_price{ font-size:28px; color:#704de4;}
+.reserve_price_wrap  .info_price{padding:0;}
+ 
+
+ul, ol{  list-style: none; padding-left: 0;}
+
+
+/* 경고 */
+.warn{color: #ff3a48; font: inherit;}
