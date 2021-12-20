@@ -11,6 +11,26 @@
 	<!--공간 옵션 조회 -->
 	<entry key="selectSpaceOption">
 	SELECT OPTION_NO, OPTION_NM
-	FROM SPACE_ROOM_OPTION
+	FROM SPACE_OPTION
+	</entry>
+	
+	<entry key="nextSpaceNo">
+	SPACE_SEQ_NO.NEXTVAL FROM DUAL
+	</entry>
+	
+	<entry key="insertSpace">
+	INSERT INTO SPACE VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT,?,DEFAULT)
+	</entry>
+	
+	<entry key="insertRoopType">
+	INSERT INTO SPACE_ROOM VALUES(?,?,?,?,?,?)
+	</entry>
+	
+	<entry key="insertImage">
+	INSERT INTO SPACE_IMG VALUES(?,?,?,?,?,?)
+	</entry>
+	
+	<entry key="insertRoomOption">
+	INSERT INTO SPACE_ROOM_OPTION VALUES(?,?)
 	</entry>
 </properties>

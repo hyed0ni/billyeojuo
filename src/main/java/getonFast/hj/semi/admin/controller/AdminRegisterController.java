@@ -1,6 +1,8 @@
 package getonFast.hj.semi.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +16,11 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 
 import getonFast.hj.semi.admin.model.Service.AdSpaceService;
+import getonFast.hj.semi.admin.model.vo.AdRoomtype;
+import getonFast.hj.semi.admin.model.vo.AdSpace;
+import getonFast.hj.semi.admin.model.vo.AdSpaceImage;
 import getonFast.hj.semi.admin.model.vo.AdSpaceOption;
+import getonFast.hj.semi.admin.model.vo.AdSpaceRoomOption;
 import getonFast.hj.semi.admin.model.vo.AdSpaceType;
 import getonFast.hj.semi.common.MyRenamePolicy;
 
@@ -34,7 +40,7 @@ public class AdminRegisterController extends HttpServlet {
 	      
 	      String command = uri.substring((contextPath + "/adminSpace/").length());
 
-		String path1 = null;
+		String path = null;
 		RequestDispatcher dispatcher =null;
 		String message = null;
 		
@@ -48,17 +54,17 @@ public class AdminRegisterController extends HttpServlet {
 				if(method.equals("GET")) {
 					System.out.println("GGG");
 					//공간 타입, 공간옵션  조회
-					List<AdSpaceType> AdSpaceType = service.selectSpaceType();
-					List<AdSpaceOption> AdSpaceOption = service.selectSpaceOption();
+					List<AdSpaceType> adSpaceType = service.selectSpaceType();
+					List<AdSpaceOption> adSpaceOption = service.selectSpaceOption();
 					
-					req.setAttribute("AdSpaceType", AdSpaceType);
-					req.setAttribute("AdSpaceOption", AdSpaceOption);
+					req.setAttribute("adSpaceType", adSpaceType);
+					req.setAttribute("adSpaceOption", adSpaceOption);
 					
-					path1 = "/WEB-INF/views/adminSpace/spaceInsert.jsp";
+					path = "/WEB-INF/views/adminSpace/spaceInsert.jsp";
 					
-					System.out.println(path1);
+					System.out.println(path);
 					
-					dispatcher = req.getRequestDispatcher(path1);
+					dispatcher = req.getRequestDispatcher(path);
 					dispatcher.forward(req, resp);
 					
 				}else {
@@ -85,13 +91,118 @@ public class AdminRegisterController extends HttpServlet {
 					 // 객체가 생성된 경우 지정된 파일경로에 파일이 바로 업로드 
 					 // 저장이 안되는 경우 Servers -> 해당 서버 클릭 -> OverView 
 					 
-					
+					//MultipartRequest 다루기 
+					 //1. 텍스트 형식의 파라미터 
+					 
+					 //공간등록 
+					 String spaceName = mReq.getParameter("spaceName");
+					 String spaceSubName = mReq.getParameter("spaceSubName");
+					 
+					 String spaceIntro = mReq.getParameter("spaceIntro");
+					 String spaceGuide = mReq.getParameter("spaceGuide");
+					 String precautions = mReq.getParameter("precautions");
+					 String refundPolicy = mReq.getParameter("refundPolicy");
+					 
+					 String spaceAddr = mReq.getParameter("spaceAddr");
+					 String spacePhone = mReq.getParameter("spacePhone");
+					 String spaceTime = mReq.getParameter("spaceTime");
+					 String spaceClosedDt = mReq.getParameter("spaceClosedDt");
+					 int spaceTypeNo = Integer.parseInt(mReq.getParameter("spaceTypeNo"));
+					 
+					 
+					 AdSpace space = new AdSpace();
+					 space.setSpaceName(spaceName);
+					 space.setSpaceSubName(spaceSubName);
+					 
+					 space.setSpaceIntro(spaceIntro);
+					 space.setSpaceGuide(spaceGuide);
+					 space.setPrecautions(precautions); 
+					 space.setRefundPolicy(refundPolicy); 
+					 
+					 space.setSpaceAddr(spaceAddr); 
+					 space.setSpacePhone(spacePhone); 
+					 space.setSpaceTime(spaceTime); 
+					 space.setSpaceClosedDt(spaceClosedDt); 
+					 space.setSpaceTypeNo(spaceTypeNo);
+					 
+					 //룸타입 
+					 String roomName =  mReq.getParameter("roomName");
+					 String roomDesc = mReq.getParameter("roomDesc");
+					 String roomFit = mReq.getParameter("roomFit");
+					 int optionNo = Integer.parseInt(mReq.getParameter("roomPrice"));
+					 int roomPrice =  Integer.parseInt(mReq.getParameter("roomPrice"));
+					 
+					 AdRoomtype roomType = new AdRoomtype();
+					 roomType.setRoomName(roomName);
+					 roomType.setRoomDesc(roomDesc);
+					 roomType.setRoomFit(roomFit);
+					 roomType.setOptionNo(optionNo);
+					 roomType.setRoomPrice(roomPrice);
+					 
+					 //룸 옵션 
+					 String [] roomOption = mReq.getParameterValues("roomOption");
+					 AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
+					 
+					 for(String ro :roomOption) {
+						 int RoomOptionNo = Integer.parseInt(ro);
+						 spaceRoomOption.setOptionNo(RoomOptionNo);
+						 
+					 }
+	
+					 
+					 Enumeration<String> files = mReq.getFileNames();
+					//Enumeration<String> == iterator(ResultSet과 유사): 반복 접근자 
+					 // form에서 전달된 input type="file" name속성 모두 반환
+					 //파일이 업로드 되지 않아도 모든 요소를 얻어옴
+					 
+					 //업로드된 이미지 정보를 담을 List생성 
+					 List<AdSpaceImage> imgList = new ArrayList<AdSpaceImage>();
+					 
+					 
+					 while(files.hasMoreElements()) {
+						 //다음 요소(name)가 있으면 true
+						 
+						 String name = files.nextElement(); // 다음요소 내려오기 
+						 
+						 //업로드된 파일이 존재할 경우(변경된 name 있음) 
+						 if(mReq.getOriginalFileName(name) != null) {
+							 AdSpaceImage temp = new AdSpaceImage();
+							 temp.setImgName(mReq.getFilesystemName(name));
+							 temp.setImgOriginal(mReq.getOriginalFileName(name));
+							 temp.setImgPath(filePath); //root는 이미 작성 되어있음 
+							 
+							 //name img0~ img3에서 숫자를 제외한 img문자열을 제거 후 imgLevel set
+							temp.setImgLevel(Integer.parseInt(name.replace("img","")));
+							
+							//imgList에 추가 
+							imgList.add(temp);
+						 }
+						 
+					 }
+						//board, imgList DB에 저장 (Service 호출)
+						int result = service.insertSpace(space, roomType, imgList, spaceRoomOption);
+						 //결과반환
+						 if(result >0) {
+							 message = "게시글 작성이 등록 되었습니다. ";
+							 
+							 //상세조회 redirect 주소
+							 path = "view?no="+ result+"&cp=1";
+							 
+						 }else {
+							 message ="게시글 등록 중 문제 발생";
+							 //게시글 화면으로 redirect 
+							 path = "insert";
+						 }
+						 session.setAttribute("message", message);
+						 resp.sendRedirect(path);
 				}
-				
 			}
 			else if(command.equals("list")) {
 				
-			}else if (command.equals("update")) {
+			}else if(command.equals("view")) {
+				
+			}
+			else if (command.equals("update")) {
 				
 			}else if(command.equals("delete")){
 				

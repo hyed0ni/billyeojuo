@@ -6,15 +6,27 @@ import java.sql.Connection;
 import java.util.List;
 
 import getonFast.hj.semi.admin.model.dao.AdSpaceDAO;
+import getonFast.hj.semi.admin.model.vo.AdRoomtype;
+import getonFast.hj.semi.admin.model.vo.AdSpace;
+import getonFast.hj.semi.admin.model.vo.AdSpaceImage;
 import getonFast.hj.semi.admin.model.vo.AdSpaceOption;
+import getonFast.hj.semi.admin.model.vo.AdSpaceRoomOption;
 import getonFast.hj.semi.admin.model.vo.AdSpaceType;
 
 
+/**
+ * @author heeye
+ *
+ */
 public class AdSpaceService {
 	
 	AdSpaceDAO dao = new AdSpaceDAO();
 	
 
+	/** 공간타입 조회 
+	 * @return spaceType
+	 * @throws Exception
+	 */
 	public List<AdSpaceType> selectSpaceType() throws Exception {
 		
 		Connection conn = getConnection();
@@ -26,7 +38,11 @@ public class AdSpaceService {
 		return spaceType;
 	}
 
-
+	
+	/** 공간 옵션 조회 
+	 * @return spaceOption
+	 * @throws Exception
+	 */
 	public List<AdSpaceOption> selectSpaceOption() throws Exception {
 		Connection conn = getConnection();
 		
@@ -35,6 +51,69 @@ public class AdSpaceService {
 		close(conn);
 		
 		return spaceOption;
+	}
+
+
+	/** 공간등록 
+	 * @param space
+	 * @param roomType
+	 * @param imgList
+	 * @param spaceRoomOption 
+	 * @return spaceNo
+	 * @throws Exception
+	 */
+	public int insertSpace(AdSpace space, AdRoomtype roomType, List<AdSpaceImage> imgList, AdSpaceRoomOption spaceRoomOption) throws Exception {
+		
+		Connection conn = getConnection();
+		
+		// 다음 차례 게시글 번호 얻어오기 
+		int spaceNo = dao.nextSpaceNo(conn);
+		
+		space.setSpaceNo(spaceNo);
+		
+		//공간 삽입
+		int result = dao.insertSpace(space,imgList,conn);
+		
+		//룸타입 삽입
+		if(result>0) {
+			roomType.setSpaceNo(spaceNo);
+			result = dao.insertRoomType(roomType,conn);
+			
+			if(result == 0) {
+				rollback(conn);
+			}
+		}
+		
+		//룸옵션 삽입
+		if(result > 0) {
+			spaceRoomOption.setSpaceNo(spaceNo);
+			result = dao.insertspaceRoomOption(spaceRoomOption,conn);
+			if(result == 0) {
+				rollback(conn);
+			}
+		}
+		
+		// 공간 , 룸타입 삽입 후 이미지 삽입
+		if(result > 0) {
+			for(AdSpaceImage img:imgList) {
+				if(img.getImgLevel() != 0) {
+					img.setSpaceNo(spaceNo);
+					result = dao.insertSpaceImage(conn, img);
+					
+					if(result == 0) {
+						rollback(conn);
+						break;
+					}
+					if(result >0) {
+						commit(conn);
+						result = spaceNo;
+						
+					}else rollback(conn);
+				}
+			}
+		}else rollback(conn);
+		
+		return result;
 	}
 
 }

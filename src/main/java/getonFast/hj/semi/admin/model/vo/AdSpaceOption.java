@@ -1,32 +1,33 @@
 package getonFast.hj.semi.admin.model.vo;
 
 public class AdSpaceOption {
-	private int AdOptionNo;
-	private String AdOptionName;
+	private int adOptionNo;
+	private String adOptionName;
 	
 	public AdSpaceOption() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public int getAdOptionNo() {
-		return AdOptionNo;
+		return adOptionNo;
 	}
 
 	public void setAdOptionNo(int adOptionNo) {
-		AdOptionNo = adOptionNo;
+		this.adOptionNo = adOptionNo;
 	}
 
 	public String getAdOptionName() {
-		return AdOptionName;
+		return adOptionName;
 	}
 
 	public void setAdOptionName(String adOptionName) {
-		AdOptionName = adOptionName;
+		this.adOptionName = adOptionName;
 	}
 
 	@Override
 	public String toString() {
-		return "AdSpaceOption [AdOptionNo=" + AdOptionNo + ", AdOptionName=" + AdOptionName + "]";
+		return "AdSpaceOption [adOptionNo=" + adOptionNo + ", adOptionName=" + adOptionName + "]";
 	}
-	
+
+
 }

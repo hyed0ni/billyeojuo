@@ -1,42 +1,45 @@
 package getonFast.hj.semi.admin.model.vo;
 
 public class AdSpaceType {
-	private int AdSpaceTypeNo;
-	private String AdSpaceTypeName;
-	private String AdSpaceTypeStatus;
+	private int adSpaceTypeNo;
+	private String adSpaceTypeName;
+	private String adSpaceTypeStatus;
 	
 	public AdSpaceType() {
 	}
 
 	public int getAdSpaceTypeNo() {
-		return AdSpaceTypeNo;
+		return adSpaceTypeNo;
 	}
 
 	public void setAdSpaceTypeNo(int adSpaceTypeNo) {
-		AdSpaceTypeNo = adSpaceTypeNo;
+		this.adSpaceTypeNo = adSpaceTypeNo;
 	}
 
 	public String getAdSpaceTypeName() {
-		return AdSpaceTypeName;
+		return adSpaceTypeName;
 	}
 
 	public void setAdSpaceTypeName(String adSpaceTypeName) {
-		AdSpaceTypeName = adSpaceTypeName;
+		this.adSpaceTypeName = adSpaceTypeName;
 	}
 
 	public String getAdSpaceTypeStatus() {
-		return AdSpaceTypeStatus;
+		return adSpaceTypeStatus;
 	}
 
 	public void setAdSpaceTypeStatus(String adSpaceTypeStatus) {
-		AdSpaceTypeStatus = adSpaceTypeStatus;
+		this.adSpaceTypeStatus = adSpaceTypeStatus;
 	}
 
 	@Override
 	public String toString() {
-		return "AdSpaceType [AdSpaceTypeNo=" + AdSpaceTypeNo + ", AdSpaceTypeName=" + AdSpaceTypeName
-				+ ", AdSpaceTypeStatus=" + AdSpaceTypeStatus + "]";
+		return "AdSpaceType [adSpaceTypeNo=" + adSpaceTypeNo + ", adSpaceTypeName=" + adSpaceTypeName
+				+ ", adSpaceTypeStatus=" + adSpaceTypeStatus + "]";
 	}
+
+	
+	
 	
 	
 }

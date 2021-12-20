@@ -1,5 +1,6 @@
 package getonFast.hj.semi.admin.model.vo;
 
+import java.util.List;
 
 public class AdSpace {
 	private int spaceNo;
@@ -14,12 +15,15 @@ public class AdSpace {
 	
 	private String spaceAddr;
 	private String spacePhone;
+	private String spaceTime;
+	private String spaceClosedDt;
 	
 	private String spaceMapImg;
 	private String spaceMapPath;
 	private String spaceRecommend;
-	private String spaceTypeNo;
+	private int spaceTypeNo;
 	
+	private List<AdSpaceImage> imgList;
  
 	public AdSpace() {
 	}
@@ -145,16 +149,26 @@ public class AdSpace {
 	}
 
 
-	public String getSpaceTypeNo() {
+	public int getSpaceTypeNo() {
 		return spaceTypeNo;
 	}
 
 
-	public void setSpaceTypeNo(String spaceTypeNo) {
+	public void setSpaceTypeNo(int spaceTypeNo) {
 		this.spaceTypeNo = spaceTypeNo;
 	}
 
 	
+
+	public String getSpaceTime() {
+		return spaceTime;
+	}
+
+
+	public void setSpaceTime(String spaceTime) {
+		this.spaceTime = spaceTime;
+	}
+
 
 	public int getSpaceStatus() {
 		return spaceStatus;
@@ -164,6 +178,25 @@ public class AdSpace {
 	public void setSpaceStatus(int spaceStatus) {
 		this.spaceStatus = spaceStatus;
 	}
+	
+	public String getSpaceClosedDt() {
+		return spaceClosedDt;
+	}
+
+
+	public void setSpaceClosedDt(String spaceClosedDt) {
+		this.spaceClosedDt = spaceClosedDt;
+	}
+
+	public List<AdSpaceImage> getImgList() {
+		return imgList;
+	}
+
+
+	public void setImgList(List<AdSpaceImage> imgList) {
+		this.imgList = imgList;
+	}
+
 
 
 	@Override
@@ -182,6 +215,8 @@ public class AdSpace {
 				+ getSpaceStatus() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
 	}
+
+
 
 
 	

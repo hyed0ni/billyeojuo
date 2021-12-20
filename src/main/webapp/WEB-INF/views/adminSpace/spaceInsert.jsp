@@ -30,9 +30,10 @@
           <article class="spaceInfo01">
             <div class="spaceWrap">
               <label for="spaceCategory">공간유형</label> 
-              <select	 id="spaceCategory" name="spaceCategory" style="width: 150px; height: 25px;" required>
-             		<c:forEach items="${AdSpaceType}" var="a">
-						<option value="${a.AdSpaceTypeNo}">${a.AdSpaceTypeName}</option>
+              <select	 id="spaceCategory" name="spaceTypeNo" style="width: 150px; height: 25px;" required>
+             		<c:forEach items="${adSpaceType}" var="a">
+						<option value="${a.adSpaceTypeNo}">${a.adSpaceTypeName}</option>
+											
 					</c:forEach>
               </select>
             </div>
@@ -114,16 +115,16 @@
 
             <div class="spaceWrap02">
               <div>
-                <label for="spaceCaution">주의사항</label>
+                <label for="precautions">주의사항</label>
               </div>
-              <textarea class="infoForm" id="spaceCaution" name="spaceCaution"></textarea>
+              <textarea class="infoForm" id="precautions" name="precautions"></textarea>
             </div>
 
             <div class="spaceWrap02">
               <div>
-                <label for="spaceRefund">환불규정</label>
+                <label for="refundPolicy">환불규정</label>
               </div>
-              <textarea class="infoForm" id="spaceRefund" name="spaceRefund"></textarea>
+              <textarea class="infoForm" id="refundPolicy" name="refundPolicy"></textarea>
             </div>
           </article>
 
@@ -133,24 +134,24 @@
           
           <article class="roomInfo01">
             <div class="roomWrap">
-              <label for="spaceName">공간 타입 이름</label> 
-              <input type="text" id="spaceName" name="spaceName" style="width: 80%; text-align: left;" required >
+              <label for="roomName">공간 타입 이름</label> 
+              <input type="text" id="roomName" name="roomName" style="width: 80%; text-align: left;" required >
             </div>
 
             <div class="roomWrap">
-              <label for="spaceSubName">가격</label> 
-              <input type="text" id="spaceSubName" name="spaceSubName" required> 원
+              <label for="roomPrice">가격</label> 
+              <input type="text" id="roomPrice" name="roomPrice" required> 원
             </div>
 
             <div class="roomWrap">
-              <label for="spaceAddr">최대 수용인원</label> 
-              <input type="text" id="spaceAddr" name="spaceAddr" required > 명
+              <label for="roomFit">수용인원</label> 
+              <input type="text" id="roomFit" name="roomFit" required > 명
             </div>
 
             <div class="roomWrap">
               <label for="roomOption">공간옵션</label> 
-                	<c:forEach items="${AdSpaceOption}" var="o">
-						<input type="radio" name="roomOption" class="roomRadio" style="width: 20px;"value="${o.AdOptionNo}">${o.AdOptionName}
+                	<c:forEach items="${adSpaceOption}" var="o">
+						<input type="checkbox" name="roomOption" class="roomRadio" style="width: 20px;"value="${o.adOptionNo}"> ${o.adOptionName}
 					</c:forEach>
 
             </div>
@@ -161,9 +162,9 @@
           <article class="roomInfo02">
             <div class="roomWrap02">
               <div>
-                <label for="roomBasic">공간소개</label>
+                <label for="roomDesc">공간소개</label>
               </div>
-              <textarea class="roomInfoForm" id="roomBasic" name="roomBasic" style="width: 100%; height: 150px;"></textarea>
+              <textarea class="roomInfoForm" id="roomDesc" name="roomDesc" style="width: 100%; height: 150px;"></textarea>
             </div>
           </article>
           
