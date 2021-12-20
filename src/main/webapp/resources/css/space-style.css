@@ -268,3 +268,10 @@ a{cursor: pointer;}
 
 .btn_prev_list{margin-left: -6px;}
 .btn_next_list{margin-right: -6px;}
+
+
+
+.nav-fixed{ position: fixed; top:81px; width:763px; z-index: 1000;   }
+
+html{scroll-behavior: smooth;}
+li.selected {  background-color: #ffd014;}
