@@ -18,7 +18,7 @@
 	<section ion id="space-wrapper">
 
 		<article class="space-space-list">
-			<a href="detail?no=5">
+			<a href="detail?no=13">
 				<div class="img-box"></div>
 				<div class="info-box">
 					<h3>[강남, 신사, 압구정] 바나나홀</h3>
