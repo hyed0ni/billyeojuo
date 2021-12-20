@@ -6,13 +6,13 @@
 <main>
     <section class="cont detail-forms">
         <!--------------------------------------------------------------------------------------------------------------------------->
-        <section>
+        <section style="margin-top:120px;">
             <div class="space">
-                <h2 class="space-name">홍대입구역 연결, 복층 드라마티코</h2>
+                <h2 class="space-name">${space.spaceNm}</h2>
             </div>
 
             <!-- 부제-1 -->
-            <p class="sub-desc">홍대가 한눈에 내려다보이는 통창과 아늑한 복층</p>
+            <p class="sub-desc">${space.spaceSubNm}</p>
         </section>
         <section class="detail-forms">
             <!-- height:400px;  -->
@@ -26,7 +26,7 @@
 
                 <!-- 부제-2 영역 -->
                 <div class="text-box">
-                    <h3 class="h-copy">홍대가 한눈에 내려다보이는 통창과 아늑한 복층</h3>
+                    <h3 class="h-copy">${space.spaceSubNm}</h3>
                 </div>
 
                 <!-- 메뉴 탭 영역 -->
@@ -50,34 +50,18 @@
                     <h4 class="h-intro">공간 소개</h4>
 
                     <p class="p-intro">
-                        저희 드라마티코는 층고 4M의 복층, 10평의 1층 공간과 4.5평의 2층 으로 이루어진 아늑한 파티룸입니다.
-                        <br><br>
-                        건물의 탑층의 위치한 저희 공간의 문을 열고 들어오시면, 통창으로 홍대가 한눈에 내려다 보이는 전망을 품고 있습니다.
-                        19층의 까마득한 높이는 마치 펜트하우스와 같은 신선한 느낌을 제공합니다.
-                        <br>
-                        또한 공간이 홍대입구역 1번출구와 연결되어 있어서, 비나 눈이 오는 날에도 편하게 오실 수 있습니다.
-                        <br>
-                        다양한 파티, 브라이덜샤워 , 소모임 뿐만 아니라 통창으로 깊게 들어오는 햇살이 매력적인 스튜디오(영상, 사진 등)로도 사용 가능 합니다.
-                        <br><br>
-                        전신 거울 / 마네킹 / 스팀 다리미 / 조명 화장대 / 드라이기 / 고데기 가 구비 되어 있어 다양한 프로덕트 샷과 거울 샷, 인물 촬영이 가능합니다.
-                        <br><br>
-                        낮대관 (11시 ~ 17시) : 7만원(월~목) / 9만원 (금,토,일)
-                        <br>
-                        밤대관 (19시 ~ 09시) : 11만원 (일~목) / 15만원 (금,토)
-                        * 상업용 촬영 문의 전화 문의
-                        <br><br>
-
+                    	${space.spaceIntro}
                     </p>
 
                     <!-- 영업 시간, 휴무일 리스트 -->
                     <ul class="info-list officehours">
                         <li>
                             <span class="tit">영업시간</span>
-                            <span class="data">0~24시</span>
+                            <span class="data">${space.spaceTime}</span>
                         </li>
                         <li>
                             <span class="tit">휴무일</span>
-                            <span class="data">없음</span>
+                            <span class="data">${space.spaceClosedDt}</span>
                         </li>
                     </ul>
                 </div>
@@ -230,8 +214,8 @@
                     <div class="host-profile">
                         <div class="inner">
                             <div class="sp-location">
-                                <p class="sp-name">홍대입구역 연결, 복층 드라마티코</p>
-                                <p class="sp-address">서울 마포구 양화로 157 파라다이스텔 1904호</p>
+                                <p class="sp-name">${space.spaceNm}</p>
+                                <p class="sp-address">${space.spaceAddr}</p>
                             </div>
                             <div class="row">
                                 <div class="col">
