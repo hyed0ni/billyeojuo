@@ -106,6 +106,57 @@ public class MemberDAO {
 		
 		return result;
 	}
+
+	/** 로그인 DAO
+	 * @param memberEmail
+	 * @param memberPw
+	 * @param conn
+	 * @return loginMember
+	 * @throws Exception
+	 */
+	public Member login(String memberEmail, String memberPw, Connection conn) throws Exception{
+		
+				Member loginMember = null;
+
+				try {
+					
+					String sql = prop.getProperty("login");
+				
+					pstmt = conn.prepareStatement(sql);
+
+					
+					pstmt.setString(1, memberEmail);
+					pstmt.setString(2, memberPw);
+
+					
+					rs = pstmt.executeQuery();
+
+					
+					if (rs.next()) {
+						loginMember = new Member();
+
+						loginMember.setMemberNo(rs.getInt("MEMBER_NO"));
+						loginMember.setMemberEmail(memberEmail); 
+						loginMember.setMemberName(rs.getString("MEMBER_NM"));
+						loginMember.setMemberPhone(rs.getString("MEMBER_PNO"));
+						loginMember.setStatusCode(rs.getInt("MEMBER_ST"));
+						loginMember.setGradeCode(rs.getInt("MEMBER_GRADE"));
+						loginMember.setEnrollDate(rs.getDate("MEMBER_REG_DT"));
+						loginMember.setMemberSMSChk(rs.getInt("MEMBER_SMSCHK"));
+						loginMember.setMemberSMSChk(rs.getInt("MEMBER_EMAILCHK"));
+
+					}
+
+				} finally {
+
+					
+					close(rs);
+					close(pstmt);
+
+				}
+				
+				return loginMember;
+	}
 }
 
 

@@ -1,14 +1,23 @@
 package getonFast.hj.semi.member.vo;
 
+import java.util.Date;
+
 public class Member {
 	
-	
+	private int memberNo;
 	private String memberName;
 	private String memberEmail;
 	private String memberPw;
+	private String memberPhone;
 	private int memberSMSChk;
 	private int memberEmailChk;
+	private Date enrollDate; // java.sql.Date
+	private int statusCode;
+	private int gradeCode;
 	
+
+
+
 	public Member() {}
 
 
@@ -22,7 +31,58 @@ public class Member {
 		this.memberEmailChk = memberEmailChk;
 	}
 
+	public String getMemberPhone() {
+		return memberPhone;
+	}
+	
+	
+	
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
+	}
+	public int getMemberNo() {
+		return memberNo;
+	}
+	
+	
+	
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
 
+	public Date getEnrollDate() {
+		return enrollDate;
+	}
+	
+	
+	
+	public void setEnrollDate(Date enrollDate) {
+		this.enrollDate = enrollDate;
+	}
+	
+	
+	
+	public int getStatusCode() {
+		return statusCode;
+	}
+	
+	
+	
+	public void setStatusCode(int statusCode) {
+		this.statusCode = statusCode;
+	}
+	
+	
+	
+	public int getGradeCode() {
+		return gradeCode;
+	}
+	
+	
+	
+	public void setGradeCode(int gradeCode) {
+		this.gradeCode = gradeCode;
+	}
 	public int getMemberSMSChk() {
 		return memberSMSChk;
 	}
@@ -74,9 +134,20 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [memberName=" + memberName + ", memberEmail=" + memberEmail + ", memberPw=" + memberPw
-				+ ", memberSMSChk=" + memberSMSChk + ", memberEmailChk=" + memberEmailChk + "]";
+		return "Member [memberNo=" + memberNo + ", memberName=" + memberName + ", memberEmail=" + memberEmail
+				+ ", memberPw=" + memberPw + ", memberSMSChk=" + memberSMSChk + ", memberEmailChk=" + memberEmailChk
+				+ ", enrollDate=" + enrollDate + ", statusCode=" + statusCode + ", gradeCode=" + gradeCode + "]";
 	}
+
+
+
+
+
+
+
+
+
+
 
 
 	

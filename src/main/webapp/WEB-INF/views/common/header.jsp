@@ -38,10 +38,10 @@
                     <strong>로그인/회원가입</strong>
                 </div>
                 <!-- 로그인 시 -->
-                <!-- <div class="profile_txt login">
+                <div class="profile_txt login">
                     <div class="nickname"><strong>닉네임</strong></div>
                     <div class="amend"><strong>프로필 관리</strong></div>
-                </div>  -->
+                </div>  
                
             </div>
         </a>

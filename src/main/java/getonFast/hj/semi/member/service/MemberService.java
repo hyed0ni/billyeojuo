@@ -51,4 +51,31 @@ public class MemberService {
 		return result;
 	}
 
+	/** 로그인 서비스
+	 * @param memberEmail
+	 * @param memberPw
+	 * @return loginMember
+	 * @throws Exception
+	 */
+	public Member login(String memberEmail, String memberPw) throws Exception{
+		
+		// 1) Connection 얻어오기
+				Connection conn = getConnection();
+				// DBCP에 생성 되어 있는 커넥션 객체 하나를 빌려오기
+
+				// 2) DAO 메소드 호출해서 결과 반환 받기
+
+				Member loginMember = dao.login(memberEmail, memberPw, conn);
+
+				// 3) 사용한 Connection 반환하기
+				close(conn); // == conn.close();
+
+				// 4) 결과반환
+
+				return loginMember;
+		
+	}
+
+
+
 }
