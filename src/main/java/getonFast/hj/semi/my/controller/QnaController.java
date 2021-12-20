@@ -1,4 +1,4 @@
-package getonFast.hj.semi.promotion;
+package getonFast.hj.semi.my.controller;
 
 import java.io.IOException;
 
@@ -8,21 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/promotion_detail")
-public class PromotionDetailController extends HttpServlet{
+@WebServlet("/my/qna")
+public class QnaController extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("css", "qna");
 		
-		req.setAttribute("css",	"promotion_detail");
-		
-		String path = "/WEB-INF/views/promotion/promotion_detail.jsp";
+		String path = "/WEB-INF/views/qna/qna.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
-		
-	}
-	
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
 	}
 }

@@ -48,7 +48,7 @@
 
     <div class="used_area">
         <div>
-            <a href="javascript:alert('예약리스트')">
+            <a href="${contextPath}/my/reserve">
                 <div>
                     <img src="${contextPath}/resources/images/header/ico_reservationlist.png" class="ico">
                     <div>예약 리스트</div>
@@ -56,7 +56,7 @@
             </a>
         </div>
         <div>
-            <a href="javascript:alert('예약리스트')">
+            <a href="${contextPath}/my/review">
                 <div>
                     <img src="${contextPath}/resources/images/header/ico_manage.png" class="ico">
                     <div>
@@ -66,7 +66,7 @@
             </a>
         </div>
         <div>
-            <a href="javascript:alert('찜한공간')">
+            <a href="${contextPath}/my/favorites">
                 <div>
                     <img src="${contextPath}/resources/images/header/ico_zzim.png" class="ico">
                     <div>찜한공간</div>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="plan_area bg_purple">
-        <a href="javascript:alert('기획전');"><div class="plan_txt">이달의 기획전</div></a>
+        <a href="${contextPath}/promotion"><div class="plan_txt">이달의 기획전</div></a>
     </div>
 
     <div class="notice_area" id="notice">
@@ -108,7 +108,7 @@
 
 <!-- header랑 side_menu는 변경 가능성이 있습니다. -->
 <header>
-    <div class="logo_area">빌려주오</div>
+    <div class="logo_area"><a href="${contextPath}">빌려주오</a></div>
     <div class="search_area">
         <img src="${contextPath}/resources/images/header/search-gray.png" class="ico_search">
         <img src="${contextPath}/resources/images/header/search-cancel.png" class="ico_cancel">

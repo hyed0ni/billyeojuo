@@ -36,13 +36,18 @@ $(function () {
             }
 
         } else {
+			if (url == "home") {
+				location.href = contextPath;
+			} else {
+				
             alert(url);
+			}
         }
     });
 
     // service location href
     $("#notice > ul > li .service_sub > li").on("click", function () {
         const url = $(this).data("url");
-        alert(url);
+		alert(url);
     });
 });

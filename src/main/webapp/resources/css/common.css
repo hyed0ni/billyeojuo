@@ -28,7 +28,8 @@ ul{padding:0; margin:0; list-style-type:none;}
 .bg_gray{background-color:rgba(114, 114, 114, 1);}
 
 /* header */
-header > .logo_area{width:180px; text-align:center; font-size:28px; color:black; font-weight:bold;}
+header > .logo_area{width:180px; text-align:center; }
+header > .logo_area > a{font-size:28px; color:black; font-weight:bold;}
 
 header > .search_area{width:calc(100% - 260px); display:inline-block; height:80px; margin:0; padding:0; position:relative;}
 header > .search_area > .search{height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;}
@@ -42,8 +43,8 @@ header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}
 .modal{z-index: 5000; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); position: fixed; display:none;}
 
 /* side menu */
-.side_menu{width:400px;height:100%; position:fixed; right:0px; transform:translate(100%, 0); transition:all ease 0.3s; top:0px; z-index:9000; background-color:#f6f6f6;}
-.side_menu.active{transform:translate(0, 0);}
+.side_menu{width:400px;height:100%; position:fixed; right:-400px; transform:translate(0, 0); transition:all ease 0.3s; top:0px; z-index:9000; background-color:#f6f6f6;}
+.side_menu.active{transform:translate(-100%, 0);}
 .side_menu > .login_area{height:180px;}
 .side_menu > .login_area > .close_menu{width:30px; height:30px; margin:10px; cursor:pointer; z-index:9001; position:absolute; right: 0;}
 .side_menu > .login_area > .close_menu > img {width:30px; height:30px;}

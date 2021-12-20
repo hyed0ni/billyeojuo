@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<!-- 기획전 조회 -->	
+	<entry key="selectPromotionList">
+		SELECT EX_NO, EX_NM, EX_SUB_NM, EX_IMG FROM EXHIBIT
+	</entry>
+	
+</properties>
