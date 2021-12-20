@@ -47,9 +47,12 @@
                                 <th class="table_th">닉네임</th>
                                 <td class="table_td">
                                 
-                                    <div class="change_nickname_wrap">
-                                    	${sessionScope.loginMember.memberName}
-                                    	<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_nickname">변경하기</a>
+                                    <div class="change_nickname_wrap">${sessionScope.loginMember.memberName}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_nickname">변경하기</a></div>
+                                        
+                                        <div class="change_nickname_wrap_2" style="display: none;">
+                                            <input type="text">
+                                            <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_confirm">확인</a>
+                                            <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_cancle">취소하기</a>
                                     </div>
                                     
                                 </td>
@@ -64,14 +67,25 @@
                             <tr>
                                 <th class="table_th">연락처</th>
                                 <td class="table_td">
-                                    <div class="change_nickname_wrap">010-1234-1234<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
+                                    <div class="change_phone_wrap">010-1234-1234<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
+                                    <div class="change_phone_wrap_2" style="display: none;">
+                                        <input type="text">
+                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</a>
+                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
+                                    </div>
+                                
                                 </td>
                             </tr>
                             <tr>
                                 <th class="table_th">비밀번호</th>
                                 <td class="table_td">
-                                    <div><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;">변경하기</a></div>
+                                    <div class="change_pwd_wrap"><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;" class="change_pwd">변경하기</a></div>
+                                    <div class="change_pwd_wrap_2" style="display: none;">
+                                        <input type="password">
+                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_confirm">확인</a>
+                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_change_cancle">취소하기</a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -97,31 +111,52 @@
 <script src="${contextPath}/resources/js/my.js"></script>
 <script>
 
+
+
 $(document).on('click', '.change_nickname', function() {
 
-    var html = '';
+    $('.change_nickname_wrap_2').show();
+    $('.change_nickname_wrap').hide();
+	
+});
 
-    html += '<input type="text">';
-    html += '<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_confirm">확인</a>';
-    html += '<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_cancle">취소하기</a>';
-	$(".change_nickname_wrap").html(html);
-    
-	
-	
+$(document).on('click', '.name_change_cancle', function() {
+
+    $('.change_nickname_wrap_2').hide();
+    $('.change_nickname_wrap').show();
+
 });
 
 $(document).on('click', '.change_phone', function() {
 
-    var html = '';
-
-    html += '<input type="text">';
-    html += '<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</a>';
-    html += '<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>';
-	$(".change_phone_wrap").html(html);
-    
-	
+    $('.change_phone_wrap_2').show();
+    $('.change_phone_wrap').hide();
 	
 });
+
+$(document).on('click', '.ph_change_cancle', function() {
+
+    $('.change_phone_wrap_2').hide();
+    $('.change_phone_wrap').show();
+
+});
+
+$(document).on('click', '.change_pwd', function() {
+
+    $('.change_pwd_wrap_2').show();
+    $('.change_pwd_wrap').hide();
+	
+});
+
+$(document).on('click', '.pwd_change_cancle', function() {
+
+    $('.change_pwd_wrap_2').hide();
+    $('.change_pwd_wrap').show();
+
+});
+
+
+
 
 $(".switch_btn").on("click", function () {
     if ($(".switch_btn .tag").hasClass("active")) {
