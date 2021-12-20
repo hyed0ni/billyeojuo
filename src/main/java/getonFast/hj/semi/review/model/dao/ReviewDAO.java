@@ -40,11 +40,12 @@ public class ReviewDAO {
 
 	/**
 	 * 리뷰 목록
+	 * @param memberNo 
 	 * @param conn
 	 * @return reviewList
 	 * @throws Exception
 	 */
-	public List<Review> reviewList(Connection conn) throws Exception {
+	public List<Review> reviewList(int memberNo, Connection conn) throws Exception {
 		List<Review> reviewList = new ArrayList<Review>();
 		
 		try {
@@ -59,7 +60,7 @@ public class ReviewDAO {
 				
 				review.setRevNo(rs.getInt("REV_NO"));
 				review.setRevContent(rs.getString("REV_CONTENT"));
-				review.setRevDt(rs.getDate("REV_DT"));
+				review.setRevDt(rs.getString("REV_DT"));
 				review.setRevSt(rs.getInt("REV_ST"));
 				review.setResNo(rs.getInt("RES_NO"));
 				

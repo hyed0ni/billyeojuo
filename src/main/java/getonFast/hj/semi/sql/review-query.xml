@@ -3,7 +3,8 @@
 
 <properties>
 	<entry key="reviewList">
-		SELECT * FROM REVIEW
+		SELECT REV_NO, REV_CONTENT, REV_ST, RES_NO, TO_CHAR(REV_DT,'YYYY"." MM"." DD"." HH24":"MI":"SS') REV_DT
+		FROM REVIEW ORDER BY REV_DT DESC
 	</entry>
 	
 </properties>

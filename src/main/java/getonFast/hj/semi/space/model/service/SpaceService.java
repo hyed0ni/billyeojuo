@@ -1,0 +1,27 @@
+package getonFast.hj.semi.space.model.service;
+
+import static getonFast.hj.semi.common.JDBCTemplate.*;
+
+import java.sql.Connection;
+
+import getonFast.hj.semi.space.model.dao.SpaceDAO;
+import getonFast.hj.semi.space.model.vo.Space;
+
+public class SpaceService {
+	
+	private SpaceDAO dao = new SpaceDAO();
+
+	/** 공간 상세 조회
+	 * @param spaceNo
+	 * @return space
+	 * @throws Exception
+	 */
+	public Space selectSpace(int spaceNo) throws Exception {
+		Connection conn = getConnection();
+		Space space = dao.selectSpace(spaceNo, conn);
+		close(conn);
+		
+		return space;
+	}
+
+}

@@ -21,7 +21,9 @@ public class ReviewController extends HttpServlet {
 		ReviewService service = new ReviewService();
 		
 		try {
-			List<Review> reviewList = service.reviewList();
+			int memberNo = 1;
+			
+			List<Review> reviewList = service.reviewList(memberNo);
 			
 			req.setAttribute("reviewList", reviewList);
 			

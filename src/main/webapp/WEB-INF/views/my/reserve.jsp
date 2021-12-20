@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div class="list_area">
-                <a href="#">
+                <a href="reservation_detail">
                     <div class="list">
                         <div>
                             <div class="list_img"><img src="${contextPath}/resources/images/header/defaultUser.jpg"></div>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="reservation_detail">
                     <div class="list">
                         <div>
                             <div class="list_img"><img src="${contextPath}/resources/images/header/defaultUser.jpg"></div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="reservation_detail">
                     <div class="list">
                         <div>
                             <div class="list_img"><img src="${contextPath}/resources/images/header/defaultUser.jpg"></div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">
+                <a href="reservation_detail">
                     <div class="list">
                         <div>
                             <div class="list_img"><img src="${contextPath}/resources/images/header/defaultUser.jpg"></div>
