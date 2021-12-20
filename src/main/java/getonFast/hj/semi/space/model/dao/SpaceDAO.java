@@ -58,6 +58,7 @@ public class SpaceDAO {
 				space.setPrecautions(rs.getString("PRECAUTIONS"));
 				space.setRefundPolicy(rs.getString("REFUND_POLICY"));
 				space.setSpaceAddr(rs.getString("SPACE_ADDR"));
+				space.setSpacePno(rs.getString("SPACE_PNO"));
 				space.setSpaceTime(rs.getString("SPACE_TIME"));
 				space.setSpaceClosedDt(rs.getString("SPACE_CLOSED_DT"));
 				space.setSpaceMapImg(rs.getString("SPACE_MAP_IMG"));
