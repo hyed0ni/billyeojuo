@@ -1,6 +1,6 @@
 package getonFast.hj.semi.admin.model.vo;
 
-public class Option {
+public class AdRoomtype {
 	private int RoomNo;
 	private int spaceNo;
 	private String RoomName;

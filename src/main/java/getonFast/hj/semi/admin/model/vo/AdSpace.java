@@ -1,7 +1,7 @@
 package getonFast.hj.semi.admin.model.vo;
 
 
-public class Space {
+public class AdSpace {
 	private int spaceNo;
 	private int spaceStatus;
 	private String spaceName;
@@ -21,7 +21,7 @@ public class Space {
 	private String spaceTypeNo;
 	
  
-	public Space() {
+	public AdSpace() {
 	}
 
 
