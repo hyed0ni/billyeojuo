@@ -16,9 +16,6 @@
 					</span>
 				</div>
 
-				<div style="position: absolute; top: 0; right: 5px;">
-					<img src="images//icon/favorite_border.svg" style="vertical-align: middle;">
-				</div>
 			</div>
 
 			<div style="padding: 30px;">
@@ -237,7 +234,7 @@
 
 
 
-		<div style="position: absolute; width: 350px; height: 356px; top: 0; right: 0; background-color: #fff;">
+		<div id="sidebar" style="position: absolute; width: 350px; height: 356px; top: 0; right: 0; background-color: #fff;">
 			<div style="height: 40px; line-height: 38px; font-weight: bold; color: #000; border-bottom: 3px solid #704de4; background-color: #f6f6f6;">
 				<div>결제 예정금액</div>
 			</div>
@@ -351,6 +348,44 @@
 			scrollBox.hide();
 
 	});
+	
+   //사이드바 스크롤
+   $(function(){
+
+      const scrollHeight = 180;
+
+      function sidebar(){
+         
+         
+         // 화면 스크롤이 footer 위쪽 550px 위치 아래로 내려간 경우
+         if( $(window).scrollTop() > $(".footer").offset().top - 550  ) {
+            
+            // 아이디가 sidebar인 요소의 top 속성을 변경
+            document.getElementById('sidebar').style.top = $(".footer").offset().top - 700+'px';
+         }
+         
+         
+         // 화면 스크롤이 상단에서 180px 위치 아래로 내려간 경우
+         else if($(window).scrollTop() > scrollHeight){
+            let top = $(window).scrollTop() - scrollHeight + 20;
+            document.getElementById('sidebar').style.top = top+'px';
+            
+         // 화면 스크롤이 움직이는 경우
+         }else{
+            document.getElementById('sidebar').style.top = 0+'px';
+            
+         }
+      }
+
+      // 화면 로딩 시 sidebar 함수 호출
+      sidebar();
+
+      // 화면 스크롤이 움직일 때 마다 sidebar 함수 호출
+      $(window).scroll(()=>{
+         sidebar();
+      });
+
+   });
 </script>
 
 

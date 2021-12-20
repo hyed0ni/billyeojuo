@@ -118,7 +118,7 @@ main{z-index: 1; width: 1140px;}
 
 #phone1{width: 100%; height:100%; font-size:16px; padding-left : 10px;}
 
-.flex input{font-size:16px;}
+.flex input, textarea {font-size:16px;}
 
 #request{box-sizing:border-box;  height: 100%; width: 100%; }
 
@@ -304,3 +304,5 @@ ul, ol{  list-style: none; padding-left: 0;}
 
 /* 경고 */
 .warn{color: #ff3a48; font: inherit;}
+
+#sidebar{ transition-duration : 0.3s; transition-timing-function: linear;}
