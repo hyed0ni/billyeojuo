@@ -137,7 +137,7 @@ main{z-index: 1; width: 1140px;}
     margin:0;
 }
 
-#request{outline: none;  border: 1px solid #e0e0e0;}
+#request{outline: none;  border: 1px solid #e0e0e0; padding: 15px;}
 
 
 .box_notice {

@@ -34,7 +34,8 @@
                     <ul class="nav-area">
                         <li><a title="s-intro">공간소개</a></li>
                         <li><a title="s-info">시설안내</a></li>
-                        <li><a title="s-cautoion">주의사항</a></li>
+                        <li><a title="s-cautoion">유의사항</a></li>
+                        <li><a title="s-refund">환불정책</a></li>
                         <li><a title="s-qna">Q&A</a></li>
                         <li><a title="s-review">이용후기</a></li>
                     </ul>
@@ -216,8 +217,9 @@
                             <div class="sp-location">
                                 <p class="sp-name">${space.spaceNm}</p>
                                 <p class="sp-address">${space.spaceAddr}</p>
+                                <p class="sp-phone">${space.spacePno}</p>
                             </div>
-                            <div class="row">
+<!--                             <div class="row">
                                 <div class="col">
                                     <a class="btn btn-rounded btn-call">
                                         <span class="btn_inner">전화걸기</span>
@@ -228,7 +230,7 @@
                                         <span class="btn_inner way">길찾기</span>
                                     </a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
