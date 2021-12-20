@@ -45,11 +45,13 @@
 						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
 						</div>
 						<div class="profile_txt login">
-						    <div class="nickname"><strong>닉네임</strong></div>
+						    <div class="nickname"><strong>${sessionScope.loginMember.memberName}</strong></div>
 						    <div class="amend"><strong>프로필 관리</strong></div>
+						    
 						</div>
 					</c:otherwise>
 				</c:choose>
+
             </div>
         </a>
     </div>
@@ -111,16 +113,16 @@
                 </ul>
             </li>
         </ul>
-	    <div style="padding: 39px 0 38px; text-align: center; color: #949494;">
+	    <div class="logout-wrapper">
 	    	<c:choose>
 				<c:when test="${empty sessionScope.loginMember}">
 					<a href="${contextPath}/member/login">로그인</a>
 				</c:when>
 				<c:otherwise>
-					<a href="#">로그 아웃</a>
+					<a href="${contextPath}/member/logout">로그 아웃</a>
 				</c:otherwise>
 			</c:choose>
-	    	
+    	
 	    	<p class="copyright" style="margin-top: 17px; font-size: 13px;">designed by © SpaceCloud.</p>
 	    </div>
     </div>

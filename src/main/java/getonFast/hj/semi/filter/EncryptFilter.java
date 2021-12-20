@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.wrapper.EncryptWrapper;
 
-
-
-
 // 필터(Filter
 // 클라이언트 요청시 생성되는 HttpServletRequest, HttpServletResponse
 // 두 객체가 요청, 응답을 처리하는 Servlet / JSP에 도달하기 전에 전/후 처리를 하는 클래스
@@ -73,7 +70,5 @@ public class EncryptFilter implements Filter {
 	public void destroy() {
 		System.out.println("암호화 필터 제거 후 새로 생성");
 	}
-
-
 
 }
