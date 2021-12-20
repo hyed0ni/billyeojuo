@@ -21,7 +21,7 @@
 
                 <!-- 공간 이미지 -->
                 <div class="detail-box">
-                    <div class="space-img"></div>
+                    <div class="space-img" style="background-image:url('${contextPath}${spaceImg.spaceImgPath}${spaceImg.spaceImgNm}')"></div>
                 </div>
 
                 <!-- 부제-2 영역 -->
@@ -234,11 +234,10 @@
 
                     <!-- 지도 -->
                     <div class="map">
-                        <div id="map"></div>
+                    	<img src="${contextPath}${space.spaceMapPath}${space.spaceMapImg}" width="100%" height="100%">
+                        <%-- <div id="map">${contextPath}${space.spaceMapPath}${space.spaceMapImg}</div> --%>
                     </div>
                 </div>
-
-
 
                 <!-- Q&A  -->
                 <div>

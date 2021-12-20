@@ -24,4 +24,17 @@ public class SpaceService {
 		return space;
 	}
 
+	/** 공간 이미지 조회
+	 * @param spaceNo
+	 * @return spaceImg
+	 * @throws Exception
+	 */
+	public Space selectSpaceImg(int spaceNo) throws Exception {
+		Connection conn = getConnection();
+		Space spaceImg = dao.selectSpaceImg(spaceNo, conn);
+		close(conn);
+		
+		return spaceImg;
+	}
+
 }
