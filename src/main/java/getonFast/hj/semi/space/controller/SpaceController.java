@@ -40,6 +40,10 @@ public class SpaceController extends HttpServlet {
         	int spaceNo = Integer.parseInt(req.getParameter("no"));
         	
         	Space space = service.selectSpace(spaceNo);
+        	req.setAttribute("space", space);
+        	
+        	Space spaceImg = service.selectSpaceImg(spaceNo);
+        	req.setAttribute("spaceImg", spaceImg);
             
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);

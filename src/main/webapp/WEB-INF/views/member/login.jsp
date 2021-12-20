@@ -20,15 +20,17 @@
                     <a href="#self">구글로 로그인</a>
                 </div>
                 <div class="login-divide">또는</div>
+                <form class="form-signin" method="POST" action="${contextPath}/member/login" onsubmit="return loginValidate()">
                 <div class="login-input-wrap">
-                    <input type="text" placeholder="이메일" class="login-input">
-                    <input type="text" placeholder="비밀번호" class="login-input">
+                    <input type="text" placeholder="이메일" class="login-input" name="email" id="email">
+                    <input type="password" placeholder="비밀번호" class="login-input" name="pwd1" id="pwd1">
                 </div>
                 <div class="login-options">
                     <label><input type="checkbox"> 로그인 기억하기</label>
-                    <a href="../views/find_password.html">비밀번호 찾기</a>
+                    <a href="${contextPath}/member/findPwd">비밀번호 찾기</a>
                 </div>
-                <a href="#self" class="login-btn">이메일로 로그인</a>
+                <button type="submit" class="login-btn">이메일로 로그인</button>
+                </form>
                 <div class="sign-up-wrap">
                     <span>아직 빌려주오의 회원이 아니신가요?</span>
                     <a href="${contextPath}/member/signup">회원가입</a>
@@ -38,7 +40,9 @@
     </div>
 </main>
 
-
+	<script src="${contextPath}/resources/js/memberLogin.js">
+		
+	</script>
 
 </body>
 </html>

@@ -29,7 +29,9 @@ main{z-index: 1; width: 1140px;}
 .space-img{
   width:763px; 
   height:450px; 
-  background-image: url("https://moplqfgeemqv2103108.cdn.ntruss.com/pstatic-scloud/20190326_287/1553568292117Ufz9n_JPEG/929DD57E-980B-4A9D-8478-4B11C3D3CA33.jpeg?type=m&w=900&h=900&autorotate=true&quality=90");
+  /* background-image: url("https://moplqfgeemqv2103108.cdn.ntruss.com/pstatic-scloud/20190326_287/1553568292117Ufz9n_JPEG/929DD57E-980B-4A9D-8478-4B11C3D3CA33.jpeg?type=m&w=900&h=900&autorotate=true&quality=90"); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* 부제-2 영역  */
@@ -147,7 +149,7 @@ ol.info-list li { padding: 10px 0 8px;  padding-left: 29px;}
 .map-box{margin-top: 78px;  margin-left: 0;  margin-right: 0;}
 
 /* 지도 공간 프로필 영역*/
-.host-profile { margin-top: 80px;  border-bottom: 1px solid #e0e0e0;}
+.host-profile { margin-top: 80px;  border-top: 1px solid #e0e0e0; background-color: white;}
 
 /* 공간프로필 내부 패딩 */
 .host-profile .inner{  padding: 33px 30px 38px; }
@@ -161,13 +163,16 @@ ol.info-list li { padding: 10px 0 8px;  padding-left: 29px;}
 /* 주소 */
 .sp-address{margin-top: 20px;}
 
+/* 전화번호 */
+.sp-phone{margin-top: 10px;}
+
 /* 전화걸기, 길 찾기 버튼 */
 a{cursor: pointer;}
-.host-profile .row{ margin: 33px -6px 0; }
+/* .host-profile .row{ margin: 33px -6px 0; }
 .host-profile .row .col{  width: 50%;  padding: 0 6px; box-sizing: border-box; float: left; text-align: center;}
 .host-profile .row::after{    content: ""; display: table; clear: both;}
 .btn{display: inline-block;  text-align: center;  font-size: 20px; text-decoration: none; width: 100%;}
-.btn-rounded{  height: 50px;    color: #704de4;    line-height: 50px;    border-radius: 50px; border: 1px solid #704de4;}
+.btn-rounded{  height: 50px;    color: #704de4;    line-height: 50px;    border-radius: 50px; border: 1px solid #704de4;} */
 
 
 /* 지도 영역 */
@@ -266,3 +271,10 @@ a{cursor: pointer;}
 
 .btn_prev_list{margin-left: -6px;}
 .btn_next_list{margin-right: -6px;}
+
+
+
+.nav-fixed{ position: fixed; top:81px; width:763px; z-index: 1000;   }
+
+html{scroll-behavior: smooth;}
+li.selected {  background-color: #ffd014;}
