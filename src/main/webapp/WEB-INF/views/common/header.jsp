@@ -140,3 +140,70 @@
         <img src="${contextPath}/resources/images/header/menu.png" class="ico_menu">
     </div>
 </header>
+
+<style>
+.popup_wrap{width:470px; position:relative; display:inline-block; vertical-align:middle; box-sizing:border-box; top:300px;}
+.popup_wrap > .pop_header{text-align:left; font-size:18px; padding:20px 25px; border-radius:12px 12px 0 0; background:#704de4; color:#fff; font:inherit;}
+.popup_wrap > .pop_container{border-radius:0 0 12px 12px; background:#fff; padding:24px 26px 26px;}
+.popup_wrap > .pop_container > .reserve_price{margin-top:0; border-top:0; background:#fff; text-align:left; padding:0;}
+
+.popup_wrap > .pop_container > .reserve_price > .box_form{margin-top:0; background:#fff; position:relative;}
+.popup_wrap > .pop_container > .reserve_price > .box_form > .tit{font-size:16px; line-height:44px; color:#000; font-weight:bold;}
+.popup_wrap > .pop_container > .reserve_price > .box_form > .tit > label{cursor:pointer;}
+
+.popup_wrap > .pop_container > .reserve_price > .box_form > .option{top:15px; font-size:14px; position:absolute; line-height:14px; color:#704de4; right:0;}
+.popup_wrap > .pop_container > .reserve_price > .box_form > .option > .txt_count{color:#656565; vertical-align:top;}
+.popup_wrap > .pop_container > .reserve_price > .box_form > .option > .txt_count > em{vertical-align:top;}
+
+
+
+
+.popup_wrap > .pop_container > .reserve_price > .box_form > .input{position:relative; box-sizing:border-box;}
+.popup_wrap > .pop_container > .reserve_price > .box_form > .input > textarea{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #e0e0e0; box-sizing:border-box; font:inherit;}
+
+.popup_wrap > .pop_container > .p_guide{display:block; margin-left:0; font-size:14px; line-height:18px; padding-left:23px; color:#ff3a48; position:relative; margin:20px 1px 0;}
+
+.popup_wrap > .pop_container > .btns{margin-top:49px; vertical-align:middle; font:inherit;}
+.popup_wrap > .pop_container > .btns > .btn{border-radius:6px; height:56px; line-height:56px; font-size:20px; width:49%; text-align:center; color:#fff;}
+.popup_wrap > .pop_container > .btns > .btn:first-child{float:left;}
+.popup_wrap > .pop_container > .btns > .btn:last-child{float:right;}
+
+.popup_wrap > .pop_container > .btns:after{display:block; content:""; clear:both;}
+.popup_wrap > .btn_pop_close{position:absolute; right:16px; top:10px; padding:10px; vertical-align:top; cursor:pointer;}
+.popup_wrap > .btn_pop_close > img{width:18px; height:18px;}
+
+
+.btn_negative{background:#4d4d4d;}
+.btn_default{background:#704de4;}
+</style>
+<div class="popup_wrap">
+	<div class="pop_header">질문 작성하기</div>
+	<div class="pop_container reviews">
+		<article class="reserve_price">
+			<div class="box_form">
+				<div class="tit">
+					<label for="reason_cancel">질문</label>
+				</div>
+				<span class="option">
+					<span class="txt_count">
+						<em>0</em>자/<em>200</em>자
+					</span>
+				</span>
+				<div class="input">
+					<textarea maxlength="200" id="reason_cancel" placeholder="질문을 남겨 주세요."></textarea>
+				</div>
+			</div>
+		</article>
+		<p class="p_guide">
+			<i class="sp_icon ico_alert"></i>
+	    	질문은 공개 상태로만 등록하실 수 있습니다.
+		</p>
+		<div class="btns">
+			<a class="btn btn_full btn_negative">취소</a>
+			<a class="btn btn_full btn_default">등록</a>
+		</div>
+	</div>
+	<a title="레이어팝업 닫힘" class="btn_pop_close">
+		<img src="${contextPath}/resources/images/main_body/icon_like.svg" />
+	</a>
+</div>
