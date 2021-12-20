@@ -20,13 +20,11 @@ public class EncodingFilter implements Filter {
 		// 모든 요청을 UTF-8로 변경
 		request.setCharacterEncoding("UTF-8");
 		
-		// 모든 응답을 UTF-8로 변경
-		response.setCharacterEncoding("UTF-8");
-		
 		chain.doFilter(request, response);
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
+	
 	}
 
 }

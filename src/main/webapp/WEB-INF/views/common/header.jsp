@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="${contextPath}/resources/css/common.css">
 <link rel="stylesheet" href="${contextPath}/resources/css/${css}.css">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>

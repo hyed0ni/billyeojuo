@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<!-- 회원가입 -->
+	<entry key="signUp">
+		INSERT INTO MEMBER
+		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?,
+		?, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, ?, ?)
+	</entry>
+	<!-- 이메일 중복검사 -->
+	<entry key="emailDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ST != 12
+		AND
+		MEMBER_EMAIL = ?
+	</entry>
+
+</properties>

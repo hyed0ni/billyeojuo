@@ -5,6 +5,7 @@ header : 2000, modal : 5000, side_menu : 9000
 body : background-color : #f6f6f6 줘야 할까?
 */
 /* @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css); */
+
 html, body{margin:0; padding:0; overflow-x:hidden; font-family: "Noto Sans KR", sans-serif !important; font-size:15px; color:#656565; background-color:#f6f6f6;}
 header{white-space:nowrap; height:80px; background-color:#fff; line-height:78px; width:100%; min-width:1140px; border-bottom:1px solid black; position:fixed; display: flex; z-index:2000;}
 main{width:1140px; margin:80px auto 40px;}
@@ -12,6 +13,7 @@ footer{width:100%; padding:40px 0; background-color:#ebebeb;}
 a{color:rgba(114, 114, 114, 1); text-decoration:none;}
 a:hover{text-decoration:none;}
 ul{padding:0; margin:0; list-style-type:none;}
+p{padding:0; margin:0;}
 
 /* button, selectbox, input 태그 사용시 아래 클래스 추가 */
 .btn{font-size:20px;}
