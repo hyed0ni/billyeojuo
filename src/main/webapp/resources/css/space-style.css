@@ -29,7 +29,9 @@ main{z-index: 1; width: 1140px;}
 .space-img{
   width:763px; 
   height:450px; 
-  background-image: url("https://moplqfgeemqv2103108.cdn.ntruss.com/pstatic-scloud/20190326_287/1553568292117Ufz9n_JPEG/929DD57E-980B-4A9D-8478-4B11C3D3CA33.jpeg?type=m&w=900&h=900&autorotate=true&quality=90");
+  /* background-image: url("https://moplqfgeemqv2103108.cdn.ntruss.com/pstatic-scloud/20190326_287/1553568292117Ufz9n_JPEG/929DD57E-980B-4A9D-8478-4B11C3D3CA33.jpeg?type=m&w=900&h=900&autorotate=true&quality=90"); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* 부제-2 영역  */
