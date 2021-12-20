@@ -60,6 +60,8 @@ public class SpaceDAO {
 				space.setSpaceAddr(rs.getString("SPACE_ADDR"));
 				space.setSpaceTime(rs.getString("SPACE_TIME"));
 				space.setSpaceClosedDt(rs.getString("SPACE_CLOSED_DT"));
+				space.setSpaceMapImg(rs.getString("SPACE_MAP_IMG"));
+				space.setSpaceMapPath(rs.getString("SPACE_MAP_PATH"));
 
 			}
 			
@@ -69,6 +71,39 @@ public class SpaceDAO {
 		}
 		
 		return space;
+	}
+
+	/** 공간 이미지 조회
+	 * @param spaceNo
+	 * @param conn
+	 * @return spaceImg
+	 * @throws Exception
+	 */
+	public Space selectSpaceImg(int spaceNo, Connection conn) throws Exception {
+		Space spaceImg = null;
+		
+		try {
+			String sql = prop.getProperty("selectSpaceImg");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				
+				spaceImg = new Space();
+				spaceImg.setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
+				spaceImg.setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceImg;
 	}
 
 }
