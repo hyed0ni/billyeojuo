@@ -45,8 +45,9 @@
 						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
 						</div>
 						<div class="profile_txt login">
-						    <div class="nickname"><strong>닉네임</strong></div>
+						    <div class="nickname"><strong>${sessionScope.loginMember.memberName}</strong></div>
 						    <div class="amend"><strong>프로필 관리</strong></div>
+						    
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -112,6 +113,18 @@
                 </ul>
             </li>
         </ul>
+        <c:choose>
+					<c:when test="${empty sessionScope.loginMember}">
+						
+        <div class="logout-wrapper"><a href="${contextPath}/member/login">로그인</a></div>
+					</c:when>
+					<c:otherwise>
+						
+        <div class="logout-wrapper"><a href="${contextPath}/member/logout">로그아웃</a></div>
+						  
+					</c:otherwise>
+				</c:choose>
+        
     </div>
 </div>
 
