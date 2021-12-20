@@ -3,6 +3,7 @@ package getonFast.hj.semi.my.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,14 +21,17 @@ public class QnaController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		String method = req.getMethod();
+		String method = req.getMethod();
 		String uri = req.getRequestURI();
 		String contextPath = req.getContextPath();
-		String command = uri.substring( (contextPath+"/my/qna/").length() );
 		
-//		String path = null;
-//		RequestDispatcher dispatcher = null;
-//		String message = null;
+		int contextLength = (contextPath+"/my/qna/").length();
+		int checkLength = ((uri.length() - contextLength) <= 0) ? uri.length() : contextLength;  
+		String command = uri.substring( checkLength );
+		
+		String path = null;
+		RequestDispatcher dispatcher = null;
+		String message = null;
 		
 		try {
 			QnaService service = new QnaService();
@@ -39,12 +43,22 @@ public class QnaController extends HttpServlet {
 				
 				req.setAttribute("qnaList", qnaList);
 				
-				
-				
 				req.setAttribute("css", "qna");
 				
-				String path = "/WEB-INF/views/qna/qna.jsp";
+				path = "/WEB-INF/views/qna/qna.jsp";
 				req.getRequestDispatcher(path).forward(req, resp);
+			} else if (command.equals("list")) {
+				if (method.equals("GET")) {
+					
+					req.setAttribute("css", "qna");
+					
+					path = "/WEB-INF/views/board/boardInsert.jsp";
+					dispatcher = req.getRequestDispatcher(path);
+					dispatcher.forward(req, resp);
+				} else {
+					
+				}
+				
 			}
 			
 			
