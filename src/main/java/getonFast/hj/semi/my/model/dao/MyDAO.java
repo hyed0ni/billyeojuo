@@ -70,6 +70,44 @@ public class MyDAO {
 		return result;
 	}
 
+	/** 전화번호 수정 DAO
+	 * @param member2
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updatePhone(Member member, Connection conn) throws Exception{
+		
+		int result = 0;
+			
+		try {
+
+			String sql = prop.getProperty("updatePhone");
+
+			pstmt = conn.prepareStatement(sql);
+			
+			System.out.println(member);
+			
+			
+			pstmt.setString(1, member.getMemberPhone());
+			
+			pstmt.setInt(2, member.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+			
+		} finally {	
+			
+			close(pstmt);
+			
+		}
+
+		return result;
+		
+		
+	}
+
 
 
 }

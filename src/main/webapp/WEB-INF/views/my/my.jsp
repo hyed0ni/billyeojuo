@@ -70,13 +70,16 @@
                             <tr>
                                 <th class="table_th">연락처</th>
                                 <td class="table_td">
-                                    <div class="change_phone_wrap">010-1234-1234<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
+                                    <div class="change_phone_wrap">${sessionScope.loginMember.memberPhone}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
                                     <div class="change_phone_wrap_2" style="display: none;">
-                                        <input type="text">
-                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</a>
-                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
-                                    </div>
+                                        <form action="${contextPath}/my" method="post" type="submit">
+                                            <input type="text" class="phone" name="inputPhone">
+                                                <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</button>
+                                                
+                                                <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
+                                            </form>
+                                            </div>
                                 
                                 </td>
                             </tr>
@@ -161,7 +164,7 @@ $(document).on('click', '.pwd_change_cancle', function() {
 $(document).on('click', '.name_change_confirm', function(){
 
     const inputNickname = $(this).prev().val();  
-	const regExp = /^[가-힣A-z]{2,8}$/;
+	const regExp = /^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$/;
 
 	if (inputNickname == '') {
 		alert("닉네임을 입력해주세요.");
@@ -173,9 +176,21 @@ $(document).on('click', '.name_change_confirm', function(){
 		return false;
 	}
 
+});
 
+$(document).on('click ', '.ph_change_confirm', function(){
 
-   
+    const inputphone = $(this).pre().val;
+    const regExp = /^[a-z0-9]{3,16]$/
+    
+    if(inputphone == ''){
+        alert("전화번호를 입력해주세요.");
+    }
+
+    if(!regExp.test(inputphone)){
+        alert("유효하지 않는 닉네임 입니다.");
+    }
+
 
 });
 
