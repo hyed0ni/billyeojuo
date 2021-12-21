@@ -40,11 +40,15 @@ $(function () {
 			if (url == "home") {
 				location.href = contextPath;
 			} else if (url == "qna") {
-				layerPop(0);
+				if (loginMemberNo > 0) {
+					layerPop(0);
+				} else {
+					alert("로그인이 필요 합니다.");
+					location.href = contextPath + "/member/login";
+				}
 				
 			} else {
-				
-            alert(url);
+            	alert(url);
 			}
         }
     });
