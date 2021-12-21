@@ -584,31 +584,61 @@
 
     });
     
+    // 스크롤 내리다가 메뉴 내용을 만나게 되면 체크 - 준비
+    const arr = [];
+
+    $(".nav-area  a").each(function(index, item){
+    	const id = $(item).attr("title");
+        arr.push($("#"+id).offset().top);
+    });
+
+
+    
     // 메뉴 스크롤 시 붙이기
     
     const nav = document.getElementsByClassName("nav-wrapper");
     const standard = nav[0].offsetTop +180;
     
     function sticky() {
-       //console.log(window.pageYOffset +" / " +standard )
-      if(window.pageYOffset > standard) {
+        //console.log(window.pageYOffset +" / " +standard )
+        if(window.pageYOffset > standard) {
         nav[0].classList.add("nav-fixed");
-      } else {
+        } else {
         nav[0].classList.remove("nav-fixed");
-      }
+        }
+
+
+        // 스크롤 내리다가 메뉴 내용을 만나게 되면 체크 - 동작
+        if( window.pageYOffset < arr[0]-140){
+             $(".nav-area  a").parent().removeClass("selected");
+        }else{
+
+            for(let i=0; i<arr.length-1 ; i++){
+                if(window.pageYOffset >= arr[i]-140 &&  window.pageYOffset < arr[i+1]-140){
+                    $(".nav-area  a").parent().removeClass("selected");
+                    $(".nav-area  a").eq(i).parent().addClass("selected");       
+                }
+            }
+
+            if(window.pageYOffset > arr[arr.length-1]-140){
+                $(".nav-area  a").parent().removeClass("selected");
+                $(".nav-area  a").eq(arr.length-1).parent().addClass("selected");       
+            }
+        }
+
     }
     
     
     // 메뉴 클릭 시 이동
     $(".nav-area  a").on("click", function(){
        
-       // 클릭 배경색 변경
-       $(".nav-area  a").parent().removeClass("selected");
-         $(this).parent().addClass("selected");       
+        // 클릭 배경색 변경
+        //$(".nav-area  a").parent().removeClass("selected");
+        //$(this).parent().addClass("selected");       
        
-       // 해당 메뉴 내용 위치로 이동
-       const id = $(this).attr("title");
-       $(window).scrollTop($("#"+id).offset().top - 120)
+        // 해당 메뉴 내용 위치로 이동
+        const id = $(this).attr("title");
+        $(window).scrollTop($("#"+id).offset().top - 120)
        
     })
 </script>
