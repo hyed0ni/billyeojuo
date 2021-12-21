@@ -54,7 +54,7 @@ function validate() {  // 회원가입 버튼 클릭 시 유효성 검사여부 
 $("#name").on("input", function() {
 
 	const inputName = $(this).val();  
-	const regExp = /^[가-힣]{2,8}$/;
+	const regExp = /^[가-힣A-z]{2,8}$/;
 
 	if (inputName.length == 0) {
 		$("#checkName").text("");

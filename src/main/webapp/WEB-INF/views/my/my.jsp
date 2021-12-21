@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="detail_area">
-                    <form>
+                    
                         <table class="detail_table">
                             <!-- <tr>
                                 <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">닉네임</th>
@@ -48,12 +48,15 @@
                                 <td class="table_td">
                                 
                                     <div class="change_nickname_wrap">${sessionScope.loginMember.memberName}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_nickname">변경하기</a></div>
-                                        
-                                        <div class="change_nickname_wrap_2" style="display: none;">
-                                            <input type="text">
-                                            <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_confirm">확인</a>
-                                            <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_cancle">취소하기</a>
-                                    </div>
+                                    
+                                    <div class="change_nickname_wrap_2" style="display: none;">
+                                        <form action="${contextPath}/my" method="post" type="submit">
+                                            <input type="text" class="nickname" name="inputName">
+                                                <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_confirm">확인</button>
+                                                
+                                                <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_cancle">취소하기</a>
+                                            </form>
+                                            </div>
                                     
                                 </td>
                             </tr>
@@ -98,7 +101,7 @@
                                 </td>
                             </tr>
                         </table>
-                    </form>
+                    
                 </div>
                 <div class="secede">
                     <a href="#">서비스 탈퇴하기</a>
@@ -108,7 +111,7 @@
     </section>
 </main>
 
-<script src="${contextPath}/resources/js/my.js"></script>
+
 <script>
 
 
@@ -155,7 +158,26 @@ $(document).on('click', '.pwd_change_cancle', function() {
 
 });
 
+$(document).on('click', '.name_change_confirm', function(){
 
+    const inputNickname = $(this).prev().val();  
+	const regExp = /^[가-힣A-z]{2,8}$/;
+
+	if (inputNickname == '') {
+		alert("닉네임을 입력해주세요.");
+		return false;
+	}
+
+    if (!regExp.test(inputNickname)) {
+		alert("유효하지 않은 닉네임입니다.");
+		return false;
+	}
+
+
+
+   
+
+});
 
 
 $(".switch_btn").on("click", function () {
