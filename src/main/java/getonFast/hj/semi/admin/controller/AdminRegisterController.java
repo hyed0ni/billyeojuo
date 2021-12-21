@@ -109,6 +109,7 @@ public class AdminRegisterController extends HttpServlet {
 					String spaceClosedDt = mReq.getParameter("spaceClosedDt");
 					int spaceTypeNo = Integer.parseInt(mReq.getParameter("spaceTypeNo"));
 
+					
 					AdSpace space = new AdSpace();
 					space.setSpaceName(spaceName);
 					space.setSpaceSubName(spaceSubName);
@@ -124,6 +125,7 @@ public class AdminRegisterController extends HttpServlet {
 					space.setSpaceClosedDt(spaceClosedDt);
 					space.setSpaceTypeNo(spaceTypeNo);
 
+					
 					// 룸타입
 					String roomName = mReq.getParameter("roomName");
 					String roomDesc = mReq.getParameter("roomDesc");
@@ -131,13 +133,15 @@ public class AdminRegisterController extends HttpServlet {
 					int optionNo = Integer.parseInt(mReq.getParameter("roomPrice"));
 					int roomPrice = Integer.parseInt(mReq.getParameter("roomPrice"));
 
+					
 					AdRoomtype roomType = new AdRoomtype();
 					roomType.setRoomName(roomName);
 					roomType.setRoomDesc(roomDesc);
 					roomType.setRoomFit(roomFit);
 					roomType.setOptionNo(optionNo);
 					roomType.setRoomPrice(roomPrice);
-
+					
+					
 					// 룸 옵션
 					String[] roomOption = mReq.getParameterValues("roomOption");
 
