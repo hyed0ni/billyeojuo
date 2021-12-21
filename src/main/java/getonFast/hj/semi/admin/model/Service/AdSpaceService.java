@@ -58,11 +58,11 @@ public class AdSpaceService {
 	 * @param space
 	 * @param roomType
 	 * @param imgList
-	 * @param spaceRoomOption 
+	 * @param optionList 
 	 * @return spaceNo
 	 * @throws Exception
 	 */
-	public int insertSpace(AdSpace space, AdRoomtype roomType, List<AdSpaceImage> imgList, AdSpaceRoomOption spaceRoomOption) throws Exception {
+	public int insertSpace(AdSpace space, AdRoomtype roomType, List<AdSpaceImage> imgList, List<AdSpaceRoomOption> optionList) throws Exception {
 		
 		Connection conn = getConnection();
 		
@@ -71,8 +71,24 @@ public class AdSpaceService {
 		
 		space.setSpaceNo(spaceNo);
 		
+		//공간 소개 등 개행문자 <br> 
+		String intro = space.getSpaceIntro().replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
+		String guide = space.getSpaceGuide().replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
+		String refund = space.getRefundPolicy().replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
+		String caution = space.getPrecautions().replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
+		
+		space.setPrecautions(caution);
+		space.setRefundPolicy(refund);
+		space.setSpaceIntro(intro);
+		space.setSpaceGuide(guide);
+		
 		//공간 삽입
 		int result = dao.insertSpace(space,imgList,conn);
+
+		
+		//룸타입 개행문자 변경 
+		String desc = roomType.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
+		roomType.setRoomDesc(desc);
 		
 		//룸타입 삽입
 		if(result>0) {
@@ -86,10 +102,14 @@ public class AdSpaceService {
 		
 		//룸옵션 삽입
 		if(result > 0) {
-			spaceRoomOption.setSpaceNo(spaceNo);
-			result = dao.insertspaceRoomOption(spaceRoomOption,conn);
-			if(result == 0) {
-				rollback(conn);
+			
+			for(AdSpaceRoomOption spaceRoomOption : optionList) {
+				spaceRoomOption.setSpaceNo(spaceNo); // 공간 번호 세팅
+				result = dao.insertspaceRoomOption(spaceRoomOption,conn);
+				if(result == 0) {
+					rollback(conn);
+					break;
+				}
 			}
 		}
 		
@@ -104,13 +124,15 @@ public class AdSpaceService {
 						rollback(conn);
 						break;
 					}
-					if(result >0) {
-						commit(conn);
-						result = spaceNo;
-						
-					}else rollback(conn);
 				}
 			}
+			
+			if(result >0) {
+				commit(conn);
+				result = spaceNo;
+				
+			}else rollback(conn);
+			
 		}else rollback(conn);
 		
 		return result;
