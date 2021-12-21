@@ -37,7 +37,7 @@ public class QnaController extends HttpServlet {
 			QnaService service = new QnaService();
 			
 			if (command.equals("list") || command.equals("")) {
-				int memberNo = 1;
+				int memberNo = 14;
 				
 				List<Qna> qnaList = service.qnaList(memberNo);
 				
@@ -47,17 +47,21 @@ public class QnaController extends HttpServlet {
 				
 				path = "/WEB-INF/views/qna/qnaList.jsp";
 				req.getRequestDispatcher(path).forward(req, resp);
-			} else if (command.equals("input")) {
-				if (method.equals("GET")) {
-					
-					req.setAttribute("css", "qna");
-					
-					path = "/WEB-INF/views/qna/qna_insert.jsp";
-					dispatcher = req.getRequestDispatcher(path);
-					dispatcher.forward(req, resp);
-				} else {
-					
-				}
+			} else if (command.equals("insert")) {
+				
+				int memberNo = 14;
+				int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+				String queContent = req.getParameter("queContent");
+				
+				Qna qna = new Qna();
+				qna.setMemberNo(memberNo);
+				qna.setSpaceNo(spaceNo);
+				qna.setQueContent(queContent);
+				
+				int result = service.qnaInsert(qna);
+				System.out.println("result : " + result);
+				
+				resp.getWriter().print(result);
 				
 			}
 			
@@ -65,9 +69,10 @@ public class QnaController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 }

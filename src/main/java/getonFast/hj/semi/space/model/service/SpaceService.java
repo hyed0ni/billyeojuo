@@ -51,4 +51,17 @@ public class SpaceService {
 		return spaceRoomList;
 	}
 
+	/** 공간유형 조회
+	 * @param spaceNo
+	 * @return spaceType
+	 * @throws Exception
+	 */
+	public Space selectSpaceType(int spaceNo) throws Exception {
+		Connection conn = getConnection();
+		Space spaceType = dao.selectSpaceType(spaceNo, conn);
+		close(conn);
+		
+		return spaceType;
+	}
+
 }

@@ -27,4 +27,21 @@ public class QnaService {
 		return qnaList;
 	}
 
+	/**
+	 * 문의 등록
+	 * @param qna
+	 * @return result
+	 * @throws Exception
+	 */
+	public int qnaInsert(Qna qna) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.qnaInsert(qna, conn);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+
 }

@@ -48,6 +48,9 @@ public class SpaceController extends HttpServlet {
         	List<Space> spaceRoomList = service.selectSpaceRoom(spaceNo);
         	req.setAttribute("spaceRoomList", spaceRoomList);
             
+        	Space spaceType = service.selectSpaceType(spaceNo);
+        	req.setAttribute("spaceType", spaceType);
+        	
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);
@@ -71,12 +74,9 @@ public class SpaceController extends HttpServlet {
             
          }
          
-         
       } catch (Exception e) {
          e.printStackTrace();
       }
-      
-      
       
    }
    
