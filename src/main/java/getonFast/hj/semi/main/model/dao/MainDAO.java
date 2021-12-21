@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import getonFast.hj.semi.main.model.vo.Recommend;
 import getonFast.hj.semi.main.model.vo.SpaceType;
+import getonFast.hj.semi.space.model.vo.Space;
 
 public class MainDAO {
 	private Statement stmt;
@@ -66,6 +68,38 @@ public class MainDAO {
 		}
 		
 		return spaceTypeList;
+	}
+
+	public List<Recommend> selectRecommendList(Connection conn) throws Exception {
+		
+		List<Recommend> recommendList = new ArrayList<Recommend>();
+		
+		try {
+			String sql = prop.getProperty("selectRecommend");
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Recommend rc = new Recommend();
+				rc.setSpaceNo(rs.getInt("SPACE_NO"));
+				rc.setSpaceNm(rs.getString("SPACE_NM"));
+				rc.setSpaceSubNm(rs.getString("SPACE_SUB_NM"));
+				rc.setRoomPrice(rs.getInt("MIN(SPACE_ROOM_PRICE)"));
+				rc.setRoomFit(rs.getString("SPACE_ROOM_FIT"));
+				rc.setLike(rs.getInt("NVL(COUNT(MEMBER_NO),0)"));
+				rc.setImgPath(rs.getString("SPACE_IMG_PATH"));
+				rc.setImgName(rs.getString("SPACE_IMG_NM"));
+				
+				recommendList.add(rc);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return recommendList;
 	}
 
 }

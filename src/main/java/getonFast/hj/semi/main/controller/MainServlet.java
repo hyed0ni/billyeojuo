@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.main.model.service.MainService;
+import getonFast.hj.semi.main.model.vo.Recommend;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 import getonFast.hj.semi.promotion.model.service.PromotionService;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
+import getonFast.hj.semi.space.model.vo.Space;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
@@ -37,6 +39,14 @@ public class MainServlet extends HttpServlet {
 			req.setAttribute("promotionList", promotionList.subList(0, 4));
 			
 			
+			//추천공간
+			
+			List<Recommend> recommendList = service.selectRecommendList();
+			
+			req.setAttribute("recommendList", recommendList.subList(0, 6));
+			
+			
+			
 			// jsp로 요청 위임
 			req.setAttribute("css", "main");
 			
@@ -44,11 +54,20 @@ public class MainServlet extends HttpServlet {
 			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
 			dispatcher.forward(req, resp);
 			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		doGet(req, resp);
+	}
+	
+	
 	
 	
 }

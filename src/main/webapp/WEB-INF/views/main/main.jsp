@@ -49,197 +49,31 @@
         <h1 class="title">추천공간</h1>
         <p style="margin-top: 0px; text-align: center;">지금 딱 내가 찾는 공간</p>
         <section>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                        <button type="button" class="button-left"></button>
-                        <button type="button" class="button-right"></button>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
-            <article  class="recommend-item">
-                <a href="#">
-                    <div class="img-box">
-                        <span></span>
-                    </div>
-                    <div class="info-box">
-                        <h3>육공스튜디오(60Studio)</h3>
-                        <div class="tag-box">
-                            <span class="location">소하동 </span> <span> |</span>
-                            <span class="tag">#스튜디오대여</span>
-                            <span class="tag">#셀프스튜디오</span>
-                            <span class="tag">#쇼핑몰촬영</span>
-                        </div>
-                        <div class="price-box">
-                            <strong class="price purple">10,000</strong> <span>원/패키지</span>
-                            <div class="like-comment">
-                                <span class="pricebox-icon icon-comment"></span>
-                                <span>최대3인</span>
-                                <span class="pricebox-icon icon-people"></span>
-                                <span>0</span>
-                                <span class="pricebox-icon icon-like"></span>
-                                <span>6</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </article>
+            <c:forEach  items="${recommendList}" var="recommend">
+	            <article  class="recommend-item">
+	                <a href="${contextPath}/space/detail?no=${recommend.spaceNo}">
+	                    <div class="img-box" style="background-image: url(${contextPath}${recommend.imgPath}${recommend.imgName})">
+	                    </div>
+	                    <div class="info-box">
+	                        <h3>${recommend.spaceNm}</h3>
+	                        <div class="tag-box">
+	                            <span class="location"> ${recommend.spaceSubNm}</span>
+	                        </div>
+	                        <div class="price-box">
+	                            <strong class="price purple">${recommend.roomPrice}</strong> <span>원/박</span>
+	                            <div class="like-comment" style="text-align: right;   width: 50%;">
+	                              <%--   <span class="pricebox-icon icon-comment"></span>
+	                                <span>${recommend.like}</span> --%>
+	                                <span class="pricebox-icon icon-people"></span>
+	                                <span>${recommend.roomFit}</span>
+	                                <span class="pricebox-icon icon-like"></span>
+	                                <span>${recommend.like}</span>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </a>
+	            </article>
+            </c:forEach>
         </section>
     </section>
 
