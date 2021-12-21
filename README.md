@@ -51,8 +51,5 @@ http://localhost:8080/getonFast/
 관리자 
 
 -공간등록 
-http://localhost:8080/getonFast/adminSpaceRegister
+http://localhost:8080/getonFast/adminSpace/insert
 
--룸타입 등록 
-http://localhost:8080/getonFast/adminRegisterRoomtype
-```

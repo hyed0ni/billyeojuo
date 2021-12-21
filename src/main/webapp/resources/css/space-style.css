@@ -84,7 +84,7 @@ main{z-index: 1; width: 1140px;}
 .nav-area li.seleted{ background-color: #ffd014; }
 
 /* 공간소개, 시설안내, 유의사항, Q&A, 이용후기 작성 부분 */
-.meetspace{ padding-top: 51px; }
+.meetspace{ padding-top: 51px; margin-bottom: 120px;}
 
 /* 공간 소개 영역 */
 #s-intro{  padding-top : 50px; }
@@ -253,7 +253,7 @@ a{cursor: pointer;}
 
 
 /* Q&A 페이징  */
-.paging{text-align: center;}
+.paging{text-align: center; margin-top: 30px;}
 
 .paging a {
   display: inline-block;
@@ -278,3 +278,8 @@ a{cursor: pointer;}
 
 html{scroll-behavior: smooth;}
 li.selected {  background-color: #ffd014;}
+
+/* 공간 룸 상세 정보 안보이게 하기 */
+.space_detail{display : none}
+
+.room-info {margin-right:20px; font-weight:bold;}

@@ -33,7 +33,7 @@
   
 <!-- side menu -->
 
-  <aside>
+  <aside style="margin-top: 70px;">
     <section class="left">
       <article class="menu-wrap">
         <div class="menu">
@@ -60,7 +60,7 @@
         </div>
         <div class="menu">
           <h3>세부 관리</h3>
-            <div class="sub-menu">
+            <div class="sub-menu" onclick="location.href = '${contextPath}/board/insert';">
               <h4>기획전 관리</h4>
             </div>
             <div  class="sub-menu">

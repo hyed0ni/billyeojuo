@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <jsp:include page="../common/header.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
 
 <main>
     <section class="cont detail-forms">
+    
         <!--------------------------------------------------------------------------------------------------------------------------->
+
         <section style="margin-top:120px;">
             <div class="space">
                 <h2 class="space-name">${space.spaceNm}</h2>
@@ -54,7 +58,6 @@
                     	${space.spaceIntro}
                     </p>
 
-                    <!-- 영업 시간, 휴무일 리스트 -->
                     <ul class="info-list officehours">
                         <li>
                             <span class="tit">영업시간</span>
@@ -71,88 +74,36 @@
                 <div id="s-info" class="text-box">
                     <h4 class="h-intro">시설 안내</h4>
 
+					<!-- spaceGuide 문자열을 <br>태그를 기준으로 배열로 쪼갬 -->
+                  	<c:set var = "temp" value = "${fn:replace(space.spaceGuide, '<br>', '|')}"/>
+					<c:set var="arr" value="${fn:split(temp, '|')}"/> 
+					
                     <ol class="info-list">
-                        <li>
-                            <strong class="tit">1</strong>
-                            <span class="data">홍대입구역 1번 출구 지하로 연결되어 있습니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">2</strong>
-                            <span class="data">최대 10인용 코렐 식기와 다양한 식사 용품들이 구비되어 있습니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">3</strong>
-                            <span class="data">55인치 벽걸이 TV, 공기청정기 , 가습기 , WIFI , 난방기(보일러 잘 됩니다만 추가로) 완비
-                                되어있습니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">4</strong>
-                            <span class="data">냉장고와 전자레인지, 커피포트가 준비되어 있습니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">5</strong>
-                            <span class="data">주류 및 음식물 반입, 간단한 조리 가능합니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">6</strong>
-                            <span class="data">샤워 시설이 완비되어 있습니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">7</strong>
-                            <span class="data">유료 주차장이 존재하나, 주차 비용이 비싼 편입니다. 대중교통 이용을 권장해드립니다.</span>
-                        </li>
+                    	<c:forEach items="${arr}" var="guide" varStatus="vs">
+	                    	<li>
+	                            <strong class="tit">${vs.count}</strong>
+	                            <span class="data">${guide}</span>
+	                        </li>
+                    	</c:forEach>
                     </ol>
-
                 </div>
 
                 <!-- 유의사항 -->
                 <div id="s-cautoion" class="text-box">
                     <h4 class="h-intro">예약 주의사항</h4>
 
+					<c:set var = "temp" value = "${fn:replace(space.precautions, '<br>', '|')}"/>
+					<c:set var="arr" value="${fn:split(temp, '|')}"/> 
+					
                     <ol class="info-list">
-                        <li>
-                            <strong class="tit">1</strong>
-                            <span class="data">보증금 입금 후에 예약이 최종 완료 됩니다. 보증금은 공간 상태 양호 , 비품 파손이 없을 시 바로
-                                반환해드립니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">2</strong>
-                            <span class="data">입실과 퇴실 시간을 엄수해주세요. 불가피한 상황으로 변동이 필요할 시 사전에 필히 연락을 부탁드립니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">3</strong>
-                            <span class="data">권장 인원수는 6명으로 최대 인원은 10명입니다. 인원 추가 시 1인당 1만원의 별도 비용이 발생합니다. (코로나 정책으로
-                                현 최대 6인)</span>
-                        </li>
-                        <li>
-                            <strong class="tit">4</strong>
-                            <span class="data">대여 공간 및 가구, 소품, 비품 , 가전제품 등을 훼손하시면 물품 가액을 변상해주셔야 합니다. 통보 없이 퇴실 시
-                                보증금에서 차감 및 물품 가액의 2배를 변상해주셔야 합니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">5</strong>
-                            <span class="data">대여 공간 및 해당 건물 내부에서 절대 금연입니다. 흡연 적발 시 퇴실 조치 및 보증금 환급 불가합니다</span>
-                        </li>
-                        <li>
-                            <strong class="tit">6</strong>
-                            <span class="data">쾌적한 공간을 만들기 위하여 기본적인 뒷정리를 해주시면 감사하겠습니다. (가구 원위치, 분리수거, 음식물 쓰레기 정리
-                                등)</span>
-                        </li>
-                        <li>
-                            <strong class="tit">7</strong>
-                            <span class="data">화재 위험이 있는 물품은 반입 금지입니다. 부주의로 인한 화재 발생 시 모든 책임은 공간 대여자에게 있습니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">8</strong>
-                            <span class="data">반려 동물 동반 금지입니다. 공간 특성상 불가한 점 양해 부탁드립니다.</span>
-                        </li>
-                        <li>
-                            <strong class="tit">9</strong>
-                            <span class="data">전문촬영문의는 @freespacerental 로 부탁드립니다.</span>
-                        </li>
+                    	<c:forEach items="${arr}" var="precautions" varStatus="vs">
+	                    	<li>
+	                            <strong class="tit">${vs.count}</strong>
+	                            <span class="data">${precautions}</span>
+	                        </li>
+                    	</c:forEach>
                     </ol>
                 </div>
-
 
                 <!-- 환불규정 안내 -->
                 <div id="s-refund" class="text-box">
@@ -165,49 +116,33 @@
                         <br>
                         결제 후 2시간 이내에는 100% 환불이 가능합니다.(단,이용시간 전까지만 가능)
                     </p>
-
-
+                    
+                    <c:set var = "temp" value = "${fn:replace(space.refundPolicy, '<br>', '|')}"/>
+					<c:set var="arr" value="${fn:split(temp, '|')}"/> 
+                    
                     <ol class="info-list">
-                        <li>
-                            <strong class="tit">이용 8일 전</strong>
-                            <span class="data">총 금액의 100% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 7일 전</strong>
-                            <span class="data">총 금액의 100% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 6일 전</strong>
-                            <span class="data">총 금액의 100% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 5일 전</strong>
-                            <span class="data">총 금액의 80% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 4일 전</strong>
-                            <span class="data">총 금액의 60% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 3일 전</strong>
-                            <span class="data">총 금액의 50% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 2일 전</strong>
-                            <span class="data">총 금액의 30% 환불</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 전날</strong>
-                            <span class="data">환불 불가</span>
-                        </li>
-                        <li>
-                            <strong class="tit">이용 당일</strong>
-                            <span class="data">환불 불가</span>
-                        </li>
+                    	<c:forEach items="${arr}" var="refund" varStatus="vs">
+	                    	<li>
+	                    		<c:choose>
+	                    			<c:when test="${vs.last}">
+	                    				<strong class="tit">이용 당일</strong>
+	                    				<span class="data">${refund}</span>
+	                    			</c:when>
+	                    			
+	                    			<c:when test="${(fn:length(arr) - vs.count) == 1}">
+	                    				<strong class="tit">이용 전날</strong>
+	                    				<span class="data">${refund}</span>
+	                    			</c:when>
+	                    			
+	                    			<c:otherwise>
+	                    				<strong class="tit">이용 ${fn:length(arr) - vs.count}일전</strong>
+	                    				<span class="data">${refund}</span>
+	                    			</c:otherwise>
+	                    		</c:choose>
+	                        </li>
+                    	</c:forEach>
                     </ol>
                 </div>
-
-
 
                 <!-- 지도 영역 -->
                 <div class="detail-box map-box">
@@ -396,11 +331,10 @@
                         </div>
                     </div>
                 </div>
+                
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-
-
-                <div style="position:absolute; width:350px; height:400px; top:0; right:0; background-color:#fff;">
+                <div style="position:absolute; width:350px; height:400px; top:0; right:0;">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -409,121 +343,117 @@
                         </div>
                     </div>
 
-                    <div>
-                        <div class="space_btn" style="padding:20px 10px;">
-                            <div style="position:relative; display:flex;">
-                                <input type="radio" name="space" id="a-1" data-value="space-a"
-                                    style="position:absolute; height:100%;">
-                                <label for="a-1"
-                                    style="padding-left:25px; display:inline-block; width:170px;">A홀-20평A홀-20평A홀-20평A홀-20평</label>
-                                <div style="width:135px; display:flex; align-items:center; justify-content:end;">
-                                    <strong style="font-size:20px;">\15,000 </strong>
-                                    <span style="font-size:11px; margin-left:5px;"> / 시간</span>
-                                </div>
-                            </div>
+                    <div style="background-color: white;">
+                    	
+                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs">
+             
+	                        <div class="space_btn" style="padding:20px 10px;">
+	                            <div style="position:relative; display:flex;">
+	                                <input type="radio" name="space" id="a-${vs.count}" data-value="space-a"
+	                                    style="position:absolute; height:100%;">
+	                                    
+	                                <!-- 공간룸 이름 -->
+	                                <label for="a-${vs.count}"
+	                                    style="padding-left:25px; display:inline-block; width:170px;">${spaceRoom.spaceRoomNm}</label>
+	                                <div style="width:135px; display:flex; align-items:center; justify-content:end;">
+	                                
+	                                	<!-- 공간룸 가격 -->
+	                                    <strong style="font-size:20px;">\ ${spaceRoom.spaceRoomPrice} </strong> <!-- ${spaceRoom.spaceRoomPrice} -->
+	                                    <span style="font-size:11px; margin-left:5px;"> / 일</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        
+	                        
+	                        <div class="space_detail space-a"
+                            	style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
+	                            <div style="position:relative; text-align:center; margin-bottom:20px;">
+	                            
+	                            	<!-- 공간 이미지 -->
+	                                <img src="${contextPath}${spaceImg.spaceImgPath}${spaceImg.spaceImgNm}"
+	                                    style="width:320px; height:200px; margin:20px auto;">
+	                            </div>
+	                            
+	                            <!-- 공간룸 설명 -->
+	                            <div style="width:320px; margin:20px auto;">
+	                                ${spaceRoom.spaceRoomDesc}
+	                            </div>
+	                            
+	                            <div style="width:320px; margin:20px auto;">
+	                                <ul>
+	                                
+	                                	<!-- 공간유형 이름 -->
+	                                    <li style="border-bottom: 1px solid #ebebeb; padding: 10px;">
+	                                        <span class="room-info">공간유형</span>
+	                                        <span>파티룸</span>
+	                                    </li>
+	                                    
+	                                    <!-- 공간룸 수용인원 -->
+	                                    <li style="padding: 10px;">
+	                                        <span class="room-info">수용인원</span>
+	                                        <span>${spaceRoom.spaceRoomFit}</span>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	
+	                            <div style="width:320px; margin:20px auto;">
+	                                <ul style="display:table-cell;">
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/chair.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span
+	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">의자/<br>테이블</span>
+	                                        </div>
+	                                    </li>
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/computer.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span
+	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">PC/<br>노트북</span>
+	                                        </div>
+	                                    </li>
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/no_smoke.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">금연</span>
+	                                        </div>
+	                                    </li>
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/parking.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">주차</span>
+	                                        </div>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	
+	                            <div style="width:320px; margin:20px auto;">
+	                                <div
+	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
+	                                    날짜 선택
+	                                    <span id="selectedDateText" class="purple"
+	                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
+	                                </div>
+	                                <div>
+	                                    <div id="datepicker"></div>
+	                                </div>
+	                                <input type="hidden" id="selectedDate" name="selectedDate">
+	                            </div>
+	                        </div>
+                    	
+                    	</c:forEach>
 
-                        </div>
-                        <div class="space_detail space-a"
-                            style="width:100%; border:1px solid #704de4; box-sizing:border-box; margin-bottom:20px; display:none;">
-                            <div style="position:relative; text-align:center; margin-bottom:20px;">
-                                <img src="images/space_img/sadang.jpg"
-                                    style="width:320px; height:200px; margin:20px auto;">
-                            </div>
-                            <div style="width:320px; margin:20px auto;">
-                                ■ 약 13평 (적정인원 1~10명)■
-                                <br><br><br><br><br>
-                                평일 0~6시 5000원/6~8시 4000원 8~16시 6000원 / 16~24시 7000원
-                                <br>
-                                주말&공휴일0~6시5000원/ 6~12시 6000원 / 12~24시 7000원
-                                <br><br>
-                                ( 새벽 0~6시 통대관) 20000원
-                                <br><br>
-                                에어컨시설비 사용폭등으로 시간및가격조정이 들어갔습니다 (양해부탁드립니다)
-                                <br><br>
-                            </div>
-                            <div style="width:320px; margin:20px auto;">
-                                <ul>
-                                    <li>
-                                        <span>공간 유형</span>
-                                        <span>연습실 보컬연습실</span>
-                                    </li>
-                                    <li>
-                                        <span>예약시간</span>
-                                        <span>1일</span>
-                                    </li>
-                                    <li>
-                                        <span>수용인원</span>
-                                        <span>최소 1명 ~ 최대 5명</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div style="width:320px; margin:20px auto;">
-                                <ul style="display:table-cell;">
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/chair.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span
-                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">의자/<br>테이블</span>
-                                        </div>
-                                    </li>
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/computer.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span
-                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">PC/<br>노트북</span>
-                                        </div>
-                                    </li>
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/no_smoke.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">금연</span>
-                                        </div>
-                                    </li>
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/parking.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">주차</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div style="width:320px; margin:20px auto;">
-                                <div
-                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
-                                    날짜 선택
-                                    <span id="selectedDateText" class="purple"
-                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
-                                </div>
-                                <div>
-                                    <div id="datepicker"></div>
-                                </div>
-                                <input type="hidden" id="selectedDate" name="selectedDate">
-                            </div>
-                        </div>
-
-                        <!-- <div class="space_btn" style="padding:20px 10px; border-top:1px solid #949494;">
-                        <div style="position:relative; display:flex;">
-                            <input type="radio" name="space" id="a-2" style="position:absolute; height:100%;">
-                            <label for="a-2" style="padding-left:25px; display:inline-block; width:170px;">[골드스톤]asdf123123a</label>
-                            <div style="width:135px; display:flex; align-items:center; justify-content:end;">
-                                <strong style="font-size:20px;">\555,000 </strong>
-                                <span style="font-size:11px; margin-left:5px;"> / 시간</span>
-                            </div>
-                        </div>
-                    </div> -->
                         <div>
                             <a href="javascript:payment();"
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">결제하기</a>
+                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a>
                         </div>
                     </div>
 
@@ -578,39 +508,76 @@
             alert(url);
         })
 
-
         sticky(); // 페이지 로딩 시 sticky 함수 호출
         $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
     });
     
-    // 메뉴 스크롤 시 붙이기
+    // 스크롤 내리다가 메뉴 내용을 만나게 되면 체크 - 준비
+    const arr = [];
+
+    $(".nav-area  a").each(function(index, item){
+    	const id = $(item).attr("title");
+        arr.push($("#"+id).offset().top);
+    });
     
+    // 메뉴 스크롤 시 붙이기
     const nav = document.getElementsByClassName("nav-wrapper");
     const standard = nav[0].offsetTop +180;
     
     function sticky() {
-       //console.log(window.pageYOffset +" / " +standard )
-      if(window.pageYOffset > standard) {
-        nav[0].classList.add("nav-fixed");
-      } else {
-        nav[0].classList.remove("nav-fixed");
-      }
+        //console.log(window.pageYOffset +" / " +standard )
+        
+        if(window.pageYOffset > standard)
+        	nav[0].classList.add("nav-fixed");
+        
+        else
+        	nav[0].classList.remove("nav-fixed");
+
+
+        // 스크롤 내리다가 메뉴 내용을 만나게 되면 체크 - 동작
+        if( window.pageYOffset < arr[0]-140){
+             $(".nav-area  a").parent().removeClass("selected");
+             
+        }else{
+
+            for(let i=0; i<arr.length-1 ; i++){
+                if(window.pageYOffset >= arr[i]-140 &&  window.pageYOffset < arr[i+1]-140){
+                    $(".nav-area  a").parent().removeClass("selected");
+                    $(".nav-area  a").eq(i).parent().addClass("selected");       
+                }
+            }
+
+            if(window.pageYOffset > arr[arr.length-1]-140){
+                $(".nav-area  a").parent().removeClass("selected");
+                $(".nav-area  a").eq(arr.length-1).parent().addClass("selected");       
+            }
+        }
+
     }
-    
     
     // 메뉴 클릭 시 이동
     $(".nav-area  a").on("click", function(){
        
-       // 클릭 배경색 변경
-       $(".nav-area  a").parent().removeClass("selected");
-         $(this).parent().addClass("selected");       
+        // 클릭 배경색 변경
+        //$(".nav-area  a").parent().removeClass("selected");
+        //$(this).parent().addClass("selected");       
        
-       // 해당 메뉴 내용 위치로 이동
-       const id = $(this).attr("title");
-       $(window).scrollTop($("#"+id).offset().top - 120)
+        // 해당 메뉴 내용 위치로 이동
+        const id = $(this).attr("title");
+        $(window).scrollTop($("#"+id).offset().top - 120)
        
     })
+    
+    // 세부공간 선택 라디오 버튼 클릭 시 이벤트
+    $("[name=space]").on("change", function(){
+    	const index = $("[name=space]").index($(this));
+    	
+    	$(".space_detail").css("display", "none");
+    	$(".space_detail").eq(index).css("display", "block");
+    });
+    
+    
 </script>
 </body>
 </html>
