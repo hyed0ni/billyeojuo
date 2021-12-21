@@ -29,6 +29,10 @@ public class Space {
 	private String spaceRoomFit;
 	private String spaceRoomDesc;
 	
+	private String spaceTypeNm;
+	private String spaceTypeImg;
+	private int spaceTypeSt;
+	
 	public Space() {}
 
 	public int getSpaceNo() {
@@ -230,6 +234,30 @@ public class Space {
 	public void setSpaceRoomDesc(String spaceRoomDesc) {
 		this.spaceRoomDesc = spaceRoomDesc;
 	}
+	
+	public String getSpaceTypeNm() {
+		return spaceTypeNm;
+	}
+
+	public void setSpaceTypeNm(String spaceTypeNm) {
+		this.spaceTypeNm = spaceTypeNm;
+	}
+
+	public String getSpaceTypeImg() {
+		return spaceTypeImg;
+	}
+
+	public void setSpaceTypeImg(String spaceTypeImg) {
+		this.spaceTypeImg = spaceTypeImg;
+	}
+
+	public int getSpaceTypeSt() {
+		return spaceTypeSt;
+	}
+
+	public void setSpaceTypeSt(int spaceTypeSt) {
+		this.spaceTypeSt = spaceTypeSt;
+	}
 
 	@Override
 	public String toString() {
@@ -241,7 +269,8 @@ public class Space {
 				+ ", spaceImgPath=" + spaceImgPath + ", spaceImgNm=" + spaceImgNm + ", spaceImgOrg=" + spaceImgOrg
 				+ ", spaceImgLevel=" + spaceImgLevel + ", spaceRoomNo=" + spaceRoomNo + ", spaceRoomNm=" + spaceRoomNm
 				+ ", spaceRoomPrice=" + spaceRoomPrice + ", spaceRoomFit=" + spaceRoomFit + ", spaceRoomDesc="
-				+ spaceRoomDesc + "]";
+				+ spaceRoomDesc + ", spaceTypeNm=" + spaceTypeNm + ", spaceTypeImg=" + spaceTypeImg + ", spaceTypeSt="
+				+ spaceTypeSt + "]";
 	}
 	
 }
