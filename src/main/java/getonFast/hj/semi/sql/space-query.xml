@@ -11,4 +11,9 @@
 	<entry key="selectSpaceImg">
 		SELECT SPACE_IMG_PATH, SPACE_IMG_NM FROM SPACE_IMG WHERE SPACE_NO = ?
 	</entry>
+	
+	<!-- 공간룸 조회 -->
+	<entry key="selectSpaceRoom">
+		SELECT SPACE_ROOM_NM, SPACE_ROOM_PRICE, SPACE_ROOM_FIT, SPACE_ROOM_DESC FROM SPACE_ROOM WHERE SPACE_NO = ?
+	</entry>
 </properties>

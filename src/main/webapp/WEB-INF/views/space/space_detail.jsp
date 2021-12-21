@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="../common/header.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
 
 <main>
     <section class="cont detail-forms">
+    
         <!--------------------------------------------------------------------------------------------------------------------------->
+
         <section style="margin-top:120px;">
             <div class="space">
                 <h2 class="space-name">${space.spaceNm}</h2>
@@ -396,11 +399,10 @@
                         </div>
                     </div>
                 </div>
+                
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-
-
-                <div style="position:absolute; width:350px; height:400px; top:0; right:0; background-color:#fff;">
+                <div style="position:absolute; width:350px; height:400px; top:0; right:0;">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -409,121 +411,117 @@
                         </div>
                     </div>
 
-                    <div>
-                        <div class="space_btn" style="padding:20px 10px;">
-                            <div style="position:relative; display:flex;">
-                                <input type="radio" name="space" id="a-1" data-value="space-a"
-                                    style="position:absolute; height:100%;">
-                                <label for="a-1"
-                                    style="padding-left:25px; display:inline-block; width:170px;">A홀-20평A홀-20평A홀-20평A홀-20평</label>
-                                <div style="width:135px; display:flex; align-items:center; justify-content:end;">
-                                    <strong style="font-size:20px;">\15,000 </strong>
-                                    <span style="font-size:11px; margin-left:5px;"> / 시간</span>
-                                </div>
-                            </div>
+                    <div style="background-color: white;">
+                    	
+                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs">
+             
+	                        <div class="space_btn" style="padding:20px 10px;">
+	                            <div style="position:relative; display:flex;">
+	                                <input type="radio" name="space" id="a-${vs.count}" data-value="space-a"
+	                                    style="position:absolute; height:100%;">
+	                                    
+	                                <!-- 공간룸 이름 -->
+	                                <label for="a-${vs.count}"
+	                                    style="padding-left:25px; display:inline-block; width:170px;">${spaceRoom.spaceRoomNm}</label>
+	                                <div style="width:135px; display:flex; align-items:center; justify-content:end;">
+	                                
+	                                	<!-- 공간룸 가격 -->
+	                                    <strong style="font-size:20px;">\ ${spaceRoom.spaceRoomPrice} </strong> <!-- ${spaceRoom.spaceRoomPrice} -->
+	                                    <span style="font-size:11px; margin-left:5px;"> / 일</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        
+	                        
+	                        <div class="space_detail space-a"
+                            	style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
+	                            <div style="position:relative; text-align:center; margin-bottom:20px;">
+	                            
+	                            	<!-- 공간 이미지 -->
+	                                <img src="${contextPath}${spaceImg.spaceImgPath}${spaceImg.spaceImgNm}"
+	                                    style="width:320px; height:200px; margin:20px auto;">
+	                            </div>
+	                            
+	                            <!-- 공간룸 설명 -->
+	                            <div style="width:320px; margin:20px auto;">
+	                                ${spaceRoom.spaceRoomDesc}
+	                            </div>
+	                            
+	                            <div style="width:320px; margin:20px auto;">
+	                                <ul>
+	                                
+	                                	<!-- 공간유형 이름 -->
+	                                    <li style="border-bottom: 1px solid #ebebeb; padding: 10px;">
+	                                        <span class="room-info">공간유형</span>
+	                                        <span>파티룸</span>
+	                                    </li>
+	                                    
+	                                    <!-- 공간룸 수용인원 -->
+	                                    <li style="padding: 10px;">
+	                                        <span class="room-info">수용인원</span>
+	                                        <span>${spaceRoom.spaceRoomFit}</span>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	
+	                            <div style="width:320px; margin:20px auto;">
+	                                <ul style="display:table-cell;">
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/chair.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span
+	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">의자/<br>테이블</span>
+	                                        </div>
+	                                    </li>
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/computer.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span
+	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">PC/<br>노트북</span>
+	                                        </div>
+	                                    </li>
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/no_smoke.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">금연</span>
+	                                        </div>
+	                                    </li>
+	                                    <li style="width:100px; height:50px; float:left;">
+	                                        <div
+	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
+	                                            <span
+	                                                style="background: url(images/icon/parking.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+	                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">주차</span>
+	                                        </div>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	
+	                            <div style="width:320px; margin:20px auto;">
+	                                <div
+	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
+	                                    날짜 선택
+	                                    <span id="selectedDateText" class="purple"
+	                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
+	                                </div>
+	                                <div>
+	                                    <div id="datepicker"></div>
+	                                </div>
+	                                <input type="hidden" id="selectedDate" name="selectedDate">
+	                            </div>
+	                        </div>
+                    	
+                    	</c:forEach>
 
-                        </div>
-                        <div class="space_detail space-a"
-                            style="width:100%; border:1px solid #704de4; box-sizing:border-box; margin-bottom:20px; display:none;">
-                            <div style="position:relative; text-align:center; margin-bottom:20px;">
-                                <img src="images/space_img/sadang.jpg"
-                                    style="width:320px; height:200px; margin:20px auto;">
-                            </div>
-                            <div style="width:320px; margin:20px auto;">
-                                ■ 약 13평 (적정인원 1~10명)■
-                                <br><br><br><br><br>
-                                평일 0~6시 5000원/6~8시 4000원 8~16시 6000원 / 16~24시 7000원
-                                <br>
-                                주말&공휴일0~6시5000원/ 6~12시 6000원 / 12~24시 7000원
-                                <br><br>
-                                ( 새벽 0~6시 통대관) 20000원
-                                <br><br>
-                                에어컨시설비 사용폭등으로 시간및가격조정이 들어갔습니다 (양해부탁드립니다)
-                                <br><br>
-                            </div>
-                            <div style="width:320px; margin:20px auto;">
-                                <ul>
-                                    <li>
-                                        <span>공간 유형</span>
-                                        <span>연습실 보컬연습실</span>
-                                    </li>
-                                    <li>
-                                        <span>예약시간</span>
-                                        <span>1일</span>
-                                    </li>
-                                    <li>
-                                        <span>수용인원</span>
-                                        <span>최소 1명 ~ 최대 5명</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div style="width:320px; margin:20px auto;">
-                                <ul style="display:table-cell;">
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/chair.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span
-                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">의자/<br>테이블</span>
-                                        </div>
-                                    </li>
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/computer.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span
-                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">PC/<br>노트북</span>
-                                        </div>
-                                    </li>
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/no_smoke.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">금연</span>
-                                        </div>
-                                    </li>
-                                    <li style="width:100px; height:50px; float:left;">
-                                        <div
-                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-                                            <span
-                                                style="background: url(images/icon/parking.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">주차</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div style="width:320px; margin:20px auto;">
-                                <div
-                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
-                                    날짜 선택
-                                    <span id="selectedDateText" class="purple"
-                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
-                                </div>
-                                <div>
-                                    <div id="datepicker"></div>
-                                </div>
-                                <input type="hidden" id="selectedDate" name="selectedDate">
-                            </div>
-                        </div>
-
-                        <!-- <div class="space_btn" style="padding:20px 10px; border-top:1px solid #949494;">
-                        <div style="position:relative; display:flex;">
-                            <input type="radio" name="space" id="a-2" style="position:absolute; height:100%;">
-                            <label for="a-2" style="padding-left:25px; display:inline-block; width:170px;">[골드스톤]asdf123123a</label>
-                            <div style="width:135px; display:flex; align-items:center; justify-content:end;">
-                                <strong style="font-size:20px;">\555,000 </strong>
-                                <span style="font-size:11px; margin-left:5px;"> / 시간</span>
-                            </div>
-                        </div>
-                    </div> -->
                         <div>
                             <a href="javascript:payment();"
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">결제하기</a>
+                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a>
                         </div>
                     </div>
 
@@ -641,6 +639,22 @@
         $(window).scrollTop($("#"+id).offset().top - 120)
        
     })
+    
+    
+    // 세부공간 선택 라디오 버튼 클릭 시 이벤트
+    $("[name=space]").on("change", function(){
+    	
+    	
+    	const index = $("[name=space]").index($(this));
+    	
+    	$(".space_detail").css("display", "none");
+    	$(".space_detail").eq(index).css("display", "block");
+    	
+    	
+    	
+    });
+    
+    
 </script>
 </body>
 </html>

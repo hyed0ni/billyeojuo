@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import getonFast.hj.semi.space.model.vo.Space;
@@ -105,6 +107,42 @@ public class SpaceDAO {
 		}
 		
 		return spaceImg;
+	}
+
+	/** 공간룸 조회
+	 * @param spaceNo
+	 * @param conn
+	 * @return spaceRoom
+	 * @throws Exception
+	 */
+	public List<Space> selectSpaceRoom(int spaceNo, Connection conn) throws Exception {
+		List<Space> spaceRoomList = new ArrayList<Space>();
+		
+		try {
+			String sql = prop.getProperty("selectSpaceRoom");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				Space spaceRoom = new Space();
+				spaceRoom.setSpaceRoomNm(rs.getString("SPACE_ROOM_NM"));
+				spaceRoom.setSpaceRoomPrice(rs.getInt("SPACE_ROOM_PRICE"));
+				spaceRoom.setSpaceRoomFit(rs.getString("SPACE_ROOM_FIT"));
+				spaceRoom.setSpaceRoomDesc(rs.getString("SPACE_ROOM_DESC"));
+				
+				spaceRoomList.add(spaceRoom);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceRoomList;	
 	}
 
 }
