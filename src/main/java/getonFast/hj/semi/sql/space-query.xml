@@ -16,4 +16,9 @@
 	<entry key="selectSpaceRoom">
 		SELECT SPACE_ROOM_NM, SPACE_ROOM_PRICE, SPACE_ROOM_FIT, SPACE_ROOM_DESC FROM SPACE_ROOM WHERE SPACE_NO = ?
 	</entry>
+	
+	<!-- 공간유형 조회 -->
+	<entry key="selectSpaceType">
+		SELECT SPACE_TYPE_NM FROM SPACE_TYPE JOIN SPACE USING(SPACE_TYPE_NO) WHERE SPACE_NO = ?
+	</entry>
 </properties>
