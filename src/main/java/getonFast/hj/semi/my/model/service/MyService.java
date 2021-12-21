@@ -42,14 +42,13 @@ public class MyService {
 	 * 전화번호 수정
 	 * 
 	 * @param member
+	 * @param inputPwd
 	 * @return result
 	 * @throws Exception
 	 */
 	public int updatePhone(Member member) throws Exception {
 
 		Connection conn = getConnection();
-
-		System.out.println(member);
 
 		int result = dao.updatePhone(member, conn);
 
@@ -62,6 +61,46 @@ public class MyService {
 
 		return result;
 
+	}
+
+	/**
+	 * 비밀번호 체크확인
+	 * 
+	 * @param member
+	 * @param inputPwd
+	 * @return
+	 * @throws Exception
+	 */
+	public int pwdUpdate(Member member, String inputPwd) throws Exception {
+
+		Connection conn = getConnection();
+
+		int result = dao.pwdUpdate(member, inputPwd, conn);
+
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+
+		close(conn);
+
+		return result;
+
+	}
+
+	public int updateProfile(Member temp, int memberNo) throws Exception{
+		Connection conn = getConnection();
+
+		int result = dao.updateProfile(temp, memberNo, conn);
+
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+
+		close(conn);
+
+		return result;
 	}
 
 }

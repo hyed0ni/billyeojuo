@@ -14,6 +14,9 @@ public class Member {
 	private Date enrollDate; // java.sql.Date
 	private int statusCode;
 	private int gradeCode;
+	private String imgOrg;
+	private String imgPath;
+	private String imgName;
 	
 
 
@@ -30,6 +33,66 @@ public class Member {
 		this.memberSMSChk = memberSMSChk;
 		this.memberEmailChk = memberEmailChk;
 	}
+	
+	
+	
+
+	public Member(int memberNo, String memberName, String memberEmail, String memberPw, String memberPhone,
+			int memberSMSChk, int memberEmailChk, Date enrollDate, int statusCode, int gradeCode, String imgOrg,
+			String imgPath, String imgName) {
+		super();
+		this.memberNo = memberNo;
+		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberPw = memberPw;
+		this.memberPhone = memberPhone;
+		this.memberSMSChk = memberSMSChk;
+		this.memberEmailChk = memberEmailChk;
+		this.enrollDate = enrollDate;
+		this.statusCode = statusCode;
+		this.gradeCode = gradeCode;
+		this.imgOrg = imgOrg;
+		this.imgPath = imgPath;
+		this.imgName = imgName;
+	}
+
+
+
+	public String getImgOrg() {
+		return imgOrg;
+	}
+
+
+
+	public void setImgOrg(String imgOrg) {
+		this.imgOrg = imgOrg;
+	}
+
+
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+
+
+	public String getImgName() {
+		return imgName;
+	}
+
+
+
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+
+
 
 	public String getMemberPhone() {
 		return memberPhone;
@@ -137,8 +200,13 @@ public class Member {
 		return "Member [memberNo=" + memberNo + ", memberName=" + memberName + ", memberEmail=" + memberEmail
 				+ ", memberPw=" + memberPw + ", memberPhone=" + memberPhone + ", memberSMSChk=" + memberSMSChk
 				+ ", memberEmailChk=" + memberEmailChk + ", enrollDate=" + enrollDate + ", statusCode=" + statusCode
-				+ ", gradeCode=" + gradeCode + "]";
+				+ ", gradeCode=" + gradeCode + ", imgOrg=" + imgOrg + ", imgPath=" + imgPath + ", imgName=" + imgName
+				+ "]";
 	}
+
+
+
+
 
 
 
