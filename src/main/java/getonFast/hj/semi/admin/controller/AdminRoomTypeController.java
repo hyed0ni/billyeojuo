@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/adminRegisterRoomtype")
+@WebServlet("/adminSpace/addRoomType")
 public class AdminRoomTypeController extends HttpServlet{
 
 	@Override
@@ -16,7 +16,7 @@ public class AdminRoomTypeController extends HttpServlet{
 		
 		req.setAttribute("css",	"admin_register_roomtype");
 		
-		String path = "/WEB-INF/views/admin/adminRegisterRoomtype.jsp";
+		String path = "/WEB-INF/views/admin/adminSpace/addRoomType.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 	

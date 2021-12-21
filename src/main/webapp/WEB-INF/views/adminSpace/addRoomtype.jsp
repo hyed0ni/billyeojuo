@@ -50,13 +50,7 @@
           </article>
           </article>
           
-          
-
-            <button id="addRoomtype"> + 룸 타입 추가 </button>
-
-
           <article style="margin-top: 40px; margin-bottom: 40px; text-align: center;">
-            <button class="btn" onclick="">뒤로가기</button>
             <button class="btn" onclick="">등록하기</button>
             <button class="btn">취소</button>
           </article>
