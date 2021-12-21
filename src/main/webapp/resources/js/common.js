@@ -16,7 +16,7 @@ $(function () {
     $(".modal").on("click", function () {
         $(".side_menu").removeClass("active");
         $(".modal").hide();
-        $(".layer_popup").hide();
+        $(".layerPop").hide();
     });
 
     // menu close
@@ -38,6 +38,9 @@ $(function () {
         } else {
 			if (url == "home") {
 				location.href = contextPath;
+			} else if (url == "qna") {
+				layerPop();
+				
 			} else {
 				
             alert(url);
@@ -51,3 +54,50 @@ $(function () {
 		alert(url);
     });
 });
+
+
+function layerPop() {
+	const html = `
+		<div class="popup_wrap">
+			<div class="pop_header">질문 작성하기</div>
+			<div class="pop_container reviews">
+				<article class="reserve_price">
+					<div class="box_form">
+						<div class="tit">
+							<label for="reason_cancel">질문</label>
+						</div>
+						<span class="option">
+							<span class="txt_count">
+								<em>0</em>자/<em>200</em>자
+							</span>
+						</span>
+						<div class="input">
+							<textarea maxlength="200" id="reason_cancel" placeholder="질문을 남겨 주세요."></textarea>
+						</div>
+					</div>
+				</article>
+				<p class="p_guide">
+					<i class="sp_icon ico_alert"></i>
+			    	질문은 공개 상태로만 등록하실 수 있습니다.
+				</p>
+				<div class="btns">
+					<a class="btn btn_full btn_negative">취소</a>
+					<a class="btn btn_full btn_default">등록</a>
+				</div>
+			</div>
+			<a title="레이어팝업 닫힘" class="btn_pop_close">
+				<img src="` + contextPath + `/resources/images/common/close_white_18.svg" />
+			</a>
+		</div>
+	`;
+	
+	$(".side_menu").removeClass("active");
+	$(".modal").show();
+	
+	if ($(".layerPop").children().length == 0) {
+		$(".layerPop").html(html);
+		
+	} else {
+		$(".layerPop").show();
+	}
+}
