@@ -1,6 +1,7 @@
 package getonFast.hj.semi.space.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,6 +44,9 @@ public class SpaceController extends HttpServlet {
         	
         	Space spaceImg = service.selectSpaceImg(spaceNo);
         	req.setAttribute("spaceImg", spaceImg);
+        	
+        	List<Space> spaceRoomList = service.selectSpaceRoom(spaceNo);
+        	req.setAttribute("spaceRoomList", spaceRoomList);
             
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);

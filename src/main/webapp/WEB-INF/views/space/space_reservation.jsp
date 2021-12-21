@@ -386,6 +386,28 @@
       });
 
    });
+   
+   // 전체 동의 체크박스 값 변경 시
+   $("#terms_agree").on("change", function(){
+      // 체크된 경우
+      if($(this).prop("checked")){
+         $(".notice_list [type=checkbox]").prop("checked", true);
+
+      }else{ // 해제된 경우
+         $(".notice_list [type=checkbox]").prop("checked", false);
+      }
+   })
+
+   // 서비스 동의 체크박스 값 변경 시
+   $(".notice_list [type=checkbox]").on("change", function(){
+      // 모두 체크된 경우
+      if($(".notice_list [type=checkbox]").length == $(".notice_list [type=checkbox]:checked").length){
+         $("#terms_agree").prop("checked", true);
+      }else{
+         $("#terms_agree").prop("checked", false);
+      }
+
+   });
 </script>
 
 
