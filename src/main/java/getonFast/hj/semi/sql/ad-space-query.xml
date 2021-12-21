@@ -30,7 +30,7 @@
 	</entry>
 	
 	<entry key="insertImage">
-	INSERT INTO SPACE_IMG VALUES(?,?,?,?,?,?)
+	INSERT INTO SPACE_IMG VALUES(SPACE_IMG_SEQ_NO.NEXTVAL,?,?,?,?,?)
 	</entry>
 	
 	<entry key="insertRoomOption">

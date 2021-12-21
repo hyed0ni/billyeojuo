@@ -25,7 +25,6 @@ public class SpaceController extends HttpServlet {
       String contextPath = req.getContextPath();
       
       String command = uri.substring((contextPath + "/space/").length());
-      // -> 요청 주소에서 /semi/board/의 길이만큼 잘라낸 후 나머지 문자열을 command 변수에 저장
       
       String path = null;
       RequestDispatcher dispatcher = null;

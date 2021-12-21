@@ -215,12 +215,12 @@ public class AdSpaceDAO {
 			String sql = prop.getProperty("insertImage");
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, img.getImgNo());
-			pstmt.setString(2, img.getImgPath());
-			pstmt.setString(3, img.getImgName());
-			pstmt.setString(4, img.getImgOriginal());
-			pstmt.setInt(5, img.getImgLevel());
-			pstmt.setInt(6, img.getSpaceNo());
+			
+			pstmt.setString(1, img.getImgPath());
+			pstmt.setString(2, img.getImgName());
+			pstmt.setString(3, img.getImgOriginal());
+			pstmt.setInt(4, img.getImgLevel());
+			pstmt.setInt(5, img.getSpaceNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -245,7 +245,7 @@ public class AdSpaceDAO {
 			
 			
 		}finally {
-			close(conn);
+			close(pstmt);
 			
 		}
 		
