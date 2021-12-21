@@ -2,19 +2,19 @@ package getonFast.hj.semi.admin.model.vo;
 
 public class AdSpaceRoomOption {
 	
-	private int spaceNo;
+	private int roomNo;
 	private int OptionNo;
 
 	public AdSpaceRoomOption() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getSpaceNo() {
-		return spaceNo;
+	public int getRoomNo() {
+		return roomNo;
 	}
 
-	public void setSpaceNo(int spaceNo) {
-		this.spaceNo = spaceNo;
+	public void setRoomNo(int spaceNo) {
+		this.roomNo = spaceNo;
 	}
 
 	public int getOptionNo() {
@@ -27,7 +27,7 @@ public class AdSpaceRoomOption {
 
 	@Override
 	public String toString() {
-		return "AdSpaceRoomOption [spaceNo=" + spaceNo + ", OptionNo=" + OptionNo + "]";
+		return "AdSpaceRoomOption [RoomNo=" + roomNo + ", OptionNo=" + OptionNo + "]";
 	}
 
 	

@@ -15,7 +15,10 @@
 	</entry>
 	
 	<entry key="nextSpaceNo">
-	SPACE_SEQ_NO.NEXTVAL FROM DUAL
+	SELECT SPACE_SEQ_NO.NEXTVAL FROM DUAL
+	</entry>
+	<entry key="nextRoomNo">
+	SELECT SPACE_ROOM_SEQ_NO.NEXTVAL FROM DUAL
 	</entry>
 	
 	<entry key="insertSpace">

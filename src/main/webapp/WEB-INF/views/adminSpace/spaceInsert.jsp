@@ -14,7 +14,7 @@
   <main>
     <div class="contents">
       <section class="right">
-        <form action="spaceInsert" method="post"  enctype="multipart/form-data" role="form" onsubmit="return spaceValidate();">
+        <form action="insert" method="post"  enctype="multipart/form-data" role="form" onsubmit="return spaceValidate();">
           <h2 style="text-align: center;">공간등록</h2>
 
           <div class="spaceWrap">
@@ -103,14 +103,14 @@
               <div>
                 <label for="spaceBasic">공간소개</label>
               </div>
-              <textarea class="infoForm" id="spaceBasic" name="spaceBasic"></textarea>
+              <textarea class="infoForm" id="spaceIntro" name="spaceIntro"></textarea>
             </div>
 
             <div class="spaceWrap02">
               <div>
                 <label for="spaceFacility">시설안내</label>
               </div>
-              <textarea class="infoForm" id="spaceFacility" name="spaceFacility"></textarea>
+              <textarea class="infoForm" id="spaceGuide" name="spaceGuide"></textarea>
             </div>
 
             <div class="spaceWrap02">

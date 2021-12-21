@@ -114,6 +114,26 @@ public class AdSpaceDAO {
 	}
 
 
+	public int nextRoomNo(Connection conn) throws Exception{
+		int roomNo =0;
+		try {
+			String sql = prop.getProperty("nextRoomNo");
+			pstmt = conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				roomNo = rs.getInt(1);
+			}
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		return roomNo;
+	}
+
 	/** 공간 등록 
 	 * @param space
 	 * @param imgList 
@@ -170,7 +190,7 @@ public class AdSpaceDAO {
 			pstmt.setInt(3, roomType.getRoomPrice());
 			pstmt.setString(4, roomType.getRoomFit());
 			pstmt.setString(5, roomType.getRoomDesc());
-			pstmt.setInt(5, roomType.getSpaceNo());
+			pstmt.setInt(6, roomType.getSpaceNo());
 			
 			result= pstmt.executeUpdate();
 			
@@ -218,14 +238,21 @@ public class AdSpaceDAO {
 			String sql = prop.getProperty("insertRoomOption");
 			pstmt = conn.prepareStatement(sql);
 			
+			pstmt.setInt(1, spaceRoomOption.getRoomNo());
+			pstmt.setInt(2, spaceRoomOption.getOptionNo());
+			
+			result = pstmt.executeUpdate();
+			
 			
 		}finally {
-			
+			close(conn);
 			
 		}
 		
 		return result;
 	}
+
+
 
 
 }

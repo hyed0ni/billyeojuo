@@ -68,8 +68,11 @@ public class AdSpaceService {
 		
 		// 다음 차례 게시글 번호 얻어오기 
 		int spaceNo = dao.nextSpaceNo(conn);
-		
 		space.setSpaceNo(spaceNo);
+		
+		//다음차례 룸 넘버 얻어오기 
+		int roomNo = dao.nextRoomNo(conn);
+		roomType.setRoomNo(roomNo);
 		
 		//공간 소개 등 개행문자 <br> 
 		String intro = space.getSpaceIntro().replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
@@ -104,7 +107,7 @@ public class AdSpaceService {
 		if(result > 0) {
 			
 			for(AdSpaceRoomOption spaceRoomOption : optionList) {
-				spaceRoomOption.setSpaceNo(spaceNo); // 공간 번호 세팅
+				spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
 				result = dao.insertspaceRoomOption(spaceRoomOption,conn);
 				if(result == 0) {
 					rollback(conn);
@@ -134,6 +137,8 @@ public class AdSpaceService {
 			}else rollback(conn);
 			
 		}else rollback(conn);
+		
+		close(conn);
 		
 		return result;
 	}

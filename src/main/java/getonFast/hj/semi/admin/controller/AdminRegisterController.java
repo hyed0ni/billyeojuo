@@ -192,8 +192,8 @@ public class AdminRegisterController extends HttpServlet {
 						// 게시글 화면으로 redirect
 						path = "insert";
 					}
-//					session.setAttribute("message", message);
-//					resp.sendRedirect(path);
+					session.setAttribute("message", message);
+					resp.sendRedirect(path);
 				}
 			} else if (command.equals("list")) {
 
