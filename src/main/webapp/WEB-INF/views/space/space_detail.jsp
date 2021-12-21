@@ -385,7 +385,7 @@
 	                                	<!-- 공간유형 이름 -->
 	                                    <li style="border-bottom: 1px solid #ebebeb; padding: 10px;">
 	                                        <span class="room-info">공간유형</span>
-	                                        <span>파티룸</span>
+	                                        <span>${spaceType.spaceTypeNm}</span>
 	                                    </li>
 	                                    
 	                                    <!-- 공간룸 수용인원 -->

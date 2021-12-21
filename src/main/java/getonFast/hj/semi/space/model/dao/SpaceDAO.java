@@ -145,4 +145,35 @@ public class SpaceDAO {
 		return spaceRoomList;	
 	}
 
+	/** 공간유형 조회
+	 * @param spaceNo
+	 * @param conn
+	 * @return spaceType
+	 * @throws Exception
+	 */
+	public Space selectSpaceType(int spaceNo, Connection conn) throws Exception {
+		Space spaceType = null;
+		
+		try {
+			String sql = prop.getProperty("selectSpaceType");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				spaceType = new Space();
+				spaceType.setSpaceTypeNm(rs.getString("SPACE_TYPE_NM"));
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceType;
+	}
+
 }
