@@ -178,6 +178,8 @@ public class AdminRegisterController extends HttpServlet {
 							imgList.add(temp);
 						}
 
+						
+						
 					}
 					// board, imgList DB에 저장 (Service 호출)
 					int result = service.insertSpace(space, roomType, imgList, optionList);
