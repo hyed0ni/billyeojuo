@@ -67,7 +67,7 @@ public class MemberService {
 
 				Member loginMember = dao.login(memberEmail, memberPw, conn);
 				
-				System.out.println(loginMember);
+				
 
 				// 3) 사용한 Connection 반환하기
 				close(conn); // == conn.close();
@@ -78,6 +78,7 @@ public class MemberService {
 		
 	}
 
+	
 
 
 }

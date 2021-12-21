@@ -128,8 +128,7 @@ public class MemberDAO {
 					pstmt.setString(1, memberEmail);
 					pstmt.setString(2, memberPw);
 					
-					System.out.println(memberEmail);
-					System.out.println(memberPw);
+					
 					
 					rs = pstmt.executeQuery();
 
