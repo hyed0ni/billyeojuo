@@ -23,6 +23,12 @@ public class Space {
 	private String spaceImgOrg;
 	private int spaceImgLevel;
 	
+	private int spaceRoomNo;
+	private String spaceRoomNm;
+	private int spaceRoomPrice;
+	private String spaceRoomFit;
+	private String spaceRoomDesc;
+	
 	public Space() {}
 
 	public int getSpaceNo() {
@@ -184,6 +190,46 @@ public class Space {
 	public void setSpaceImgLevel(int spaceImgLevel) {
 		this.spaceImgLevel = spaceImgLevel;
 	}
+	
+	public int getSpaceRoomNo() {
+		return spaceRoomNo;
+	}
+
+	public void setSpaceRoomNo(int spaceRoomNo) {
+		this.spaceRoomNo = spaceRoomNo;
+	}
+
+	public String getSpaceRoomNm() {
+		return spaceRoomNm;
+	}
+
+	public void setSpaceRoomNm(String spaceRoomNm) {
+		this.spaceRoomNm = spaceRoomNm;
+	}
+
+	public int getSpaceRoomPrice() {
+		return spaceRoomPrice;
+	}
+
+	public void setSpaceRoomPrice(int spaceRoomPrice) {
+		this.spaceRoomPrice = spaceRoomPrice;
+	}
+
+	public String getSpaceRoomFit() {
+		return spaceRoomFit;
+	}
+
+	public void setSpaceRoomFit(String spaceRoomFit) {
+		this.spaceRoomFit = spaceRoomFit;
+	}
+
+	public String getSpaceRoomDesc() {
+		return spaceRoomDesc;
+	}
+
+	public void setSpaceRoomDesc(String spaceRoomDesc) {
+		this.spaceRoomDesc = spaceRoomDesc;
+	}
 
 	@Override
 	public String toString() {
@@ -193,7 +239,9 @@ public class Space {
 				+ ", spaceClosedDt=" + spaceClosedDt + ", spaceMapImg=" + spaceMapImg + ", spaceMapPath=" + spaceMapPath
 				+ ", spaceReco=" + spaceReco + ", spaceTypeNo=" + spaceTypeNo + ", spaceImgNo=" + spaceImgNo
 				+ ", spaceImgPath=" + spaceImgPath + ", spaceImgNm=" + spaceImgNm + ", spaceImgOrg=" + spaceImgOrg
-				+ ", spaceImgLevel=" + spaceImgLevel + "]";
+				+ ", spaceImgLevel=" + spaceImgLevel + ", spaceRoomNo=" + spaceRoomNo + ", spaceRoomNm=" + spaceRoomNm
+				+ ", spaceRoomPrice=" + spaceRoomPrice + ", spaceRoomFit=" + spaceRoomFit + ", spaceRoomDesc="
+				+ spaceRoomDesc + "]";
 	}
 	
 }
