@@ -158,7 +158,7 @@ public class Space {
 	public void setSpaceTypeNo(int spaceTypeNo) {
 		this.spaceTypeNo = spaceTypeNo;
 	}
-	
+
 	public int getSpaceImgNo() {
 		return spaceImgNo;
 	}
@@ -198,7 +198,7 @@ public class Space {
 	public void setSpaceImgLevel(int spaceImgLevel) {
 		this.spaceImgLevel = spaceImgLevel;
 	}
-	
+
 	public int getSpaceRoomNo() {
 		return spaceRoomNo;
 	}
@@ -238,7 +238,7 @@ public class Space {
 	public void setSpaceRoomDesc(String spaceRoomDesc) {
 		this.spaceRoomDesc = spaceRoomDesc;
 	}
-	
+
 	public String getSpaceTypeNm() {
 		return spaceTypeNm;
 	}
