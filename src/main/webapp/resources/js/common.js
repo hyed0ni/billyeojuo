@@ -16,7 +16,8 @@ $(function () {
     $(".modal").on("click", function () {
         $(".side_menu").removeClass("active");
         $(".modal").hide();
-        $(".layerPop").hide();
+		$(".layerPop").html("").hide();
+
     });
 
     // menu close
@@ -53,10 +54,10 @@ $(function () {
         const url = $(this).data("url");
 		alert(url);
     });
-
 	
 });
 
+// 문의 팝업
 function layerPop(layerValue) {
 	const html = `
 		<div class="popup_wrap">
@@ -93,28 +94,23 @@ function layerPop(layerValue) {
 		</div>
 	`;
 	
-	$(".side_menu").removeClass("active");
-	$(".modal").show();
-	
 	if ($(".layerPop").children().length == 0) {
 		$(".layerPop").html(html);
-		
-	} else {
-		$(".layerPop").show();
 	}
+	
+	$(".side_menu").removeClass("active");
+	$(".modal").show();
+	$(".layerPop").show();
 }
 
-$(".btn_pop_close").on("click", function  () {
-	
-});
-
-$(document).on("click", ".btn_pop_close, .btn.cancel", function(){
-	$(".modal").hide();
-    $(".layerPop").hide();
-});
-
+// 문의 등록
 $(document).on("click", ".btn.submit", function(){
-	console.log(contextPath + "/my/qna/insert");
+	if ($("#queContent").val().trim().length == 0) {
+		alert("문의내용을 입력해 주세요");
+		$("#queContent").focus();
+		return false;	
+	}
+	
 	$.ajax({
 		url : contextPath + "/my/qna/insert",
 		method : "post",
@@ -123,13 +119,29 @@ $(document).on("click", ".btn.submit", function(){
 			queContent : $("#queContent").val()
 		},
 		success : function (result) {
-			alert("등록되었습니다. : " + result);
+			if (result > 0) {
+				alert("등록되었습니다.");
+				layerPopClose();
+			} else {
+				alert("문의 실패 하였습니다.");
+			}
+				
 		},
 		error : function (req, status, error) {
-			console.log("등록 실패");
+			console.log("문의 등록 실패");
 			console.log(req.responseText);
 		}
 		
 	});
 });
 
+// 팝업 취소
+$(document).on("click", ".btn_pop_close, .btn.cancel", function(){
+	layerPopClose();
+});
+
+// 문의 layerPop 닫기
+function layerPopClose() {
+	$(".modal").hide();
+    $(".layerPop").html("").hide();
+}

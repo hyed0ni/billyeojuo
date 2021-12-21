@@ -91,6 +91,8 @@ public class QnaDAO {
 			
 			int inqType = (qna.getSpaceNo() > 0) ? 62 : 61;
 			String queTitle = (qna.getSpaceNo() > 0) ? "장소문의" : "1:1문의";
+			
+			
 					
 			
 			pstmt = conn.prepareStatement(sql);
@@ -98,7 +100,12 @@ public class QnaDAO {
 			pstmt.setString(2, queTitle);
 			pstmt.setString(3, qna.getQueContent());
 			pstmt.setInt(4, qna.getMemberNo());
-			pstmt.setInt(5, qna.getSpaceNo());
+			
+			if (qna.getSpaceNo() > 0) {
+				pstmt.setInt(5, qna.getSpaceNo());
+			} else {
+				pstmt.setObject(5, null);
+			}
 			
 			result = pstmt.executeUpdate();
 			

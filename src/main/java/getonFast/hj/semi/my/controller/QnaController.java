@@ -59,9 +59,9 @@ public class QnaController extends HttpServlet {
 				qna.setQueContent(queContent);
 				
 				int result = service.qnaInsert(qna);
+				System.out.println("result : " + result);
 				
-				
-				
+				resp.getWriter().print(result);
 				
 			}
 			

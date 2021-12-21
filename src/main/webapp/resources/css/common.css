@@ -151,6 +151,8 @@ header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}
     color: #949494;
 }
 
+.layerPop{display:none;}
+
 /* 문의 팝업 */
 .popup_wrap{width:470px; position:absolute; display:inline-block; vertical-align:middle; box-sizing:border-box; top:300px; left:50%; top:50%; transform:translate(-50%, -50%); z-index: 5050;}
 .popup_wrap > .pop_header{text-align:left; font-size:18px; padding:20px 25px; border-radius:12px 12px 0 0; background:#704de4; color:#fff; font:inherit;}
