@@ -7,4 +7,8 @@
 		WHERE MEMBER_NO = ?
 	</entry>
 	
+	<entry key="qnaInsert">
+		INSERT INTO QUESTION VALUES (QUESTION_SEQ_NO.NEXTVAL, ?, ?, ?, DEFAULT, DEFAULT, ?, ?)
+	</entry>
+	
 </properties>

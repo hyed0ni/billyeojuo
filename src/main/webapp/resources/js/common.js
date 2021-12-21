@@ -108,37 +108,28 @@ $(".btn_pop_close").on("click", function  () {
 	
 });
 
-$("#sub").on("click", function () {
+$(document).on("click", ".btn_pop_close, .btn.cancel", function(){
 	$(".modal").hide();
     $(".layerPop").hide();
 });
 
-$(function () {
-	$("11").on("click", function () {
-		alert("TEST");
-		console.log($(".spaceNo").val());
-		console.log($("#queContent").val());
-		/*$.ajax({
-			url:context + "/my/qna/insert",
-			data:{
-				spaceNo : $(".spaceNo").val(),
-				queContent : $("#queContent").val()
-			},
-			success : function (result) {
-				alert("등록되었습니다. : " + result);
-			}
-			
-		});
-		*/
+$(document).on("click", ".btn.submit", function(){
+	console.log(contextPath + "/my/qna/insert");
+	$.ajax({
+		url : contextPath + "/my/qna/insert",
+		method : "post",
+		data : {
+			spaceNo : $("input[name='spaceNo']").val(),
+			queContent : $("#queContent").val()
+		},
+		success : function (result) {
+			alert("등록되었습니다. : " + result);
+		},
+		error : function (req, status, error) {
+			console.log("등록 실패");
+			console.log(req.responseText);
+		}
+		
 	});
-	
-	function test() {
-		alert("TEST");
-		console.log($(".spaceNo").val());
-		console.log($("#queContent").val());
-	}
-})
-
-
-
+});
 

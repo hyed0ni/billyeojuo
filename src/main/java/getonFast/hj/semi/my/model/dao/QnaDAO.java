@@ -76,4 +76,38 @@ public class QnaDAO {
 		return qnaList;
 	}
 
+	/**
+	 * 문의 등록
+	 * @param qna
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int qnaInsert(Qna qna, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("qnaInsert");
+			
+			int inqType = (qna.getSpaceNo() > 0) ? 62 : 61;
+			String queTitle = (qna.getSpaceNo() > 0) ? "장소문의" : "1:1문의";
+					
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inqType);
+			pstmt.setString(2, queTitle);
+			pstmt.setString(3, qna.getQueContent());
+			pstmt.setInt(4, qna.getMemberNo());
+			pstmt.setInt(5, qna.getSpaceNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
+	}
+
 }
