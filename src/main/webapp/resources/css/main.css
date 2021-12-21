@@ -160,7 +160,7 @@ body{background-color:#fff;}
 .recommend-item{
   width: 365px;
   height: 325px;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
@@ -176,10 +176,10 @@ body{background-color:#fff;}
   height: 66%;
   background-size: 100%;
 }
-
+/* 
 .img-box:nth-child(1){
   background-image: url("../images/main_body/recommend_img_01.jpeg");
-}
+} */
 
 
 .recommend-item >a:hover{
@@ -190,7 +190,7 @@ body{background-color:#fff;}
 /* 내용부분  */
 .info-box{
   width: 100%;
-  height: 34%;
+  height: 38%;
   border-bottom: 1px  solid lightgray;
   padding-top: 10px;
   background-color: white;
@@ -204,7 +204,7 @@ body{background-color:#fff;}
 
 .info-box>h3{
   color: rgb(35, 35, 35);
-  margin-top: 0px;
+  margin-top: 10px;
   font-size: 20px
 }
 
@@ -217,15 +217,9 @@ body{background-color:#fff;}
 
 }
 
-.tag{
-  margin-left: 15px;
-  font-size: 0.8em;
-  color: rgb(99, 99, 99);
-  margin-left: 2px;
-}
 
 .price-box{
-  margin-top: 7px;
+  margin-top: 15px;
   font-size: 13px;
 }
 
@@ -236,7 +230,7 @@ body{background-color:#fff;}
 
 .like-comment{
   float: right;
-  width: 36%;
+
   font-size: 12px;
   margin-top: 8px;
   line-height: 5px;

@@ -47,7 +47,7 @@ public class SpaceController extends HttpServlet {
         	
         	List<Space> spaceRoomList = service.selectSpaceRoom(spaceNo);
         	req.setAttribute("spaceRoomList", spaceRoomList);
-            
+        	
         	Space spaceType = service.selectSpaceType(spaceNo);
         	req.setAttribute("spaceType", spaceType);
         	
