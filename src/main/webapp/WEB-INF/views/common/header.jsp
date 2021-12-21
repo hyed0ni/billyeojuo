@@ -29,32 +29,35 @@
 <div class="side_menu">
     <div class="bg_yellow login_area">
         <div class="close_menu"><img src="${contextPath}/resources/images/header/right_arrow.svg"></div>
-        <a href="${contextPath}/member/login">
-            <div class="profile_area">
-				<c:choose>
-					<c:when test="${empty sessionScope.loginMember}">
+        
+		<c:choose>
+			<c:when test="${empty sessionScope.loginMember}">
+				<a href="${contextPath}/member/login">
+					<div class="profile_area">
 						<div class="profile_img">
 						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
 						</div>
 						<div class="profile_txt">
 						    <strong>로그인/회원가입</strong>
 						</div>
-					</c:when>
-					<c:otherwise>
+					</div>
+		        </a>
+			</c:when>
+			<c:otherwise>
+				<a href="${contextPath}/my">
+					<div class="profile_area">
 						<div class="profile_img">
 						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
 						</div>
 						<div class="profile_txt login">
 						    <div class="nickname"><strong>${sessionScope.loginMember.memberName}</strong></div>
 						    <div class="amend"><strong>프로필 관리</strong></div>
-						    
 						</div>
-					</c:otherwise>
-				</c:choose>
-
-            </div>
-        </a>
-    </div>
+					</div>
+       			</a>
+			</c:otherwise>
+		</c:choose>
+   	</div>
 
     <div class="used_area">
         <div>
@@ -164,7 +167,7 @@
 .popup_wrap > .pop_container > .p_guide{display:block; margin-left:0; font-size:14px; line-height:18px; padding-left:23px; color:#ff3a48; position:relative; margin:20px 1px 0;}
 
 .popup_wrap > .pop_container > .btns{margin-top:49px; vertical-align:middle; font:inherit;}
-.popup_wrap > .pop_container > .btns > .btn{border-radius:6px; height:56px; line-height:56px; font-size:20px; width:49%; text-align:center; color:#fff;}
+.popup_wrap > .pop_container > .btns > .btn{border-radius:6px; height:56px; line-height:56px; font-size:20px; width:49%; text-align:center; color:#fff; cursor:pointer;}
 .popup_wrap > .pop_container > .btns > .btn:first-child{float:left;}
 .popup_wrap > .pop_container > .btns > .btn:last-child{float:right;}
 
@@ -176,7 +179,7 @@
 .btn_negative{background:#4d4d4d;}
 .btn_default{background:#704de4;}
 </style>
-<div class="popup_wrap">
+<div class="popup_wrap" style="display:none;">
 	<div class="pop_header">질문 작성하기</div>
 	<div class="pop_container reviews">
 		<article class="reserve_price">
