@@ -39,7 +39,7 @@ $(function () {
 			if (url == "home") {
 				location.href = contextPath;
 			} else if (url == "qna") {
-				layerPop();
+				layerPop(0);
 				
 			} else {
 				
@@ -53,10 +53,11 @@ $(function () {
         const url = $(this).data("url");
 		alert(url);
     });
+
+	
 });
 
-
-function layerPop() {
+function layerPop(layerValue) {
 	const html = `
 		<div class="popup_wrap">
 			<div class="pop_header">질문 작성하기</div>
@@ -72,7 +73,8 @@ function layerPop() {
 							</span>
 						</span>
 						<div class="input">
-							<textarea maxlength="200" id="reason_cancel" placeholder="질문을 남겨 주세요."></textarea>
+							<input type="hidden" name="spaceNo" value="${layerValue}">
+							<textarea maxlength="200" id="queContent" placeholder="질문을 남겨 주세요."></textarea>
 						</div>
 					</div>
 				</article>
@@ -81,8 +83,8 @@ function layerPop() {
 			    	질문은 공개 상태로만 등록하실 수 있습니다.
 				</p>
 				<div class="btns">
-					<a class="btn btn_full btn_negative">취소</a>
-					<a class="btn btn_full btn_default">등록</a>
+					<a class="btn btn_full cancel btn_negative">취소</a>
+					<a class="btn btn_full submit btn_default" id="sub">등록</a>
 				</div>
 			</div>
 			<a title="레이어팝업 닫힘" class="btn_pop_close">
@@ -101,3 +103,42 @@ function layerPop() {
 		$(".layerPop").show();
 	}
 }
+
+$(".btn_pop_close").on("click", function  () {
+	
+});
+
+$("#sub").on("click", function () {
+	$(".modal").hide();
+    $(".layerPop").hide();
+});
+
+$(function () {
+	$("11").on("click", function () {
+		alert("TEST");
+		console.log($(".spaceNo").val());
+		console.log($("#queContent").val());
+		/*$.ajax({
+			url:context + "/my/qna/insert",
+			data:{
+				spaceNo : $(".spaceNo").val(),
+				queContent : $("#queContent").val()
+			},
+			success : function (result) {
+				alert("등록되었습니다. : " + result);
+			}
+			
+		});
+		*/
+	});
+	
+	function test() {
+		alert("TEST");
+		console.log($(".spaceNo").val());
+		console.log($("#queContent").val());
+	}
+})
+
+
+
+

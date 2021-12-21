@@ -48,16 +48,7 @@ public class QnaController extends HttpServlet {
 				path = "/WEB-INF/views/qna/qnaList.jsp";
 				req.getRequestDispatcher(path).forward(req, resp);
 			} else if (command.equals("input")) {
-				if (method.equals("GET")) {
-					
-					req.setAttribute("css", "qna");
-					
-					path = "/WEB-INF/views/qna/qna_insert.jsp";
-					dispatcher = req.getRequestDispatcher(path);
-					dispatcher.forward(req, resp);
-				} else {
-					
-				}
+				
 				
 			}
 			
