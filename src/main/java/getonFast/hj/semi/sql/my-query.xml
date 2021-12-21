@@ -10,5 +10,12 @@
 		WHERE
 		MEMBER_NO=?
 	</entry>
+	
+	<entry key="updatePhone">
+		UPDATE MEMBER SET
+		MEMBER_PNO= ? 
+		WHERE
+		MEMBER_NO=?
+	</entry>
 
 </properties>

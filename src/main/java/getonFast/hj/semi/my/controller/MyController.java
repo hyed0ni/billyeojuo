@@ -12,70 +12,90 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import getonFast.hj.semi.member.controller.loginServlet;
 import getonFast.hj.semi.member.service.MemberService;
 import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.MyService;
 
-
-
 @WebServlet("/my")
 public class MyController extends HttpServlet {
-	
+
 	loginServlet loginServelt = new loginServlet();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("css",	"my");
-		
+		req.setAttribute("css", "my");
+
 		String path = "/WEB-INF/views/my/my.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		System.out.println(req.getParameter("inputName"));
-				
+
 		String inputName = req.getParameter("inputName");
-		
-		
+
+		String inputPhone = req.getParameter("inputPhone");
+
 		Member member = new Member();
-		
+
 		member.setMemberName(inputName);
 		
+		
+		member.setMemberPhone(inputPhone);
+		
+		
+
 		HttpSession session = req.getSession();
+
+		Member loginMember = (Member) session.getAttribute("loginMember");
+
 		
-		Member loginMember =  (Member)session.getAttribute("loginMember");
+		member.setMemberNo(loginMember.getMemberNo());
+
 		
-		member.setMemberNo(  loginMember.getMemberNo() );
-		
-		System.out.println(loginMember.getMemberNo());
-		
+
 		try {
-			
+
 			MyService service = new MyService();
 
-			int result = service.updateNickName(member);
-			
-
-			if(result > 0) { 
-				session.setAttribute("message", "회원 닉네임이 수정 되었습니다.");
-
+			if (inputName != null) {
 				
-				loginMember.setMemberName(inputName);
-								
 
-			}else { // 실패
-				session.setAttribute("message", "회원 정보 수정 실패");
+				int result = service.updateNickName(member);
+
+				if (result > 0) {
+					session.setAttribute("message", "회원 닉네임이 수정 되었습니다.");
+
+					loginMember.setMemberName(inputName);
+
+				} else { 
+					session.setAttribute("message", "회원 정보 수정 실패");
+				}
+			}else if(inputPhone != null) {
+				
+				
+				
+				int result = service.updatePhone(member);
+				
+				
+				
+				if (result > 0) {
+					session.setAttribute("message", "회원 전화번호가 수정 되었습니다.");
+
+					loginMember.setMemberPhone(inputPhone);
+
+				} else { 
+					session.setAttribute("message", "회원 정보 수정 실패");
+				}
+				
+				
 			}
-
 
 			// 내 정보 페이지 재요청
 			resp.sendRedirect("my");
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 
 			req.setAttribute("errorMessage", "회원 정보 수정 과정에서 오류 발생");
@@ -83,15 +103,7 @@ public class MyController extends HttpServlet {
 
 			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
 		}
-			
-			
-		
-		
-		
-		
-		
-		
+
 	}
-	
-	
+
 }
