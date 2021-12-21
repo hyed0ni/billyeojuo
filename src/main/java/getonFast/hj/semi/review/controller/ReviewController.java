@@ -19,20 +19,23 @@ public class ReviewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-//		String method = req.getMethod();
+		String method = req.getMethod();
 		String uri = req.getRequestURI();
 		String contextPath = req.getContextPath();
-		String command = uri.substring( (contextPath+"/my/review/").length() );
 		
-//		String path = null;
-//		RequestDispatcher dispatcher = null;
-//		String message = null;
+		int contextLength = (contextPath+"/my/review/").length();
+		int checkLength = ((uri.length() - contextLength) <= 0) ? uri.length() : contextLength;  
+		String command = uri.substring( checkLength );
+		
+		String path = null;
+		RequestDispatcher dispatcher = null;
+		String message = null;
 		
 		
 		try {
 			ReviewService service = new ReviewService();
 			
-			if (command.equals("list")) {
+			if (command.equals("list") || command.equals("")) {
 				int memberNo = 1;
 				
 				List<Review> reviewList = service.reviewList(memberNo);
@@ -41,7 +44,7 @@ public class ReviewController extends HttpServlet {
 				
 				req.setAttribute("css", "review");
 				
-				String path = "/WEB-INF/views/review/review.jsp";
+				path = "/WEB-INF/views/review/review.jsp";
 				req.getRequestDispatcher(path).forward(req, resp);
 			}
 			
