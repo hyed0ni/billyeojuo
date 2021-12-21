@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--공간 타입 조회 -->
+	<entry key="selectSpaceType">
+	SELECT SPACE_TYPE_NO, SPACE_TYPE_NM, SPACE_TYPE_ST
+	FROM SPACE_TYPE
+	WHERE SPACE_TYPE_ST = 1
+	</entry>
+	
+	<!--공간 옵션 조회 -->
+	<entry key="selectSpaceOption">
+	SELECT OPTION_NO, OPTION_NM
+	FROM SPACE_OPTION
+	</entry>
+	
+	<entry key="nextSpaceNo">
+	SELECT SPACE_SEQ_NO.NEXTVAL FROM DUAL
+	</entry>
+	<entry key="nextRoomNo">
+	SELECT SPACE_ROOM_SEQ_NO.NEXTVAL FROM DUAL
+	</entry>
+	
+	<entry key="insertSpace">
+	INSERT INTO SPACE VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT,?,DEFAULT)
+	</entry>
+	
+	<entry key="insertRoopType">
+	INSERT INTO SPACE_ROOM VALUES(?,?,?,?,?,?)
+	</entry>
+	
+	<entry key="insertImage">
+	INSERT INTO SPACE_IMG VALUES(SPACE_IMG_SEQ_NO.NEXTVAL,?,?,?,?,?)
+	</entry>
+	
+	<entry key="insertRoomOption">
+	INSERT INTO SPACE_ROOM_OPTION VALUES(?,?)
+	</entry>
+</properties>
