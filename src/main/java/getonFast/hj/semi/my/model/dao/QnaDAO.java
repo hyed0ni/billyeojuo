@@ -60,7 +60,7 @@ public class QnaDAO {
 				qna.setInqType(rs.getInt("INQ_TYPE"));
 				qna.setQueTitle(rs.getString("QUE_TITLE"));
 				qna.setQueContent(rs.getString("QUE_CONTENT"));
-				qna.setQueDt(rs.getDate("QUE_DT"));
+				qna.setQueDt(rs.getString("QUE_DT"));
 				qna.setQueSt(rs.getInt("QUE_ST"));
 				qna.setMemberNo(rs.getInt("MEMBER_NO"));
 				qna.setSpaceNo(rs.getInt("SPACE_NO"));
@@ -74,6 +74,47 @@ public class QnaDAO {
 		}
 		
 		return qnaList;
+	}
+
+	/**
+	 * 문의 등록
+	 * @param qna
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int qnaInsert(Qna qna, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("qnaInsert");
+			
+			int inqType = (qna.getSpaceNo() > 0) ? 62 : 61;
+			String queTitle = (qna.getSpaceNo() > 0) ? "장소문의" : "1:1문의";
+			
+			
+					
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inqType);
+			pstmt.setString(2, queTitle);
+			pstmt.setString(3, qna.getQueContent());
+			pstmt.setInt(4, qna.getMemberNo());
+			
+			if (qna.getSpaceNo() > 0) {
+				pstmt.setInt(5, qna.getSpaceNo());
+			} else {
+				pstmt.setObject(5, null);
+			}
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+			
+		}
+		
+		return result;
 	}
 
 }

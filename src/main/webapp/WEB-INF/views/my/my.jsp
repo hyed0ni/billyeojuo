@@ -18,7 +18,7 @@
                     <div>
                         <img src="${contextPath}/resources/images/header/defaultUser.jpg">
                     </div>
-                    <div class="contents_nickname">닉네임</div>
+                    <div class="contents_nickname">${sessionScope.loginMember.memberName}</div>
                 </div>
             </div>
             
@@ -27,14 +27,14 @@
                     <div>
                         <img src="${contextPath}/resources/images/header/defaultUser.jpg">
                     </div>
-                    <div class="profile_nickname">닉네임</div>
+                    <div class="profile_nickname">${sessionScope.loginMember.memberName}</div>
                     <div>
                     	<input type="button" class="input profile_change" value="프로필 사진 변경">
                     </div>
                 </div>
 
                 <div class="detail_area">
-                    <form>
+                    
                         <table class="detail_table">
                             <!-- <tr>
                                 <th style="width:120px; text-align:left; vertical-align:top; padding:20px 0;">닉네임</th>
@@ -46,28 +46,52 @@
                             <tr>
                                 <th class="table_th">닉네임</th>
                                 <td class="table_td">
-                                    <div>nickname juo<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;">변경하기</a></div>
+                                
+                                    <div class="change_nickname_wrap">${sessionScope.loginMember.memberName}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_nickname">변경하기</a></div>
+                                    
+                                    <div class="change_nickname_wrap_2" style="display: none;">
+                                        <form action="${contextPath}/my" method="post" type="submit">
+                                            <input type="text" class="nickname" name="inputName">
+                                                <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_confirm">확인</button>
+                                                
+                                                <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_cancle">취소하기</a>
+                                            </form>
+                                            </div>
                                     
                                 </td>
                             </tr>
                             <tr>
                                 <th class="table_th">이메일</th>
                                 <td class="table_td">
-                                    <div>stage107@naver.com</div>
+                                    <div>${sessionScope.loginMember.memberEmail}</div>
                                     <a href="#" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4">인증하기</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="table_th">연락처</th>
                                 <td class="table_td">
-                                    <div>010-1234-1234<a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;">변경하기</a></div>
+                                    <div class="change_phone_wrap">${sessionScope.loginMember.memberPhone}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
+                                    <div class="change_phone_wrap_2" style="display: none;">
+                                        <form action="${contextPath}/my" method="post" type="submit">
+                                            <input type="text" class="phone" name="inputPhone">
+                                                <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</button>
+                                                
+                                                <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
+                                            </form>
+                                            </div>
+                                
                                 </td>
                             </tr>
                             <tr>
                                 <th class="table_th">비밀번호</th>
                                 <td class="table_td">
-                                    <div><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;">변경하기</a></div>
+                                    <div class="change_pwd_wrap"><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;" class="change_pwd">변경하기</a></div>
+                                    <div class="change_pwd_wrap_2" style="display: none;">
+                                        <input type="password">
+                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_confirm">확인</a>
+                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_change_cancle">취소하기</a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -80,7 +104,7 @@
                                 </td>
                             </tr>
                         </table>
-                    </form>
+                    
                 </div>
                 <div class="secede">
                     <a href="#">서비스 탈퇴하기</a>
@@ -90,14 +114,96 @@
     </section>
 </main>
 
+
+<script>
+
+
+
+$(document).on('click', '.change_nickname', function() {
+
+    $('.change_nickname_wrap_2').show();
+    $('.change_nickname_wrap').hide();
+	
+});
+
+$(document).on('click', '.name_change_cancle', function() {
+
+    $('.change_nickname_wrap_2').hide();
+    $('.change_nickname_wrap').show();
+
+});
+
+$(document).on('click', '.change_phone', function() {
+
+    $('.change_phone_wrap_2').show();
+    $('.change_phone_wrap').hide();
+	
+});
+
+$(document).on('click', '.ph_change_cancle', function() {
+
+    $('.change_phone_wrap_2').hide();
+    $('.change_phone_wrap').show();
+
+});
+
+$(document).on('click', '.change_pwd', function() {
+
+    $('.change_pwd_wrap_2').show();
+    $('.change_pwd_wrap').hide();
+	
+});
+
+$(document).on('click', '.pwd_change_cancle', function() {
+
+    $('.change_pwd_wrap_2').hide();
+    $('.change_pwd_wrap').show();
+
+});
+
+$(document).on('click', '.name_change_confirm', function(){
+
+    const inputNickname = $(this).prev().val();  
+	const regExp = /^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$/;
+
+	if (inputNickname == '') {
+		alert("닉네임을 입력해주세요.");
+		return false;
+	}
+
+    if (!regExp.test(inputNickname)) {
+		alert("유효하지 않은 닉네임입니다.");
+		return false;
+	}
+
+});
+
+$(document).on('click ', '.ph_change_confirm', function(){
+
+    const inputphone = $(this).pre().val;
+    const regExp = /^[a-z0-9]{3,16]$/
+    
+    if(inputphone == ''){
+        alert("전화번호를 입력해주세요.");
+    }
+
+    if(!regExp.test(inputphone)){
+        alert("유효하지 않는 닉네임 입니다.");
+    }
+
+
+});
+
+
+$(".switch_btn").on("click", function () {
+    if ($(".switch_btn .tag").hasClass("active")) {
+        $(".switch_btn .tag").removeClass("active");
+    } else {
+        $(".switch_btn .tag").addClass("active");
+    }
+})
+
+</script>
+
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
-<script>
-    $(".switch_btn").on("click", function () {
-        if ($(".switch_btn .tag").hasClass("active")) {
-            $(".switch_btn .tag").removeClass("active");
-        } else {
-            $(".switch_btn .tag").addClass("active");
-        }
-    })
-</script>

@@ -7,7 +7,7 @@ public class Qna {
 	private int inqType;
 	private String queTitle;
 	private String queContent;
-	private Date queDt;
+	private String queDt;
 	private int queSt;
 	private int memberNo;
 	private int spaceNo;
@@ -47,11 +47,11 @@ public class Qna {
 		this.queContent = queContent;
 	}
 
-	public Date getQueDt() {
+	public String getQueDt() {
 		return queDt;
 	}
 
-	public void setQueDt(Date queDt) {
+	public void setQueDt(String queDt) {
 		this.queDt = queDt;
 	}
 

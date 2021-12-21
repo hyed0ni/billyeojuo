@@ -57,11 +57,11 @@ public class loginServlet extends HttpServlet{
 			
 			Member loginMember = service.login(memberEmail, memberPw);
 			
-			System.out.println(loginMember);
+			
 			
 			HttpSession session = req.getSession();
 			
-			System.out.println(loginMember);
+			
 			
 			if(loginMember != null) {
 				

@@ -3,8 +3,12 @@
 
 <properties>
 	<entry key="qnaList">
-		SELECT * FROM QUESTION
+		SELECT QUE_NO, INQ_TYPE, QUE_TITLE, QUE_CONTENT, QUE_ST, MEMBER_NO, SPACE_NO, TO_CHAR(QUE_DT,'YYYY"." MM"." DD"." HH24":"MI":"SS') QUE_DT FROM QUESTION
 		WHERE MEMBER_NO = ?
+	</entry>
+	
+	<entry key="qnaInsert">
+		INSERT INTO QUESTION VALUES (QUESTION_SEQ_NO.NEXTVAL, ?, ?, ?, DEFAULT, DEFAULT, ?, ?)
 	</entry>
 	
 </properties>

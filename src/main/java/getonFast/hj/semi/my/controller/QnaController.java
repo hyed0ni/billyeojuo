@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.QnaService;
 import getonFast.hj.semi.my.model.vo.Qna;
-import getonFast.hj.semi.review.model.service.ReviewService;
-import getonFast.hj.semi.review.model.vo.Review;
 
 @WebServlet("/my/qna/*")
 public class QnaController extends HttpServlet {
@@ -33,41 +32,52 @@ public class QnaController extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		String message = null;
 		
+		Member loginMember = (Member)req.getSession().getAttribute("loginMember");
+		
+		System.out.println(loginMember);
+		
 		try {
-			QnaService service = new QnaService();
 			
-			if (command.equals("list") || command.equals("")) {
-				int memberNo = 1;
+			if (loginMember != null) {
+				int memberNo = loginMember.getMemberNo();
 				
-				List<Qna> qnaList = service.qnaList(memberNo);
+				QnaService service = new QnaService();
 				
-				req.setAttribute("qnaList", qnaList);
-				
-				req.setAttribute("css", "qna");
-				
-				path = "/WEB-INF/views/qna/qnaList.jsp";
-				req.getRequestDispatcher(path).forward(req, resp);
-			} else if (command.equals("input")) {
-				if (method.equals("GET")) {
+				if (command.equals("list") || command.equals("")) {
+					List<Qna> qnaList = service.qnaList(memberNo);
+					
+					req.setAttribute("qnaList", qnaList);
 					
 					req.setAttribute("css", "qna");
 					
-					path = "/WEB-INF/views/qna/qna_insert.jsp";
-					dispatcher = req.getRequestDispatcher(path);
-					dispatcher.forward(req, resp);
-				} else {
+					path = "/WEB-INF/views/qna/qnaList.jsp";
+					req.getRequestDispatcher(path).forward(req, resp);
+				} else if (command.equals("insert")) {
+					
+					int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+					String queContent = req.getParameter("queContent");
+					
+					Qna qna = new Qna();
+					qna.setMemberNo(memberNo);
+					qna.setSpaceNo(spaceNo);
+					qna.setQueContent(queContent);
+					
+					int result = service.qnaInsert(qna);
+					
+					resp.getWriter().print(result);
 					
 				}
-				
+			} else {
+				resp.sendRedirect(contextPath + "/member/login");
 			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 }

@@ -1,6 +1,7 @@
 package getonFast.hj.semi.space.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +26,6 @@ public class SpaceController extends HttpServlet {
       String contextPath = req.getContextPath();
       
       String command = uri.substring((contextPath + "/space/").length());
-      // -> 요청 주소에서 /semi/board/의 길이만큼 잘라낸 후 나머지 문자열을 command 변수에 저장
       
       String path = null;
       RequestDispatcher dispatcher = null;
@@ -44,7 +44,13 @@ public class SpaceController extends HttpServlet {
         	
         	Space spaceImg = service.selectSpaceImg(spaceNo);
         	req.setAttribute("spaceImg", spaceImg);
+        	
+        	List<Space> spaceRoomList = service.selectSpaceRoom(spaceNo);
+        	req.setAttribute("spaceRoomList", spaceRoomList);
             
+        	Space spaceType = service.selectSpaceType(spaceNo);
+        	req.setAttribute("spaceType", spaceType);
+        	
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);
@@ -68,12 +74,9 @@ public class SpaceController extends HttpServlet {
             
          }
          
-         
       } catch (Exception e) {
          e.printStackTrace();
       }
-      
-      
       
    }
    
