@@ -13,6 +13,7 @@
     <section class="qna">
         <div class="title" style="letter-spacing:-.5px;">문의 등록</div>
         <div>
+        	
         </div>
     </section>
 </main>

@@ -84,7 +84,7 @@ main{z-index: 1; width: 1140px;}
 .nav-area li.seleted{ background-color: #ffd014; }
 
 /* 공간소개, 시설안내, 유의사항, Q&A, 이용후기 작성 부분 */
-.meetspace{ padding-top: 51px; }
+.meetspace{ padding-top: 51px; margin-bottom: 120px;}
 
 /* 공간 소개 영역 */
 #s-intro{  padding-top : 50px; }
