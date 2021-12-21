@@ -26,6 +26,8 @@
                     </select>
                 </div>
             </div>
+            
+            
 
             <!-- <div class="non_list_area">
                 <div  class="non_list">
@@ -33,27 +35,16 @@
                 </div>
             </div> -->
             <div class="list_area">
-                <div class="list">
-                    <div class="img_area"><img class="list_img" src="${contextPath}/resources/images/header/defaultUser.jpg"></div>
-                    <div class="content_area">
-                        <div class="title">1:1 문의 입니다.</div>
-                        <div class="content">여긴 뭐하는 곳인가요??여긴 뭐하는 곳인가요??여긴 뭐하는 곳인가요??여긴 뭐하는 곳인가요??여긴 뭐하는 곳인가요??여긴 뭐하는 곳인가요??여긴 뭐하는 곳인가요??</div>
-                        <div class="date">2021.11.27 00:35:58</div>
-                        <div class="comment_area">
-                            <div class="comment_title">관리자 답글</div>
-                            <div class="content">여긴 빌려줍니다. 여긴 빌려줍니다. 여긴 빌려줍니다. 여긴 빌려줍니다. 여긴 빌려줍니다. 여긴 빌려줍니다. 여긴 빌려줍니다.</div>
-                            <div class="date">2021.11.27 00:41:10</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list">
-                    <div class="img_area"><img class="list_img" src="${contextPath}/resources/images/space_img/sinchon.jpg"></div>
-                    <div class="content_area">
-                        <div class="title">파티살롱_촬영,회의,세미나,워크샵</div>
-                        <div class="content">사장님 정말 친절하십니다 . 그리고 장소도 정말 예쁘고 좋아요 인생사진 여러개 얻었고 진짜 편하게 잘 즐기다가 갑니다!! 담에 또 이용할께요 감사합니다~</div>
-                        <div class="date">2021.11.27 00:35:58</div>
-                    </div>
-                </div>
+            	<c:forEach items="${qnaList}" var="qna">
+		            <div class="list">
+	                    <div class="img_area"><img class="list_img" src="${contextPath}/resources/images/space_img/sinchon.jpg"></div>
+	                    <div class="content_area">
+	                        <div class="title">${qna.queTitle}</div>
+	                        <div class="content">${qna.queContent}</div>
+	                        <div class="date">${qna.queDt}</div>
+	                    </div>
+	                </div>
+	            </c:forEach>
             </div>
         </div>
     </section>

@@ -60,7 +60,7 @@ public class QnaDAO {
 				qna.setInqType(rs.getInt("INQ_TYPE"));
 				qna.setQueTitle(rs.getString("QUE_TITLE"));
 				qna.setQueContent(rs.getString("QUE_CONTENT"));
-				qna.setQueDt(rs.getDate("QUE_DT"));
+				qna.setQueDt(rs.getString("QUE_DT"));
 				qna.setQueSt(rs.getInt("QUE_ST"));
 				qna.setMemberNo(rs.getInt("MEMBER_NO"));
 				qna.setSpaceNo(rs.getInt("SPACE_NO"));
