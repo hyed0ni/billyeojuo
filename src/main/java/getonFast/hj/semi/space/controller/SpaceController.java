@@ -56,6 +56,8 @@ public class SpaceController extends HttpServlet {
         	Map<Integer, List<Space>> spaceOptionMap = service.selectSpaceOption(spaceRoomList);
         	req.setAttribute("spaceOptionMap", spaceOptionMap);
         	
+        	req.setAttribute("css", "space-style");
+        	
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);

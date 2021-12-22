@@ -4,7 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../common/header.jsp"/>
-<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
+<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">
+<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/jquery-ui.css">
+<style>
+.ui-widget.ui-widget-content{width:100%;}
+</style>
 
 <main>
     <section class="cont detail-forms">
@@ -464,48 +468,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 
-    // common.js
     $(function () {
-        $(".menuIcon").on("click", function () {
-            if ($(".sideMenu").hasClass("active")) {
-                $(".sideMenu").removeClass("active");
-                
-                $(".modal").hide();
-            } else {
-                $(".sideMenu").addClass("active");
-                $(".modal").show();
-            }
-        });
-
-        $(".modal").on("click", function () {
-            $(".sideMenu").removeClass("active");
-            $(".modal").hide();
-        });
-
-        $(".closeMenu").on("click", function () {
-            $(".sideMenu").removeClass("active");
-            $(".modal").hide();
-        });
-
-        $("#notice > ul > li").on("click", function () {
-            const url = $(this).data("url");
-            if (url == "service") {
-                if ($(".service_sub").hasClass("active")) {
-                    $(".service_sub").removeClass("active");
-                } else {
-                    $(".service_sub").addClass("active");
-                }
-
-            } else {
-                alert(url);
-            }
-        })
-
-        $("#notice > ul > li .service_sub > li").on("click", function () {
-            const url = $(this).data("url");
-            alert(url);
-        })
-
         sticky(); // 페이지 로딩 시 sticky 함수 호출
         $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
@@ -568,8 +531,8 @@
     })
     
     // 세부공간 선택 라디오 버튼 클릭 시 이벤트
-    $("[name=space]").on("change", function(){
-    	const index = $("[name=space]").index($(this));
+    $("[name=spaceRoomNo]").on("change", function(){
+    	const index = $("[name=spaceRoomNo]").index($(this));
     	
     	$(".space_detail").css("display", "none");
     	$(".space_detail").eq(index).css("display", "block");
@@ -623,5 +586,24 @@
     })();
     
 </script>
+
+<!-- datepicker -->
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+$( function() {
+    const minDate = new Date();
+    $( "#datepicker" ).datepicker({
+        // 다음날 부터 선택 가능
+        minDate : 1,
+        // 선택 수정해야 할것
+        onSelect: function () {
+            console.log(this);
+        }
+        
+    });
+} );
+</script>
+
+
 </body>
 </html>
