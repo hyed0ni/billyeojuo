@@ -14,13 +14,14 @@ public class QnaService {
 	/**
 	 * 문의 조회
 	 * @param memberNo
+	 * @param sort 
 	 * @return qnaList
 	 * @throws Exception
 	 */
-	public List<Qna> qnaList(int memberNo) throws Exception {
+	public List<Qna> qnaList(int memberNo, String sort) throws Exception {
 		Connection conn = getConnection();
 		
-		List<Qna> qnaList = dao.qnaList(memberNo, conn);
+		List<Qna> qnaList = dao.qnaList(memberNo, sort, conn);
 		
 		close(conn);
 		

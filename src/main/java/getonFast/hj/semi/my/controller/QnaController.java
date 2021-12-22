@@ -10,16 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.QnaService;
 import getonFast.hj.semi.my.model.vo.Qna;
-import getonFast.hj.semi.review.model.service.ReviewService;
-import getonFast.hj.semi.review.model.vo.Review;
 
 @WebServlet("/my/qna/*")
 public class QnaController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		resp.setCharacterEncoding("UTF-8");
 		
 		String method = req.getMethod();
 		String uri = req.getRequestURI();
@@ -33,38 +36,52 @@ public class QnaController extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		String message = null;
 		
+		Member loginMember = (Member)req.getSession().getAttribute("loginMember");
+		
 		try {
-			QnaService service = new QnaService();
 			
-			if (command.equals("list") || command.equals("")) {
-				int memberNo = 14;
+			if (loginMember != null) {
+				int memberNo = loginMember.getMemberNo();
 				
-				List<Qna> qnaList = service.qnaList(memberNo);
+				String sort = "all";
 				
-				req.setAttribute("qnaList", qnaList);
 				
-				req.setAttribute("css", "qna");
+				QnaService service = new QnaService();
 				
-				path = "/WEB-INF/views/qna/qnaList.jsp";
-				req.getRequestDispatcher(path).forward(req, resp);
-			} else if (command.equals("insert")) {
-				
-				int memberNo = 14;
-				int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
-				String queContent = req.getParameter("queContent");
-				
-				Qna qna = new Qna();
-				qna.setMemberNo(memberNo);
-				qna.setSpaceNo(spaceNo);
-				qna.setQueContent(queContent);
-				
-				int result = service.qnaInsert(qna);
-				System.out.println("result : " + result);
-				
-				resp.getWriter().print(result);
-				
+				if (command.equals("list") || command.equals("")) {
+					List<Qna> qnaList = service.qnaList(memberNo, sort);
+					
+					req.setAttribute("qnaList", qnaList);
+					
+					req.setAttribute("css", "qna");
+					
+					path = "/WEB-INF/views/qna/qnaList.jsp";
+					req.getRequestDispatcher(path).forward(req, resp);
+				} else if (command.equals("sort")) {
+					sort = req.getParameter("sort");
+					
+					List<Qna> qnaList = service.qnaList(memberNo, sort);
+					
+					new Gson().toJson(qnaList, resp.getWriter());
+					
+				} else if (command.equals("insert")) {
+					
+					int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+					String queContent = req.getParameter("queContent");
+					
+					Qna qna = new Qna();
+					qna.setMemberNo(memberNo);
+					qna.setSpaceNo(spaceNo);
+					qna.setQueContent(queContent);
+					
+					int result = service.qnaInsert(qna);
+					
+					resp.getWriter().print(result);
+					
+				}
+			} else {
+				resp.sendRedirect(contextPath + "/member/login");
 			}
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
