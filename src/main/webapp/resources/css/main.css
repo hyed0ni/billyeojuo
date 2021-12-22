@@ -70,6 +70,7 @@ body{background-color:#fff;}
 .promotion{
   height: 500px;
   top: 80px;
+  margin-top: 40px;
 }
 
 .promotion>a{
@@ -101,19 +102,6 @@ body{background-color:#fff;}
 .promotion>a>h3{
   margin: 0px;
   font-size: 22px;
-}
-
-.promotion > a:nth-child(1){
-  background-image: url("../images/main_body/promotion_pic_01.jpg");
-}
-.promotion > a:nth-child(2){
-  background-image: url("../images/main_body/promotion_pic_02.png");
-}
-.promotion > a:nth-child(3){
-  background-image: url("../images/main_body/promotion_pic_03.png");
-}
-.promotion > a:nth-child(4){
-  background-image: url("../images/main_body/promotion_pic_04.png");
 }
 
 /* 더보기  */
@@ -209,12 +197,10 @@ body{background-color:#fff;}
 }
 
 .location{
-  
   display:inline-block;
   font-weight: bold;
   color: rgb(76, 76, 76);
   font-size: 0.9em;
-
 }
 
 
@@ -230,7 +216,8 @@ body{background-color:#fff;}
 
 .like-comment{
   float: right;
-
+  width: 50%;
+  text-align: right;
   font-size: 12px;
   margin-top: 8px;
   line-height: 5px;
@@ -244,10 +231,7 @@ body{background-color:#fff;}
 .icon-people{
   background-image:url("../images/main_body/icon_people.svg");
 }
-.icon-comment{
-  background-image:url("../images/main_body/icon_comment.svg");
 
-}
 .icon-like{
   background-image:url("../images/main_body/icon_like.svg");
 }

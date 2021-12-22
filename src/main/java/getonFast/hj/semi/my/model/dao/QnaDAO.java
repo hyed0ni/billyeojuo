@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Properties;
 
@@ -39,19 +40,28 @@ public class QnaDAO {
 	/**
 	 * 문의 조회
 	 * @param memberNo
+	 * @param sort 
 	 * @param conn
 	 * @return qnaList
 	 * @throws Exception
 	 */
-	public List<Qna> qnaList(int memberNo, Connection conn) throws Exception {
+	public List<Qna> qnaList(int memberNo, String sort, Connection conn) throws Exception {
 		List<Qna> qnaList = new ArrayList<Qna>();
 		
 		try {
-			String sql = prop.getProperty("qnaList");
 			
-			pstmt = conn.prepareStatement(sql);
+			if (sort.equals("one")) {
+				String sql = prop.getProperty("qnaListSortOne");
+				pstmt = conn.prepareStatement(sql);
+			} else if (sort.equals("space")) {
+				String sql = prop.getProperty("qnaListSortSpace");
+				pstmt = conn.prepareStatement(sql);
+			} else {
+				String sql = prop.getProperty("qnaList");
+				pstmt = conn.prepareStatement(sql);
+			}
+			
 			pstmt.setInt(1, memberNo);
-			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -60,10 +70,14 @@ public class QnaDAO {
 				qna.setInqType(rs.getInt("INQ_TYPE"));
 				qna.setQueTitle(rs.getString("QUE_TITLE"));
 				qna.setQueContent(rs.getString("QUE_CONTENT"));
-				qna.setQueDt(rs.getDate("QUE_DT"));
+				qna.setQueDt(rs.getString("QUE_DT"));
 				qna.setQueSt(rs.getInt("QUE_ST"));
 				qna.setMemberNo(rs.getInt("MEMBER_NO"));
 				qna.setSpaceNo(rs.getInt("SPACE_NO"));
+				qna.setSpaceNm(rs.getString("SPACE_NM"));
+				qna.setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
+				qna.setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
+				qna.setSpaceImgOrg(rs.getString("SPACE_IMG_ORG"));
 				
 				qnaList.add(qna);
 			}

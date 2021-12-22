@@ -1,7 +1,6 @@
-package getonFast.hj.semi.promotion.model.vo;
+package getonFast.hj.semi.main.model.vo;
 
-public class PromotionDetail {
-	
+public class SpaceList {
 	
 	private int spaceNo;
 	private String spaceNm;
@@ -9,13 +8,12 @@ public class PromotionDetail {
 	private int roomPrice;
 	private String roomFit;
 	private int like;
-	private String spaceImgPath;
-	private String spaceImgName;
+	private String imgPath;
+	private String imgName;
 	
-	public PromotionDetail() {
+	public SpaceList() {
 		// TODO Auto-generated constructor stub
 	}
-
 
 	public int getSpaceNo() {
 		return spaceNo;
@@ -65,31 +63,32 @@ public class PromotionDetail {
 		this.like = like;
 	}
 
-	public String getSpaceImgPath() {
-		return spaceImgPath;
+	public String getImgPath() {
+		return imgPath;
 	}
 
-	public void setSpaceImgPath(String spaceimgPath) {
-		this.spaceImgPath = spaceimgPath;
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 
-	public String getSpaceImgName() {
-		return spaceImgName;
+	public String getImgName() {
+		return imgName;
 	}
 
-	public void setSpaceImgName(String spaceimgName) {
-		this.spaceImgName = spaceimgName;
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
 	}
-
 
 	@Override
 	public String toString() {
-		return "PromotionDetail [spaceNo=" + spaceNo + ", spaceNm=" + spaceNm + ", spaceSubNm=" + spaceSubNm
-				+ ", roomPrice=" + roomPrice + ", roomFit=" + roomFit + ", like=" + like + ", spaceImgPath="
-				+ spaceImgPath + ", spaceImgName=" + spaceImgName + "]";
+		return "Recommend [spaceNo=" + spaceNo + ", spaceNm=" + spaceNm + ", spaceSubNm=" + spaceSubNm + ", roomPrice="
+				+ roomPrice + ", roomFit=" + roomFit + ", like=" + like + ", imgPath=" + imgPath + ", imgName="
+				+ imgName + "]";
 	}
-
-
 	
 	
+	
+	
+	
+
 }

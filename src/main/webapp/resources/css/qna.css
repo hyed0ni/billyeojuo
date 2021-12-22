@@ -12,13 +12,17 @@
 .qna > .qna_area > .qna_header > .search_area{height:50px; margin-top:40px;}
 .qna > .qna_area > .qna_header > .search_area > .select_area{float:right; padding:5px;}
 
-.qna > .qna_area > .list_area > .list{box-sizing:border-box; border:1px solid black; padding:10px; width:100%; margin-bottom:10px;}
-.qna > .qna_area > .list_area > .list > .img_area{display:inline-block;}
-.qna > .qna_area > .list_area > .list > .img_area > .list_img{width:230px; height:150px; object-fit:cover;}
+.qna > .qna_area > .list_area > .l_area > .list{box-sizing:border-box; border:1px solid black; padding:10px; width:100%; margin-bottom:10px;}
+.qna > .qna_area > .list_area > .l_area > .list > .img_area{display:inline-block;}
+.qna > .qna_area > .list_area > .l_area > .list > .img_area > .list_img{width:230px; height:150px; object-fit:cover;}
 
-.qna > .qna_area > .list_area > .list > .content_area{display:inline-block; width:75%; padding:10px 20px; vertical-align:top;}
-.qna > .qna_area > .list_area > .list > .content_area .title{font-size:18px; font-weight:bold; margin-bottom:5px;}
-.qna > .qna_area > .list_area > .list > .content_area .content{margin-bottom:5px;}
-.qna > .qna_area > .list_area > .list > .content_area .date{font-size:12px;}
-.qna > .qna_area > .list_area > .list > .content_area > .comment_area{margin:10px 0 0 15px;}
-.qna > .qna_area > .list_area > .list > .content_area > .comment_area > .comment_title{font-size:18px; color:#704de4; margin-bottom:5px;}
+.qna > .qna_area > .list_area > .l_area > .list > .content_area{display:inline-block; width:75%; padding:10px 20px; vertical-align:top;}
+.qna > .qna_area > .list_area > .l_area > .list > .content_area .title{font-size:18px; font-weight:bold; margin-bottom:5px;}
+.qna > .qna_area > .list_area > .l_area > .list > .content_area .content{margin-bottom:5px;}
+.qna > .qna_area > .list_area > .l_area > .list > .content_area .date{font-size:12px;}
+.qna > .qna_area > .list_area > .l_area > .list > .content_area > .comment_area{margin:10px 0 0 15px;}
+.qna > .qna_area > .list_area > .l_area > .list > .content_area > .comment_area > .comment_title{font-size:18px; color:#704de4; margin-bottom:5px;}
+
+/* 글등록 버튼 */
+.qna > .qna_area > .list_area > .btn_area{text-align:right; margin-bottom:10px;}
+.qna > .qna_area > .list_area > .btn_area > .btn.write{background:#704de4; color:#fff; border-radius:5px; font-size:15px; padding:5px 10px;}

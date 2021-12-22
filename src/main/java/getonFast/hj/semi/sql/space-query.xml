@@ -23,8 +23,47 @@
 	</entry>
 	
 	<!-- 공간옵션 조회 -->
-	<entry key="selectSpaceType">
+	<entry key="selectSpaceOption">
 		SELECT OPTION_NM, OPTION_ICON FROM SPACE_OPTION JOIN SPACE_ROOM_OPTION USING(OPTION_NO) 
 		JOIN SPACE_ROOM USING(SPACE_ROOM_NO) WHERE SPACE_ROOM_NO = ?
+	</entry>
+	
+	<!-- 찜한공간 등록 -->
+	<entry key="insertHeart">
+		INSERT INTO SPACE_DIBS VALUES(?, ?)
+	</entry>
+	
+	<!-- 찜한공간 삭제 -->
+	<entry key="deleteHeart">
+		DELETE FROM SPACE_DIBS WHERE MEMBER_NO = ? AND SPACE_NO = ?
+	</entry>
+	
+	<!-- 찜한공간 조회 -->
+	<entry key="selectHeart">
+		SELECT COUNT(*) FROM SPACE_DIBS WHERE MEMBER_NO = ? AND SPACE_NO = ?
+	</entry>
+	
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	<!-- 공간룸 상세 조회 -->
+	<entry key="selectSpaceRoomRes">
+		SELECT SPACE_ROOM_NM, SPACE_ROOM_PRICE, SPACE_ROOM_FIT, SPACE_ROOM_DESC FROM SPACE_ROOM WHERE SPACE_ROOM_NO = ?
+	</entry>
+	
+	<!-- 공간 상세 조회 -->
+	<entry key="selectSpaceRes">
+		SELECT SPACE_NM, PRECAUTIONS FROM SPACE JOIN SPACE_ROOM USING(SPACE_NO) WHERE SPACE_ROOM_NO = ?
+	</entry>
+	
+	<!-- 공간유형 조회 -->
+	<entry key="selectSpaceTypeRes">
+		SELECT SPACE_TYPE_NM FROM SPACE_TYPE JOIN SPACE USING(SPACE_TYPE_NO) 
+		JOIN SPACE_ROOM USING(SPACE_NO) WHERE SPACE_ROOM_NO = ?
+	</entry>
+	
+	<!-- 공간 이미지 조회 -->
+	<entry key="selectSpaceImgRes">
+		SELECT SPACE_IMG_PATH, SPACE_IMG_NM FROM SPACE_IMG JOIN SPACE USING(SPACE_NO) 
+		JOIN SPACE_ROOM USING(SPACE_NO) WHERE SPACE_ROOM_NO = ?
 	</entry>
 </properties>
