@@ -50,7 +50,8 @@ public class SendEmailServlet extends HttpServlet{
        final String password = "dltkddnjs1!";
        
        String encode = URLEncoder.encode(inputEmail, "UTF-8");
-       String url = "localhost:8080/getonfast/member/findUpdatePwd?no=" + encode;
+       String url = "http://localhost:8080/getonfast/member/findUpdatePwd?no=" + encode;
+
        
        // 메일에 출력할 텍스트
        StringBuffer sb = new StringBuffer();
