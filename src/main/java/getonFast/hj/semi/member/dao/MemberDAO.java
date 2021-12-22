@@ -145,6 +145,9 @@ public class MemberDAO {
 						loginMember.setEnrollDate(rs.getDate("MEMBER_REG_DT"));
 						loginMember.setMemberSMSChk(rs.getInt("MEMBER_SMSCHK"));
 						loginMember.setMemberSMSChk(rs.getInt("MEMBER_EMAILCHK"));
+						loginMember.setImgName(rs.getString("MEMBER_IMG_NM"));
+						loginMember.setImgOrg(rs.getString("MEMBER_IMG_ORG"));
+						loginMember.setImgPath(rs.getString("MEMBER_IMG_PATH"));
 
 					}
 

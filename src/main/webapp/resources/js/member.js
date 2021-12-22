@@ -54,7 +54,7 @@ function validate() {  // 회원가입 버튼 클릭 시 유효성 검사여부 
 $("#name").on("input", function() {
 
 	const inputName = $(this).val();  
-	const regExp = /^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$/;
+	const regExp = /^[가-힣]{2,5}$/;
 
 	if (inputName.length == 0) {
 		$("#checkName").text("");
@@ -64,7 +64,7 @@ $("#name").on("input", function() {
 		$("#checkName").text("유효한 이름 값입니다.").css("color", "green");
 		$("#checkName").show();
 		signUpCheckObj.name = true;
-	} else {
+	} else if (!regExp.test(inputName)) {
 		$("#checkName").show();
 		$("#checkName").text("유효하지 않은 이름 값입니다.").css("color", "red");
 		signUpCheckObj.name = false;
