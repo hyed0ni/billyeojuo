@@ -126,6 +126,11 @@ $(document).on("click", "#qnaWrite", function(){
 			if (result > 0) {
 				alert("등록되었습니다.");
 				layerPopClose();
+				
+				if ($(".l_area").length) {
+					qnaListRoad("all");
+				}
+				
 			} else {
 				alert("문의 실패 하였습니다.");
 			}

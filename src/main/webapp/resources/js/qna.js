@@ -5,10 +5,14 @@ $(function () {
 });
 
 $("#qna_sort").on("change", function () {
+	qnaListRoad($(this).val());
+});
+
+function qnaListRoad(sortValue) {
 	$.ajax({
 		url : contextPath + "/my/qna/sort",
 		data : {
-			sort : $(this).val()
+			sort : sortValue
 		},
 		dataType : "json",
 		success : function (result) {
@@ -47,5 +51,4 @@ $("#qna_sort").on("change", function () {
 			console.log(req.responseText);
 		}
 	});
-	
-});
+}

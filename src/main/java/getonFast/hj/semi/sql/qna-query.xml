@@ -11,6 +11,7 @@
 		LEFT JOIN SPACE_IMG USING(SPACE_NO)
 		WHERE (SPACE_IMG_LEVEL = 1 OR SPACE_IMG_LEVEL IS NULL)
 		AND MEMBER_NO = ?
+		ORDER BY QUE_NO DESC
 	</entry>
 	
 	<entry key="qnaListSortOne">
@@ -22,6 +23,7 @@
 		LEFT JOIN SPACE_IMG USING(SPACE_NO)
 		WHERE SPACE_NO is null
 		AND MEMBER_NO = ?
+		ORDER BY QUE_NO DESC
 	</entry>
 	
 	<entry key="qnaListSortSpace">
@@ -34,6 +36,7 @@
 		WHERE SPACE_NO =12
 		AND SPACE_IMG_LEVEL = 1
 		AND MEMBER_NO = ?
+		ORDER BY QUE_NO DESC
 	</entry>
 	
 	<entry key="qnaInsert">
