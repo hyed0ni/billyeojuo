@@ -45,28 +45,31 @@ public class MainService {
 	
 	/** pagination
 	 * @param cp
+	 * @param limit 
 	 * @return
 	 * @throws Exception
 	 */
-	public Pagination getPagination(int cp) throws Exception{
+	public Pagination getPagination(int cp ,int limit, String sv) throws Exception{
 		
 		Connection conn = getConnection();
-		int listCount = dao.getlistCount(conn);
+		int listCount = dao.getlistCount(conn, sv);
 		
+		int pageSize = listCount/limit;
 		close(conn);
 		
-		return new Pagination(listCount, cp);
+		return new Pagination(listCount, cp, limit, pageSize);
 	}
 	
 	/** 검색목록 
 	 * @param sv
+	 * @param pagination 
 	 * @return
 	 * @throws Exception
 	 */
-	public List<SpaceList> selectSeacrhList(String sv) throws Exception {
+	public List<SpaceList> selectSeacrhList(String sv, Pagination pagination) throws Exception {
 		Connection conn = getConnection();
 		
-		List<SpaceList> searchList = dao.selectSearchList(sv, conn);
+		List<SpaceList> searchList = dao.selectSearchList(sv, conn , pagination);
 		
 		close(conn);
 		

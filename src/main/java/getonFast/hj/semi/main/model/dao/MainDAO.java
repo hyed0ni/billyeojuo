@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import getonFast.hj.semi.common.Pagination;
 import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 import getonFast.hj.semi.space.model.vo.Space;
@@ -102,17 +103,22 @@ public class MainDAO {
 		return recommendList;
 	}
 
-	public List<SpaceList> selectSearchList(String sv, Connection conn) throws Exception {
+	public List<SpaceList> selectSearchList(String sv, Connection conn, Pagination pagination) throws Exception {
 
 		List<SpaceList> searchList = new ArrayList<SpaceList>();
 		
 		try {
 			
+			
+			int startRow = (pagination.getCurrentPage() -1 ) * pagination.getLimit() + 1;
+			int endRow = startRow + pagination.getLimit() -	1;
+			
 			String sql = prop.getProperty("selectSearchList");
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, sv);
-
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			
 			rs = pstmt.executeQuery();
 			
@@ -121,9 +127,9 @@ public class MainDAO {
 				rc.setSpaceNo(rs.getInt("SPACE_NO"));
 				rc.setSpaceNm(rs.getString("SPACE_NM"));
 				rc.setSpaceSubNm(rs.getString("SPACE_SUB_NM"));
-				rc.setRoomPrice(rs.getInt("MIN(SPACE_ROOM_PRICE)"));
+				rc.setRoomPrice(rs.getInt("PRICE"));
 				rc.setRoomFit(rs.getString("SPACE_ROOM_FIT"));
-				rc.setLike(rs.getInt("NVL(COUNT(MEMBER_NO),0)"));
+				rc.setLike(rs.getInt("LIKE"));
 				rc.setImgPath(rs.getString("SPACE_IMG_PATH"));
 				rc.setImgName(rs.getString("SPACE_IMG_NM"));
 				
@@ -138,17 +144,21 @@ public class MainDAO {
 		return searchList;
 	}
 
-	public int getlistCount(Connection conn) throws Exception {
+	public int getlistCount(Connection conn, String sv) throws Exception {
 		int listCount = 0;
 		
 		try {
 			String sql = prop.getProperty("getListCount");
+			
 			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, sv);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
 				listCount = rs.getInt(1);
 			}
+			
 			
 		}finally {
 			close(rs);

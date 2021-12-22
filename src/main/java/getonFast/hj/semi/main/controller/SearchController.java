@@ -30,10 +30,12 @@ public class SearchController extends HttpServlet{
 		try {
 			
 			MainService service = new MainService();
+
+			int limit = 12; 
+
+			Pagination pagination  = service.getPagination(cp, limit, sv);
 			
-			Pagination pagination  = service.getPagination(cp);
-			
-			List<SpaceList> searchList = service.selectSeacrhList(sv);
+			List<SpaceList> searchList = service.selectSeacrhList(sv, pagination);
 			
 			req.setAttribute("searchList", searchList);
 			req.setAttribute("css", "space-search");
@@ -41,7 +43,6 @@ public class SearchController extends HttpServlet{
             path = "/WEB-INF/views/space/space_search.jsp";
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);
-			
 			
 		}catch (Exception e) {
 			e.printStackTrace();

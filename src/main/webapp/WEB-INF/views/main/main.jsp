@@ -27,6 +27,7 @@
     </section>
 
     <section class="space"></section>
+      <section class="space"></section>
     
     <section id="promotions">
         <h1 class="title">기획전</h1>
@@ -64,7 +65,7 @@
 	                        </div>
 	                        <div class="price-box">
 	                            <strong class="price purple"><fmt:formatNumber value="${recommend.roomPrice}" pattern="#,###"/></strong> <span>원/박</span>
-	                            <div class="like-comment" style="text-align: right;   width: 50%;">
+	                            <div class="like-comment" >
 	                              <%--   <span class="pricebox-icon icon-comment"></span>
 	                                <span>${recommend.like}</span> --%>
 	                                <span class="pricebox-icon icon-people"></span>

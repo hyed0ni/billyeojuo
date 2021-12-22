@@ -89,7 +89,7 @@
   font-size: 20px
 }
 
-#space-wrapper>.space-space-list>a>.tag-box>.location{
+.location{
   
   display:inline-block;
   font-weight: bold;
@@ -128,7 +128,12 @@
   width: 15px;
   height: 15px;
 }
-
+/*  이미지 부분  */
+.img-box{
+  width: 100%;
+  height: 66%;
+  background-size: 100%;
+}
 .price-box{
   margin-top: 15px;
   font-size: 13px;
@@ -142,10 +147,7 @@
 .icon-people{
   background-image:url("../images/main_body/icon_people.svg");
 }
-.icon-comment{
-  background-image:url("../images/main_body/icon_comment.svg");
 
-}
 .icon-like{
   background-image:url("../images/main_body/icon_like.svg");
 }
