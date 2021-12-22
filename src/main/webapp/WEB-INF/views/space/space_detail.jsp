@@ -44,7 +44,6 @@
                         <li><a title="s-review">이용후기</a></li>
                     </ul>
                 </div>
-
             </div>
 
             <!-- 공간소개, 시설안내, 유의사항, Q&A, 이용후기 작성 부분  -->
@@ -228,7 +227,6 @@
                                 </div>
                             </li>
 
-
                             <li class="rlist">
                                 <div class="rbox-mine">
                                     <span class="pf-img"
@@ -253,7 +251,6 @@
                                 </div>
                             </li>
                         </ul>
-
 
                         <!-- Q&A 페이징 -->
                         <!-- 화살표 이미지 찾아야됨 -->
@@ -315,7 +312,6 @@
 
                         </ul>
 
-
                         <!-- Q&A 페이징 -->
                         <!-- 화살표 이미지 찾아야됨 -->
                         <div class="paging">
@@ -334,7 +330,7 @@
                 
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <div style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" style="position:absolute; width:350px; height:400px; top:0; right:0;">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -449,12 +445,14 @@
                     	</c:forEach>
 
                         <div>
-                            <a href="javascript:payment();"
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a>
+                            <button
+                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
+<!--                             <a href="javascript:payment();"
+                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a> -->
                         </div>
                     </div>
 
-                </div>
+                </form>
         </section>
     </section>
 </main>
