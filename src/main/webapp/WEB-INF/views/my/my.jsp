@@ -25,11 +25,19 @@
             <div class="my_detail">
                 <div class="profile_area">
                     <div>
-                        <img src="${contextPath}/resources/images/header/defaultUser.jpg">
+                        <c:choose>
+                            <c:when test="${sessionScope.loginMember.imgPath} == null">
+                                <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}" class="profile_image">
+                        </c:otherwise>
+                    </c:choose>
                     </div>
-                    <div class="profile_nickname">${sessionScope.loginMember.memberName}</div>
+                    <div class="profile_nickname">${sessionScope.loginMember.imgPath}</div>
                     <div>
-                    	<input type="button" class="input profile_change" value="프로필 사진 변경">
+                    	<a href="javascript:void(0)" class="input profile_change">프로필 사진 변경</a>
+                        <input type="file" class="profile_file" name="profile_file" style="display: none;" onchange="changeImage(this)">
                     </div>
                 </div>
 
@@ -87,10 +95,14 @@
                                 <th class="table_th">비밀번호</th>
                                 <td class="table_td">
                                     <div class="change_pwd_wrap"><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;" class="change_pwd">변경하기</a></div>
-                                    <div class="change_pwd_wrap_2" style="display: none;">
-                                        <input type="password">
-                                        <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_confirm">확인</a>
+                                    <div class="change_pwd_wrap_2" style="display: none; " >
+                                        <form action="${contextPath}/my" method="post" type="submit">
+                                        <input type="password" class="prePwd1" name="prePwd1" placeholder="현재 비밀번호" style="margin: 10px;"> <br>
+                                        <input type="password" class="newPwd1" name="newPwd1" placeholder="변경할 비밀번호" style="margin: 10px;"> <br>
+                                        <input type="password" class="newPwd2" name="newPwd2" placeholder="비밀번호 확인" style="margin: 10px;">
+                                        <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; left:20px;" class="pwd_change_confirm">확인</button>
                                         <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_change_cancle">취소하기</a>
+                                    </form>
                                     </div>
                                 </td>
                             </tr>
@@ -194,6 +206,121 @@ $(document).on('click ', '.ph_change_confirm', function(){
 
 });
 
+$(document).on('click', '.pwd_change_confirm', function(){
+
+    const prepassword = $('.prePwd1');
+    const newPwd1 = $(".newPwd1");
+    const newPwd2 = $(".newPwd2");
+
+
+    if(prepassword.val().trim().length == 0){
+        alert("현재 비밀번호를 입력해주세요.");
+        prepassword.focus();
+        return false;
+    }
+
+    if(newPwd1.val().trim().length == 0){
+        alert("새 비밀번호를 입력해주세요.");
+        newPwd1.focus();
+        return false;
+    }
+    
+    if(newPwd2.val().trim().length == 0){
+        alert("새 비밀번호 확인을 입력해주세요.");
+        newPwd2.focus();
+        return false;
+    }
+    
+    if(newPwd1.val() != newPwd2.val()) {
+    	alert("새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.");
+        return false;
+    }
+
+    
+    // 현재 비밀번호(데이터) == 입력한 비밀번호
+    $.ajax({
+
+        url: "my",
+        type: "POST",
+        data: { "prepassword": prepassword.val(), "newPwd1" : newPwd1.val() },
+        dataType : "JSON",
+        success: function(result) {
+        	cosole.log(result);
+        
+            if (result == 0) {
+               alert("비밀번호가 틀립니다.");
+               password.focus();
+               return false;
+                
+            } else {
+                
+               alert("비밀번호가 맞습니다.");
+            }
+        },
+        error: function(request, status, error) {
+            
+            if (request.status == 404) {
+                console.log("ajax 요청주소가 올바르지 않습니다.");
+            } else if (request.status == 500) {
+                console.log("서버 내부 에러");
+                console.log(request.responseText);
+            }
+        }
+
+    });
+
+
+
+});
+
+$(document).on('click', '.profile_change', function() {
+
+    $('.profile_file').click();
+
+})
+
+function changeImage(input) {
+
+    var reader = new FileReader();
+    var file = input.files[0];
+    reader.onload = function(e) {
+        $('.profile_image').attr('src', e.target.result); 
+    }
+    reader.readAsDataURL(file);
+
+
+    var form = new FormData();
+
+    form.append("mode", "change_profile");
+    form.append("profile_image", file);
+    
+        $.ajax({
+            url : "my",
+            type : "POST",
+            processData : false,
+            contentType : false,
+            data : form,
+            dataType : "JSON",
+            success:function(response) {
+                
+                if(response.result == 1) {
+                    alert(response.message);
+                }else {
+                    alert(response.message);
+                    return false;
+                }
+                
+            }
+            ,error: function (jqXHR) 
+            { 
+                alert("실패햇습니다."); 
+            }
+    });
+
+    console.log(file.name);
+
+
+}
 
 $(".switch_btn").on("click", function () {
     if ($(".switch_btn .tag").hasClass("active")) {
@@ -201,7 +328,7 @@ $(".switch_btn").on("click", function () {
     } else {
         $(".switch_btn .tag").addClass("active");
     }
-})
+});
 
 </script>
 
