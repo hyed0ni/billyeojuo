@@ -129,6 +129,7 @@ public class SpaceDAO {
 			while (rs.next()) {
 				
 				Space spaceRoom = new Space();
+				spaceRoom.setSpaceRoomNo(rs.getInt("SPACE_ROOM_NO"));
 				spaceRoom.setSpaceRoomNm(rs.getString("SPACE_ROOM_NM"));
 				spaceRoom.setSpaceRoomPrice(rs.getInt("SPACE_ROOM_PRICE"));
 				spaceRoom.setSpaceRoomFit(rs.getString("SPACE_ROOM_FIT"));
