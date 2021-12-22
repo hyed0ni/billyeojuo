@@ -28,6 +28,9 @@
             </div>
             
             <div class="list_area">
+            	<div class="btn_area">
+	                <button type="button" class="btn write" name="writeBtn">문의 하기</button>
+                </div>
             	<c:choose>
             		<c:when test="${!empty qnaList }">
             			<c:forEach items="${qnaList}" var="qna">
@@ -66,10 +69,19 @@
 <jsp:include page="../common/footer.jsp"/>
 
 <script>
-$(".search_area").on("chnage", function () {
+// 문의하기
+$(".btn.write").on("click", function () {
+	console.log("TEST");
+	layerPopQna(0);
+});
+
+// selectbox sort
+$(".search_area").on("change", function () {
+	/*
 	$.ajax({
 		url : 
 	})
+	*/
 	
 })
 </script>

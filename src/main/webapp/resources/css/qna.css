@@ -22,3 +22,7 @@
 .qna > .qna_area > .list_area > .list > .content_area .date{font-size:12px;}
 .qna > .qna_area > .list_area > .list > .content_area > .comment_area{margin:10px 0 0 15px;}
 .qna > .qna_area > .list_area > .list > .content_area > .comment_area > .comment_title{font-size:18px; color:#704de4; margin-bottom:5px;}
+
+/* 글등록 버튼 */
+.qna > .qna_area > .list_area > .btn_area{text-align:right; margin-bottom:10px;}
+.qna > .qna_area > .list_area > .btn_area > .btn.write{background:#704de4; color:#fff; border-radius:5px; font-size:15px; padding:5px 10px;}

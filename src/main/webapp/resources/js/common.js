@@ -41,7 +41,7 @@ $(function () {
 				location.href = contextPath;
 			} else if (url == "qna") {
 				if (loginMemberNo > 0) {
-					layerPop(0);
+					layerPopQna(0);
 				} else {
 					alert("로그인이 필요 합니다.");
 					location.href = contextPath + "/member/login";
@@ -62,7 +62,7 @@ $(function () {
 });
 
 // 문의 팝업
-function layerPop(layerValue) {
+function layerPopQna(layerValue) {
 	const html = `
 		<div class="popup_wrap">
 			<div class="pop_header">질문 작성하기</div>
@@ -89,7 +89,7 @@ function layerPop(layerValue) {
 				</p>
 				<div class="btns">
 					<a class="btn btn_full cancel btn_negative">취소</a>
-					<a class="btn btn_full submit btn_default" id="sub">등록</a>
+					<a class="btn btn_full submit btn_default" id="qnaWrite">등록</a>
 				</div>
 			</div>
 			<a title="레이어팝업 닫힘" class="btn_pop_close">
@@ -108,7 +108,7 @@ function layerPop(layerValue) {
 }
 
 // 문의 등록
-$(document).on("click", ".btn.submit", function(){
+$(document).on("click", "#qnaWrite", function(){
 	if ($("#queContent").val().trim().length == 0) {
 		alert("문의내용을 입력해 주세요");
 		$("#queContent").focus();
