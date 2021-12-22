@@ -11,6 +11,10 @@ public class Qna {
 	private int queSt;
 	private int memberNo;
 	private int spaceNo;
+	private String spaceNm;
+	private String spaceImgPath;
+	private String spaceImgNm;
+	private String spaceImgOrg;
 	
 	private void qna() {
 	}
@@ -77,6 +81,38 @@ public class Qna {
 
 	public void setSpaceNo(int spaceNo) {
 		this.spaceNo = spaceNo;
+	}
+
+	public String getSpaceNm() {
+		return spaceNm;
+	}
+
+	public void setSpaceNm(String spaceNm) {
+		this.spaceNm = spaceNm;
+	}
+
+	public String getSpaceImgPath() {
+		return spaceImgPath;
+	}
+
+	public void setSpaceImgPath(String spaceImgPath) {
+		this.spaceImgPath = spaceImgPath;
+	}
+
+	public String getSpaceImgNm() {
+		return spaceImgNm;
+	}
+
+	public void setSpaceImgNm(String spaceImgNm) {
+		this.spaceImgNm = spaceImgNm;
+	}
+
+	public String getSpaceImgOrg() {
+		return spaceImgOrg;
+	}
+
+	public void setSpaceImgOrg(String spaceImgOrg) {
+		this.spaceImgOrg = spaceImgOrg;
 	}
 	
 	

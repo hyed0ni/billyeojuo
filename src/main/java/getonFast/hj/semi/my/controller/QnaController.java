@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.QnaService;
 import getonFast.hj.semi.my.model.vo.Qna;
@@ -19,6 +21,8 @@ public class QnaController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		resp.setCharacterEncoding("UTF-8");
 		
 		String method = req.getMethod();
 		String uri = req.getRequestURI();
@@ -34,17 +38,18 @@ public class QnaController extends HttpServlet {
 		
 		Member loginMember = (Member)req.getSession().getAttribute("loginMember");
 		
-		System.out.println(loginMember);
-		
 		try {
 			
 			if (loginMember != null) {
 				int memberNo = loginMember.getMemberNo();
 				
+				String sort = "all";
+				
+				
 				QnaService service = new QnaService();
 				
 				if (command.equals("list") || command.equals("")) {
-					List<Qna> qnaList = service.qnaList(memberNo);
+					List<Qna> qnaList = service.qnaList(memberNo, sort);
 					
 					req.setAttribute("qnaList", qnaList);
 					
@@ -52,6 +57,13 @@ public class QnaController extends HttpServlet {
 					
 					path = "/WEB-INF/views/qna/qnaList.jsp";
 					req.getRequestDispatcher(path).forward(req, resp);
+				} else if (command.equals("sort")) {
+					sort = req.getParameter("sort");
+					
+					List<Qna> qnaList = service.qnaList(memberNo, sort);
+					
+					new Gson().toJson(qnaList, resp.getWriter());
+					
 				} else if (command.equals("insert")) {
 					
 					int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
