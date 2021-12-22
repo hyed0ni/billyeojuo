@@ -230,7 +230,8 @@ body{background-color:#fff;}
 
 .like-comment{
   float: right;
-
+  text-align: right;
+  width: 50%;
   font-size: 12px;
   margin-top: 8px;
   line-height: 5px;
