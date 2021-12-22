@@ -5,9 +5,9 @@ import static getonFast.hj.semi.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.List;
 
+import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.promotion.model.dao.PromotionDAO;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
-import getonFast.hj.semi.promotion.model.vo.PromotionDetail;
 
 public class PromotionService {
 	
@@ -28,10 +28,10 @@ public class PromotionService {
 		return promotionList;
 	}
 
-	public List<PromotionDetail> selectProDetailList(int exNo) throws Exception{
+	public List<SpaceList> selectProDetailList(int exNo) throws Exception{
 		Connection conn = getConnection();		
 		
-		List<PromotionDetail> resultList = dao.selectProDetailList(conn,exNo);
+		List<SpaceList> resultList = dao.selectProDetailList(conn,exNo);
 		
 		close(conn);
 		return resultList;

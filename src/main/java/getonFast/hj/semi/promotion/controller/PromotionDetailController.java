@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.promotion.model.service.PromotionService;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
-import getonFast.hj.semi.promotion.model.vo.PromotionDetail;
+import getonFast.hj.semi.space.model.vo.Space;
 
 @WebServlet("/promotion_detail")
 public class PromotionDetailController extends HttpServlet{
@@ -25,7 +26,7 @@ public class PromotionDetailController extends HttpServlet{
 			
 			
 			PromotionService service = new PromotionService();
-			List<PromotionDetail> proDetailList = service.selectProDetailList(exNo);
+			List<SpaceList> proDetailList = service.selectProDetailList(exNo);
 			
 			Promotion title = service.ProDetailTitle(exNo);
 			
