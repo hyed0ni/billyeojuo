@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import getonFast.hj.semi.main.model.dao.MainDAO;
-import getonFast.hj.semi.main.model.vo.Recommend;
+import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 import getonFast.hj.semi.space.model.vo.Space;
 
@@ -27,13 +27,23 @@ public class MainService {
 		return spaceTypeList;
 	}
 
-	public List<Recommend> selectRecommendList() throws Exception {
+	public List<SpaceList> selectRecommendList() throws Exception {
 		Connection conn = getConnection();
 		
-		List<Recommend> recommendList = dao.selectRecommendList(conn);
+		List<SpaceList> recommendList = dao.selectRecommendList(conn);
 		
 		close(conn);
 		return recommendList;
+	}
+
+	public List<SpaceList> selectSeacrhList(String sv) throws Exception {
+		Connection conn = getConnection();
+		
+		List<SpaceList> searchList = dao.selectSearchList(sv, conn);
+		
+		close(conn);
+		
+		return searchList;
 	}
 
 }

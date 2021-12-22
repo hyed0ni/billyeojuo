@@ -22,6 +22,7 @@
 	            <div class="main-icons-text">${spaceType.spaceTypeNm}</div>
 	        </a>
     	</c:forEach>
+    	
     </section>
 
     <section class="space"></section>

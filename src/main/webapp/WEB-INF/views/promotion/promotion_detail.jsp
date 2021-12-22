@@ -24,7 +24,7 @@
 	<c:forEach  items="${proDetailList}" var="proDetail">  
 	  <article  class="promotion-space-list">
 		<a href="${contextPath}/space/detail?no=${proDetail.spaceNo}">
-	       <div class="img-box" style="background-image: url(${contextPath}${proDetail.spaceImgPath}${proDetail.spaceImgName})">
+	       <div class="img-box" style="background-image: url(${contextPath}${proDetail.imgPath}${proDetail.imgName})">
 	       </div>
 	       
       	   <div class="info-box">

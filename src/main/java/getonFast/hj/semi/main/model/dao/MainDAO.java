@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import getonFast.hj.semi.main.model.vo.Recommend;
+import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 import getonFast.hj.semi.space.model.vo.Space;
 
@@ -70,9 +70,9 @@ public class MainDAO {
 		return spaceTypeList;
 	}
 
-	public List<Recommend> selectRecommendList(Connection conn) throws Exception {
+	public List<SpaceList> selectRecommendList(Connection conn) throws Exception {
 		
-		List<Recommend> recommendList = new ArrayList<Recommend>();
+		List<SpaceList> recommendList = new ArrayList<SpaceList>();
 		
 		try {
 			String sql = prop.getProperty("selectRecommend");
@@ -81,7 +81,7 @@ public class MainDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Recommend rc = new Recommend();
+				SpaceList rc = new SpaceList();
 				rc.setSpaceNo(rs.getInt("SPACE_NO"));
 				rc.setSpaceNm(rs.getString("SPACE_NM"));
 				rc.setSpaceSubNm(rs.getString("SPACE_SUB_NM"));
@@ -100,6 +100,42 @@ public class MainDAO {
 		}
 		
 		return recommendList;
+	}
+
+	public List<SpaceList> selectSearchList(String sv, Connection conn) throws Exception {
+
+		List<SpaceList> searchList = new ArrayList<SpaceList>();
+		
+		try {
+			
+			String sql = prop.getProperty("selectSearchList");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, sv);
+
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				SpaceList rc = new SpaceList();
+				rc.setSpaceNo(rs.getInt("SPACE_NO"));
+				rc.setSpaceNm(rs.getString("SPACE_NM"));
+				rc.setSpaceSubNm(rs.getString("SPACE_SUB_NM"));
+				rc.setRoomPrice(rs.getInt("MIN(SPACE_ROOM_PRICE)"));
+				rc.setRoomFit(rs.getString("SPACE_ROOM_FIT"));
+				rc.setLike(rs.getInt("NVL(COUNT(MEMBER_NO),0)"));
+				rc.setImgPath(rs.getString("SPACE_IMG_PATH"));
+				rc.setImgName(rs.getString("SPACE_IMG_NM"));
+				
+				searchList.add(rc);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+			
+		return searchList;
 	}
 
 }
