@@ -7,6 +7,7 @@ import java.util.List;
 
 import getonFast.hj.semi.promotion.model.dao.PromotionDAO;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
+import getonFast.hj.semi.promotion.model.vo.PromotionDetail;
 
 public class PromotionService {
 	
@@ -25,5 +26,24 @@ public class PromotionService {
 		close(conn);
 		
 		return promotionList;
+	}
+
+	public List<PromotionDetail> selectProDetailList(int exNo) throws Exception{
+		Connection conn = getConnection();		
+		
+		List<PromotionDetail> resultList = dao.selectProDetailList(conn,exNo);
+		
+		close(conn);
+		return resultList;
+	}
+
+	public Promotion ProDetailTitle(int exNo) throws Exception {
+		Connection conn = getConnection();
+		
+		Promotion title = dao.selectProDetailTitle(conn, exNo);
+		
+		close(conn);
+		return title;
+		
 	}
 }

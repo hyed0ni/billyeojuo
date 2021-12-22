@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import getonFast.hj.semi.promotion.model.service.PromotionService;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
@@ -18,8 +19,12 @@ public class PromotionController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			
+			HttpSession session = req.getSession(); 
+			
 			PromotionService service = new PromotionService();
 
+			
 			List<Promotion> promotionList = service.selectPromotionList();
 			req.setAttribute("promotionList", promotionList);
 			
