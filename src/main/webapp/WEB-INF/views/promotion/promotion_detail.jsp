@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- JSTL c태그 사용을 위한 taglib 추가 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 
 <%-- 프로젝트의 시작 주소를 간단히 얻어올 수 있도록 application scope로 contextPath라는 변수를 생성함--%>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
@@ -24,7 +27,7 @@
 	<c:forEach  items="${proDetailList}" var="proDetail">  
 	  <article  class="promotion-space-list">
 		<a href="${contextPath}/space/detail?no=${proDetail.spaceNo}">
-	       <div class="img-box" style="background-image: url(${contextPath}${proDetail.spaceImgPath}${proDetail.spaceImgName})">
+	       <div class="img-box" style="background-image: url(${contextPath}${proDetail.imgPath}${proDetail.imgName})">
 	       </div>
 	       
       	   <div class="info-box">
@@ -33,8 +36,8 @@
 	               <span class="location"> ${proDetail.spaceSubNm}</span>
 	           </div>
 	           <div class="price-box">
-	               <strong class="price purple">${proDetail.roomPrice}</strong> <span>원/박</span>
-	               <div class="like-comment" style="text-align: right;   width: 50%;">
+	               <strong class="price purple"><fmt:formatNumber value="${proDetail.roomPrice}" pattern="#,###"/></strong> <span>원/박</span>
+	               <div class="like-comment">
 	                 <%--   <span class="pricebox-icon icon-comment"></span>
 	                   <span>${recommend.like}</span> --%>
 	                   <span class="pricebox-icon icon-people"></span>

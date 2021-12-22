@@ -66,9 +66,7 @@
   background-size: 100%;
 }
 
-#space-wrapper>.space-space-list>a>.img-box:nth-child(1){
-  background-image: url("../images/main_body/recommend_img_01.jpeg");
-}
+
 
 /* 내용부분  */
 #space-wrapper>.space-space-list>a>.info-box{
@@ -91,7 +89,7 @@
   font-size: 20px
 }
 
-#space-wrapper>.space-space-list>a>.tag-box>.location{
+.location{
   
   display:inline-block;
   font-weight: bold;
@@ -119,7 +117,8 @@
 
 .like-comment{
   float: right;
-  width: 36%;
+  width: 50%;
+  text-align: right;
   font-size: 11px;
   margin-top: 8px;
   line-height: 5px;
@@ -129,14 +128,26 @@
   width: 15px;
   height: 15px;
 }
+/*  이미지 부분  */
+.img-box{
+  width: 100%;
+  height: 66%;
+  background-size: 100%;
+}
+.price-box{
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.price{
+  letter-spacing:-0.5px;
+  font-size: 20px;
+}
 
 .icon-people{
   background-image:url("../images/main_body/icon_people.svg");
 }
-.icon-comment{
-  background-image:url("../images/main_body/icon_comment.svg");
 
-}
 .icon-like{
   background-image:url("../images/main_body/icon_like.svg");
 }
