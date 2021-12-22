@@ -283,3 +283,6 @@ li.selected {  background-color: #ffd014;}
 .space_detail{display : none}
 
 .room-info {margin-right:20px; font-weight:bold;}
+
+
+#heart{ cursor: pointer; }

@@ -23,8 +23,24 @@
 	</entry>
 	
 	<!-- 공간옵션 조회 -->
-	<entry key="selectSpaceType">
+	<entry key="selectSpaceOption">
 		SELECT OPTION_NM, OPTION_ICON FROM SPACE_OPTION JOIN SPACE_ROOM_OPTION USING(OPTION_NO) 
 		JOIN SPACE_ROOM USING(SPACE_ROOM_NO) WHERE SPACE_ROOM_NO = ?
+	</entry>
+	
+	<!-- 찜하기 삽입 -->
+	<entry key="insertHeart">
+		INSERT INTO SPACE_DIBS VALUES(?, ?)
+	</entry>
+	
+	<!-- 찜하기 삭제 -->
+	<entry key="deleteHeart">
+		DELETE FROM SPACE_DIBS
+		WHERE MEMBER_NO = ? AND SPACE_NO = ?
+	</entry>
+	
+	<!-- 찜하기 여부 확인 -->
+	<entry key="selectHeart">
+		SELECT COUNT(*) FROM SPACE_DIBS WHERE MEMBER_NO=? AND SPACE_NO=?
 	</entry>
 </properties>
