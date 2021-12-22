@@ -292,4 +292,136 @@ public class SpaceDAO {
 		
 		return spaceHeart;
 	}
+	
+//	------------------------------------------------------------------------------------------------------
+
+	/** 공간룸 상세 조회
+	 * @param spaceRoomNo
+	 * @param conn
+	 * @return spaceRoom
+	 * @throws Exception
+	 */
+	public Space selectSpaceRoomRes(int spaceRoomNo, Connection conn) throws Exception {
+		Space spaceRoom = null;
+		
+		try {
+			String sql = prop.getProperty("selectSpaceRoomRes");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceRoomNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				spaceRoom = new Space();
+				spaceRoom.setSpaceRoomNm(rs.getString("SPACE_ROOM_NM"));
+				spaceRoom.setSpaceRoomPrice(rs.getInt("SPACE_ROOM_PRICE"));
+				spaceRoom.setSpaceRoomFit(rs.getString("SPACE_ROOM_FIT"));
+				spaceRoom.setSpaceRoomDesc(rs.getString("SPACE_ROOM_DESC"));
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceRoom;
+	}
+	
+	/** 공간 상세 조회
+	 * @param spaceRoomNo
+	 * @param conn
+	 * @return space
+	 * @throws Exception
+	 */
+	public Space selectSpaceRes(int spaceRoomNo, Connection conn) throws Exception {
+		Space space = null;
+		
+		try {
+			String sql = prop.getProperty("selectSpaceRes");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceRoomNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				space = new Space();
+				space.setSpaceNm(rs.getString("SPACE_NM"));
+				space.setPrecautions(rs.getString("PRECAUTIONS"));
+				
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return space;
+	}
+	
+	/** 공간유형 조회
+	 * @param spaceRoomNo
+	 * @param conn
+	 * @return spaceType
+	 * @throws Exception
+	 */
+	public Space selectSpaceTypeRes(int spaceRoomNo, Connection conn) throws Exception {
+		Space spaceType = null;
+		
+		try {
+			String sql = prop.getProperty("selectSpaceTypeRes");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceRoomNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				spaceType = new Space();
+				spaceType.setSpaceTypeNm(rs.getString("SPACE_TYPE_NM"));
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceType;
+	}
+
+	/** 공간 이미지 조회
+	 * @param spaceRoomNo
+	 * @param conn
+	 * @return spaceImg
+	 * @throws Exception
+	 */
+	public Space selectSpaceImgRes(int spaceRoomNo, Connection conn) throws Exception {
+		Space spaceImg = null;
+		
+		try {
+			String sql = prop.getProperty("selectSpaceImgRes");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceRoomNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				spaceImg = new Space();
+				spaceImg.setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
+				spaceImg.setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceImg;
+	}
+
 }
