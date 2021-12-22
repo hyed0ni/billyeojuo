@@ -9,6 +9,7 @@
 <!-- header include -->
 <jsp:include page="../common/header.jsp"/>
 
+
 <main>
     <section class="my">
         <div class="title" style="letter-spacing:-.5px;">프로필 관리</div>
@@ -16,7 +17,15 @@
             <div class="contents">
                 <div class="img_area">
                     <div>
-                        <img src="${contextPath}/resources/images/header/defaultUser.jpg">
+                        <c:choose>
+                            <c:when test="empty sessionScope.loginMember.imgName">
+                                <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
+                            </c:when>
+                            <c:otherwise>
+                                <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}"
+                                    class="profile_image">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="contents_nickname">${sessionScope.loginMember.memberName}</div>
                 </div>
@@ -25,16 +34,18 @@
             <div class="my_detail">
                 <div class="profile_area">
                     <div>
+                       
+                        
                         <c:choose>
                             <c:when test="empty sessionScope.loginMember.imgName">
                                 <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
                         </c:when>
                         <c:otherwise>
-                            <img src="${contextPath}/resources/images/${sessionScope.loginMember.imgName}" class="profile_image">
+                            <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}" class="profile_image">
                         </c:otherwise>
                     </c:choose>
                     </div>
-                    <div class="profile_nickname">${sessionScope.loginMember.imgPath}</div>
+                    <div class="profile_nickname">${sessionScope.loginMember.memberName}</div>
                     <div>
                     	<a href="javascript:void(0)" class="input profile_change">프로필 사진 변경</a>
                         <input type="file" class="profile_file" name="profile_file" style="display: none;" onchange="changeImage(this)">
@@ -55,15 +66,15 @@
                                 <th class="table_th">닉네임</th>
                                 <td class="table_td">
                                 
-                                    <div class="change_nickname_wrap">${sessionScope.loginMember.memberName}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_nickname">변경하기</a></div>
+                                    <div class="change_nickname_wrap"><span>${sessionScope.loginMember.memberName}</span><a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_nickname">변경하기</a></div>
                                     
                                     <div class="change_nickname_wrap_2" style="display: none;">
-                                        <form action="${contextPath}/my" method="post" type="submit">
+                                        <!-- <form action="${contextPath}/my" method="post" enctype="multipart/form-data" type="submit"> -->
                                             <input type="text" class="nickname" name="inputName">
-                                                <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_confirm">확인</button>
+                                            <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_confirm">확인</button>
                                                 
-                                                <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_cancle">취소하기</a>
-                                            </form>
+                                            <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="name_change_cancle">취소하기</a>
+                                            <!-- </form> -->
                                             </div>
                                     
                                 </td>
@@ -78,15 +89,15 @@
                             <tr>
                                 <th class="table_th">연락처</th>
                                 <td class="table_td">
-                                    <div class="change_phone_wrap">${sessionScope.loginMember.memberPhone}<a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
+                                    <div class="change_phone_wrap"><span>${sessionScope.loginMember.memberPhone}</span><a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="change_phone">변경하기</a></div>
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
                                     <div class="change_phone_wrap_2" style="display: none;">
-                                        <form action="${contextPath}/my" method="post" type="submit">
+                                        <!-- <form action="${contextPath}/my" method="post" enctype="multipart/form-data" type="submit"> -->
                                             <input type="text" class="phone" name="inputPhone">
                                                 <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</button>
                                                 
                                                 <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
-                                            </form>
+                                            <!-- </form> -->
                                             </div>
                                 
                                 </td>
@@ -96,13 +107,13 @@
                                 <td class="table_td">
                                     <div class="change_pwd_wrap"><a href="#" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box;" class="change_pwd">변경하기</a></div>
                                     <div class="change_pwd_wrap_2" style="display: none; " >
-                                        <form action="${contextPath}/my" method="post" type="submit">
+                                       <!--  <form action="${contextPath}/my" method="post" enctype="multipart/form-data" type="submit"> -->
                                         <input type="password" class="prePwd1" name="prePwd1" placeholder="현재 비밀번호" style="margin: 10px;"> <br>
                                         <input type="password" class="newPwd1" name="newPwd1" placeholder="변경할 비밀번호" style="margin: 10px;"> <br>
                                         <input type="password" class="newPwd2" name="newPwd2" placeholder="비밀번호 확인" style="margin: 10px;">
                                         <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; left:20px;" class="pwd_change_confirm">확인</button>
                                         <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="pwd_change_cancle">취소하기</a>
-                                    </form>
+                                    <!-- </form> -->
                                     </div>
                                 </td>
                             </tr>
@@ -178,11 +189,11 @@ $(document).on('click', '.pwd_change_cancle', function() {
 
 $(document).on('click', '.name_change_confirm', function(){
 
-    const inputNickname = $(this).prev().val();  
+    const inputNickname = $(this).prev().val(); 
 	const regExp = /^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$/;
 
 	if (inputNickname == '') {
-		alert("닉네임을 입력해주세요.");
+		alert("닉네임을 입력해 주세요.");
 		return false;
 	}
 
@@ -191,20 +202,81 @@ $(document).on('click', '.name_change_confirm', function(){
 		return false;
 	}
 
+    $.ajax({
+
+        url: 'my',
+        data: {
+            nickName: inputNickname
+        },
+        dataType: 'json',
+        type: 'post',
+        error: function() {
+            alert('인터넷 연결이 원활하지 않습니다.');
+        },
+        success: function(data) {
+
+            if(data.result == 1) {
+                alert('닉네임 변경되었습니다.');
+                $(".change_nickname_wrap_2").hide();
+                $(".change_nickname_wrap").show();
+                $(".change_nickname_wrap").children('span').text(inputNickname);
+                $(".contents_nickname").text(inputNickname);
+                $(".profile_nickname").text(inputNickname);
+                $(".profile_txt .nickname").children().text(inputNickname);
+
+
+            }else {
+                alert('일시적인 오류가 발생했습니다.');
+                return false;
+            }
+        }
+
+    })
+
 });
 
 $(document).on('click ', '.ph_change_confirm', function(){
 
-    const inputphone = $(this).pre().val;
-    const regExp = /^[a-z0-9]{3,16]$/
+    const inputphone = $(this).prev().val();
+    const regExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+
+    console.log(inputphone);
     
     if(inputphone == ''){
         alert("전화번호를 입력해주세요.");
     }
 
     if(!regExp.test(inputphone)){
-        alert("유효하지 않는 닉네임 입니다.");
+        alert("유효하지 않는 전화번호 입니다.");
     }
+
+    $.ajax({
+
+        url: 'my',
+        data: {
+            inputPhone: inputphone
+        },
+        dataType: 'json',
+        type: 'post',
+        error: function() {
+            alert('error');
+        },
+        success: function(data) {
+
+            if(data.result == 1) {
+                alert('전화번호가 변경되었습니다.');
+                $(".change_phone_wrap_2").hide();
+                $(".change_phone_wrap").show();
+                $(".change_phone_wrap").children('span').text(inputphone);
+            
+
+            }else {
+                alert('error2');
+                return false;
+            }
+        }
+
+})
 
 
 });
@@ -247,17 +319,20 @@ $(document).on('click', '.pwd_change_confirm', function(){
         type: "POST",
         data: { "prepassword": prepassword.val(), "newPwd1" : newPwd1.val() },
         dataType : "JSON",
-        success: function(result) {
-        	cosole.log(result);
+        success: function(data) {
         
-            if (result == 0) {
+            if (data.result == 0) {
                alert("비밀번호가 틀립니다.");
                password.focus();
                return false;
                 
             } else {
                 
-               alert("비밀번호가 맞습니다.");
+               alert("비밀번호가 변경되었습니다.");
+               $(".change_pwd_wrap_2").hide();
+                $(".change_pwd_wrap").show();
+               
+
             }
         },
         error: function(request, status, error) {
@@ -298,24 +373,24 @@ function changeImage(input) {
     form.append("profile_image", file);
     
         $.ajax({
-            url : "my",
+            url : "profile",
             type : "POST",
             processData : false,
             contentType : false,
             data : form,
             dataType : "JSON",
-            success:function(result) {
+            success:function(data) {
                 
-                if(result > 0) {
-                    alert(result.message);
+                if(data.result > 0) {
+                    alert("프로필사진을 변경했습니다.");
                 }else {
-                    alert(result.message);
+                    alert("일시적인 오류가 발생했습니다.");
                     return false;
                 }
                 
             }
             ,error: function( request , status , error){
-                alert("안녕?")
+                alert("인터넷 연결이 원활하지 않습니다.");
            },
     });
 
@@ -327,7 +402,7 @@ function changeImage(input) {
 // 회원탈퇴
 function secessionValidate() {
 
-    return confirm("정말로 탈퇴하시겠습니까?")
+    return confirm("정말로 탈퇴하시겠습니까?");
 
 }
 
