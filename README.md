@@ -34,6 +34,7 @@ http://localhost:8080/getonFast/
 기획전 리스트
 - http://localhost:8080/getonFast/promotion_detail
 
+
 공간 리스트
 - http://localhost:8080/getonFast/space/search
 공간 상세
