@@ -3,7 +3,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
 <properties>
-
+	<!-- 닉네임 변경 -->
 	<entry key="updateNickName">
 		UPDATE MEMBER SET
 		MEMBER_NM= ? 
@@ -11,6 +11,7 @@
 		MEMBER_NO=?
 	</entry>
 	
+	<!-- 전화번호 변경 -->
 	<entry key="updatePhone">
 		UPDATE MEMBER SET
 		MEMBER_PNO= ? 
@@ -18,6 +19,7 @@
 		MEMBER_NO=?
 	</entry>
 	
+	<!-- 비밀번호 체크 -->
 	<entry key="pwdCheck">
 		UPDATE MEMBER SET
 		MEMBER_PW = ?
@@ -26,6 +28,7 @@
 		MEMBER_NO = ?
 	</entry>
 	
+	<!-- 파일 업로드 -->
 	<entry key="updateProfile">
 		UPDATE MEMBER SET
 		MEMBER_IMG_ORG = ?,
@@ -34,5 +37,7 @@
 		WHERE
 		MEMBER_NO = ?
 	</entry>
+	
+
 
 </properties>
