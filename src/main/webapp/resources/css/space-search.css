@@ -66,9 +66,7 @@
   background-size: 100%;
 }
 
-#space-wrapper>.space-space-list>a>.img-box:nth-child(1){
-  background-image: url("../images/main_body/recommend_img_01.jpeg");
-}
+
 
 /* 내용부분  */
 #space-wrapper>.space-space-list>a>.info-box{
@@ -119,7 +117,8 @@
 
 .like-comment{
   float: right;
-  width: 36%;
+  width: 50%;
+  text-align: right;
   font-size: 11px;
   margin-top: 8px;
   line-height: 5px;
@@ -128,6 +127,16 @@
   display: inline-block;
   width: 15px;
   height: 15px;
+}
+
+.price-box{
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.price{
+  letter-spacing:-0.5px;
+  font-size: 20px;
 }
 
 .icon-people{

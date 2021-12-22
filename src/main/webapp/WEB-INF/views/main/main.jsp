@@ -2,6 +2,7 @@
 
 <%-- JSTL c태그 사용을 위한 taglib 추가 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%-- 프로젝트의 시작 주소를 간단히 얻어올 수 있도록 application scope로 contextPath라는 변수를 생성함--%>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
@@ -62,7 +63,7 @@
 	                            <span class="location"> ${recommend.spaceSubNm}</span>
 	                        </div>
 	                        <div class="price-box">
-	                            <strong class="price purple">${recommend.roomPrice}</strong> <span>원/박</span>
+	                            <strong class="price purple"><fmt:formatNumber value="${recommend.roomPrice}" pattern="#,###"/></strong> <span>원/박</span>
 	                            <div class="like-comment" style="text-align: right;   width: 50%;">
 	                              <%--   <span class="pricebox-icon icon-comment"></span>
 	                                <span>${recommend.like}</span> --%>

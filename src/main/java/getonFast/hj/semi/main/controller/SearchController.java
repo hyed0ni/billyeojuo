@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import getonFast.hj.semi.main.model.service.MainService;
 import getonFast.hj.semi.main.model.vo.SpaceList;
 
-@WebServlet("/search")
+@WebServlet("/space/search")
 public class SearchController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,9 +26,10 @@ public class SearchController extends HttpServlet{
 		
 		try {
 			
-			List<SpaceList> saerchList = new MainService().selectSeacrhList(sv);
+			List<SpaceList> searchList = new MainService().selectSeacrhList(sv);
 			
-			req.setAttribute("searchList", saerchList);
+			req.setAttribute("searchList", searchList);
+			req.setAttribute("css", "space-search");
 			
             path = "/WEB-INF/views/space/space_search.jsp";
             dispatcher = req.getRequestDispatcher(path);
