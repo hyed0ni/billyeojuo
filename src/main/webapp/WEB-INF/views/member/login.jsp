@@ -43,6 +43,6 @@
 	<script src="${contextPath}/resources/js/memberLogin.js">
 		
 	</script>
-
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

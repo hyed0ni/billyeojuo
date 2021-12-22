@@ -17,5 +17,22 @@
 		WHERE
 		MEMBER_NO=?
 	</entry>
+	
+	<entry key="pwdCheck">
+		UPDATE MEMBER SET
+		MEMBER_PW = ?
+		WHERE MEMBER_PW = ?
+		AND
+		MEMBER_NO = ?
+	</entry>
+	
+	<entry key="updateProfile">
+		UPDATE MEMBER SET
+		MEMBER_IMG_ORG = ?,
+		MEMBER_IMG_PATH = ?,
+		MEMBER_IMG_NM = ?
+		WHERE
+		MEMBER_NO = ?
+	</entry>
 
 </properties>
