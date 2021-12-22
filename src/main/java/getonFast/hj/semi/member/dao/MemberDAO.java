@@ -158,6 +158,35 @@ public class MemberDAO {
 				
 				return loginMember;
 	}
+
+	/** 회원탈퇴
+	 * @param loginMember
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(Member loginMember, Connection conn) throws Exception{
+		int result = 0;
+		try {
+			// SQL 얻어오기
+			String sql = prop.getProperty("secession");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, loginMember.getMemberNo());
+			
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }
 
 

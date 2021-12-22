@@ -1,6 +1,7 @@
 package getonFast.hj.semi.member.service;
 
 import java.sql.Connection;
+import java.util.Map;
 
 
 import static getonFast.hj.semi.common.JDBCTemplate.*;
@@ -77,6 +78,27 @@ public class MemberService {
 				return loginMember;
 		
 	}
+	
+	/** 회원 탈퇴
+	 * @param loginMember
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(Member loginMember) throws Exception{
+		// DBCP에서 커넥션 얻어오기
+				Connection conn = getConnection();
+				
+				int result =dao.secession(loginMember, conn);
+				
+				if(result > 0) commit(conn);
+				else           rollback(conn);
+				
+				close(conn);
+				
+				return result;
+	}
+
+
 
 	
 

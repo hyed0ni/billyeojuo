@@ -25,5 +25,13 @@
 		AND MEMBER_PW = ?
 		AND MEMBER_ST != 12
 	</entry>
+	
+		<!-- 회원탈퇴 -->
+	<entry key="secession">
+		UPDATE MEMBER SET
+		MEMBER_ST = 12
+		WHERE MEMBER_NO = ?
+		
+	</entry>
 
 </properties>
