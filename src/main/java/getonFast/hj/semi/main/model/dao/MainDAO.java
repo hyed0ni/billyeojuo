@@ -138,4 +138,24 @@ public class MainDAO {
 		return searchList;
 	}
 
+	public int getlistCount(Connection conn) throws Exception {
+		int listCount = 0;
+		
+		try {
+			String sql = prop.getProperty("getListCount");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				listCount = rs.getInt(1);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+
 }

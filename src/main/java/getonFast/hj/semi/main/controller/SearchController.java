@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import getonFast.hj.semi.common.Pagination;
 import getonFast.hj.semi.main.model.service.MainService;
 import getonFast.hj.semi.main.model.vo.SpaceList;
 
@@ -23,10 +24,16 @@ public class SearchController extends HttpServlet{
 	      String message = null;
 		
 	      String sv = req.getParameter("sv");
+	      
+	      int cp = req.getParameter("cp") == null ? 1: Integer.parseInt(req.getParameter("cp"));
 		
 		try {
 			
-			List<SpaceList> searchList = new MainService().selectSeacrhList(sv);
+			MainService service = new MainService();
+			
+			Pagination pagination  = service.getPagination(cp);
+			
+			List<SpaceList> searchList = service.selectSeacrhList(sv);
 			
 			req.setAttribute("searchList", searchList);
 			req.setAttribute("css", "space-search");
