@@ -88,48 +88,43 @@ public class SpaceService {
 		return spaceOptionMap;
 	}
 
-	/** 찜하기
+	/** 찜한공간 등록, 삭제
 	 * @param spaceNo
 	 * @param memberNo
-	 * @return result
+	 * @return heart
 	 * @throws Exception
 	 */
-	public int heartSpace(int spaceNo, int memberNo) throws Exception{
-		
+	public int heartSpace(int spaceNo, int memberNo) throws Exception {
 		Connection conn = getConnection();
-		int result = 0;
+		
+		int heart = 0;
+		
 		try {
-			result = dao.insertHeart(spaceNo, memberNo, conn);
-		}catch (SQLException e) {
-			result = dao.deleteHeart(spaceNo, memberNo, conn);
+			heart = dao.insertHeart(spaceNo, memberNo, conn);
+			
+		} catch (SQLException e) {
+			heart = dao.deleteHeart(spaceNo, memberNo, conn);
 		}
 		
-		if(result > 0) 	commit(conn);
-		else			rollback(conn);
+		if (heart > 0) commit(conn);
+		else rollback(conn);
 		
 		close(conn);
 		
-		return result;
+		return heart;
 	}
 
-	/** 찜하기 여부 확인
+	/** 찜한공간 조회
 	 * @param spaceNo
 	 * @param memberNo
-	 * @return result
+	 * @return spaceHeart
 	 * @throws Exception
 	 */
 	public int selectHeart(int spaceNo, int memberNo) throws Exception{
 		Connection conn = getConnection();
-		
-		int result = dao.selectHeart(spaceNo, memberNo, conn);
-		
+		int spaceHeart = dao.selectHeart(spaceNo, memberNo, conn);
 		close(conn);
 		
-		return result;
+		return spaceHeart;
 	}
-	
-	
-	
-	
-
 }

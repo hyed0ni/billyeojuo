@@ -212,14 +212,14 @@ public class SpaceDAO {
 		return spaceOptionList;
 	}
 
-	/** 찜하기 추가
+	/** 찜한공간 등록
 	 * @param spaceNo
 	 * @param memberNo
 	 * @param conn
-	 * @return result
+	 * @return heart
 	 */
 	public int insertHeart(int spaceNo, int memberNo, Connection conn) throws SQLException {
-		int result = 0;
+		int heart = 0;
 		
 		try {
 			String sql = prop.getProperty("insertHeart");
@@ -228,27 +228,24 @@ public class SpaceDAO {
 			pstmt.setInt(1, memberNo);
 			pstmt.setInt(2, spaceNo);
 			
-			result = pstmt.executeUpdate();
+			heart = pstmt.executeUpdate();
 			
-			
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 		
 		
-		return result;
+		return heart;
 	}
-
 	
-	
-	/**
+	/** 찜한공간 삭제
 	 * @param spaceNo
 	 * @param memberNo
 	 * @param conn
-	 * @return
+	 * @return heart
 	 */
 	public int deleteHeart(int spaceNo, int memberNo, Connection conn) throws SQLException {
-		int result = 0;
+		int heart = 0;
 		
 		try {
 			String sql = prop.getProperty("deleteHeart");
@@ -257,26 +254,24 @@ public class SpaceDAO {
 			pstmt.setInt(1, memberNo);
 			pstmt.setInt(2, spaceNo);
 			
-			result = pstmt.executeUpdate();
+			heart = pstmt.executeUpdate();
 			
-			
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 		
-		return result;
+		return heart;
 	}
 
-	/** 찜하기 여부 확인
+	/** 찜한공간 조회
 	 * @param spaceNo
 	 * @param memberNo
 	 * @param conn 
-	 * @return result
+	 * @return spaceHeart
 	 * @throws Exception
 	 */
 	public int selectHeart(int spaceNo, int memberNo, Connection conn) throws Exception {
-	
-		int result = 0;
+		int spaceHeart = 0;
 		
 		try {
 			String sql = prop.getProperty("selectHeart");
@@ -287,19 +282,14 @@ public class SpaceDAO {
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
+			if (rs.next())
+				spaceHeart = rs.getInt(1);
 			
-			
-		}finally {
+		} finally {
 			close(rs);
 			close(pstmt);
 		}
 		
-		
-		
-		return result;
+		return spaceHeart;
 	}
-
 }

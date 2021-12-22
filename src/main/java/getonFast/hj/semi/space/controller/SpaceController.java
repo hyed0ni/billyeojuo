@@ -79,33 +79,23 @@ public class SpaceController extends HttpServlet {
             
          }
          
-         
-         
-         // 찜하기
-         else if(command.equals("heart")) {
-        	 
-        	 int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+         // 찜한공간 등록, 삭제
+         else if (command.equals("heart")) {
         	 int memberNo = ((Member)req.getSession().getAttribute("loginMember")).getMemberNo();
+        	 int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+        	 int heart = service.heartSpace(spaceNo, memberNo);
         	 
-        	 int result = service.heartSpace(spaceNo, memberNo);
-        	 
-        	 resp.getWriter().print(result);
+        	 resp.getWriter().print(heart);
          }
          
-         
-         // 찜하기 여부 확인
-         else if(command.equals("selectHeart")) {
-        	 
-        	 int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+         // 찜한공간 조회
+         else if (command.equals("selectHeart")) {
         	 int memberNo = ((Member)req.getSession().getAttribute("loginMember")).getMemberNo();
+        	 int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+        	 int spaceHeart = service.selectHeart(spaceNo, memberNo);
         	 
-        	 int result = service.selectHeart(spaceNo, memberNo);
-        	 
-        	 resp.getWriter().print(result);
-        	 
+        	 resp.getWriter().print(spaceHeart);
          }
-         
-         
          
       } catch (Exception e) {
          e.printStackTrace();

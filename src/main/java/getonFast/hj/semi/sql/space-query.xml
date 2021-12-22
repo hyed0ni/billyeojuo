@@ -28,19 +28,18 @@
 		JOIN SPACE_ROOM USING(SPACE_ROOM_NO) WHERE SPACE_ROOM_NO = ?
 	</entry>
 	
-	<!-- 찜하기 삽입 -->
+	<!-- 찜한공간 등록 -->
 	<entry key="insertHeart">
 		INSERT INTO SPACE_DIBS VALUES(?, ?)
 	</entry>
 	
-	<!-- 찜하기 삭제 -->
+	<!-- 찜한공간 삭제 -->
 	<entry key="deleteHeart">
-		DELETE FROM SPACE_DIBS
-		WHERE MEMBER_NO = ? AND SPACE_NO = ?
+		DELETE FROM SPACE_DIBS WHERE MEMBER_NO = ? AND SPACE_NO = ?
 	</entry>
 	
-	<!-- 찜하기 여부 확인 -->
+	<!-- 찜한공간 조회 -->
 	<entry key="selectHeart">
-		SELECT COUNT(*) FROM SPACE_DIBS WHERE MEMBER_NO=? AND SPACE_NO=?
+		SELECT COUNT(*) FROM SPACE_DIBS WHERE MEMBER_NO = ? AND SPACE_NO = ?
 	</entry>
 </properties>
