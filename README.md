@@ -13,13 +13,13 @@ http://localhost:8080/getonFast/
 - http://localhost:8080/getonFast/my/favorites
 문의 관리
 - http://localhost:8080/getonFast/my/qna
-이용후기
+이용 후기
 - http://localhost:8080/getonFast/my/review
 
 
-예약내역
+예약 리스트
 - http://localhost:8080/getonFast/my/reserve
-예약 세부내역
+예약 상세
 - http://localhost:8080/getonFast/my/reservation_detail
 
 
@@ -45,5 +45,5 @@ http://localhost:8080/getonFast/
 
 관리자 
 
--공간등록 
+-공간 등록 
 http://localhost:8080/getonFast/adminSpace/insert
