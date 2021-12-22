@@ -159,7 +159,6 @@ public class MainDAO {
 				listCount = rs.getInt(1);
 			}
 			
-			
 		}finally {
 			close(rs);
 			close(pstmt);

@@ -42,7 +42,7 @@
       FROM (
       SELECT * 
       FROM SEARCH_VIEW
-      WHERE ( (SPACE_NM || SPACE_SUB_NM || SPACE_ADDR || SPACE_TYPE_NM) LIKE '%'||?||' %') 
+      WHERE ( (SPACE_NM || SPACE_SUB_NM || SPACE_ADDR || SPACE_TYPE_NM) LIKE '%'||?||'%') 
       ORDER BY SPACE_NO DESC
       ) A
       ) WHERE RNUM BETWEEN ? AND ?

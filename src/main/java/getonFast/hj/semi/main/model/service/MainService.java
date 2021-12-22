@@ -54,7 +54,12 @@ public class MainService {
 		Connection conn = getConnection();
 		int listCount = dao.getlistCount(conn, sv);
 		
+		if(listCount < 12) {
+			listCount = 12;
+		}
+		
 		int pageSize = listCount/limit;
+		
 		close(conn);
 		
 		return new Pagination(listCount, cp, limit, pageSize);
