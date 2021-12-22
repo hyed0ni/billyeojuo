@@ -72,7 +72,7 @@ public class loginServlet extends HttpServlet{
 					
 					session.setAttribute("loginMember", loginMember);
 					
-					System.out.println(loginMember);
+					
 					
 					session.setMaxInactiveInterval(60*60*24);
 					
