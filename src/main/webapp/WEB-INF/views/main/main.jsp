@@ -54,6 +54,7 @@
 	                <a href="${contextPath}/space/detail?no=${recommend.spaceNo}">
 	                    <div class="img-box" style="background-image: url(${contextPath}${recommend.imgPath}${recommend.imgName})">
 	                    </div>
+	                    
 	                    <div class="info-box">
 	                        <h3>${recommend.spaceNm}</h3>
 	                        <div class="tag-box">
