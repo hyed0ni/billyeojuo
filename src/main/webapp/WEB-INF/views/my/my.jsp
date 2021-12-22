@@ -26,11 +26,11 @@
                 <div class="profile_area">
                     <div>
                         <c:choose>
-                            <c:when test="${sessionScope.loginMember.imgPath} == null">
+                            <c:when test="empty sessionScope.loginMember.imgName">
                                 <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
                         </c:when>
                         <c:otherwise>
-                            <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}" class="profile_image">
+                            <img src="${contextPath}/resources/images/${sessionScope.loginMember.imgName}" class="profile_image">
                         </c:otherwise>
                     </c:choose>
                     </div>
@@ -118,9 +118,12 @@
                         </table>
                     
                 </div>
-                <div class="secede">
-                    <a href="#">서비스 탈퇴하기</a>
+                <form method="POST" action="member/secession" onsubmit="return secessionValidate();">
+                <div class="secede" style="text-align: center;">
+                    <button class="btn btn-primary btn-lg btn-block" id="btn"
+						type="submit">서비스 탈퇴하기</button>
                 </div>
+                </form>
             </div>
         </div>
     </section>
@@ -301,24 +304,30 @@ function changeImage(input) {
             contentType : false,
             data : form,
             dataType : "JSON",
-            success:function(response) {
+            success:function(result) {
                 
-                if(response.result == 1) {
-                    alert(response.message);
+                if(result > 0) {
+                    alert(result.message);
                 }else {
-                    alert(response.message);
+                    alert(result.message);
                     return false;
                 }
                 
             }
-            ,error: function (jqXHR) 
-            { 
-                alert("실패햇습니다."); 
-            }
+            ,error: function( request , status , error){
+                alert("안녕?")
+           },
     });
 
     console.log(file.name);
 
+
+}
+
+// 회원탈퇴
+function secessionValidate() {
+
+    return confirm("정말로 탈퇴하시겠습니까?")
 
 }
 

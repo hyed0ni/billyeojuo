@@ -212,11 +212,15 @@ public class MyController extends HttpServlet {
  					  
  					 int result = service.updateProfile(temp, memberNo);
  					 
- 					 if(result == 1) {
- 						 req.setAttribute("result", 1);
+ 					 
+ 					
+ 					
+ 					 if(result > 0) {
+ 						 
  						 req.setAttribute("message", "upload");
+ 						 
  					 }else {
- 						 req.setAttribute("result", 0);
+ 						 
  						req.setAttribute("message", "fail");
  					 }
  					  
