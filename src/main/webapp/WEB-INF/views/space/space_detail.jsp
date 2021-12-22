@@ -399,7 +399,7 @@
 	                            <div style="width:320px; margin:20px auto;">
 	                                <ul style="display:table-cell;">
 	                                
-	                                	<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
+<%-- 	                                	<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
 	                                		<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
 	                                		
 		                                		<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
@@ -407,20 +407,31 @@
 		                                		</c:forEach>
 	                                		
 	                                		</c:if>
-	                                	</c:forEach>
+	                                	</c:forEach> --%>
 	                                
-	                                    <!-- <li style="width:100px; height:50px; float:left;">
+	                                    <li style="width:100px; height:50px; float:left;">
 	                                        <div
 	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-	                                            <span
-	                                                style="background: url(images/icon/chair.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-	                                            <span
-	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">의자/<br>테이블</span>
+	                                            
+	                                            <c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
+			                                		<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
+			                                		
+				                                		<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
+				                                            <span
+				                                                style="background: url(${contextPath}/resources/images/icon/${option.optionIcon}.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+				                                            <span
+				                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
+				                                			<%-- ${option.optionNm} / ${option.optionIcon}<br> --%>
+				                                		</c:forEach>
+			                                		
+			                                		</c:if>
+			                                	</c:forEach>
+			                                	
 	                                        </div>
-	                                    </li> -->
+	                                    </li>
 	                                </ul>
 	                            </div>
-	
+
 	                            <div style="width:320px; margin:20px auto;">
 	                                <div
 	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
@@ -564,57 +575,51 @@
     });
     
     // 찜하기 버튼
-    $("#heart").on("click", function(){
-    	
-    	if("" != "${loginMember}"){
+    $("#heart").on("click", function() {
+    	if ("" != "${loginMember}") {
     		
 	    	$.ajax({
 	    		url : "heart",
 	    		data : {"spaceNo" : ${param.no}},
-	    		success : function(result){
-					console.log(result)
-	    			if(result > 0){
-	    				// 하트가 채워져 있는 경우
-	    				if($("#heart").hasClass("fill-heart")){
+	    		success : function(spaceHeart) {
+					console.log(spaceHeart)
+					
+	    			if (spaceHeart > 0) {
+	    				// 찜한공간 등록 상태 (favorite)
+	    				if ($("#heart").hasClass("fill-heart")) {
 	    					$("#heart").removeClass("fill-heart");
 	    					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite_border.svg");
 	    					
-	    				}else{ // 하트가 비어있는 경우
+	    				} else { // 찜한공간 미등록 상태 (favorite-border)
 	    					$("#heart").addClass("fill-heart");
 	    					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite.svg");
 	    				}
 	    			}
 	    		}
-	    		
-	    	});  
-    	
-    	}else{
-    		alert("로그인 후 이용해 주시기 바랍니다.")
-    	}
-    	
+	    	}); 
+	    	
+    	} else 
+    		location.href = "${contextPath}/member/login";
     });
     
     
-    (function(){
-    	if("" != "${loginMember}"){
+    (function() {
+    	if ("" != "${loginMember}") {
+    		
 	    	$.ajax({
 	    		url : "selectHeart",
 	    		data : {"spaceNo" : ${param.no}},
-	    		success : function(result){
+	    		success : function(result) {
+	    			
 					console.log(result)
-	    			if(result > 0){
+	    			if (result > 0) {
 	   					$("#heart").addClass("fill-heart");
 	   					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite.svg");
 	    			}
 	    		}
-	    		
 	    	});  
     	}
-    	
-    	
     })();
-    
-    
     
 </script>
 </body>
