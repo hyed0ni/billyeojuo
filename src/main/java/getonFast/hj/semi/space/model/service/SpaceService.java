@@ -127,4 +127,59 @@ public class SpaceService {
 		
 		return spaceHeart;
 	}
+	
+//	------------------------------------------------------------------------------------------------------
+
+	/** 공간룸 상세 조회
+	 * @param spaceRoomNo
+	 * @return spaceRoom
+	 * @throws Exception
+	 */
+	public Space selectSpaceRoomRes(int spaceRoomNo) throws Exception {
+		Connection conn = getConnection();
+		Space spaceRoom = dao.selectSpaceRoomRes(spaceRoomNo, conn);
+		close(conn);
+		
+		return spaceRoom;
+	}
+	
+	/** 공간 상세 조회
+	 * @param spaceRoomNo
+	 * @return space
+	 * @throws Exception
+	 */
+	public Space selectSpaceRes(int spaceRoomNo) throws Exception {
+		Connection conn = getConnection();
+		Space space = dao.selectSpaceRes(spaceRoomNo, conn);
+		close(conn);
+		
+		return space;
+	}
+	
+	/** 공간유형 조회
+	 * @param spaceRoomNo
+	 * @return spaceType
+	 * @throws Exception
+	 */
+	public Space selectSpaceTypeRes(int spaceRoomNo) throws Exception {
+		Connection conn = getConnection();
+		Space spaceType = dao.selectSpaceTypeRes(spaceRoomNo, conn);
+		close(conn);
+		
+		return spaceType;
+	}
+
+	/** 공간 이미지 조회
+	 * @param spaceRoomNo
+	 * @return spaceImg
+	 * @throws Exception
+	 */
+	public Space selectSpaceImgRes(int spaceRoomNo) throws Exception {
+		Connection conn = getConnection();
+		Space spaceImg = dao.selectSpaceImgRes(spaceRoomNo, conn);
+		close(conn);
+		
+		return spaceImg;
+	}
+	
 }

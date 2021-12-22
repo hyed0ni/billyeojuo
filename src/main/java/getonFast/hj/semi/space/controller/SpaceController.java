@@ -72,6 +72,20 @@ public class SpaceController extends HttpServlet {
          }
          
          else if (command.equals("reservation")) {
+        	
+        	int spaceRoomNo = Integer.parseInt(req.getParameter("spaceRoomNo"));
+        	
+        	Space spaceRoom = service.selectSpaceRoomRes(spaceRoomNo);
+        	req.setAttribute("spaceRoom", spaceRoom);
+        	
+        	Space space = service.selectSpaceRes(spaceRoomNo);
+        	req.setAttribute("space", space);
+        	
+        	Space spaceType = service.selectSpaceTypeRes(spaceRoomNo);
+        	req.setAttribute("spaceType", spaceType);
+        	
+        	Space spaceImg = service.selectSpaceImgRes(spaceRoomNo);
+        	req.setAttribute("spaceImg", spaceImg);
             
             path = "/WEB-INF/views/space/space_reservation.jsp";
             dispatcher = req.getRequestDispatcher(path);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../common/header.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
@@ -12,10 +13,12 @@
 
         <section style="margin-top:120px;">
             <div class="space">
+            
+            	<!-- 공간 이름 -->
                 <h2 class="space-name">${space.spaceNm}</h2>
             </div>
 
-            <!-- 부제-1 -->
+            <!-- 공간 부제 -->
             <p class="sub-desc">${space.spaceSubNm}</p>
         </section>
         <section class="detail-forms">
@@ -330,7 +333,7 @@
                 
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <form action="reservation" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -345,7 +348,7 @@
              
 	                        <div class="space_btn" style="padding:20px 10px;">
 	                            <div style="position:relative; display:flex;">
-	                                <input type="radio" name="space" id="a-${vs.count}" data-value="space-a"
+	                                <input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}"
 	                                    style="position:absolute; height:100%;">
 	                                    
 	                                <!-- 공간룸 이름 -->
@@ -354,7 +357,7 @@
 	                                <div style="width:135px; display:flex; align-items:center; justify-content:end;">
 	                                
 	                                	<!-- 공간룸 가격 -->
-	                                    <strong style="font-size:20px;">\ ${spaceRoom.spaceRoomPrice} </strong> <!-- ${spaceRoom.spaceRoomPrice} -->
+	                                    <strong style="font-size:20px;">\ <fmt:formatNumber value="${spaceRoom.spaceRoomPrice}" pattern="#,###"/></strong> 
 	                                    <span style="font-size:11px; margin-left:5px;"> / 일</span>
 	                                </div>
 	                            </div>

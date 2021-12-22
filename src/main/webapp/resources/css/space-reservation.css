@@ -266,7 +266,8 @@ input[type=checkbox]+label, input[type=radio]+label {  cursor: pointer; }
 .scroll_box * {margin:0;}
 
 .reserve_price_wrap { padding: 0 20px; background-color: white; }
-.reserve_price_wrap .basic_box { padding-right: 84px; position: relative;}
+.reserve_price_wrap .basic_box {  position: relative;}
+.reserve_price_wrap .basic_box dd {  text-align: right;}
 .reserve_price_wrap .basic_box dl:first-child, .reserve_price_wrap .basic_box dl:last-child { border-top: 0;}
 .reserve_price_wrap dl {padding: 17px 0 15px 75px; line-height:1.5}
 .reserve_price_wrap dl dd, .reserve_price_wrap dl dt { font-size: 16px;   min-height: 24px; margin:0;}
