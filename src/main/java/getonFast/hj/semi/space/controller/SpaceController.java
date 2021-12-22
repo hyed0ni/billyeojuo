@@ -2,6 +2,7 @@ package getonFast.hj.semi.space.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.space.model.service.SpaceService;
 import getonFast.hj.semi.space.model.vo.Space;
 
@@ -51,6 +53,9 @@ public class SpaceController extends HttpServlet {
         	Space spaceType = service.selectSpaceType(spaceNo);
         	req.setAttribute("spaceType", spaceType);
         	
+        	Map<Integer, List<Space>> spaceOptionMap = service.selectSpaceOption(spaceRoomList);
+        	req.setAttribute("spaceOptionMap", spaceOptionMap);
+        	
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);
@@ -72,6 +77,24 @@ public class SpaceController extends HttpServlet {
             dispatcher = req.getRequestDispatcher(path);
             dispatcher.forward(req, resp);
             
+         }
+         
+         // 찜한공간 등록, 삭제
+         else if (command.equals("heart")) {
+        	 int memberNo = ((Member)req.getSession().getAttribute("loginMember")).getMemberNo();
+        	 int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+        	 int heart = service.heartSpace(spaceNo, memberNo);
+        	 
+        	 resp.getWriter().print(heart);
+         }
+         
+         // 찜한공간 조회
+         else if (command.equals("selectHeart")) {
+        	 int memberNo = ((Member)req.getSession().getAttribute("loginMember")).getMemberNo();
+        	 int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+        	 int spaceHeart = service.selectHeart(spaceNo, memberNo);
+        	 
+        	 resp.getWriter().print(spaceHeart);
          }
          
       } catch (Exception e) {

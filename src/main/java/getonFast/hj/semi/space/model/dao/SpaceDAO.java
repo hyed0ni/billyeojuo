@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -176,5 +177,119 @@ public class SpaceDAO {
 		
 		return spaceType;
 	}
+	
+	/** 공간옵션 조회
+	 * @param spaceRoomNo
+	 * @param conn
+	 * @return spaceOptionList
+	 * @throws Exception
+	 */
+	public List<Space> selectSpaceOption(int spaceRoomNo, Connection conn) throws Exception {
+		List<Space> spaceOptionList = new ArrayList<Space>();
+			
+		try {
+			String sql = prop.getProperty("selectSpaceOption");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceRoomNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Space spaceOption = new Space();
+				
+				spaceOption.setOptionNm(rs.getString("OPTION_NM"));
+				spaceOption.setOptionIcon(rs.getString("OPTION_ICON"));
+				
+				spaceOptionList.add(spaceOption);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceOptionList;
+	}
 
+	/** 찜한공간 등록
+	 * @param spaceNo
+	 * @param memberNo
+	 * @param conn
+	 * @return heart
+	 */
+	public int insertHeart(int spaceNo, int memberNo, Connection conn) throws SQLException {
+		int heart = 0;
+		
+		try {
+			String sql = prop.getProperty("insertHeart");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, spaceNo);
+			
+			heart = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		
+		return heart;
+	}
+	
+	/** 찜한공간 삭제
+	 * @param spaceNo
+	 * @param memberNo
+	 * @param conn
+	 * @return heart
+	 */
+	public int deleteHeart(int spaceNo, int memberNo, Connection conn) throws SQLException {
+		int heart = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteHeart");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, spaceNo);
+			
+			heart = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return heart;
+	}
+
+	/** 찜한공간 조회
+	 * @param spaceNo
+	 * @param memberNo
+	 * @param conn 
+	 * @return spaceHeart
+	 * @throws Exception
+	 */
+	public int selectHeart(int spaceNo, int memberNo, Connection conn) throws Exception {
+		int spaceHeart = 0;
+		
+		try {
+			String sql = prop.getProperty("selectHeart");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next())
+				spaceHeart = rs.getInt(1);
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return spaceHeart;
+	}
 }

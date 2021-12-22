@@ -44,7 +44,6 @@
                         <li><a title="s-review">이용후기</a></li>
                     </ul>
                 </div>
-
             </div>
 
             <!-- 공간소개, 시설안내, 유의사항, Q&A, 이용후기 작성 부분  -->
@@ -75,8 +74,8 @@
                     <h4 class="h-intro">시설 안내</h4>
 
 					<!-- spaceGuide 문자열을 <br>태그를 기준으로 배열로 쪼갬 -->
-                  	<c:set var = "temp" value = "${fn:replace(space.spaceGuide, '<br>', '|')}"/>
-					<c:set var="arr" value="${fn:split(temp, '|')}"/> 
+                  	<c:set var="temp" value="${fn:replace(space.spaceGuide, '<br>', '|')}"/>
+					<c:set var="arr" value="${fn:split(temp, '|')}"/>
 					
                     <ol class="info-list">
                     	<c:forEach items="${arr}" var="guide" varStatus="vs">
@@ -92,7 +91,7 @@
                 <div id="s-cautoion" class="text-box">
                     <h4 class="h-intro">예약 주의사항</h4>
 
-					<c:set var = "temp" value = "${fn:replace(space.precautions, '<br>', '|')}"/>
+					<c:set var="temp" value="${fn:replace(space.precautions, '<br>', '|')}"/>
 					<c:set var="arr" value="${fn:split(temp, '|')}"/> 
 					
                     <ol class="info-list">
@@ -117,7 +116,7 @@
                         결제 후 2시간 이내에는 100% 환불이 가능합니다.(단,이용시간 전까지만 가능)
                     </p>
                     
-                    <c:set var = "temp" value = "${fn:replace(space.refundPolicy, '<br>', '|')}"/>
+                    <c:set var="temp" value="${fn:replace(space.refundPolicy, '<br>', '|')}"/>
 					<c:set var="arr" value="${fn:split(temp, '|')}"/> 
                     
                     <ol class="info-list">
@@ -228,7 +227,6 @@
                                 </div>
                             </li>
 
-
                             <li class="rlist">
                                 <div class="rbox-mine">
                                     <span class="pf-img"
@@ -253,7 +251,6 @@
                                 </div>
                             </li>
                         </ul>
-
 
                         <!-- Q&A 페이징 -->
                         <!-- 화살표 이미지 찾아야됨 -->
@@ -315,7 +312,6 @@
 
                         </ul>
 
-
                         <!-- Q&A 페이징 -->
                         <!-- 화살표 이미지 찾아야됨 -->
                         <div class="paging">
@@ -334,12 +330,12 @@
                 
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <div style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" style="position:absolute; width:350px; height:400px; top:0; right:0;">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
                         <div style="position:absolute; top:0; right:5px;">
-                            <img src="images//icon/favorite_border.svg" style="vertical-align:middle;">
+                            <img id="heart" src="${contextPath}/resources/images/icon/favorite_border.svg" style="vertical-align:middle;">
                         </div>
                     </div>
 
@@ -363,7 +359,6 @@
 	                                </div>
 	                            </div>
 	                        </div>
-	                        
 	                        
 	                        <div class="space_detail space-a"
                             	style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
@@ -396,45 +391,43 @@
 	                                </ul>
 	                            </div>
 	
+								<!-- 공간옵션 -->
 	                            <div style="width:320px; margin:20px auto;">
 	                                <ul style="display:table-cell;">
+	                                
+<%-- 	                                	<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
+	                                		<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
+	                                		
+		                                		<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
+		                                			${option.optionNm} / ${option.optionIcon}<br>
+		                                		</c:forEach>
+	                                		
+	                                		</c:if>
+	                                	</c:forEach> --%>
+	                                
 	                                    <li style="width:100px; height:50px; float:left;">
 	                                        <div
 	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-	                                            <span
-	                                                style="background: url(images/icon/chair.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-	                                            <span
-	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">의자/<br>테이블</span>
-	                                        </div>
-	                                    </li>
-	                                    <li style="width:100px; height:50px; float:left;">
-	                                        <div
-	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-	                                            <span
-	                                                style="background: url(images/icon/computer.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-	                                            <span
-	                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">PC/<br>노트북</span>
-	                                        </div>
-	                                    </li>
-	                                    <li style="width:100px; height:50px; float:left;">
-	                                        <div
-	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-	                                            <span
-	                                                style="background: url(images/icon/no_smoke.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-	                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">금연</span>
-	                                        </div>
-	                                    </li>
-	                                    <li style="width:100px; height:50px; float:left;">
-	                                        <div
-	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-	                                            <span
-	                                                style="background: url(images/icon/parking.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-	                                            <span style="font-size:12px; width:45px; margin:0 5px 0 15px;">주차</span>
+	                                            
+	                                            <c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
+			                                		<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
+			                                		
+				                                		<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
+				                                            <span
+				                                                style="background: url(${contextPath}/resources/images/icon/${option.optionIcon}.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+				                                            <span
+				                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
+				                                			<%-- ${option.optionNm} / ${option.optionIcon}<br> --%>
+				                                		</c:forEach>
+			                                		
+			                                		</c:if>
+			                                	</c:forEach>
+			                                	
 	                                        </div>
 	                                    </li>
 	                                </ul>
 	                            </div>
-	
+
 	                            <div style="width:320px; margin:20px auto;">
 	                                <div
 	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
@@ -452,12 +445,14 @@
                     	</c:forEach>
 
                         <div>
-                            <a href="javascript:payment();"
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a>
+                            <button
+                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
+<!--                             <a href="javascript:payment();"
+                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a> -->
                         </div>
                     </div>
 
-                </div>
+                </form>
         </section>
     </section>
 </main>
@@ -577,6 +572,52 @@
     	$(".space_detail").eq(index).css("display", "block");
     });
     
+    // 찜하기 버튼
+    $("#heart").on("click", function() {
+    	if ("" != "${loginMember}") {
+    		
+	    	$.ajax({
+	    		url : "heart",
+	    		data : {"spaceNo" : ${param.no}},
+	    		success : function(spaceHeart) {
+					console.log(spaceHeart)
+					
+	    			if (spaceHeart > 0) {
+	    				// 찜한공간 등록 상태 (favorite)
+	    				if ($("#heart").hasClass("fill-heart")) {
+	    					$("#heart").removeClass("fill-heart");
+	    					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite_border.svg");
+	    					
+	    				} else { // 찜한공간 미등록 상태 (favorite-border)
+	    					$("#heart").addClass("fill-heart");
+	    					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite.svg");
+	    				}
+	    			}
+	    		}
+	    	}); 
+	    	
+    	} else 
+    		location.href = "${contextPath}/member/login";
+    });
+    
+    
+    (function() {
+    	if ("" != "${loginMember}") {
+    		
+	    	$.ajax({
+	    		url : "selectHeart",
+	    		data : {"spaceNo" : ${param.no}},
+	    		success : function(result) {
+	    			
+					console.log(result)
+	    			if (result > 0) {
+	   					$("#heart").addClass("fill-heart");
+	   					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite.svg");
+	    			}
+	    		}
+	    	});  
+    	}
+    })();
     
 </script>
 </body>

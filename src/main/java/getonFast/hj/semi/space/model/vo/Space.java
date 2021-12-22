@@ -287,4 +287,19 @@ public class Space {
 		this.optionIcon = optionIcon;
 	}
 
+	@Override
+	public String toString() {
+		return "Space [spaceNo=" + spaceNo + ", spaceNm=" + spaceNm + ", spaceSubNm=" + spaceSubNm + ", spaceIntro="
+				+ spaceIntro + ", spaceGuide=" + spaceGuide + ", precautions=" + precautions + ", refundPolicy="
+				+ refundPolicy + ", spaceAddr=" + spaceAddr + ", spacePno=" + spacePno + ", spaceTime=" + spaceTime
+				+ ", spaceClosedDt=" + spaceClosedDt + ", spaceMapImg=" + spaceMapImg + ", spaceMapPath=" + spaceMapPath
+				+ ", spaceReco=" + spaceReco + ", spaceTypeNo=" + spaceTypeNo + ", spaceImgNo=" + spaceImgNo
+				+ ", spaceImgPath=" + spaceImgPath + ", spaceImgNm=" + spaceImgNm + ", spaceImgOrg=" + spaceImgOrg
+				+ ", spaceImgLevel=" + spaceImgLevel + ", spaceRoomNo=" + spaceRoomNo + ", spaceRoomNm=" + spaceRoomNm
+				+ ", spaceRoomPrice=" + spaceRoomPrice + ", spaceRoomFit=" + spaceRoomFit + ", spaceRoomDesc="
+				+ spaceRoomDesc + ", spaceTypeNm=" + spaceTypeNm + ", spaceTypeImg=" + spaceTypeImg + ", spaceTypeSt="
+				+ spaceTypeSt + ", optionNo=" + optionNo + ", optionNm=" + optionNm + ", optionIcon=" + optionIcon
+				+ "]";
+	}
+	
 }
