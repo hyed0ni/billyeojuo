@@ -36,7 +36,7 @@ header > .logo_area > a{font-size:28px; color:black; font-weight:bold;}
 header > .search_area{width:calc(100% - 260px); display:inline-block; height:80px; margin:0; padding:0; position:relative;}
 header > .search_area > form >.search{height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;}
 header > .search_area > .ico_search{position:absolute; top:28px; left:10px;}
-header > .search_area > .ico_cancel{position:absolute; top:32px; left:450px;}
+header > .search_area > .ico_cancel{position:absolute; top:32px; left:450px; cursor: pointer;}
 
 header > .menu_area{width:80px; text-align:center;}
 header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}

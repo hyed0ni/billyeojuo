@@ -41,8 +41,7 @@ $(function () {
 				location.href = contextPath;
 			} else if (url == "qna") {
 				if (loginMemberNo > 0) {
-					const no = (paramSpaceNo != "") ? paramSpaceNo : 0;
-					layerPopQna(no);
+					layerPopQna(0);
 				} else {
 					alert("로그인이 필요 합니다.");
 					location.href = contextPath + "/member/login";
@@ -156,12 +155,10 @@ function layerPopClose() {
     $(".layerPop").html("").hide();
 }
 
-//검색어 지우기 
+
 document.getElementById("cBtn").addEventListener("click",function(){
-	const searchIput = document.getElementById("searchInput").value
 	
+  const input = document.getElementById("searchInput")
 
-	
-	
+  input.innerHTML="";
 })
-
