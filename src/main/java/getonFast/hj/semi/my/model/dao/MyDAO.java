@@ -115,7 +115,9 @@ public class MyDAO {
 		try {
 
 			String sql = prop.getProperty("pwdCheck");
-
+			
+			
+			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, member.getMemberPw());

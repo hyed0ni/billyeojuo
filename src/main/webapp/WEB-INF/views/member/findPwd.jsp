@@ -14,18 +14,23 @@
             <div class="top-title-wrap">
                 <h2 class="title">비밀번호 찾기</h2>
             </div>
+            <form action="${contextPath}/member/sendEmail" method="get" onsubmit="return findPwdValidate();">
             <div class="login-box">
                 <div class="login-input-wrap">
-                    <input type="text" placeholder="이메일" class="login-input">
+                    <input type="text" placeholder="이메일" class="login-input" name="inputEmail" id="login-input">
                 </div>
                 <div class="login-notify-wrap">가입 시 사용한 이메일 주소를 입력해 주시면 비밀번호 재설정 링크를 보내드립니다.
                     네이버, 구글로 가입하신 경우 비밀번호 찾기가 불가합니다.
                 </div>
-                <a href="#self" class="login-btn">비밀번호 재설정 링크 보내기</a>
+                <button  type="submit"  class="login-btn">비밀번호 재설정 링크 보내기</button>
             </div>
+            </form>
         </div>
     </div>
 </main>
+<script src="${contextPath}/resources/js/memberLogin.js">
+		
+</script>
 <jsp:include page="../common/footer.jsp"/>
 
 </body>

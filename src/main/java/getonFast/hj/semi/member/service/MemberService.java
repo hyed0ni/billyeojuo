@@ -98,6 +98,24 @@ public class MemberService {
 				return result;
 	}
 
+	/** 이메일 링크 비밀번호 변경
+	 * @param findUpdatePwd1
+	 * @param email
+	 * @return result
+	 * @throws Exception
+	 */
+	public int findPwdUpdate(String findUpdatePwd1, String email) throws Exception{
+		Connection conn = getConnection();
+		int result =dao.findPwdUpdate(findUpdatePwd1, email, conn);
+		
+		if(result > 0) commit(conn);
+		else           rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
 
 
 	

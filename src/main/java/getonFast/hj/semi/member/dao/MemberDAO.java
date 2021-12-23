@@ -145,6 +145,9 @@ public class MemberDAO {
 						loginMember.setEnrollDate(rs.getDate("MEMBER_REG_DT"));
 						loginMember.setMemberSMSChk(rs.getInt("MEMBER_SMSCHK"));
 						loginMember.setMemberSMSChk(rs.getInt("MEMBER_EMAILCHK"));
+						loginMember.setImgName(rs.getString("MEMBER_IMG_NM"));
+						loginMember.setImgOrg(rs.getString("MEMBER_IMG_ORG"));
+						loginMember.setImgPath(rs.getString("MEMBER_IMG_PATH"));
 
 					}
 
@@ -186,6 +189,39 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+
+	public int findPwdUpdate(String findUpdatePwd1, String email, Connection conn) throws Exception{
+		
+		
+		int result = 0;
+
+		try {
+
+			String sql = prop.getProperty("findPwdUpdate");
+			
+			
+			
+			pstmt = conn.prepareStatement(sql);
+
+			
+
+			pstmt.setString(1, findUpdatePwd1);
+
+			pstmt.setString(2, email);
+
+			result = pstmt.executeUpdate();
+
+		} finally {
+
+			close(pstmt);
+		}
+
+		return result;
+		
+		
+		
+		
 	}
 }
 
