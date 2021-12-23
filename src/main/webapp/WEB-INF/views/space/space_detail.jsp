@@ -4,7 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../common/header.jsp"/>
-<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">    
+<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">
+<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/jquery-ui.css">
+<style>
+.ui-widget.ui-widget-content{width:100%;}
+</style>
 
 <main>
     <section class="cont detail-forms">
@@ -56,9 +60,7 @@
                 <div id="s-intro" class="text-box">
                     <h4 class="h-intro">공간 소개</h4>
 
-                    <p class="p-intro">
-                    	${space.spaceIntro}
-                    </p>
+                    <p class="p-intro">${space.spaceIntro}</p>
 
                     <ul class="info-list officehours">
                         <li>
@@ -181,8 +183,7 @@
                 <!-- Q&A  -->
                 <div>
                     <div id="s-qna" class="text-box">
-                        <h4 class="h-intro">Q&A <strong class="txt-primary"><em
-                                    style="font-style: initial;">16</em>개</strong> </h4>
+                        <h4 class="h-intro">Q&A <strong class="txt-primary"><em style="font-style: initial;">16</em>개</strong></h4>
                         <a class="btn-qna-write"><span class="sp-icon icon-write"></span> <span>질문 작성하기</span></a>
                     </div>
 
@@ -333,7 +334,9 @@
                 
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <form action="reservation" method="post" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+					<input type="text" class="space_room_no" name="space_room_no">
+					<input type="text" class="selected_dt" name="selected_dt">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -343,9 +346,7 @@
                     </div>
 
                     <div style="background-color: white;">
-                    	
-                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs">
-             
+                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs" >
 	                        <div class="space_btn" style="padding:20px 10px;">
 	                            <div style="position:relative; display:flex;">
 	                                <input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}"
@@ -363,8 +364,7 @@
 	                            </div>
 	                        </div>
 	                        
-	                        <div class="space_detail space-a"
-                            	style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
+	                        <div class="space_detail space-a group_${vs.index}" style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
 	                            <div style="position:relative; text-align:center; margin-bottom:20px;">
 	                            
 	                            	<!-- 공간 이미지 -->
@@ -439,23 +439,19 @@
 	                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
 	                                </div>
 	                                <div>
-	                                    <div id="datepicker"></div>
+	                                    <div class="datepicker"></div>
 	                                </div>
-	                                <input type="hidden" id="selectedDate" name="selectedDate">
 	                            </div>
 	                        </div>
                     	
                     	</c:forEach>
 
                         <div>
-                            <button
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
-<!--                             <a href="javascript:payment();"
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a> -->
+                            <button style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
                         </div>
                     </div>
-
                 </form>
+			</div>
         </section>
     </section>
 </main>
@@ -464,48 +460,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 
-    // common.js
     $(function () {
-        $(".menuIcon").on("click", function () {
-            if ($(".sideMenu").hasClass("active")) {
-                $(".sideMenu").removeClass("active");
-                
-                $(".modal").hide();
-            } else {
-                $(".sideMenu").addClass("active");
-                $(".modal").show();
-            }
-        });
-
-        $(".modal").on("click", function () {
-            $(".sideMenu").removeClass("active");
-            $(".modal").hide();
-        });
-
-        $(".closeMenu").on("click", function () {
-            $(".sideMenu").removeClass("active");
-            $(".modal").hide();
-        });
-
-        $("#notice > ul > li").on("click", function () {
-            const url = $(this).data("url");
-            if (url == "service") {
-                if ($(".service_sub").hasClass("active")) {
-                    $(".service_sub").removeClass("active");
-                } else {
-                    $(".service_sub").addClass("active");
-                }
-
-            } else {
-                alert(url);
-            }
-        })
-
-        $("#notice > ul > li .service_sub > li").on("click", function () {
-            const url = $(this).data("url");
-            alert(url);
-        })
-
         sticky(); // 페이지 로딩 시 sticky 함수 호출
         $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
@@ -573,6 +528,8 @@
     	
     	$(".space_detail").css("display", "none");
     	$(".space_detail").eq(index).css("display", "block");
+    	
+    	$(".space_room_no").val($(this).val());
     });
     
     // 찜하기 버튼
@@ -583,7 +540,6 @@
 	    		url : "heart",
 	    		data : {"spaceNo" : ${param.no}},
 	    		success : function(spaceHeart) {
-					console.log(spaceHeart)
 					
 	    			if (spaceHeart > 0) {
 	    				// 찜한공간 등록 상태 (favorite)
@@ -612,7 +568,6 @@
 	    		data : {"spaceNo" : ${param.no}},
 	    		success : function(result) {
 	    			
-					console.log(result)
 	    			if (result > 0) {
 	   					$("#heart").addClass("fill-heart");
 	   					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite.svg");
@@ -623,5 +578,29 @@
     })();
     
 </script>
+
+<!-- datepicker -->
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+$( function() {
+	const minDate = new Date();
+	
+	$(".datepicker").each(function(idx) {
+		
+		$(this).datepicker({
+	        // 다음날 부터 선택 가능
+	        minDate : 1,
+	        dateFormat : 'yy-mm-dd',
+	        onSelect: function (selectedDt, inst) {
+	            $(".selected_dt").val(selectedDt);
+	        }
+		});
+		
+	});
+
+} );
+</script>
+
+
 </body>
 </html>

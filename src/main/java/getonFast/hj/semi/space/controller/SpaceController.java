@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.member.vo.Member;
+import getonFast.hj.semi.res.model.vo.Res;
 import getonFast.hj.semi.space.model.service.SpaceService;
 import getonFast.hj.semi.space.model.vo.Space;
 
@@ -20,13 +21,11 @@ public class SpaceController extends HttpServlet {
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      // 데이터 전달 방식 저장용 변수
-      String method = req.getMethod();
-      
-      // 요청 주소 뒷부분을 잘라내어 구분 방법 만들기
+	   
+	  String method = req.getMethod();
       String uri = req.getRequestURI();
-      String contextPath = req.getContextPath();
       
+      String contextPath = req.getContextPath();
       String command = uri.substring((contextPath + "/space/").length());
       
       String path = null;
@@ -55,6 +54,8 @@ public class SpaceController extends HttpServlet {
         	
         	Map<Integer, List<Space>> spaceOptionMap = service.selectSpaceOption(spaceRoomList);
         	req.setAttribute("spaceOptionMap", spaceOptionMap);
+        	
+        	req.setAttribute("css", "space-style");
         	
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
