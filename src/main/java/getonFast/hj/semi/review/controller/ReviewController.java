@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import getonFast.hj.semi.member.vo.Member;
+import getonFast.hj.semi.my.model.vo.Qna;
 import getonFast.hj.semi.review.model.service.ReviewService;
 import getonFast.hj.semi.review.model.vo.Review;
 
@@ -31,21 +33,35 @@ public class ReviewController extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		String message = null;
 		
+		Member loginMember = (Member)req.getSession().getAttribute("loginMember");
 		
 		try {
-			ReviewService service = new ReviewService();
-			
-			if (command.equals("list") || command.equals("")) {
-				int memberNo = 1;
+			if (loginMember != null) {
+				ReviewService service = new ReviewService();
 				
-				List<Review> reviewList = service.reviewList(memberNo);
+				int memberNo = loginMember.getMemberNo();
 				
-				req.setAttribute("reviewList", reviewList);
+				if (command.equals("list") || command.equals("")) {
+					
+					List<Review> reviewList = service.reviewList(memberNo);
+					
+					req.setAttribute("reviewList", reviewList);
+					
+					req.setAttribute("css", "review");
+					
+					path = "/WEB-INF/views/review/review.jsp";
+					req.getRequestDispatcher(path).forward(req, resp);
+				} else if (command.equals("insert")) {
+					int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+					String reviewContent = req.getParameter("reviewContent");
+					
+//					int result = service.reviewInsert(spaceNo, reviewContent);
+//					
+//					resp.getWriter().print(result);
+				}
 				
-				req.setAttribute("css", "review");
-				
-				path = "/WEB-INF/views/review/review.jsp";
-				req.getRequestDispatcher(path).forward(req, resp);
+			} else {
+				resp.sendRedirect(contextPath + "/member/login");
 			}
 			
 			

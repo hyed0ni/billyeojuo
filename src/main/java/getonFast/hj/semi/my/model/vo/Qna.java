@@ -16,6 +16,10 @@ public class Qna {
 	private String spaceImgNm;
 	private String spaceImgOrg;
 	
+	private String memberNm;
+	private String memberImgPath;
+	private String memberImgNm;
+	
 	private void qna() {
 	}
 
@@ -114,6 +118,31 @@ public class Qna {
 	public void setSpaceImgOrg(String spaceImgOrg) {
 		this.spaceImgOrg = spaceImgOrg;
 	}
+
+	public String getMemberNm() {
+		return memberNm;
+	}
+
+	public void setMemberNm(String memberNm) {
+		this.memberNm = memberNm;
+	}
+
+	public String getMemberImgPath() {
+		return memberImgPath;
+	}
+
+	public void setMemberImgPath(String memberImgPath) {
+		this.memberImgPath = memberImgPath;
+	}
+
+	public String getMemberImgNm() {
+		return memberImgNm;
+	}
+
+	public void setMemberImgNm(String memberImgNm) {
+		this.memberImgNm = memberImgNm;
+	}
+	
 	
 	
 

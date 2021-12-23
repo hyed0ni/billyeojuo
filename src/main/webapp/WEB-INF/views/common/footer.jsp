@@ -38,6 +38,7 @@
 <script>
 const contextPath = "${contextPath}";
 const loginMemberNo = "${loginMember.memberNo}";
+const paramSpaceNo = "${param.no}";
 </script>
 <script src="${contextPath}/resources/js/common.js"></script>
 	

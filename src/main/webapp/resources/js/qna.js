@@ -18,6 +18,10 @@ function qnaListRoad(sortValue) {
 		success : function (result) {
 			$(".l_area").empty();
 			
+			if (sortValue == "all") {
+				$("#qna_sort").val("all").prop("selected", true);
+			}
+			
 			let html = "";
 			$.each(result, function (index, qna) {
 				
@@ -44,6 +48,7 @@ function qnaListRoad(sortValue) {
 			});
 			
 			$(".l_area").html(html);
+			
 
 		},
 		error : function (req, status, error) {

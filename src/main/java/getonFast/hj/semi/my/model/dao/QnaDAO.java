@@ -131,4 +131,45 @@ public class QnaDAO {
 		return result;
 	}
 
+
+	/**
+	 * 공간상세 문의 내용
+	 * @param spaceNo
+	 * @param conn
+	 * @return qnaSpaceList
+	 * @throws Exception
+	 */
+	public List<Qna> qnaSpaceList(int spaceNo, Connection conn) throws Exception {
+		List<Qna> qnaSpaceList = new ArrayList<Qna>();
+		
+		try {
+			String sql = prop.getProperty("qnaSpaceList");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				
+				Qna qna = new Qna();
+				qna.setQueNo(rs.getInt("QUE_NO"));
+				qna.setInqType(rs.getInt("INQ_TYPE"));
+				qna.setQueContent(rs.getString("QUE_CONTENT"));
+				qna.setQueDt(rs.getString("QUE_DT"));
+				qna.setQueSt(rs.getInt("QUE_ST"));
+				qna.setMemberNo(rs.getInt("MEMBER_NO"));
+				qna.setMemberNm(rs.getString("MEMBER_NM"));
+				qna.setMemberImgPath(rs.getString("MEMBER_IMG_PATH"));
+				qna.setMemberImgNm(rs.getString("MEMBER_IMG_NM"));
+				
+				qnaSpaceList.add(qna);
+				
+			}
+			
+		} finally {
+			
+		}
+		
+		return qnaSpaceList;
+	}
+
 }
