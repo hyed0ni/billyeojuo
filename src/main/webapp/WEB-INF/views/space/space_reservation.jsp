@@ -10,7 +10,7 @@
 	<h2 style="margin: 0;">예약하기</h2>
 </section>
 <main>
-	<form class="detail-forms">
+	<form class="detail-forms" action="${contextPath}/insertRes" method="post">
 
 		<div class="box-form">
 			<div class="heading">
@@ -68,7 +68,7 @@
 			<p class="meetspace-reserve-help">호스트 확인 후 예약이 가능합니다.</p>
 		</div>
 
-		<div class="box-form">
+		<div>
 			<div class="heading">
 				<div>
 					예약자 정보 <span class="option"> <strong class="txt-required">* 필수입력</strong>
@@ -83,7 +83,7 @@
 					</dt>
 					<dd class="flex">
 						<div class="input">
-							<input id="name" name="name" type="text" value="${loginMember.memberName}">
+							<input id="name" name="resNm" type="text" value="${loginMember.memberName}" required>
 						</div>
 					</dd>
 				</dl>
@@ -104,10 +104,10 @@
 								</div>
 							</div>
 							<div class="col4">
-								<input id="phone2" name="phone" type="tel" required="required" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+								<input id="phone2" name="phone" type="tel" required maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 							</div>
 							<div class="col4">
-								<input id="phone3" name="phone" type="tel" required="required" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+								<input id="phone3" name="phone" type="tel" required maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 							</div>
 						</div>
 					</dd>
@@ -118,7 +118,7 @@
 					</dt>
 					<dd class="flex">
 						<div class="input">
-							<input id="email" name="email" type="email" placeholder="이메일 주소를 입력해 주세요." value="${loginMember.memberEmail}">
+							<input id="email" name="resEmail" type="email" placeholder="이메일 주소를 입력해 주세요." value="${loginMember.memberEmail}" required>
 						</div>
 					</dd>
 				</dl>
@@ -128,7 +128,7 @@
 					</dt>
 					<dd class="flex">
 						<div class="input">
-							<input id="reservationPurpose" name="purpose" type="text" placeholder="촬영, 파티, 모임, 수업 등 공간의 사용 목적을 입력해주세요.">
+							<input id="reservationPurpose" name="resPurpose" type="text" placeholder="촬영, 파티, 모임, 수업 등 공간의 사용 목적을 입력해주세요.">
 						</div>
 					</dd>
 				</dl>
@@ -138,7 +138,7 @@
 					</dt>
 					<dd class="flex" style="height: 134px;">
 						<div class="input">
-							<textarea id="request" name="req_text" placeholder="남기고 싶은말을 적어주세요. (최대 500자)" maxlength="500"></textarea>
+							<textarea id="request" name="resReq" placeholder="남기고 싶은말을 적어주세요. (최대 500자)" maxlength="500"></textarea>
 						</div>
 					</dd>
 				</dl>
@@ -249,26 +249,17 @@
 							<dl class="info_date">
 								<dt>예약날짜</dt>
 								<dd>
-									<span class="line">2021.12.31 (금)</span>
+									<span class="line">2021-12-31</span>
+									<input type="hidden" name="useDate" value="2021-12-31">
 								</dd>
 							</dl>
-<!-- 							<dl class="info_date">
-								<dt>예약시간</dt>
-								<dd>
-									<span class="line">10시 ~ 17시, 7시간</span>
-								</dd>
-							</dl> -->
 							
 							<dl class="info_person" style="border-top: 1px solid #ebebeb;">
 								<dt>예약인원</dt>
-								<dd>1명</dd>
-							</dl>
-							
-<%-- 							<dl class="info_price">
 								<dd>
-									<strong class="txt_price">\ <fmt:formatNumber value="${spaceRoom.spaceRoomPrice}" pattern="#,###"/></strong>
+									1명<input type="hidden" name="resPersonnel" value="1명">
 								</dd>
-							</dl> --%>
+							</dl>
 							
 						</div>
 						<div class="total_box">
@@ -290,7 +281,7 @@
 			</div>
 
 		</div>
-		</from>
+		</form>
 </main>
 
 <jsp:include page="../common/footer.jsp" />
@@ -393,26 +384,26 @@
    
    // 전체 동의 체크박스 값 변경 시
    $("#terms_agree").on("change", function(){
+	   
       // 체크된 경우
-      if($(this).prop("checked")){
+      if ($(this).prop("checked"))
          $(".notice_list [type=checkbox]").prop("checked", true);
 
-      }else{ // 해제된 경우
+      else // 해제된 경우
          $(".notice_list [type=checkbox]").prop("checked", false);
-      }
    })
 
    // 서비스 동의 체크박스 값 변경 시
    $(".notice_list [type=checkbox]").on("change", function(){
+	   
       // 모두 체크된 경우
-      if($(".notice_list [type=checkbox]").length == $(".notice_list [type=checkbox]:checked").length){
-         $("#terms_agree").prop("checked", true);
-      }else{
-         $("#terms_agree").prop("checked", false);
-      }
+      if ($(".notice_list [type=checkbox]").length == $(".notice_list [type=checkbox]:checked").length)
+    	  $("#terms_agree").prop("checked", true);
+      
+      else
+    	  $("#terms_agree").prop("checked", false);
 
    });
+   
 </script>
-
-
 </html>
