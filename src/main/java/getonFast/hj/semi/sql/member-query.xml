@@ -6,7 +6,7 @@
 	<entry key="signUp">
 		INSERT INTO MEMBER
 		VALUES(SEQ_MEMBER_NO.NEXTVAL, ?, ?,
-		?, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, ?, ?)
+		?, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, ?, ?, DEFAULT)
 	</entry>
 	<!-- 이메일 중복검사 -->
 	<entry key="emailDupCheck">
@@ -39,6 +39,16 @@
 		MEMBER_PW = ?
 		WHERE 
 		MEMBER_EMAIL = ?
+	</entry>
+	
+	<!-- 이메일 인증 -->
+	<entry key="certifyEmail">
+		UPDATE MEMBER SET
+		MEMBER_CERTIFY = 1
+		WHERE 
+		MEMBER_EMAIL = ?
+		AND
+		MEMBER_PW = ?
 	</entry>
 
 </properties>

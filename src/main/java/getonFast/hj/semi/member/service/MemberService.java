@@ -116,6 +116,25 @@ public class MemberService {
 		return result;
 	}
 
+	/** 이메일 인증
+	 * @param certifyPwd
+	 * @param email
+	 * @return result
+	 * @throws Exception
+	 */
+	public int certifyEmail(String certifyPwd, String email) throws Exception{
+		
+		Connection conn = getConnection();
+		int result =dao.certifyEmail(certifyPwd, email, conn);
+		
+		if(result > 0) commit(conn);
+		else           rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
 
 
 	
