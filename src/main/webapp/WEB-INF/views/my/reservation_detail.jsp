@@ -29,17 +29,17 @@
 
         <div>
           <h5>결제일</h5>
-          <p>${res.payDate}</p>
+          <p>${fn:split(res.payDate, ' ')[0]}</p>
         </div>
 
         <div>
           <h5>예약공간</h5>
-          <p>${res.spaceNm}, ${res.spaceRoomNm}</p>
+          <p>${res.space.spaceNm}, ${res.space.spaceRoomNm}</p>
         </div>
 
         <div>
-          <h5>예약내용</h5>
-          <p></p>
+          <h5>예약일자</h5>
+          <p>${fn:split(res.useDate, ' ')[0]}</p>
         </div>
 
         <div>
@@ -49,12 +49,12 @@
 
         <div>
           <h5>요청사항</h5>
-          <p>${res.req}</p>
+          <p>${res.resReq}</p>
         </div>
 
         <div>
           <h5>사용목적</h5>
-          <p>${res.purpose}</p>
+          <p>${res.resPurpose}</p>
         </div>
 
       </article>
@@ -88,29 +88,22 @@
         </div>
         
       </article>
-      <article class="booking-table">
+      <article class="booking-table" style="height: 760px;">
         <div style="background-color: white; ">
           <h4>예약공간 이름</h4>
         </div>
         
         <div>
           <p>
-          	<span>주소</span>
-          	${res.spaceAddr}
-          </p>
+          	<span style="width: 100px; display: inline-block;">주소</span>${res.space.spaceAddr}
+          </p><br>
           <p>
-          	<span>전화번호</span>
-          	${res.spacePno}
+          	<span style="width: 102px; display: inline-block;">전화번호</span>${res.space.spacePno}
           </p>
         </div>
 
-<!--         <div>
-          <a href="" class="">전화걸기</a>
-          <a href="">길찾기</a>
-        </div> -->
-
         <div class="map-aip">
-        	<img src="${contextPath}${res.spaceMapPath}${res.spaceMapImg}" width="100%" height="100%">
+        	<img src="${contextPath}${res.space.spaceMapPath}${res.space.spaceMapImg}" style="width: 673px; height: auto;  margin: 0;">
         </div>
         </article>
       
@@ -125,27 +118,27 @@
         <div class="cancel-info-wrap cancel-bdPurple">
           <div>
             <h5>결제일</h5>
-            <p> ${res.payDate}</p>
+            <p>${fn:split(res.payDate, ' ')[0]}</p>
           </div>
 
           <div>
             <h5>예약일자</h5>
-            <p> ${res.useDate}</p>
+            <p>${fn:split(res.useDate, ' ')[0]}</p>
           </div>
 
           <div>
             <h5>예약인원</h5>
-            <p> ${res.resPersonnel}</p>
+            <p>${res.resPersonnel}</p>
           </div>
 
           <div class="cancel-bdPurple" style="margin-top: 10px;">
             <h5 style="width: 100px;" >총 결제금액</h5>
-            <p style="width: 200px; text-align: right;"><fmt:formatNumber value="${res.spaceRoomPrice}" pattern="#,###"/>원</p>
+            <p style="width: 200px; text-align: right;"><fmt:formatNumber value="${res.space.spaceRoomPrice}" pattern="#,###"/>원</p>
           </div>
         </div>
 
         <div id="cancel-btn" class="btn"> 
-          <a href="" >예약취소</a>
+          <a href="">예약취소</a>
         </div>
       </article>
     </aside>
@@ -155,3 +148,12 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
+
+<c:if test="${!empty sessionScope.message}">
+	<script>
+		$(function() { 
+			alert("${message}");
+		})
+	</script>
+   <c:remove var="message" scope="session"/>
+</c:if>

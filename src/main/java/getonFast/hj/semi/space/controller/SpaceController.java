@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.QnaService;
 import getonFast.hj.semi.my.model.vo.Qna;
-import getonFast.hj.semi.res.model.vo.Res;
 import getonFast.hj.semi.review.model.service.ReviewService;
 import getonFast.hj.semi.review.model.vo.Review;
+
 import getonFast.hj.semi.space.model.service.SpaceService;
 import getonFast.hj.semi.space.model.vo.Space;
 
@@ -39,9 +39,7 @@ public class SpaceController extends HttpServlet {
       SpaceService service = new SpaceService();
       
       try {
-         
          if (command.equals("detail")) {
-        	 
         	int spaceNo = Integer.parseInt(req.getParameter("no"));
         	
         	Space space = service.selectSpace(spaceNo);
