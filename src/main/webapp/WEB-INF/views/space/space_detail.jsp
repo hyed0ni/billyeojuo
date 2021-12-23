@@ -60,9 +60,7 @@
                 <div id="s-intro" class="text-box">
                     <h4 class="h-intro">공간 소개</h4>
 
-                    <p class="p-intro">
-                    	${space.spaceIntro}
-                    </p>
+                    <p class="p-intro">${space.spaceIntro}</p>
 
                     <ul class="info-list officehours">
                         <li>
@@ -185,8 +183,7 @@
                 <!-- Q&A  -->
                 <div>
                     <div id="s-qna" class="text-box">
-                        <h4 class="h-intro">Q&A <strong class="txt-primary"><em
-                                    style="font-style: initial;">16</em>개</strong> </h4>
+                        <h4 class="h-intro">Q&A <strong class="txt-primary"><em style="font-style: initial;">16</em>개</strong></h4>
                         <a class="btn-qna-write"><span class="sp-icon icon-write"></span> <span>질문 작성하기</span></a>
                     </div>
 
@@ -340,7 +337,6 @@
                 <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
 					<input type="text" name="spaceRoomNo">
 					<input type="text" name="selectedDt">
-						
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -451,14 +447,12 @@
                     	</c:forEach>
 
                         <div>
-                            <button
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
-<!--                             <a href="javascript:payment();"
-                                style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</a> -->
+                            <button style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
                         </div>
                     </div>
 
                 </form>
+			</div>
         </section>
     </section>
 </main>
