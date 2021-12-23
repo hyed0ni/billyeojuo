@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -182,6 +183,137 @@
 
                 <!-- Q&A  -->
                 <div>
+                	<div id="s-qna" class="text-box">
+                        <h4 class="h-intro">Q&amp;A <strong class="txt-primary"><em style="font-style: initial;">${fn:length(qnaSpaceList)}</em>개</strong></h4>
+                        <a class="btn-qna-write" href="javascript:layerPopQna(${param.no});"><span class="sp-icon icon-write"></span> <span>질문 작성하기</span></a>
+                    </div>
+                    
+                    <div class="review_box">
+                        <ul class="review_list">
+	                        <c:forEach items="${qnaSpaceList}" var="qnaSpace">
+	                        	<li class="rlist">
+	                                <!-- 게스트 문의 -->
+	                                <div class="rbox-mine">
+	                                    <!-- 프로필 이미지 -->
+	                                    <c:choose>
+	                                    	<c:when test="${!empty qnaSpace.memberImgNm}">
+	                                    		<span class="pf-img" style="background-image: url(${contextPath}${qnaSpace.memberImgPath}${qnaSpace.memberImgNm});"></span>	
+	                                    	</c:when>
+	                                    	
+	                                    	<c:otherwise>
+	                                    		<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>
+	                                    	<img class="list_img" src="">
+	                                    	</c:otherwise>
+	                                    </c:choose>
+	                                    
+	                                    <strong class="guest-name">${qnaSpace.memberNm}</strong>
+	                                    <p class="p-review">
+	                                    	${qnaSpace.queContent}
+	                                    </p>
+	                                    <div class="rbox-info-base">
+	                                        <span class="time-info">${qnaSpace.queDt }</span>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                        </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 리뷰  -->
+                <style>
+                .text-area{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #a0a0a0; box-sizing:border-box; font:inherit; resize:none;}
+                .review-btn-area{text-align:right; padding:6px 0;}
+                .review-btn-area > .reivew-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
+                .review-btn-area > .reivew-cancel-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
+                
+                .review-btn-area > .btn_negative{background:#4d4d4d;}
+                .review-btn-area > .btn_default{background:#704de4;}
+                </style>
+                <div>
+                    <div id="s-review" class="text-box">
+                        <h4 class="h-intro">
+                            이용 후기<strong class="txt-primary"><em>6</em>개</strong>
+                        </h4>
+                    </div>
+                    <div>
+                    	<textarea class="text-area" id="reviewTextarea"></textarea>
+                    	<div class="review-btn-area">
+                    		<a class="reivew-btn submit btn_default">등록</a>
+                    	</div>
+                    </div>
+                    <div class="review_box">
+                        <ul class="review_list">
+                        	<c:forEach items="${reviewSpaceList}" var="reviewSpace">
+                        	${reviewSpace.revContent}
+                        		<li class="rlist">
+	                                <div class="rbox-mine">
+	                                    <!-- 프로필 이미지 -->
+	                                    <c:choose>
+	                                    	<c:when test="${!empty reviewSpace.member.imgName}">
+	                                    		<span class="pf-img" style="background-image: url(${contextPath}${reviewSpace.member.imgPath}${reviewSpace.member.imgName});"></span>	
+	                                    	</c:when>
+	                                    	
+	                                    	<c:otherwise>
+	                                    		<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>
+	                                    	<img class="list_img" src="">
+	                                    	</c:otherwise>
+	                                    </c:choose>
+	                                    
+	                                    <strong class="guest-name">${qnaSpace.member.memberNm}</strong>
+	                                    <p class="p-review">
+	                                        ${reviewSpace.revContent}
+	                                    </p>
+	                                    <div class="rbox-info-base">
+	                                        <span class="time-info">${reviewSpace.revDt}</span>
+	                                    </div>
+	                                </div>
+	                            </li>
+                        	</c:forEach>
+                        </ul>
+                    </div>
+				</div>
+				
+				<script>
+					$(".review-btn-area .submit").on("click", function () {
+						if ($("#reviewTextarea").val().trim().length == 0) {
+							alert("내용을 입력해주세요");
+							$("#reviewTextarea").focus();
+							return false;	
+						}
+						
+						$.ajax({
+							url : contextPath + "/my/review/insert",
+							method : "post",
+							data : {
+								spaceNo : ${param.no},
+								reviewContent : $("#reviewTextarea").val()
+							},
+							success : function (result) {
+								if (result > 0) {
+									alert("등록되었습니다.");
+									layerPopClose();
+									
+									if ($(".l_area").length) {
+										qnaListRoad("all");
+									}
+									
+								} else {
+									alert("문의 실패 하였습니다.");
+								}
+									
+							},
+							error : function (req, status, error) {
+								console.log("문의 등록 실패");
+								console.log(req.responseText);
+							}
+							
+						});
+					});
+				</script>
+                    
+                <%--
+                <div>
                     <div id="s-qna" class="text-box">
                         <h4 class="h-intro">Q&A <strong class="txt-primary"><em style="font-style: initial;">16</em>개</strong></h4>
                         <a class="btn-qna-write"><span class="sp-icon icon-write"></span> <span>질문 작성하기</span></a>
@@ -271,8 +403,10 @@
                         </div>
                     </div>
                 </div>
-
+				--%>
+				
                 <!-- 리뷰  -->
+                <%--
                 <div>
                     <div id="s-review" class="text-box">
                         <h4 class="h-intro">
@@ -331,12 +465,12 @@
                         </div>
                     </div>
                 </div>
-                
+                --%>
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" method="post" style="position:absolute; width:350px; height:400px; top:0; right:0;">
 					<input type="text" class="space_room_no" name="space_room_no">
-					<input type="text" class="selected_dt" name="selected_dt">
+					<input type="text" class="selected_dt" name="use_date">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -346,7 +480,9 @@
                     </div>
 
                     <div style="background-color: white;">
+                    
                     	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs" >
+                    	
 	                        <div class="space_btn" style="padding:20px 10px;">
 	                            <div style="position:relative; display:flex;">
 	                                <input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}"
@@ -457,7 +593,6 @@
 </main>
 
 <jsp:include page="../common/footer.jsp"/>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 
     $(function () {

@@ -41,7 +41,8 @@ $(function () {
 				location.href = contextPath;
 			} else if (url == "qna") {
 				if (loginMemberNo > 0) {
-					layerPopQna(0);
+					const no = (paramSpaceNo != "") ? paramSpaceNo : 0;
+					layerPopQna(no);
 				} else {
 					alert("로그인이 필요 합니다.");
 					location.href = contextPath + "/member/login";

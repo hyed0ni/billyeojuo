@@ -10,7 +10,7 @@
 	<h2 style="margin: 0;">예약하기</h2>
 </section>
 <main>
-	<form class="detail-forms" action="${contextPath}/insertRes" method="post">
+	<form class="detail-forms" action="${contextPath}/res/insertRes" method="post" onsubmit="return validate();">
 
 		<div class="box-form">
 			<div class="heading">
@@ -46,6 +46,7 @@
 					
 					<!-- 공간룸 수용인원 -->
 					<li><span class="tit">예약인원</span><span class="data">${spaceRoom.spaceRoomFit}</span></li>
+					<input type="hidden" name="resPersonnel" value="1명">
 				</ul>
 
 			</div>
@@ -58,7 +59,7 @@
 
 			<div class="meetspace-reserve-info">
 				<p class="meetspace-reserve-date">
-					예약날짜 <span class="meetspace-reserve-price"> 2021.12.20 (월) 13시 ~ 19시 </span>
+					예약날짜 <span class="meetspace-reserve-price"> ${param.use_date} </span>
 				</p>
 				<p class="meetspace-reserve-date">
 					예약인원 <span class="meetspace-reserve-price">1명</span>
@@ -68,7 +69,7 @@
 			<p class="meetspace-reserve-help">호스트 확인 후 예약이 가능합니다.</p>
 		</div>
 
-		<div>
+		<div class="box-form">
 			<div class="heading">
 				<div>
 					예약자 정보 <span class="option"> <strong class="txt-required">* 필수입력</strong>
@@ -249,16 +250,13 @@
 							<dl class="info_date">
 								<dt>예약날짜</dt>
 								<dd>
-									<span class="line">2021-12-31</span>
-									<input type="hidden" name="useDate" value="2021-12-31">
+									<span class="line">${param.use_date}</span>
 								</dd>
 							</dl>
 							
 							<dl class="info_person" style="border-top: 1px solid #ebebeb;">
 								<dt>예약인원</dt>
-								<dd>
-									1명<input type="hidden" name="resPersonnel" value="1명">
-								</dd>
+								<dd>1명</dd>
 							</dl>
 							
 						</div>
@@ -276,11 +274,14 @@
 				</div>
 
 				<div>
-					<a href="javascript:payment();" style="width: 100%; height: 60px; line-height: 60px; text-align: center; background-color: #704de4; color: #fff; display: inline-block;">결제하기</a>
+					<!-- <a href="../my/reservation_detail" style="width: 100%; height: 60px; line-height: 60px; text-align: center; background-color: #704de4; color: #fff; display: inline-block;">결제하기</a> -->
+					<button style="width: 100%; height: 60px; line-height: 60px; text-align: center; background-color: #704de4; color: #fff; display: inline-block;">결제하기</button>
 				</div>
 			</div>
 
 		</div>
+		<input type="hidden" name="spaceRoomNo" value="${param.space_room_no}">
+		<input type="hidden" name="useDate" value="${param.use_date}">
 		</form>
 </main>
 
@@ -346,11 +347,8 @@
 	
    //사이드바 스크롤
    $(function(){
-
       const scrollHeight = 180;
-
       function sidebar(){
-         
          
          // 화면 스크롤이 footer 위쪽 550px 위치 아래로 내려간 경우
          if( $(window).scrollTop() > $(".footer").offset().top - 550  ) {
@@ -358,7 +356,6 @@
             // 아이디가 sidebar인 요소의 top 속성을 변경
             document.getElementById('sidebar').style.top = $(".footer").offset().top - 700+'px';
          }
-         
          
          // 화면 스크롤이 상단에서 180px 위치 아래로 내려간 경우
          else if($(window).scrollTop() > scrollHeight){
@@ -404,6 +401,16 @@
     	  $("#terms_agree").prop("checked", false);
 
    });
+   
+   // 서비스 동의 전체 동의 선택이 되지 않은 경우
+   function validate() {
+	   if (!$('#terms_agree').prop("checked")) {
+		   alert("서비스 이용약관 동의는 필수입니다.");
+		   return false;
+	   }
+	   
+	   if (!confirm("결제하시겠습니까?")) return false;
+   }
    
 </script>
 </html>

@@ -27,4 +27,23 @@ public class ReviewService {
 		return reviewList;
 	}
 
+
+	/**
+	 * 공간상세 리뷰 조회
+	 * @param spaceNo
+	 * @return reviewSpaceList
+	 * @throws Exception
+	 */
+	public List<Review> reviewSpaceList(int spaceNo) throws Exception {
+		Connection conn = getConnection();
+		
+		List<Review> reviewSpaceList = dao.reviewSpaceList(spaceNo, conn);
+		
+		close(conn);
+		
+		return reviewSpaceList;
+	}
+	
+	
+
 }
