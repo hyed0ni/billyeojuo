@@ -335,8 +335,8 @@
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
                 <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
-					<input type="text" name="spaceRoomNo">
-					<input type="text" name="selectedDt">
+					<input type="text" class="spaceRoomNo">
+					<input type="text" class="selectedDt">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -530,10 +530,7 @@
     	$(".space_detail").css("display", "none");
     	$(".space_detail").eq(index).css("display", "block");
     	
-    	
-    	$("input[name='spaceRoomNo']").val($(this).val());
-    	console.log("ttt");
-
+    	$(".spaceRoomNo").val($(this).val());
     });
     
     // 찜하기 버튼
@@ -599,7 +596,11 @@ $( function() {
 	        minDate : 1,
 	        // 선택 수정해야 할것
 	        onSelect: function () {
+	        	
 	            console.log(this);
+	            
+	            //selectedDt
+	            
 	        }
 		});
 		
