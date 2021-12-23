@@ -51,7 +51,6 @@ public class SpaceDAO {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				
 				space = new Space();
 				
 				space.setSpaceNm(rs.getString("SPACE_NM"));
@@ -113,7 +112,7 @@ public class SpaceDAO {
 	/** 공간룸 조회
 	 * @param spaceNo
 	 * @param conn
-	 * @return spaceRoom
+	 * @return spaceRoomList
 	 * @throws Exception
 	 */
 	public List<Space> selectSpaceRoom(int spaceNo, Connection conn) throws Exception {
@@ -128,8 +127,8 @@ public class SpaceDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
-				
 				Space spaceRoom = new Space();
+				
 				spaceRoom.setSpaceRoomNo(rs.getInt("SPACE_ROOM_NO"));
 				spaceRoom.setSpaceRoomNm(rs.getString("SPACE_ROOM_NM"));
 				spaceRoom.setSpaceRoomPrice(rs.getInt("SPACE_ROOM_PRICE"));
@@ -233,7 +232,6 @@ public class SpaceDAO {
 		} finally {
 			close(pstmt);
 		}
-		
 		
 		return heart;
 	}

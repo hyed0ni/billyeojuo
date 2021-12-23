@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -334,9 +335,9 @@
                 
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" method="post" style="position:absolute; width:350px; height:400px; top:0; right:0;">
 					<input type="text" class="space_room_no" name="space_room_no">
-					<input type="text" class="selected_dt" name="selected_dt">
+					<input type="text" class="selected_dt" name="use_date">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -346,7 +347,9 @@
                     </div>
 
                     <div style="background-color: white;">
+                    
                     	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs" >
+                    	
 	                        <div class="space_btn" style="padding:20px 10px;">
 	                            <div style="position:relative; display:flex;">
 	                                <input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}"
