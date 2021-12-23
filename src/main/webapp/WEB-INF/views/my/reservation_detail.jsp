@@ -3,6 +3,9 @@
 <%-- JSTL c태그 사용을 위한 taglib 추가 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <%-- 프로젝트의 시작 주소를 간단히 얻어올 수 있도록 application scope로 contextPath라는 변수를 생성함--%>
 <c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 
@@ -21,17 +24,17 @@
       <article class="booking-table">
         <div>
           <h4>예약내용</h4>
-          <p class="bookingNo" style="float: right;">예약번호 : 30030303</p>
+          <p class="bookingNo" style="float: right;">예약번호 : ${res.resNo}</p>
         </div>
 
         <div>
           <h5>결제일</h5>
-          <p>44444444444444</p>
+          <p>${res.payDate}</p>
         </div>
 
         <div>
           <h5>예약공간</h5>
-          <p>4</p>
+          <p>${res.spaceNm}, ${res.spaceRoomNm}</p>
         </div>
 
         <div>
@@ -40,20 +43,19 @@
         </div>
 
         <div>
-          <h5>예약 인원</h5>
-          <p></p>
+          <h5>예약인원</h5>
+          <p>${res.resPersonnel}</p>
         </div>
 
         <div>
           <h5>요청사항</h5>
-          <p></p>
+          <p>${res.req}</p>
         </div>
 
         <div>
           <h5>사용목적</h5>
-          <p></p>
+          <p>${res.purpose}</p>
         </div>
-
 
       </article>
       <article class="booking-table">
@@ -63,15 +65,15 @@
 
         <div>
           <h5>예약자명</h5>
-          <p></p>
+          <p>${res.resNm}</p>
         </div>
         <div>
           <h5>연락처</h5>
-          <p></p>
+          <p>${res.resPno}</p>
         </div>
         <div>
           <h5>이메일</h5>
-          <p></p>
+          <p>${res.resEmail}</p>
         </div>
 
       </article>
@@ -92,16 +94,23 @@
         </div>
         
         <div>
-          <p>주소</p><br>
-          <p>전화번호</p><br>
+          <p>
+          	<span>주소</span>
+          	${res.spaceAddr}
+          </p>
+          <p>
+          	<span>전화번호</span>
+          	${res.spacePno}
+          </p>
         </div>
 
-        <div>
+<!--         <div>
           <a href="" class="">전화걸기</a>
           <a href="">길찾기</a>
-        </div>
+        </div> -->
 
         <div class="map-aip">
+        	<img src="${contextPath}${res.spaceMapPath}${res.spaceMapImg}" width="100%" height="100%">
         </div>
         </article>
       
@@ -116,22 +125,22 @@
         <div class="cancel-info-wrap cancel-bdPurple">
           <div>
             <h5>결제일</h5>
-            <p> 2021.12.14</p>
+            <p> ${res.payDate}</p>
           </div>
 
           <div>
             <h5>예약일자</h5>
-            <p> 2021.12.14</p>
+            <p> ${res.useDate}</p>
           </div>
 
           <div>
             <h5>예약인원</h5>
-            <p> 0명</p>
+            <p> ${res.resPersonnel}</p>
           </div>
 
           <div class="cancel-bdPurple" style="margin-top: 10px;">
             <h5 style="width: 100px;" >총 결제금액</h5>
-            <p style="width: 200px; text-align: right;">000,000원</p>
+            <p style="width: 200px; text-align: right;"><fmt:formatNumber value="${res.spaceRoomPrice}" pattern="#,###"/>원</p>
           </div>
         </div>
 

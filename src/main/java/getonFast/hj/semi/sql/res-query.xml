@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- 예약정보 등록 -->
+	<entry key="insertRes">
+		INSERT INTO RESERVE VALUES
+		(RESERVE_SEQ_NO.NEXTVAL, RES_PERSONNEL, RES_NM, RES_PNO, RES_EMAIL, RES_PURPOSE, RES_REQ, 
+		DEFAULT, DEFAULT, USE_DATE, DEFAULT, ?, ?)
+	</entry>
+	
+	<!-- 예약정보 조회 -->
+	<entry key="selectResList">
+		SELECT RES_NO, USE_DATE, RES_DT, SPACE_ROOM_NM, SPACE_ROOM_PRICE FROM RESERVE 
+		JOIN SPACE_ROOM USING(SPACE_ROOM_NO) WHERE MEMBER_NO = ? AND SPACE_ROOM_NO = ?
+	</entry>
+	
+	<!-- 예약정보 상세 조회 -->
+	<entry key="selectRes">
+		SELECT RES_PERSONNEL, RES_NM, RES_PNO, RES_EMAIL, RES_PURPOSE, RES_REQ, PAY_DATE, USE_DATE, 
+		SPACE_ROOM_NM, SPACE_ROOM_PRICE, SPACE_NM, REFUND_POLICY, SPACE_ADDR, SPACE_PNO, SPACE_MAP_IMG, SPACE_MAP_PATH
+		FROM RESERVE JOIN SPACE_ROOM USING(SPACE_ROOM_NO) JOIN SPACE USING(SPACE_NO) WHERE RES_NO = ?
+	</entry>
+</properties>
