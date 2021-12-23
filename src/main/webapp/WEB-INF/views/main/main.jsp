@@ -18,7 +18,7 @@
 
     <section id="icons">
     	<c:forEach items="${spaceTypeList}" var="spaceType">
-	    	<a href="#" class="icon-a">
+	    	<a href="${contextPath}/space/search?sv=${spaceType.spaceTypeNm}" class="icon-a">
 	            <img src="${contextPath}/resources/images/space_type/${spaceType.spaceTypeImg}.png" alt="">
 	            <div class="main-icons-text">${spaceType.spaceTypeNm}</div>
 	        </a>
@@ -87,4 +87,5 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
-
+</body>
+</html>

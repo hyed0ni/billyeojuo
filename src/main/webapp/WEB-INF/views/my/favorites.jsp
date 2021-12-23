@@ -21,126 +21,32 @@
             </div> -->
             <div class="list_area">
                 <ul>
+                <c:forEach items="${likeList}" var="ll">
                     <li class="list">
-                        <a href="#">
-                            <div><img src="${contextPath}/resources/images/space_img/sadang.jpg"></div>
+                        <a href="${contextPath}/space/detail?no=${ll.spaceNo}">
+                            <div><img src="${contextPath}${ll.imgPath}${ll.imgName}"></div>
                             <div class="list_title_area">
-                                <div class="list_title">단독홀 사당20평 할인특가 블루i</div>
+                                <div class="list_title">${ll.spaceNm}</div>
                                 <div class="list_tag_area">
                                     <span>
-                                        사당동 
-                                        <span class="bar"></span>
+                                        ${ll.spaceSubNm}
                                     </span>
-                                    <span>#사당역3분</span>
-                                    <span>#이수역</span>
-                                    <span>#각종방송촬영</span>
-                                    <span>#커버영상촬영</span>
-                                    <span>#최대30%특가할인</span>
                                 </div>
                                 <div class="list_price_area">
                                     <div class="price_area">
-                                        <span class="purple price_font">5,000</span>
-                                        <span>원/시간</span>
+                                        <span class="purple price_font">${ll.roomPrice}</span>
+                                        <span>원/박</span>
                                     </div>
                                     <div class="person">
-                                        <span><img src="${contextPath}/resources/images/icon/face.svg" class="ico_person">최대 30인</span>
-                                        <span><img src="${contextPath}/resources/images/icon/talk.svg" class="ico_person">50</span>
-                                        <span><img src="${contextPath}/resources/images/icon/favorite.svg" class="ico_person">658</span>
+                                        <span><img src="${contextPath}/resources/images/icon/face.svg" class="ico_person">${ll.roomFit}</span>
+                                        <span><img src="${contextPath}/resources/images/icon/favorite.svg" class="ico_person">${ll.like}</span>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li class="list">
-                        <a href="#">
-                            <div><img src="${contextPath}/resources/images/space_img/sinchon.jpg"></div>
-                            <div class="list_title_area">
-                                <div class="list_title">단독홀 사당20평 할인특가 블루i</div>
-                                <div class="list_tag_area">
-                                    <span>
-                                        사당동 
-                                        <span class="bar"></span>
-                                    </span>
-                                    <span>#사당역3분</span>
-                                    <span>#이수역</span>
-                                    <span>#각종방송촬영</span>
-                                    <span>#커버영상촬영</span>
-                                    <span>#최대30%특가할인</span>
-                                </div>
-                                <div class="list_price_area">
-                                    <div class="price_area">
-                                        <span class="purple price_font">5,000</span>
-                                        <span>원/시간</span>
-                                    </div>
-                                    <div class="person">
-                                        <span><img src="${contextPath}/resources/images/icon/face.svg" class="ico_person">최대 30인</span>
-                                        <span><img src="${contextPath}/resources/images/icon/talk.svg" class="ico_person">50</span>
-                                        <span><img src="${contextPath}/resources/images/icon/favorite.svg" class="ico_person">658</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#">
-                            <div><img src="${contextPath}/resources/images/space_img/sadang.jpg"></div>
-                            <div class="list_title_area">
-                                <div class="list_title">단독홀 사당20평 할인특가 블루i</div>
-                                <div class="list_tag_area">
-                                    <span>
-                                        사당동 
-                                        <span class="bar"></span>
-                                    </span>
-                                    <span>#사당역3분</span>
-                                    <span>#이수역</span>
-                                    <span>#각종방송촬영</span>
-                                    <span>#커버영상촬영</span>
-                                    <span>#최대30%특가할인</span>
-                                </div>
-                                <div class="list_price_area">
-                                    <div class="price_area">
-                                        <span class="purple price_font">5,000</span>
-                                        <span>원/시간</span>
-                                    </div>
-                                    <div class="person">
-                                        <span><img src="${contextPath}/resources/images/icon/face.svg" class="ico_person">최대 30인</span>
-                                        <span><img src="${contextPath}/resources/images/icon/talk.svg" class="ico_person">50</span>
-                                        <span><img src="${contextPath}/resources/images/icon/favorite.svg" class="ico_person">658</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#">
-                            <div><img src="${contextPath}/resources/images/space_img/sinchon.jpg"></div>
-                            <div class="list_title_area">
-                                <div class="list_title">단독홀 사당20평 할인특가 블루i</div>
-                                <div class="list_tag_area">
-                                    <span>
-                                        사당동 
-                                        <span class="bar"></span>
-                                    </span>
-                                    <span>#사당역3분</span>
-                                    <span>#이수역</span>
-                                    <span>#각종방송촬영</span>
-                                    <span>#커버영상촬영</span>
-                                    <span>#최대30%특가할인</span>
-                                </div>
-                                <div class="list_price_area">
-                                    <div class="price_area">
-                                        <span class="purple price_font">5,000</span>
-                                        <span>원/시간</span>
-                                    </div>
-                                    <div class="person">
-                                        <span><img src="${contextPath}/resources/images/icon/face.svg" class="ico_person">최대 30인</span>
-                                        <span><img src="${contextPath}/resources/images/icon/talk.svg" class="ico_person">50</span>
-                                        <span><img src="${contextPath}/resources/images/icon/favorite.svg" class="ico_person">658</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                  </c:forEach>
+
                 </ul>
             </div>
         </div>
@@ -150,3 +56,5 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
+</body>
+</html>

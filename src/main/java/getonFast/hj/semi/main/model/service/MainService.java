@@ -54,7 +54,15 @@ public class MainService {
 		Connection conn = getConnection();
 		int listCount = dao.getlistCount(conn, sv);
 		
-		int pageSize = listCount/limit;
+		System.out.println(listCount);
+		
+		if(listCount < 1) {
+			listCount = 1;
+		}
+		
+		int pageSize = (int)(Math.ceil((double)listCount/limit));
+		
+		
 		close(conn);
 		
 		return new Pagination(listCount, cp, limit, pageSize);

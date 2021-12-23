@@ -49,24 +49,13 @@
 				  </a>
 				</article>
 			</c:forEach>	
-			
 		</section>	
-		<div class=pagination style="text-align: center; margin-top: 30px;">
+		<div class=pagination style="text-align: center;">
 			 <c:if test="${pagination.currentPage} != 1">
 				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
 			 </c:if>
-			 	
-			 	<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" step="1" var="i">
-				 	<c:choose>
-						<c:when test="${i==pagination.currentPage}">
-							<span>${pagination.currentPage}</span>
-						</c:when>
-						
-						<c:otherwise>
-							<a href="${contextPath}/space/search?sv=${param.sv}&cp=${i}">${i}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
+			 
+				<span>${pagination.currentPage}</span>
 				
 			<c:if test="${pagination.currentPage} != ${pagination.endPage}">
 			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage" id="">▶</a>
@@ -82,8 +71,6 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp" />
-<script src="https://cdn.jsdelivr.net/gh/marshall-ku/infinite-scroll/dist/infiniteScroll.min.js"></script>
-	<script src="${contextPath}/resources/js/space_search.js">
-</script>
+
 </body>
 </html>
