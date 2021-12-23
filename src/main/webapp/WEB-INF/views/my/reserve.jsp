@@ -33,11 +33,10 @@
 			<div class="list_area">
 
 				<c:forEach items="${resList}" var="resSpace" varStatus="vs" >
-            	
-	                <a href="reservation_detail">
+	                <a href="reservation_detail?rno=${resSpace.resNo}">
 	                    <div class="list">
 	                        <div>
-	                            <div class="list_img"><img src="${contextPath}/resources/images/header/defaultUser.jpg"></div>
+	                            <div class="list_img"><img src="${contextPath}${resSpace.space.spaceImgPath}${resSpace.space.spaceImgNm}"></div>
 	                            <div class="list_description">
 	                                <div class="tag_area">
 	                                    <span class="tag approve">${resSpace.resDt}</span>
