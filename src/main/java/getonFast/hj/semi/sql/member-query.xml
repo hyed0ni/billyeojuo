@@ -22,7 +22,7 @@
 		FROM MEMBER
 		WHERE MEMBER_EMAIL = ?
 		AND MEMBER_PW = ?
-		AND MEMBER_ST != 12
+		AND MEMBER_ST != 13
 	</entry>
 	
 		<!-- 회원탈퇴 -->

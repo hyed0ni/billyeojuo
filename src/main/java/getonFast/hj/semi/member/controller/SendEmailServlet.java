@@ -127,7 +127,7 @@ public class SendEmailServlet extends HttpServlet{
          
          //Transport.send( message );
          
-         resp.getWriter().print(true);
+         resp.sendRedirect(req.getContextPath());
          
        } catch ( Exception e ) {
          e.printStackTrace();

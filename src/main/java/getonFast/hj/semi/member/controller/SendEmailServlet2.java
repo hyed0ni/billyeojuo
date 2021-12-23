@@ -131,7 +131,7 @@ public class SendEmailServlet2 extends HttpServlet{
          
          //Transport.send( message );
          
-         resp.getWriter().print(true);
+         resp.sendRedirect("my");
          
        } catch ( Exception e ) {
          e.printStackTrace();
