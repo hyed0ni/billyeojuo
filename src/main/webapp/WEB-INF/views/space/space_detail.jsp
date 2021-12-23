@@ -333,7 +333,7 @@
                 
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
-                <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+                <form action="reservation" method="post" style="position:absolute; width:350px; height:400px; top:0; right:0;">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -568,8 +568,8 @@
     })
     
     // 세부공간 선택 라디오 버튼 클릭 시 이벤트
-    $("[name=space]").on("change", function(){
-    	const index = $("[name=space]").index($(this));
+    $("[name=spaceRoomNo]").on("change", function(){
+    	const index = $("[name=spaceRoomNo]").index($(this));
     	
     	$(".space_detail").css("display", "none");
     	$(".space_detail").eq(index).css("display", "block");
