@@ -3,6 +3,7 @@ package getonFast.hj.semi.member.controller;
 import java.io.IOException;
 import java.security.Provider.Service;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,8 +42,9 @@ public class FindUpatePwdServlet extends HttpServlet{
 			
 			if(result > 0 ) {
 				
-				req.setAttribute("message", "비밀번호가 변경되었습니다.");
 				
+				req.setAttribute("message", "비밀번호가 변경되었습니다.");
+
 				resp.sendRedirect(req.getContextPath());
 			}else {
 				

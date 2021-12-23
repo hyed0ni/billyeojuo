@@ -450,7 +450,6 @@
                             <button style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
                         </div>
                     </div>
-
                 </form>
 			</div>
         </section>
