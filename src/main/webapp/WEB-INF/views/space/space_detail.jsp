@@ -335,8 +335,8 @@
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
                 <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
-					<input type="text" class="spaceRoomNo">
-					<input type="text" class="selectedDt">
+					<input type="text" class="space_room_no" name="space_room_no">
+					<input type="text" class="selected_dt" name="selected_dt">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -530,7 +530,7 @@
     	$(".space_detail").css("display", "none");
     	$(".space_detail").eq(index).css("display", "block");
     	
-    	$(".spaceRoomNo").val($(this).val());
+    	$(".space_room_no").val($(this).val());
     });
     
     // 찜하기 버튼
@@ -541,7 +541,6 @@
 	    		url : "heart",
 	    		data : {"spaceNo" : ${param.no}},
 	    		success : function(spaceHeart) {
-					console.log(spaceHeart)
 					
 	    			if (spaceHeart > 0) {
 	    				// 찜한공간 등록 상태 (favorite)
@@ -570,7 +569,6 @@
 	    		data : {"spaceNo" : ${param.no}},
 	    		success : function(result) {
 	    			
-					console.log(result)
 	    			if (result > 0) {
 	   					$("#heart").addClass("fill-heart");
 	   					$("#heart").attr("src", "${contextPath}/resources/images/icon/favorite.svg");
@@ -589,40 +587,18 @@ $( function() {
 	const minDate = new Date();
 	
 	$(".datepicker").each(function(idx) {
-		console.log(idx);
 		
 		$(this).datepicker({
 	        // 다음날 부터 선택 가능
 	        minDate : 1,
-	        // 선택 수정해야 할것
-	        onSelect: function () {
-	        	
-	            console.log(this);
-	            
-	            //selectedDt
-	            
+	        dateFormat : 'yy-mm-dd',
+	        onSelect: function (selectedDt, inst) {
+	            $(".selected_dt").val(selectedDt);
 	        }
 		});
 		
-		
-		
 	});
 
-	
-	
-	
-	/*
-    const minDate = new Date();
-    $( "#datepicker" ).datepicker({
-        // 다음날 부터 선택 가능
-        minDate : 1,
-        // 선택 수정해야 할것
-        onSelect: function () {
-            console.log(this);
-        }
-        
-    });
-	*/
 } );
 </script>
 

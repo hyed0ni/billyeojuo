@@ -25,7 +25,7 @@ public class SpaceController extends HttpServlet {
       
       // 요청 주소 뒷부분을 잘라내어 구분 방법 만들기
       String uri = req.getRequestURI();
-      System.out.println(req);
+      
       String contextPath = req.getContextPath();
       
       String command = uri.substring((contextPath + "/space/").length());
