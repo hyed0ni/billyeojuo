@@ -137,8 +137,8 @@
     <div class="search_area">
         <img src="${contextPath}/resources/images/header/search-gray.png" class="ico_search">
         <img src="${contextPath}/resources/images/header/search-cancel.png" class="ico_cancel">
-        <form action="${contextPath}/space/search">
-      		 <input type="text" class="input search" name="sv" placeholder="지역, 공간유형, 공간명으로 찾아보세요">
+        <form action="${contextPath}/space/search?sv=${param.sv}">
+      		 <input type="text" class="input search" name="sv" placeholder="지역, 공간유형, 공간명으로 찾아보세요" value="${param.sv}">
         </form>
     </div>
     <div class="menu_area">

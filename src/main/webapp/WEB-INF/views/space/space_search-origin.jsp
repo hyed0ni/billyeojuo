@@ -51,11 +51,6 @@
 			</c:forEach>	
 		</section>	
 		
-		<div class=pagination style="text-align: center;">
-			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
-			<span>${pagination.currentPage}</span>
-			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage" id="">▶</a>
-		</div>
 		</c:otherwise>
 	</c:choose>
 		
@@ -67,7 +62,5 @@
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp" />
 
-	<script src="${contextPath}/resources/js/space_search.js">
-</script>
 </body>
 </html>

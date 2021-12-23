@@ -41,5 +41,3 @@ const loginMemberNo = "${loginMember.memberNo}";
 </script>
 <script src="${contextPath}/resources/js/common.js"></script>
 	
-</body>
-</html>

@@ -38,6 +38,7 @@ public class SearchController extends HttpServlet{
 			List<SpaceList> searchList = service.selectSeacrhList(sv, pagination);
 			
 			req.setAttribute("searchList", searchList);
+			req.setAttribute("pagination", pagination);
 			req.setAttribute("css", "space-search");
 			
             path = "/WEB-INF/views/space/space_search.jsp";

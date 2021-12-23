@@ -418,3 +418,5 @@ $(".switch_btn").on("click", function () {
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
+</body>
+</html>
