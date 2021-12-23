@@ -50,8 +50,12 @@ public class SendEmailServlet extends HttpServlet{
        final String password = "dltkddnjs1!";
        
        String encode = URLEncoder.encode(inputEmail, "UTF-8");
-       String url =  req.getRequestURL().substring(req.getRequestURI().length())+"/getonfast/member/findUpdatePwd?email=" + encode;
-
+       String hostPath = req.getRequestURL().substring(0, ((req.getRequestURL().length() - req.getRequestURI().length())));
+       String url = hostPath + req.getContextPath() + "/member/findUpdatePwd?email=" + encode;
+       System.out.println(url);
+       System.out.println(req.getRequestURL());
+       System.out.println(hostPath);
+       System.out.println("==========================");
        
        // 메일에 출력할 텍스트
        StringBuffer sb = new StringBuffer();
