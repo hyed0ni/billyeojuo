@@ -35,7 +35,7 @@ main{z-index: 1; width: 1140px;}
 }
 
 /* 부제-2 영역  */
-.text-box{  word-break: keep-all;  word-wrap: break-word; margin-bottom: 50px; border: 1px solid transparent;}
+.text-box{  word-break: keep-all;  word-wrap: break-word; margin-bottom: 0px; border: 1px solid transparent;}
 
 /* 부제-2 */
 .h-copy{  margin: 0;  padding: 50px 100px 0 0;  font-size: 48px;  line-height: 60px;}
@@ -93,7 +93,7 @@ main{z-index: 1; width: 1140px;}
 .text-box .h-intro {
   position: relative;
   padding-bottom: 16px;
-  margin: 74px 0 28px;
+  margin: 74px 0 10px;
   color: #000;
   font-size: 18px;
   line-height: 30px;

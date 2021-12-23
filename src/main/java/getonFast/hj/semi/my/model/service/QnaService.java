@@ -45,4 +45,20 @@ public class QnaService {
 		return result;
 	}
 
+	/**
+	 * 공간상세 문의 내용
+	 * @param spaceNo
+	 * @return qnaSpaceList
+	 * @throws Exception
+	 */
+	public List<Qna> qnaSpaceList(int spaceNo) throws Exception {
+		Connection conn = getConnection();
+		
+		List<Qna> qnaSpaceList = dao.qnaSpaceList(spaceNo, conn);
+		
+		close(conn);
+		
+		return qnaSpaceList;
+	}
+
 }

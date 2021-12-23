@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.review.model.vo.Review;
 
 public class ReviewDAO {
@@ -74,6 +75,53 @@ public class ReviewDAO {
 		}
 		
 		return reviewList;
+	}
+
+	/**
+	 * 공간 상세 리뷰 조회
+	 * @param spaceNo
+	 * @param conn
+	 * @return reviewSpaceList
+	 * @throws Exception
+	 */
+	public List<Review> reviewSpaceList(int spaceNo, Connection conn) throws Exception {
+		List<Review> reviewSpaceList = new ArrayList<Review>();
+		
+		try {
+			String sql = prop.getProperty("reviewSpaceList");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Review review = new Review();
+				review.setRevNo(rs.getInt("REV_NO"));
+				review.setRevContent(rs.getString("REV_CONTENT"));
+				review.setRevDt(rs.getString("REV_DT"));
+				review.setRevSt(rs.getInt("REV_ST"));
+				review.setResNo(rs.getInt("RES_NO"));
+				
+				review.setSpaceRoomNo(rs.getInt("SPACE_ROOM_NO"));
+				review.setSpaceNo(rs.getInt("SPACE_NO"));
+				
+				Member member = new Member();
+				member.setImgPath(rs.getString("MEMBER_IMG_PATH"));
+				member.setImgName(rs.getString("MEMBER_IMG_NM"));
+				member.setMemberName(rs.getString("MEMBER_NM"));
+				
+				review.setMember(member);
+				
+				reviewSpaceList.add(review);
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return reviewSpaceList;
 	}
 	
 

@@ -14,6 +14,8 @@ public class Res {
 	private String payDate;
 	private String useDate;
 	private int resDt;
+	
+	private int memberNo;
 
 	private Space space;
 
@@ -111,6 +113,14 @@ public class Res {
 
 	public void setSpace(Space space) {
 		this.space = space;
+	}
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 	@Override
