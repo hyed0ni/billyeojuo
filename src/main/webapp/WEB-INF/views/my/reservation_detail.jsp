@@ -84,7 +84,30 @@
   
         <div>
           <h5 style="width: 90%; color: rgb(214, 0, 0); font-weight: bold;">이용당일(첫 날)에 환불 관련 사항은 호스트에게 직접 문의하셔야 합니다</h5>
-          <p> 환불규정 가져오기</p>
+          
+          <c:set var="temp" value="${fn:replace(res.space.refundPolicy, '<br>', '|')}"/>
+		  <c:set var="arr" value="${fn:split(temp, '|')}"/> 
+          <p>
+          	<c:forEach items="${arr}" var="refund" varStatus="vs">
+           		<c:choose>
+           			<c:when test="${vs.last}">
+           				<strong class="tit" style="display:inline-block; width:100px;" >이용 당일</strong>
+           				<span class="data">${refund}</span>
+           			</c:when>
+           			
+           			<c:when test="${(fn:length(arr) - vs.count) == 1}">
+           				<strong class="tit" style="display:inline-block; width:100px;">이용 전날</strong>
+           				<span class="data">${refund}</span>
+           			</c:when>
+           			
+           			<c:otherwise>
+           				<strong class="tit" style="display:inline-block; width:100px;">이용 ${fn:length(arr) - vs.count}일전</strong>
+           				<span class="data">${refund}</span>
+           			</c:otherwise>
+           		</c:choose>
+           		<br>
+           	</c:forEach>
+          </p>
         </div>
         
       </article>
