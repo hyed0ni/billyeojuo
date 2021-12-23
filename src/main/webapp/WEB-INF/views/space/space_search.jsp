@@ -49,12 +49,28 @@
 				  </a>
 				</article>
 			</c:forEach>	
+			
 		</section>	
-		
-		<div class=pagination style="text-align: center;">
-			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
-			<span>${pagination.currentPage}</span>
+		<div class=pagination style="text-align: center; margin-top: 30px;">
+			 <c:if test="${pagination.currentPage} != 1">
+				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
+			 </c:if>
+			 	
+			 	<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" step="1" var="i">
+				 	<c:choose>
+						<c:when test="${i==pagination.currentPage}">
+							<span>${pagination.currentPage}</span>
+						</c:when>
+						
+						<c:otherwise>
+							<a href="${contextPath}/space/search?sv=${param.sv}&cp=${i}">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+			<c:if test="${pagination.currentPage} != ${pagination.endPage}">
 			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage" id="">▶</a>
+			</c:if>
 		</div>
 		</c:otherwise>
 	</c:choose>
@@ -66,7 +82,7 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp" />
-
+<script src="https://cdn.jsdelivr.net/gh/marshall-ku/infinite-scroll/dist/infiniteScroll.min.js"></script>
 	<script src="${contextPath}/resources/js/space_search.js">
 </script>
 </body>

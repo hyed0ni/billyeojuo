@@ -54,11 +54,14 @@ public class MainService {
 		Connection conn = getConnection();
 		int listCount = dao.getlistCount(conn, sv);
 		
-		if(listCount < 12) {
-			listCount = 12;
+		System.out.println(listCount);
+		
+		if(listCount < 1) {
+			listCount = 1;
 		}
 		
-		int pageSize = listCount/limit;
+		int pageSize = (int)(Math.ceil((double)listCount/limit));
+		
 		
 		close(conn);
 		

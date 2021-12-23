@@ -50,7 +50,17 @@
 				</article>
 			</c:forEach>	
 		</section>	
-		
+		<div class=pagination style="text-align: center;">
+			 <c:if test="${pagination.currentPage} != 1">
+				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
+			 </c:if>
+			 
+				<span>${pagination.currentPage}</span>
+				
+			<c:if test="${pagination.currentPage} != ${pagination.endPage}">
+			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage" id="">▶</a>
+			</c:if>
+		</div>
 		</c:otherwise>
 	</c:choose>
 		
