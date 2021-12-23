@@ -24,6 +24,7 @@ public class SpaceController extends HttpServlet {
 	   
 	  String method = req.getMethod();
       String uri = req.getRequestURI();
+      
       String contextPath = req.getContextPath();
       String command = uri.substring((contextPath + "/space/").length());
       
@@ -53,6 +54,8 @@ public class SpaceController extends HttpServlet {
         	
         	Map<Integer, List<Space>> spaceOptionMap = service.selectSpaceOption(spaceRoomList);
         	req.setAttribute("spaceOptionMap", spaceOptionMap);
+        	
+        	req.setAttribute("css", "space-style");
         	
             path = "/WEB-INF/views/space/space_detail.jsp";
             dispatcher = req.getRequestDispatcher(path);
