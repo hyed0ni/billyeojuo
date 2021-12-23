@@ -154,3 +154,13 @@ function layerPopClose() {
 	$(".modal").hide();
     $(".layerPop").html("").hide();
 }
+
+//검색어 지우기 
+document.getElementById("cBtn").addEventListener("click",function(){
+	const searchIput = document.getElementById("searchInput").value
+	
+
+	
+	
+})
+

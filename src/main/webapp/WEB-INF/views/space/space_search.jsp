@@ -23,6 +23,7 @@
 		</c:choose>
 	</div>
 </section>
+
 <main>
 	<c:choose>
 		<c:when test="${empty searchList}">
@@ -49,32 +50,43 @@
 				  </a>
 				</article>
 			</c:forEach>	
-			
 		</section>	
-		<div class=pagination style="text-align: center; margin-top: 30px;">
-			 <c:if test="${pagination.currentPage} != 1">
-				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
-			 </c:if>
+		</c:otherwise>
+	</c:choose>
+		
+		
+		<div class=pagination style="text-align: center; margin-top: 40px;">
+			<c:choose>
+			 <c:when test="${pagination.startPage != 1}">
+				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage arrow"  style="color: #6d3afb;">◀</a>
+			 </c:when>
+			 <c:otherwise>
+			 	<span class="arrow">◁</span>
+			 </c:otherwise>
+			 </c:choose>
 			 	
 			 	<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" step="1" var="i">
 				 	<c:choose>
 						<c:when test="${i==pagination.currentPage}">
-							<span>${pagination.currentPage}</span>
+							<span class="num" style="color: #6d3afb; font-weight: bold;" >${pagination.currentPage}</span>
 						</c:when>
 						
 						<c:otherwise>
-							<a href="${contextPath}/space/search?sv=${param.sv}&cp=${i}">${i}</a>
+							<a href="${contextPath}/space/search?sv=${param.sv}&cp=${i}" class="num">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				
-			<c:if test="${pagination.currentPage} != ${pagination.endPage}">
-			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage" id="">▶</a>
-			</c:if>
+			<c:choose>
+				<c:when test="${pagination.currentPage} != ${pagination.endPage}">
+				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage arrow"  style="color: #6d3afb;">▶</a>
+				</c:when>
+				<c:otherwise>
+				<span class="arrow" >▷</span>
+				</c:otherwise>
+			</c:choose>
 		</div>
-		</c:otherwise>
-	</c:choose>
-		
+
 
 	<section class="space" style="height: 70px;"></section>
 	
