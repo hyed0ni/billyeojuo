@@ -338,6 +338,9 @@
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
                 <form action="reservation" method="POST" style="position:absolute; width:350px; height:400px; top:0; right:0;">
+					<input type="text" name="spaceRoomNo">
+					<input type="text" name="selectedDt">
+						
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -347,9 +350,7 @@
                     </div>
 
                     <div style="background-color: white;">
-                    	
-                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs">
-             
+                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs" >
 	                        <div class="space_btn" style="padding:20px 10px;">
 	                            <div style="position:relative; display:flex;">
 	                                <input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}"
@@ -367,8 +368,7 @@
 	                            </div>
 	                        </div>
 	                        
-	                        <div class="space_detail space-a"
-                            	style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
+	                        <div class="space_detail space-a group_${vs.index}" style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
 	                            <div style="position:relative; text-align:center; margin-bottom:20px;">
 	                            
 	                            	<!-- 공간 이미지 -->
@@ -443,9 +443,8 @@
 	                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
 	                                </div>
 	                                <div>
-	                                    <div id="datepicker"></div>
+	                                    <div class="datepicker"></div>
 	                                </div>
-	                                <input type="hidden" id="selectedDate" name="selectedDate">
 	                            </div>
 	                        </div>
                     	
@@ -536,6 +535,11 @@
     	
     	$(".space_detail").css("display", "none");
     	$(".space_detail").eq(index).css("display", "block");
+    	
+    	
+    	$("input[name='spaceRoomNo']").val($(this).val());
+    	console.log("ttt");
+
     });
     
     // 찜하기 버튼
@@ -591,6 +595,28 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script>
 $( function() {
+	const minDate = new Date();
+	
+	$(".datepicker").each(function(idx) {
+		console.log(idx);
+		
+		$(this).datepicker({
+	        // 다음날 부터 선택 가능
+	        minDate : 1,
+	        // 선택 수정해야 할것
+	        onSelect: function () {
+	            console.log(this);
+	        }
+		});
+		
+		
+		
+	});
+
+	
+	
+	
+	/*
     const minDate = new Date();
     $( "#datepicker" ).datepicker({
         // 다음날 부터 선택 가능
@@ -601,6 +627,7 @@ $( function() {
         }
         
     });
+	*/
 } );
 </script>
 
