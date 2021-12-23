@@ -53,6 +53,11 @@ public class ResController extends HttpServlet {
 				res.setResReq(resReq);
 				res.setUseDate(useDate);
 				res.setResPersonnel(resPersonnel);
+				
+				res.setSpace(new Space());
+				res.getSpace().setSpaceRoomNo(spaceRoomNo);
+				
+				int result = service.insertRes(res);
 
 			}
 
