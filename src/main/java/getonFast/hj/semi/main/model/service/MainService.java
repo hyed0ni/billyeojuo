@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import getonFast.hj.semi.common.Pagination;
+import getonFast.hj.semi.common.XSS;
 import getonFast.hj.semi.main.model.dao.MainDAO;
 import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.main.model.vo.SpaceType;
@@ -77,6 +78,8 @@ public class MainService {
 	public List<SpaceList> selectSeacrhList(String sv, Pagination pagination) throws Exception {
 		Connection conn = getConnection();
 		
+		
+		sv = XSS.replaceParameter(sv);
 		List<SpaceList> searchList = dao.selectSearchList(sv, conn , pagination);
 		
 		close(conn);
