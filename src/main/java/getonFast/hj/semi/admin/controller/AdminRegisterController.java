@@ -79,9 +79,6 @@ public class AdminRegisterController extends HttpServlet {
 
 					String realPath = root + filePath;
 
-					System.out.println(root);
-					System.out.println(realPath);
-					
 					// 3. 저장되는 파일의 이름을 변경
 					// MyRenamePolicy
 

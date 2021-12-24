@@ -1,7 +1,7 @@
 
 // 공간 이미지 영역을 클릭할 때 파일 첨부 창이 뜨도록 설정하는 함수
 $(function() {
-  $(".spaceImg" ).on("click", function() {
+  $(".spaceImg" ).on("click", function() {`1`
     const index = $(".spaceImg").index(this);
     // .index(this) : 현재 클릭된 요소의 인덱스 반환 
     $("[type=file]").eq(index).click();

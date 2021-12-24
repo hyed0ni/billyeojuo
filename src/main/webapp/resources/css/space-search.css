@@ -186,3 +186,16 @@
 	cursor: default;
 	font-weight : bold;
 }
+
+/* *******페이지네이션 ******** */
+
+.num{
+	display: inline-block;
+	width: 25px;
+}
+
+.arrow{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+}
