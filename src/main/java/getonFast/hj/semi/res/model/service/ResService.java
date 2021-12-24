@@ -3,7 +3,9 @@ package getonFast.hj.semi.res.model.service;
 import static getonFast.hj.semi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import getonFast.hj.semi.res.model.dao.ResDAO;
 import getonFast.hj.semi.res.model.vo.Res;
@@ -48,7 +50,7 @@ public class ResService {
 		
 		return resList;
 	}
-
+	
 	/** 예약정보 상세 조회
 	 * @param resNo
 	 * @return res
@@ -60,6 +62,23 @@ public class ResService {
 		close(conn);
 		
 		return res;
+	}
+
+	/**
+	 * 공간 상세 이용 후기 작성 여부
+	 * @param spaceNo
+	 * @param memberNo
+	 * @return selectResReview
+	 */
+	public Map<String, String> selectResReview(int spaceNo, int memberNo) throws Exception {
+		Connection conn = getConnection();
+		
+//		Map<Integer, String> selectResReview = new HashMap<Integer, String>();
+		Map<String, String> selectResReview = dao.selectResReview(spaceNo, memberNo, conn);
+		
+		close(conn);
+		
+		return selectResReview;
 	}
 
 }

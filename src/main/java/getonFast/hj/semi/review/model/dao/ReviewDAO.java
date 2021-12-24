@@ -123,6 +123,36 @@ public class ReviewDAO {
 		
 		return reviewSpaceList;
 	}
+
+	
+	/**
+	 * 이용 후기 등록
+	 * @param spaceNo
+	 * @param reviewContent
+	 * @param memberNo
+	 * @param resNo 
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertReview(int spaceNo, String reviewContent, int memberNo, int resNo, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertReview");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reviewContent);
+			pstmt.setInt(2, resNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 
 }

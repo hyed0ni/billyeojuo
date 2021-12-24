@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.QnaService;
 import getonFast.hj.semi.my.model.vo.Qna;
+import getonFast.hj.semi.res.model.service.ResService;
+import getonFast.hj.semi.res.model.vo.Res;
 import getonFast.hj.semi.review.model.service.ReviewService;
 import getonFast.hj.semi.review.model.vo.Review;
 
@@ -64,7 +66,20 @@ public class SpaceController extends HttpServlet {
         	ReviewService reviewService = new ReviewService();
         	List<Review> reviewSpaceList = reviewService.reviewSpaceList(spaceNo);
         	req.setAttribute("reviewSpaceList", reviewSpaceList);
-
+        	
+        	Member loginMember = (Member)req.getSession().getAttribute("loginMember");
+        	
+        	if (loginMember != null) {
+        		ResService resService = new ResService();
+        		
+        		Map<String, String> resMap = resService.selectResReview(spaceNo, loginMember.getMemberNo());
+        		
+        		// 예약 내용 있고 글이 없는 경우
+        		if (!resMap.isEmpty() && resMap.get("revNo").equals("0")) {
+        			req.setAttribute("reviewUse", resMap.get("resNo"));
+        		}
+        		
+        	}
         	
         	req.setAttribute("css", "space-style");
         	

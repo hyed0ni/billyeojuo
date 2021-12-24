@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import getonFast.hj.semi.res.model.vo.Res;
@@ -182,5 +184,42 @@ public class ResDAO {
 		}
 		
 		return res;
+	}
+
+	/**
+	 * 공간 상세 이용 후기 작성 여부
+	 * @param spaceNo
+	 * @param memberNo
+	 * @param conn
+	 * @return 공간 상세 이용 후기 작성 여부
+	 * @throws Exception
+	 */
+	public Map<String, String> selectResReview(int spaceNo, int memberNo, Connection conn) throws Exception {
+		Map<String, String> selectResReview = new HashMap<String, String>();
+		
+		try {
+			String sql = prop.getProperty("selectResReview");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setInt(2, spaceNo);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				selectResReview.put("resNo", Integer.toString(rs.getInt("RES_NO")));
+				selectResReview.put("spaceNo", Integer.toString(rs.getInt("SPACE_NO")));
+				selectResReview.put("memberNo", Integer.toString(rs.getInt("MEMBER_NO")));
+				selectResReview.put("resDt", Integer.toString(rs.getInt("RES_DT")));
+				selectResReview.put("revNo", Integer.toString(rs.getInt("REV_NO")));
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+			
+		}
+		
+		return selectResReview;
 	}
 }

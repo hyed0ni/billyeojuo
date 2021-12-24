@@ -286,3 +286,12 @@ li.selected {  background-color: #ffd014;}
 
 
 #heart{ cursor: pointer; }
+
+/* 리뷰 */
+.text-area{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #a0a0a0; box-sizing:border-box; font:inherit; resize:none;}
+.review-btn-area{text-align:right; padding:6px 0;}
+.review-btn-area > .reivew-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
+.review-btn-area > .reivew-cancel-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
+
+.review-btn-area > .btn_negative{background:#4d4d4d;}
+.review-btn-area > .btn_default{background:#704de4;}
