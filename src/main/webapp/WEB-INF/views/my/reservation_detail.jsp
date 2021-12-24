@@ -16,7 +16,7 @@
   <section id="booking-wrap">
   <section class="booking-title">
     <div class="booking-img">
-      <h3>공간 이름</h3><h3>결제 및 예약내역입니다.</h3>
+      <h3>${res.space.spaceNm}</h3><h3>결제 및 예약내역입니다.</h3>
     </div>
   </section>
 
@@ -161,7 +161,7 @@
         </div>
 
         <div id="cancel-btn" class="btn"> 
-          <a href="">예약취소</a>
+          <a href="">결제 취소</a>
         </div>
       </article>
     </aside>
