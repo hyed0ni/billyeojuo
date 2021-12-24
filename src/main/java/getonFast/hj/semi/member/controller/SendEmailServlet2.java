@@ -27,16 +27,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/member/sendEmail")
-public class SendEmailServlet extends HttpServlet{
+import getonFast.hj.semi.member.vo.Member;
+
+@WebServlet("/member/sendEmail2")
+public class SendEmailServlet2 extends HttpServlet{
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	   HttpSession my_session = req.getSession();
+	   System.out.println(my_session);
+	   Member loginMember = (Member) my_session.getAttribute("loginMember");
 	   
       // 입력 받은 이메일
-      String inputEmail = req.getParameter("inputEmail");
+      String inputEmail = loginMember.getMemberEmail();
       
          // 메일 인코딩
        final String bodyEncoding = "UTF-8"; //콘텐츠 인코딩
@@ -51,7 +55,7 @@ public class SendEmailServlet extends HttpServlet{
        
        String encode = URLEncoder.encode(inputEmail, "UTF-8");
        String hostPath = req.getRequestURL().substring(0, ((req.getRequestURL().length() - req.getRequestURI().length())));
-       String url = hostPath + req.getContextPath() + "/member/findUpdatePwd?email=" + encode;
+       String url = hostPath + req.getContextPath() + "/member/certify?email=" + encode;
        System.out.println(url);
        System.out.println(req.getRequestURL());
        System.out.println(hostPath);
@@ -60,8 +64,8 @@ public class SendEmailServlet extends HttpServlet{
        // 메일에 출력할 텍스트
        StringBuffer sb = new StringBuffer();
        sb.append("<h3>안녕하세요</h3>\n");
-       sb.append("<h4>비밀번호 변경 링크입니다.</h4>\n");    
-       sb.append("<h2><a href='" + url + "'>비밀번호링크</a></h2>");
+       sb.append("<h4>이메일 인증 링크입니다.</h4>\n");    
+       sb.append("<h2><a href='" + url + "'>이메일 인증링크</a></h2>");
        
        
        String html = sb.toString();
@@ -127,7 +131,7 @@ public class SendEmailServlet extends HttpServlet{
          
          //Transport.send( message );
          
-         resp.sendRedirect(req.getContextPath());
+         resp.sendRedirect("my");
          
        } catch ( Exception e ) {
          e.printStackTrace();

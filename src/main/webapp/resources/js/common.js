@@ -156,9 +156,9 @@ function layerPopClose() {
 }
 
 
-document.getElementById("cBtn").addEventListener("click",function(){
+function clearInput(){
 	
-  const input = document.getElementById("searchInput")
+	 document.getElementById("searchInput").value =="";
 
-  input.innerHTML="";
-})
+	  
+	}
