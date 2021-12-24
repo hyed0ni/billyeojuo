@@ -128,9 +128,8 @@
             </div>
           </article>
 
-          <hr style="margin-top: 100px;">
-          <hr style="margin-bottom: 100px;">
-          <h2 style="text-align: center;">공간 타입등록</h2>
+       
+<%--           <h2 style="text-align: center;">공간 타입등록</h2>
           
           <article class="roomInfo01">
             <div class="roomWrap">
@@ -166,10 +165,10 @@
               </div>
               <textarea class="roomInfoForm" id="roomDesc" name="roomDesc" style="width: 100%; height: 150px;"></textarea>
             </div>
-          </article>
+          </article> --%>
           
           <article style="margin-top: 40px; margin-bottom: 40px; text-align: center;">
-            <button class="btn">등록하기</button>
+            <button class="btn">다음</button>
             <button class="btn" onclick="list" >취소</button>
           </article>
 
