@@ -148,6 +148,7 @@ public class MemberDAO {
 						loginMember.setImgName(rs.getString("MEMBER_IMG_NM"));
 						loginMember.setImgOrg(rs.getString("MEMBER_IMG_ORG"));
 						loginMember.setImgPath(rs.getString("MEMBER_IMG_PATH"));
+						loginMember.setCertify(rs.getInt("MEMBER_CERTIFY"));
 
 					}
 
@@ -220,6 +221,45 @@ public class MemberDAO {
 		return result;
 		
 		
+		
+		
+	}
+
+	/** 이메일 인증
+	 * @param certifyPwd
+	 * @param email
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int certifyEmail(String certifyPwd, String email, Connection conn) throws Exception{
+		
+		int result = 0;
+		System.out.println(certifyPwd);
+		System.out.println(email);
+
+		try {
+
+			String sql = prop.getProperty("certifyEmail");
+			
+			
+			
+			pstmt = conn.prepareStatement(sql);
+
+
+			pstmt.setString(1, email);
+			
+			pstmt.setString(2, certifyPwd);
+
+
+			result = pstmt.executeUpdate();
+
+		} finally {
+
+			close(pstmt);
+		}
+
+		return result;
 		
 		
 	}

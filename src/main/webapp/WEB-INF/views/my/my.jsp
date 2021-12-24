@@ -18,7 +18,7 @@
                 <div class="img_area">
                     <div>
                         <c:choose>
-                            <c:when test="empty sessionScope.loginMember.imgName">
+                            <c:when test="${empty sessionScope.loginMember.imgName}">
                                 <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
                             </c:when>
                             <c:otherwise>
@@ -37,7 +37,7 @@
                        
                         
                         <c:choose>
-                            <c:when test="empty sessionScope.loginMember.imgName">
+                            <c:when test="${empty sessionScope.loginMember.imgName}">
                                 <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
                         </c:when>
                         <c:otherwise>
@@ -83,7 +83,16 @@
                                 <th class="table_th">이메일</th>
                                 <td class="table_td">
                                     <div>${sessionScope.loginMember.memberEmail}</div>
-                                    <a href="#" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4">인증하기</a>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.loginMember.certify == 0}">
+                                        <form action="${contextPath}/member/sendEmail2" method="get">
+                                        <button type="submit" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="certify">인증하기</button>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="#">인증완료</span>
+                                    </c:otherwise>
+                                    </c:choose>    
                                 </td>
                             </tr>
                             <tr>
@@ -117,15 +126,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="table_th">마케팅 수신동의</th>
-                                <td class="table_td switch_area">
-                                    <div>이메일 동의</div>
-                                    <div class="switch_btn">
-                                        <a href="javascript:void(0);" class="tag"></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </table>
                     
                 </div>
@@ -234,6 +235,16 @@ $(document).on('click', '.name_change_confirm', function(){
     })
 
 });
+
+// 이메일 인증
+ $(document).on('click', '.certify', function(){
+
+    alert("이메일을 전송했습니다.")
+
+
+
+ });
+
 
 $(document).on('click ', '.ph_change_confirm', function(){
 

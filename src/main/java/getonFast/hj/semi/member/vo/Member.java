@@ -17,7 +17,7 @@ public class Member {
 	private String imgOrg;
 	private String imgPath;
 	private String imgName;
-	
+	private int certify;
 
 
 
@@ -35,11 +35,14 @@ public class Member {
 	}
 	
 	
+
 	
+
+
 
 	public Member(int memberNo, String memberName, String memberEmail, String memberPw, String memberPhone,
 			int memberSMSChk, int memberEmailChk, Date enrollDate, int statusCode, int gradeCode, String imgOrg,
-			String imgPath, String imgName) {
+			String imgPath, String imgName, int certify) {
 		super();
 		this.memberNo = memberNo;
 		this.memberName = memberName;
@@ -54,6 +57,19 @@ public class Member {
 		this.imgOrg = imgOrg;
 		this.imgPath = imgPath;
 		this.imgName = imgName;
+		this.certify = certify;
+	}
+
+
+
+	public int getCertify() {
+		return certify;
+	}
+
+
+
+	public void setCertify(int certify) {
+		this.certify = certify;
 	}
 
 
@@ -201,8 +217,12 @@ public class Member {
 				+ ", memberPw=" + memberPw + ", memberPhone=" + memberPhone + ", memberSMSChk=" + memberSMSChk
 				+ ", memberEmailChk=" + memberEmailChk + ", enrollDate=" + enrollDate + ", statusCode=" + statusCode
 				+ ", gradeCode=" + gradeCode + ", imgOrg=" + imgOrg + ", imgPath=" + imgPath + ", imgName=" + imgName
-				+ "]";
+				+ ", certify=" + certify + "]";
 	}
+
+
+
+
 
 
 
