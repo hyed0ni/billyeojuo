@@ -2,6 +2,13 @@
   /* border: 0.1px solid grey; */
 
 }
+.no_result{
+	display : block;
+	text-align: center;
+	font-size: 25px;
+	opacity: 60%;
+	font-weight: 500;
+}
 
 .space{
   clear: both;
@@ -178,4 +185,17 @@
 	pointer-events: none;
 	cursor: default;
 	font-weight : bold;
+}
+
+/* *******페이지네이션 ******** */
+
+.num{
+	display: inline-block;
+	width: 25px;
+}
+
+.arrow{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
 }

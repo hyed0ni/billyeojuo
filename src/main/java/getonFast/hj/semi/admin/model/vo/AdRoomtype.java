@@ -8,6 +8,7 @@ public class AdRoomtype {
 	private String roomDesc;
 	private String roomFit;
 	private int optionNo;
+	private String roomImg;
 	
 	public AdRoomtype() {
 		// TODO Auto-generated constructor stub
@@ -60,21 +61,29 @@ public class AdRoomtype {
 	public void setRoomFit(String roomFit) {
 		this.roomFit = roomFit;
 	}
+	
+	public int getOptionNo() {
+		return optionNo;
+	}
+	
+	public void setOptionNo(int optionNo) {
+		this.optionNo = optionNo;
+	}
+	
+	public String getRoomImg() {
+		return roomImg;
+	}
+
+	public void setRoomImg(String roomImg) {
+		this.roomImg = roomImg;
+	}
 
 	@Override
 	public String toString() {
 		return "AdRoomtype [roomNo=" + roomNo + ", spaceNo=" + spaceNo + ", roomName=" + roomName + ", roomPrice="
-				+ roomPrice + ", roomeDesc=" + roomDesc + ", roomFit=" + roomFit + "]";
+				+ roomPrice + ", roomDesc=" + roomDesc + ", roomFit=" + roomFit + ", optionNo=" + optionNo
+				+ ", roomImg=" + roomImg + "]";
 	}
-
-	public int getOptionNo() {
-		return optionNo;
-	}
-
-	public void setOptionNo(int optionNo) {
-		this.optionNo = optionNo;
-	}
-
 
 
 	

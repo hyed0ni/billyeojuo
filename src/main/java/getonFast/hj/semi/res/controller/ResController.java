@@ -40,7 +40,7 @@ public class ResController extends HttpServlet {
 
 				String resNm = req.getParameter("resNm");
 				String[] phone = req.getParameterValues("phone");
-				String resPno = String.join("", phone);
+				String resPno = String.join("-", phone);
 				String resEmail = req.getParameter("resEmail");
 				String resPurpose = req.getParameter("resPurpose");
 				String resReq = req.getParameter("resReq");

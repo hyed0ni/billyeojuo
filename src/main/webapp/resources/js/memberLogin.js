@@ -19,6 +19,12 @@ function loginValidate() {
     return false;
   }
 
+  if(result > 0){
+    alert(message);
+  }else{
+    alert(messsage);
+  }
+
 }
 
 function findPwdValidate() {
@@ -33,6 +39,13 @@ function findPwdValidate() {
     return false;
 
   }else{
+
+    $.ajax({
+
+
+
+
+    })
 
     alert("이메일 전송이 완료되었습니다.");
 

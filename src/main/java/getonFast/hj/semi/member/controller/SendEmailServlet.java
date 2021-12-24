@@ -34,7 +34,7 @@ public class SendEmailServlet extends HttpServlet{
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	   HttpSession my_session = req.getSession();
-	   String root = my_session.getServletContext().getRealPath("/");
+	   
       // 입력 받은 이메일
       String inputEmail = req.getParameter("inputEmail");
       
@@ -50,8 +50,12 @@ public class SendEmailServlet extends HttpServlet{
        final String password = "dltkddnjs1!";
        
        String encode = URLEncoder.encode(inputEmail, "UTF-8");
-       String url =  req.getRequestURL().substring(req.getRequestURI().length())+"/getonfast/member/findUpdatePwd?email=" + encode;
-
+       String hostPath = req.getRequestURL().substring(0, ((req.getRequestURL().length() - req.getRequestURI().length())));
+       String url = hostPath + req.getContextPath() + "/member/findUpdatePwd?email=" + encode;
+       System.out.println(url);
+       System.out.println(req.getRequestURL());
+       System.out.println(hostPath);
+       System.out.println("==========================");
        
        // 메일에 출력할 텍스트
        StringBuffer sb = new StringBuffer();
@@ -123,7 +127,7 @@ public class SendEmailServlet extends HttpServlet{
          
          //Transport.send( message );
          
-         resp.getWriter().print(true);
+         resp.sendRedirect(req.getContextPath());
          
        } catch ( Exception e ) {
          e.printStackTrace();

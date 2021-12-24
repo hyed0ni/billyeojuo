@@ -124,6 +124,8 @@ public class ResDAO {
 				resSpace.getSpace().setSpaceRoomNm(rs.getString("SPACE_ROOM_NM"));
 				resSpace.getSpace().setSpaceRoomPrice(rs.getInt("SPACE_ROOM_PRICE"));
 				resSpace.getSpace().setSpaceNm(rs.getString("SPACE_NM"));
+				resSpace.getSpace().setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
+				resSpace.getSpace().setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
 				
 				resList.add(resSpace);
 			}

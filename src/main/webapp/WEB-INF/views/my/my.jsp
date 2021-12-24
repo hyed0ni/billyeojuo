@@ -10,6 +10,9 @@
 <jsp:include page="../common/header.jsp"/>
 
 
+
+
+
 <main>
     <section class="my">
         <div class="title" style="letter-spacing:-.5px;">프로필 관리</div>
@@ -18,7 +21,7 @@
                 <div class="img_area">
                     <div>
                         <c:choose>
-                            <c:when test="empty sessionScope.loginMember.imgName">
+                            <c:when test="${empty sessionScope.loginMember.imgName}">
                                 <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
                             </c:when>
                             <c:otherwise>
@@ -37,7 +40,7 @@
                        
                         
                         <c:choose>
-                            <c:when test="empty sessionScope.loginMember.imgName">
+                            <c:when test="${empty sessionScope.loginMember.imgName}">
                                 <img src="${contextPath}/resources/images/header/defaultUser.jpg" class="profile_image">
                         </c:when>
                         <c:otherwise>
@@ -83,7 +86,16 @@
                                 <th class="table_th">이메일</th>
                                 <td class="table_td">
                                     <div>${sessionScope.loginMember.memberEmail}</div>
-                                    <a href="#" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4">인증하기</a>
+                                    <c:choose>
+                                        <c:when test="${sessionScope.loginMember.certify == 0}">
+                                        <form action="${contextPath}/member/sendEmail2" method="get">
+                                        <button type="submit" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="certify">인증하기</button>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="#">인증완료</span>
+                                    </c:otherwise>
+                                    </c:choose>    
                                 </td>
                             </tr>
                             <tr>
@@ -93,7 +105,7 @@
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
                                     <div class="change_phone_wrap_2" style="display: none;">
                                         <!-- <form action="${contextPath}/my" method="post" enctype="multipart/form-data" type="submit"> -->
-                                            <input type="text" class="phone" name="inputPhone">
+                                            <input type="text" class="phone" name="inputPhone" placeholder=" '-' 를 포함 해주세요.">
                                                 <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</button>
                                                 
                                                 <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
@@ -117,15 +129,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="table_th">마케팅 수신동의</th>
-                                <td class="table_td switch_area">
-                                    <div>이메일 동의</div>
-                                    <div class="switch_btn">
-                                        <a href="javascript:void(0);" class="tag"></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </table>
                     
                 </div>
@@ -235,6 +239,16 @@ $(document).on('click', '.name_change_confirm', function(){
 
 });
 
+// 이메일 인증
+ $(document).on('click', '.certify', function(){
+
+    alert("이메일을 전송했습니다.")
+
+
+
+ });
+
+
 $(document).on('click ', '.ph_change_confirm', function(){
 
     const inputphone = $(this).prev().val();
@@ -248,6 +262,7 @@ $(document).on('click ', '.ph_change_confirm', function(){
 
     if(!regExp.test(inputphone)){
         alert("유효하지 않는 전화번호 입니다.");
+        return false;
     }
 
     $.ajax({
@@ -418,3 +433,5 @@ $(".switch_btn").on("click", function () {
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
+</body>
+</html>

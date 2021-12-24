@@ -89,14 +89,7 @@ public class SpaceController extends HttpServlet {
             
          }
          
-         else if (command.equals("search")) {
-            req.setAttribute("css",   "space-search");
-            
-            path = "/WEB-INF/views/space/space_search.jsp";
-            dispatcher = req.getRequestDispatcher(path);
-            dispatcher.forward(req, resp);
-            
-         }
+  
          
          else if (command.equals("reservation")) {
         	

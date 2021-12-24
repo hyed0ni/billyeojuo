@@ -56,13 +56,11 @@ public class AdSpaceService {
 
 	/** 공간등록 
 	 * @param space
-	 * @param roomType
 	 * @param imgList
-	 * @param optionList 
 	 * @return spaceNo
 	 * @throws Exception
 	 */
-	public int insertSpace(AdSpace space, AdRoomtype roomType, List<AdSpaceImage> imgList, List<AdSpaceRoomOption> optionList) throws Exception {
+	public int insertSpace(AdSpace space, List<AdSpaceImage> imgList) throws Exception {
 		
 		Connection conn = getConnection();
 		
@@ -70,9 +68,6 @@ public class AdSpaceService {
 		int spaceNo = dao.nextSpaceNo(conn);
 		space.setSpaceNo(spaceNo);
 		
-		//다음차례 룸 넘버 얻어오기 
-		int roomNo = dao.nextRoomNo(conn);
-		roomType.setRoomNo(roomNo);
 		
 		//공간 소개 등 개행문자 <br> 
 		String intro = space.getSpaceIntro().replaceAll("(\r\n|\r|\n|\n\r)", "<br>");
@@ -88,35 +83,7 @@ public class AdSpaceService {
 		//공간 삽입
 		int result = dao.insertSpace(space,imgList,conn);
 
-		
-		//룸타입 개행문자 변경 
-		String desc = roomType.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
-		roomType.setRoomDesc(desc);
-		
-		//룸타입 삽입
-		if(result>0) {
-			roomType.setSpaceNo(spaceNo);
-			result = dao.insertRoomType(roomType,conn);
-			
-			if(result == 0) {
-				rollback(conn);
-			}
-		}
-		
-		//룸옵션 삽입
-		if(result > 0) {
-			
-			for(AdSpaceRoomOption spaceRoomOption : optionList) {
-				spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
-				result = dao.insertspaceRoomOption(spaceRoomOption,conn);
-				if(result == 0) {
-					rollback(conn);
-					break;
-				}
-			}
-		}
-		
-		// 공간 , 룸타입 삽입 후 이미지 삽입
+		// 공간 삽입 후 이미지 삽입
 		if(result > 0) {
 			for(AdSpaceImage img:imgList) {
 				if(img.getImgLevel() != 0) {
@@ -141,6 +108,38 @@ public class AdSpaceService {
 		close(conn);
 		
 		return result;
+	}
+
+
+	public int insertRoom(AdRoomtype roomType, String[] roomOption, int rn) throws Exception {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		//다음차례 룸 넘버 얻어오기 
+		int roomNo = dao.nextRoomNo(conn);
+		roomType.setRoomNo(roomNo);
+		
+		//룸타입의 룸소개 개행문자 변경 
+		String desc = roomType.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
+		roomType.setRoomDesc(desc);
+		
+		//룸타입 삽입
+		result = dao.insertRoomType(roomType,rn,conn);
+		
+//		//룸옵션 삽입
+//		if(result > 0) {
+//			
+//			for(AdSpaceRoomOption spaceRoomOption : optionList) {
+//				spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
+//				result = dao.insertspaceRoomOption(o,conn);
+//				if(result == 0) {
+//					rollback(conn);
+//					break;
+//				}
+//			}
+//		}
+		
+		return result ;
 	}
 
 }

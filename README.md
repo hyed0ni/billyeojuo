@@ -18,9 +18,9 @@ http://localhost:8080/getonFast/
 
 
 예약 리스트
-- http://localhost:8080/getonFast/my/reserve
+- http://localhost:8080/getonFast/res/reserve
 예약 상세
-- http://localhost:8080/getonFast/my/reservation_detail
+- http://localhost:8080/getonFast/res/reservation_detail
 
 
 로그인
