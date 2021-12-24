@@ -50,13 +50,11 @@ public class AdminRegisterController extends HttpServlet {
 
 				// Get 방식 요청시
 				if (method.equals("GET")) {
-					System.out.println("GGG");
 					// 공간 타입, 공간옵션 조회
 					List<AdSpaceType> adSpaceType = service.selectSpaceType();
-					List<AdSpaceOption> adSpaceOption = service.selectSpaceOption();
-
+					
 					req.setAttribute("adSpaceType", adSpaceType);
-					req.setAttribute("adSpaceOption", adSpaceOption);
+					
 
 					path = "/WEB-INF/views/adminSpace/spaceInsert.jsp";
 
@@ -123,35 +121,6 @@ public class AdminRegisterController extends HttpServlet {
 					space.setSpaceTypeNo(spaceTypeNo);
 
 					
-					// 룸타입
-					String roomName = mReq.getParameter("roomName");
-					String roomDesc = mReq.getParameter("roomDesc");
-					String roomFit = mReq.getParameter("roomFit");
-					int optionNo = Integer.parseInt(mReq.getParameter("roomPrice"));
-					int roomPrice = Integer.parseInt(mReq.getParameter("roomPrice"));
-
-					
-					AdRoomtype roomType = new AdRoomtype();
-					roomType.setRoomName(roomName);
-					roomType.setRoomDesc(roomDesc);
-					roomType.setRoomFit(roomFit);
-					roomType.setOptionNo(optionNo);
-					roomType.setRoomPrice(roomPrice);
-					
-					
-					// 룸 옵션
-					String[] roomOption = mReq.getParameterValues("roomOption");
-
-					List<AdSpaceRoomOption> optionList = new ArrayList<AdSpaceRoomOption>();
-
-					for (String ro : roomOption) {
-						AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
-						int RoomOptionNo = Integer.parseInt(ro);
-						spaceRoomOption.setOptionNo(RoomOptionNo);
-
-						optionList.add(spaceRoomOption);
-					}
-
 					Enumeration<String> files = mReq.getFileNames();
 					// Enumeration<String> == iterator(ResultSet과 유사): 반복 접근자
 					// form에서 전달된 input type="file" name속성 모두 반환
@@ -183,15 +152,13 @@ public class AdminRegisterController extends HttpServlet {
 						
 					}
 					// board, imgList DB에 저장 (Service 호출)
-					int result = service.insertSpace(space, roomType, imgList, optionList);
+					int result = service.insertSpace(space, imgList);
 					
 					// 결과반환
 					if (result > 0) {
-						message = "게시글 작성이 등록 되었습니다. ";
-
 						// 상세조회 redirect 주소
 //						path = "view?no=" + result + "&cp=1";
-						path = "insert";
+						path = "addRoomtype";
 
 					} else {
 						message = "게시글 등록 중 문제 발생";
@@ -201,8 +168,10 @@ public class AdminRegisterController extends HttpServlet {
 					session.setAttribute("message", message);
 					resp.sendRedirect(path);
 				}
-			} else if (command.equals("list")) {
-
+				
+				
+			} else if (command.equals("addRoomType")) {
+				
 			} else if (command.equals("view")) {
 
 			} else if (command.equals("update")) {
@@ -210,6 +179,7 @@ public class AdminRegisterController extends HttpServlet {
 			} else if (command.equals("delete")) {
 
 			}
+	
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -175,11 +175,12 @@ public class AdSpaceDAO {
 
 	/** 룸 타입 등록 
 	 * @param roomType
+	 * @param rn 
 	 * @param conn
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoomType(AdRoomtype roomType, Connection conn) throws Exception {
+	public int insertRoomType(AdRoomtype roomType, int rn, Connection conn) throws Exception {
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertRoopType");
@@ -190,7 +191,7 @@ public class AdSpaceDAO {
 			pstmt.setInt(3, roomType.getRoomPrice());
 			pstmt.setString(4, roomType.getRoomFit());
 			pstmt.setString(5, roomType.getRoomDesc());
-			pstmt.setInt(6, roomType.getSpaceNo());
+			pstmt.setInt(6, rn);
 			
 			result= pstmt.executeUpdate();
 			
