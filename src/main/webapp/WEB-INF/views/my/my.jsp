@@ -10,6 +10,9 @@
 <jsp:include page="../common/header.jsp"/>
 
 
+
+
+
 <main>
     <section class="my">
         <div class="title" style="letter-spacing:-.5px;">프로필 관리</div>
@@ -102,7 +105,7 @@
                                     <a href="javascript:void(0);" class="yellow" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; float:right;">인증완료</a>
                                     <div class="change_phone_wrap_2" style="display: none;">
                                         <!-- <form action="${contextPath}/my" method="post" enctype="multipart/form-data" type="submit"> -->
-                                            <input type="text" class="phone" name="inputPhone">
+                                            <input type="text" class="phone" name="inputPhone" placeholder=" '-' 를 포함 해주세요.">
                                                 <button type="submit" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_confirm">확인</button>
                                                 
                                                 <a href="javascript:void(0)" style="padding:0 4px; height:22px; border:1px solid #656565; box-sizing:border-box; margin-left:20px;" class="ph_change_cancle">취소하기</a>
@@ -259,6 +262,7 @@ $(document).on('click ', '.ph_change_confirm', function(){
 
     if(!regExp.test(inputphone)){
         alert("유효하지 않는 전화번호 입니다.");
+        return false;
     }
 
     $.ajax({
