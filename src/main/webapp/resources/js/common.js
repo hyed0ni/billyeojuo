@@ -158,7 +158,7 @@ function layerPopClose() {
 
 function clearInput(){
 	
-	 document.getElementById("searchInput").value =="";
+	 document.getElementById("searchInput").value ="";
 
 	  
 	}
