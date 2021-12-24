@@ -38,7 +38,7 @@ main{z-index: 1; width: 1140px;}
 .text-box{  word-break: keep-all;  word-wrap: break-word; margin-bottom: 0px; border: 1px solid transparent;}
 
 /* 부제-2 */
-.h-copy{  margin: 0;  padding: 50px 100px 0 0;  font-size: 48px;  line-height: 60px;}
+.h-copy{  margin: 0;  padding: 50px 100px 50px 0;  font-size: 48px;  line-height: 60px;}
 
 /* 메뉴 탭 영역 */
 .nav-wrapper{ float:left; }
