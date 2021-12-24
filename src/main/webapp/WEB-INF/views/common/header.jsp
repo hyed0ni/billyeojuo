@@ -61,7 +61,7 @@
 
     <div class="used_area">
         <div>
-            <a href="${contextPath}/my/reserve">
+            <a href="${contextPath}/res/reserve">
                 <div>
                     <img src="${contextPath}/resources/images/header/ico_reservationlist.png" class="ico">
                     <div>예약 리스트</div>
