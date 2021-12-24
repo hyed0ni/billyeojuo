@@ -31,15 +31,44 @@
 				</select>
 			</div>
 			<div class="list_area">
-
 				<c:forEach items="${resList}" var="resSpace" varStatus="vs" >
+				
 	                <a href="reservation_detail?rno=${resSpace.resNo}">
 	                    <div class="list">
 	                        <div>
 	                            <div class="list_img"><img src="${contextPath}${resSpace.space.spaceImgPath}${resSpace.space.spaceImgNm}"></div>
 	                            <div class="list_description">
 	                                <div class="tag_area">
-	                                    <span class="tag approve">${resSpace.resDt}</span>
+	                                
+		                                <c:set var="today" value="<%=new java.util.Date()%>"/>
+										<!-- 현재날짜 -->
+										<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd" /></c:set> 
+	                                
+                                    	<c:choose>
+                                    		<c:when test="${resSpace.resDt == 31}">
+                                    		
+	                                    		<fmt:parseDate value="${fn:split(resSpace.useDate, ' ')[0]}" var="uuu" pattern="yyyy-MM-dd"/>
+												<fmt:parseNumber value="${uuu.time / (1000*60*60*24)}" integerOnly="true" var="u"></fmt:parseNumber>
+												
+												<fmt:parseDate value="${date }" var="ccc" pattern="yyyy-MM-dd"/>
+												<fmt:parseNumber value="${ccc.time / (1000*60*60*24)}" integerOnly="true" var="c"></fmt:parseNumber>
+
+												<c:choose>
+													<c:when test="${u - c < 0}">
+														<span class="tag approve" style="background-color: #4d4d4d; border-color: #4d4d4d">이용완료</span>
+													</c:when>
+													
+													<c:otherwise>
+														<span class="tag approve" style="background-color: #03b565; border-color: #03b565">결제완료</span>
+													</c:otherwise>
+												</c:choose>
+                                    			
+                                    		</c:when>
+                                    			
+                                    		<c:when test="${resSpace.resDt == 32}">
+                                    			<span class="tag approve" style="background-color: #fb4d88; border-color: #fb4d88">취소환불</span>
+                                    		</c:when>
+                                    	</c:choose>
 	                                </div>
 	                                <div class="title">${resSpace.space.spaceNm}, ${resSpace.space.spaceRoomNm}</div>
 	                                <div class="date">${fn:split(resSpace.useDate, ' ')[0]}</div>
@@ -56,10 +85,8 @@
 	</section>
 </main>
 
-
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
 
 </body>
 </html>
-
