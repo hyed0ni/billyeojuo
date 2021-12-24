@@ -82,4 +82,5 @@
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
 <script src="${contextPath}/resources/js/qna.js"></script>
-
+</body>
+</html>

@@ -13,7 +13,7 @@
 
   <section id="promotion-page">
     <h1>기획전</h1>
-    <p>스클 MD가 큐레이션한 기획전 입니다</p>
+    <p style="font-weight: 370; color: grey;">빌려주오 MD가 큐레이션한 기획전 입니다</p>
     <section id="promotion-list">
       <div class="promotion-list-wrap">
       
@@ -36,4 +36,5 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
-
+</body>
+</html>

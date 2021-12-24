@@ -180,3 +180,6 @@
 	</script>
    <c:remove var="message" scope="session"/>
 </c:if>
+
+</body>
+</html>

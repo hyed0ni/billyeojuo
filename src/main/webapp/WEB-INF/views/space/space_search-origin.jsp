@@ -23,7 +23,6 @@
 		</c:choose>
 	</div>
 </section>
-
 <main>
 	<c:choose>
 		<c:when test="${empty searchList}">
@@ -51,42 +50,20 @@
 				</article>
 			</c:forEach>	
 		</section>	
+		<div class=pagination style="text-align: center;">
+			 <c:if test="${pagination.currentPage} != 1">
+				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage" id="">◀</a>
+			 </c:if>
+			 
+				<span>${pagination.currentPage}</span>
+				
+			<c:if test="${pagination.currentPage} != ${pagination.endPage}">
+			<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage" id="">▶</a>
+			</c:if>
+		</div>
 		</c:otherwise>
 	</c:choose>
 		
-		
-		<div class=pagination style="text-align: center; margin-top: 40px;">
-			<c:choose>
-			 <c:when test="${pagination.startPage != 1}">
-				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.prevPage}" class="prevPage arrow"  style="color: #6d3afb;">◀</a>
-			 </c:when>
-			 <c:otherwise>
-			 	<span class="arrow">◁</span>
-			 </c:otherwise>
-			 </c:choose>
-			 	
-			 	<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" step="1" var="i">
-				 	<c:choose>
-						<c:when test="${i==pagination.currentPage}">
-							<span class="num" style="color: #6d3afb; font-weight: bold;" >${pagination.currentPage}</span>
-						</c:when>
-						
-						<c:otherwise>
-							<a href="${contextPath}/space/search?sv=${param.sv}&cp=${i}" class="num">${i}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-			<c:choose>
-				<c:when test="${pagination.currentPage} != ${pagination.endPage}">
-				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage arrow"  style="color: #6d3afb;">▶</a>
-				</c:when>
-				<c:otherwise>
-				<span class="arrow" >▷</span>
-				</c:otherwise>
-			</c:choose>
-		</div>
-
 
 	<section class="space" style="height: 70px;"></section>
 	
@@ -94,8 +71,6 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp" />
-<script src="https://cdn.jsdelivr.net/gh/marshall-ku/infinite-scroll/dist/infiniteScroll.min.js"></script>
-	<script src="${contextPath}/resources/js/space_search.js">
-</script>
+
 </body>
 </html>
