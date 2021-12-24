@@ -220,31 +220,24 @@
                 </div>
                 
                 <!-- 리뷰  -->
-                <style>
-                .text-area{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #a0a0a0; box-sizing:border-box; font:inherit; resize:none;}
-                .review-btn-area{text-align:right; padding:6px 0;}
-                .review-btn-area > .reivew-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
-                .review-btn-area > .reivew-cancel-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
-                
-                .review-btn-area > .btn_negative{background:#4d4d4d;}
-                .review-btn-area > .btn_default{background:#704de4;}
-                </style>
                 <div>
                     <div id="s-review" class="text-box">
                         <h4 class="h-intro">
-                            이용 후기<strong class="txt-primary"><em>6</em>개</strong>
+                            이용 후기<strong class="txt-primary"><em>${fn:length(reviewSpaceList)}</em>개</strong>
                         </h4>
                     </div>
-                    <div>
-                    	<textarea class="text-area" id="reviewTextarea"></textarea>
-                    	<div class="review-btn-area">
-                    		<a class="reivew-btn submit btn_default">등록</a>
-                    	</div>
-                    </div>
+                    
+                    <c:if test="${!empty reviewUse}">
+	                    <div class="review-write_area">
+	                    	<textarea class="text-area" id="reviewTextarea"></textarea>
+	                    	<div class="review-btn-area">
+	                    		<a class="reivew-btn submit btn_default">등록</a>
+	                    	</div>
+	                    </div>
+                    </c:if>
                     <div class="review_box">
                         <ul class="review_list">
                         	<c:forEach items="${reviewSpaceList}" var="reviewSpace">
-                        	${reviewSpace.revContent}
                         		<li class="rlist">
 	                                <div class="rbox-mine">
 	                                    <!-- 프로필 이미지 -->
@@ -259,7 +252,7 @@
 	                                    	</c:otherwise>
 	                                    </c:choose>
 	                                    
-	                                    <strong class="guest-name">${qnaSpace.member.memberNm}</strong>
+	                                    <strong class="guest-name">${reviewSpace.member.memberName}</strong>
 	                                    <p class="p-review">
 	                                        ${reviewSpace.revContent}
 	                                    </p>
@@ -273,44 +266,6 @@
                     </div>
 				</div>
 				
-				<script>
-					$(".review-btn-area .submit").on("click", function () {
-						if ($("#reviewTextarea").val().trim().length == 0) {
-							alert("내용을 입력해주세요");
-							$("#reviewTextarea").focus();
-							return false;	
-						}
-						
-						$.ajax({
-							url : contextPath + "/my/review/insert",
-							method : "post",
-							data : {
-								spaceNo : ${param.no},
-								reviewContent : $("#reviewTextarea").val()
-							},
-							success : function (result) {
-								if (result > 0) {
-									alert("등록되었습니다.");
-									layerPopClose();
-									
-									if ($(".l_area").length) {
-										qnaListRoad("all");
-									}
-									
-								} else {
-									alert("문의 실패 하였습니다.");
-								}
-									
-							},
-							error : function (req, status, error) {
-								console.log("문의 등록 실패");
-								console.log(req.responseText);
-							}
-							
-						});
-					});
-				</script>
-                    
                 <%--
                 <div>
                     <div id="s-qna" class="text-box">
@@ -468,8 +423,8 @@
                 <!--------------------------------------------------------------------------------------------------------------------------->
 
                 <form action="reservation" method="post" style="position:absolute; width:350px; height:400px; top:0; right:0;">
-					<input type="text" class="space_room_no" name="space_room_no">
-					<input type="text" class="selected_dt" name="use_date">
+					<input type="hidden" class="space_room_no" name="space_room_no">
+					<input type="hidden" class="selected_dt" name="use_date">
                     <div
                         style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
                         <div>세부공간 선택</div>
@@ -532,37 +487,18 @@
 								<!-- 공간옵션 -->
 	                            <div style="width:320px; margin:20px auto;">
 	                                <ul style="display:table-cell;">
-	                                
-<%-- 	                                	<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
-	                                		<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
-	                                		
-		                                		<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
-		                                			${option.optionNm} / ${option.optionIcon}<br>
-		                                		</c:forEach>
-	                                		
-	                                		</c:if>
-	                                	</c:forEach> --%>
-	                                
-	                                    <li style="width:100px; height:50px; float:left;">
-	                                        <div
-	                                            style="width:100px; display:flex; align-items:center; justify-content:end;">
-	                                            
-	                                            <c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
-			                                		<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
-			                                		
-				                                		<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
-				                                            <span
-				                                                style="background: url(${contextPath}/resources/images/icon/${option.optionIcon}.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-				                                            <span
-				                                                style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
-				                                			<%-- ${option.optionNm} / ${option.optionIcon}<br> --%>
-				                                		</c:forEach>
-			                                		
-			                                		</c:if>
-			                                	</c:forEach>
-			                                	
-	                                        </div>
-	                                    </li>
+										<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
+											<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
+												<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">	                                
+													<li style="width:100px; height:50px; float:left;">
+														<div style="width:100px; display:flex; align-items:center; justify-content:end;">
+															<span style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+															<span style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
+														</div>
+													</li>
+												</c:forEach>
+											</c:if>
+										</c:forEach>
 	                                </ul>
 	                            </div>
 
@@ -570,8 +506,7 @@
 	                                <div
 	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
 	                                    날짜 선택
-	                                    <span id="selectedDateText" class="purple"
-	                                        style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
+	                                    <span id="selectedDateText" class="purple" style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
 	                                </div>
 	                                <div>
 	                                    <div class="datepicker"></div>
@@ -711,6 +646,72 @@
     	}
     })();
     
+    
+    // 리뷰
+    $(".review-btn-area .submit").on("click", function () {
+		if ($("#reviewTextarea").val().trim().length == 0) {
+			alert("내용을 입력해주세요");
+			$("#reviewTextarea").focus();
+			return false;	
+		}
+		
+		$.ajax({
+			url : contextPath + "/my/review/insert",
+			method : "post",
+			data : {
+				spaceNo : ${param.no},
+				resNo	: "${reviewUse}",
+				reviewContent : $("#reviewTextarea").val()
+			},
+			dataType : "json",
+			success : function (reviewList) {
+				reviewListLoad(reviewList);
+				
+			},
+			error : function (req, status, error) {
+				console.log("문의 등록 실패");
+				console.log(req.responseText);
+			}
+			
+		});
+	});
+	
+	function reviewListLoad(reviewList) {
+		$(".review_list").empty(); // 기존 댓글 내용 모두 삭제
+		
+		// let html = "";
+		$.each(reviewList, function (index, reviewSpace) {
+			console.log(reviewSpace);
+			
+			
+			
+			let reviewImg = "";
+			if (${empty loginMember.imgName}) {
+				reviewImg = `<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>`;
+			} else {
+				
+				reviewImg = `<span class="pf-img" style="background-image: url(${contextPath}${reviewSpace.member.imgPath}${reviewSpace.member.imgName});"></span>`;
+			}
+			
+			let html = `
+				<li class="rlist">
+                    <div class="rbox-mine">
+                        ` + reviewImg + `
+                        
+                        <strong class="guest-name">` + reviewSpace.member.memberName + `</strong>
+                        <p class="p-review">
+                            ` + reviewSpace.revContent + `
+                        </p>
+                        <div class="rbox-info-base">
+                            <span class="time-info">` + reviewSpace.revDt + `</span>
+                        </div>
+                    </div>
+                </li>
+			`;
+			
+			$(".review_list").append(html);
+		});
+	}
 </script>
 
 <!-- datepicker -->
@@ -720,7 +721,6 @@ $( function() {
 	const minDate = new Date();
 	
 	$(".datepicker").each(function(idx) {
-		
 		$(this).datepicker({
 	        // 다음날 부터 선택 가능
 	        minDate : 1,
@@ -729,12 +729,10 @@ $( function() {
 	            $(".selected_dt").val(selectedDt);
 	        }
 		});
-		
 	});
 
 } );
 </script>
-
 
 </body>
 </html>

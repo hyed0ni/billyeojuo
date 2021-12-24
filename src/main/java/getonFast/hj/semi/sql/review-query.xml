@@ -17,4 +17,9 @@
 		WHERE SPACE_NO = ?
 	</entry>
 	
+	<entry key="insertReview">
+		INSERT INTO REVIEW VALUES(REVIEW_SEQ_NO.NEXTVAL, ?, DEFAULT, DEFAULT, ?)
+	</entry>
+	
+
 </properties>
