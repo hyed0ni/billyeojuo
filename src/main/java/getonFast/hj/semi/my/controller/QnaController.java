@@ -1,6 +1,7 @@
 package getonFast.hj.semi.my.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,13 +41,19 @@ public class QnaController extends HttpServlet {
 		
 		try {
 			
-			if (loginMember != null) {
+			QnaService service = new QnaService();
+			
+			if (command.equals("space")) {
+				int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+				
+				List<Qna> qnaList = service.qnaSpaceList(spaceNo);
+				
+				new Gson().toJson(qnaList, resp.getWriter());
+			
+			} else if (loginMember != null) {
 				int memberNo = loginMember.getMemberNo();
 				
 				String sort = "all";
-				
-				
-				QnaService service = new QnaService();
 				
 				if (command.equals("list") || command.equals("")) {
 					List<Qna> qnaList = service.qnaList(memberNo, sort);
@@ -60,7 +67,7 @@ public class QnaController extends HttpServlet {
 				} else if (command.equals("sort")) {
 					sort = req.getParameter("sort");
 					
-					List<Qna> qnaList = service.qnaList(memberNo, sort);
+					List<Qna> qnaList = service.qnaList(memberNo, sort);	
 					
 					new Gson().toJson(qnaList, resp.getWriter());
 					

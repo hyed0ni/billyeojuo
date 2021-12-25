@@ -89,8 +89,6 @@ public class SpaceController extends HttpServlet {
             
          }
          
-  
-         
          else if (command.equals("reservation")) {
         	
         	int spaceRoomNo = Integer.parseInt(req.getParameter("spaceRoomNo"));
