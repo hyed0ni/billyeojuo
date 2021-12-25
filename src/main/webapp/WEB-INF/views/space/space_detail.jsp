@@ -457,8 +457,8 @@
 	                        <div class="space_detail space-a group_${vs.index}" style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
 	                            <div style="position:relative; text-align:center; margin-bottom:20px;">
 	                            
-	                            	<!-- 공간 이미지 -->
-	                                <img src="${contextPath}${spaceImg.spaceImgPath}${spaceImg.spaceImgNm}"
+	                            	<!-- 공간룸 이미지 -->
+	                                <img src="${contextPath}/resources/images/space_room_img/${spaceRoom.spaceRoomImg}"
 	                                    style="width:320px; height:200px; margin:20px auto;">
 	                            </div>
 	                            
@@ -487,18 +487,24 @@
 								<!-- 공간옵션 -->
 	                            <div style="width:320px; margin:20px auto;">
 	                                <ul style="display:table-cell;">
+	                                
 										<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
 											<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
-												<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">	                                
+											
+												<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
 													<li style="width:100px; height:50px; float:left;">
+													
 														<div style="width:100px; display:flex; align-items:center; justify-content:end;">
-															<span style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+															<span style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
 															<span style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
 														</div>
+														
 													</li>
 												</c:forEach>
+												
 											</c:if>
 										</c:forEach>
+										
 	                                </ul>
 	                            </div>
 
