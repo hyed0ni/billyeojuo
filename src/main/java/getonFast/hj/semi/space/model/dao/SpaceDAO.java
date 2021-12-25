@@ -134,6 +134,7 @@ public class SpaceDAO {
 				spaceRoom.setSpaceRoomPrice(rs.getInt("SPACE_ROOM_PRICE"));
 				spaceRoom.setSpaceRoomFit(rs.getString("SPACE_ROOM_FIT"));
 				spaceRoom.setSpaceRoomDesc(rs.getString("SPACE_ROOM_DESC"));
+				spaceRoom.setSpaceRoomImg(rs.getString("SPACE_ROOM_IMG"));
 				
 				spaceRoomList.add(spaceRoom);
 			}
@@ -145,7 +146,7 @@ public class SpaceDAO {
 		
 		return spaceRoomList;	
 	}
-
+	
 	/** 공간유형 조회
 	 * @param spaceNo
 	 * @param conn
@@ -411,7 +412,6 @@ public class SpaceDAO {
 				spaceImg = new Space();
 				spaceImg.setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
 				spaceImg.setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
-
 			}
 			
 		} finally {

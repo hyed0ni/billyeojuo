@@ -55,18 +55,18 @@
 
 												<c:choose>
 													<c:when test="${u - c < 0}">
-														<span class="tag approve" style="background-color: #4d4d4d; border-color: #4d4d4d">이용완료</span>
+														<span class="tag payment">이용완료</span>
 													</c:when>
 													
 													<c:otherwise>
-														<span class="tag approve" style="background-color: #03b565; border-color: #03b565">결제완료</span>
+														<span class="tag approve"">결제완료</span>
 													</c:otherwise>
 												</c:choose>
                                     			
                                     		</c:when>
                                     			
                                     		<c:when test="${resSpace.resDt == 32}">
-                                    			<span class="tag approve" style="background-color: #fb4d88; border-color: #fb4d88">취소환불</span>
+                                    			<span class="tag cancel">취소환불</span>
                                     		</c:when>
                                     	</c:choose>
 	                                </div>

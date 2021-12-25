@@ -178,6 +178,8 @@ public class ResDAO {
 				res.getSpace().setSpacePno(rs.getString("SPACE_PNO"));
 				res.getSpace().setSpaceMapImg(rs.getString("SPACE_MAP_IMG"));
 				res.getSpace().setSpaceMapPath(rs.getString("SPACE_MAP_PATH"));
+				res.getSpace().setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
+				res.getSpace().setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
 			}
 			
 		} finally {

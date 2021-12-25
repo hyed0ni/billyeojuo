@@ -28,6 +28,7 @@ public class Space {
 	private int spaceRoomPrice;
 	private String spaceRoomFit;
 	private String spaceRoomDesc;
+	private String spaceRoomImg;
 	
 	private String spaceTypeNm;
 	private String spaceTypeImg;
@@ -239,6 +240,14 @@ public class Space {
 		this.spaceRoomDesc = spaceRoomDesc;
 	}
 
+	public String getSpaceRoomImg() {
+		return spaceRoomImg;
+	}
+
+	public void setSpaceRoomImg(String spaceRoomImg) {
+		this.spaceRoomImg = spaceRoomImg;
+	}
+
 	public String getSpaceTypeNm() {
 		return spaceTypeNm;
 	}
@@ -297,9 +306,9 @@ public class Space {
 				+ ", spaceImgPath=" + spaceImgPath + ", spaceImgNm=" + spaceImgNm + ", spaceImgOrg=" + spaceImgOrg
 				+ ", spaceImgLevel=" + spaceImgLevel + ", spaceRoomNo=" + spaceRoomNo + ", spaceRoomNm=" + spaceRoomNm
 				+ ", spaceRoomPrice=" + spaceRoomPrice + ", spaceRoomFit=" + spaceRoomFit + ", spaceRoomDesc="
-				+ spaceRoomDesc + ", spaceTypeNm=" + spaceTypeNm + ", spaceTypeImg=" + spaceTypeImg + ", spaceTypeSt="
-				+ spaceTypeSt + ", optionNo=" + optionNo + ", optionNm=" + optionNm + ", optionIcon=" + optionIcon
-				+ "]";
+				+ spaceRoomDesc + ", spaceRoomImg=" + spaceRoomImg + ", spaceTypeNm=" + spaceTypeNm + ", spaceTypeImg="
+				+ spaceTypeImg + ", spaceTypeSt=" + spaceTypeSt + ", optionNo=" + optionNo + ", optionNm=" + optionNm
+				+ ", optionIcon=" + optionIcon + "]";
 	}
-	
+
 }

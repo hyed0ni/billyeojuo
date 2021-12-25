@@ -36,7 +36,7 @@
 					</span>
 					
 					<!-- 공간룸 설명 -->
-					<p>${spaceRoom.spaceRoomDesc}</p>
+					<p style="min-height: 65px;">${spaceRoom.spaceRoomDesc}</p>
 				</div>
 
 				<ul class="list_detail">
