@@ -87,6 +87,7 @@ public class SpaceService {
 		
 		return spaceOptionMap;
 	}
+	
 
 	/** 찜한공간 등록, 삭제
 	 * @param spaceNo
@@ -181,5 +182,5 @@ public class SpaceService {
 		
 		return spaceImg;
 	}
-	
+
 }
