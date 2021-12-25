@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
 
 public class PromotionDAO {
@@ -68,5 +69,66 @@ public class PromotionDAO {
 		}
 				
 		return promotionList;
+	}
+
+	public List<SpaceList> selectProDetailList(Connection conn, int exNo) throws Exception{
+		List<SpaceList> resultList = new ArrayList<SpaceList>();
+		
+		try {
+			String sql = prop.getProperty("selectProDetailList");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, exNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				SpaceList pd = new SpaceList();
+				
+				pd.setSpaceNo(rs.getInt("SPACE_NO"));
+				pd.setSpaceNm(rs.getString("SPACE_NM"));
+				pd.setSpaceSubNm(rs.getString("SPACE_SUB_NM"));
+				pd.setRoomPrice(rs.getInt("MIN(SPACE_ROOM_PRICE)"));
+				pd.setRoomFit(rs.getString("SPACE_ROOM_FIT"));
+				pd.setLike(rs.getInt("NVL(COUNT(MEMBER_NO),0)"));
+				pd.setImgPath(rs.getString("SPACE_IMG_PATH"));
+				pd.setImgName(rs.getString("SPACE_IMG_NM"));
+				
+				resultList.add(pd);
+			}
+			
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return resultList;
+	}
+
+	public Promotion selectProDetailTitle(Connection conn, int exNo) throws Exception {
+		
+		Promotion title = new Promotion();
+		
+		try {
+			 String sql = prop.getProperty("selectPromotionList") + prop.getProperty("wherePro") ;
+			
+			 pstmt = conn.prepareStatement(sql);
+			 pstmt.setInt(1, exNo);
+			 
+			 rs = pstmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 
+				title.setExNo(rs.getInt("EX_NO"));
+				title.setExNm(rs.getString("EX_NM"));
+				title.setExSubNm(rs.getString("EX_SUB_NM"));
+				title.setExImg(rs.getString("EX_IMG"));
+		 }
+			 
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return title;
 	}
 }

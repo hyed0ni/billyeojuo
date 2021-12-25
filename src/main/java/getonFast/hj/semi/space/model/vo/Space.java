@@ -33,6 +33,10 @@ public class Space {
 	private String spaceTypeImg;
 	private int spaceTypeSt;
 	
+	private int optionNo;
+	private String optionNm;
+	private String optionIcon;
+	
 	public Space() {}
 
 	public int getSpaceNo() {
@@ -154,7 +158,7 @@ public class Space {
 	public void setSpaceTypeNo(int spaceTypeNo) {
 		this.spaceTypeNo = spaceTypeNo;
 	}
-	
+
 	public int getSpaceImgNo() {
 		return spaceImgNo;
 	}
@@ -194,7 +198,7 @@ public class Space {
 	public void setSpaceImgLevel(int spaceImgLevel) {
 		this.spaceImgLevel = spaceImgLevel;
 	}
-	
+
 	public int getSpaceRoomNo() {
 		return spaceRoomNo;
 	}
@@ -234,7 +238,7 @@ public class Space {
 	public void setSpaceRoomDesc(String spaceRoomDesc) {
 		this.spaceRoomDesc = spaceRoomDesc;
 	}
-	
+
 	public String getSpaceTypeNm() {
 		return spaceTypeNm;
 	}
@@ -259,6 +263,30 @@ public class Space {
 		this.spaceTypeSt = spaceTypeSt;
 	}
 
+	public int getOptionNo() {
+		return optionNo;
+	}
+
+	public void setOptionNo(int optionNo) {
+		this.optionNo = optionNo;
+	}
+
+	public String getOptionNm() {
+		return optionNm;
+	}
+
+	public void setOptionNm(String optionNm) {
+		this.optionNm = optionNm;
+	}
+
+	public String getOptionIcon() {
+		return optionIcon;
+	}
+
+	public void setOptionIcon(String optionIcon) {
+		this.optionIcon = optionIcon;
+	}
+
 	@Override
 	public String toString() {
 		return "Space [spaceNo=" + spaceNo + ", spaceNm=" + spaceNm + ", spaceSubNm=" + spaceSubNm + ", spaceIntro="
@@ -270,7 +298,8 @@ public class Space {
 				+ ", spaceImgLevel=" + spaceImgLevel + ", spaceRoomNo=" + spaceRoomNo + ", spaceRoomNm=" + spaceRoomNm
 				+ ", spaceRoomPrice=" + spaceRoomPrice + ", spaceRoomFit=" + spaceRoomFit + ", spaceRoomDesc="
 				+ spaceRoomDesc + ", spaceTypeNm=" + spaceTypeNm + ", spaceTypeImg=" + spaceTypeImg + ", spaceTypeSt="
-				+ spaceTypeSt + "]";
+				+ spaceTypeSt + ", optionNo=" + optionNo + ", optionNm=" + optionNm + ", optionIcon=" + optionIcon
+				+ "]";
 	}
 	
 }

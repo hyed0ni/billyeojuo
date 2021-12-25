@@ -27,4 +27,43 @@ public class ReviewService {
 		return reviewList;
 	}
 
+
+	/**
+	 * 공간상세 리뷰 조회
+	 * @param spaceNo
+	 * @return reviewSpaceList
+	 * @throws Exception
+	 */
+	public List<Review> reviewSpaceList(int spaceNo) throws Exception {
+		Connection conn = getConnection();
+		
+		List<Review> reviewSpaceList = dao.reviewSpaceList(spaceNo, conn);
+		
+		close(conn);
+		
+		return reviewSpaceList;
+	}
+
+	/**
+	 * 이용 후기 등록
+	 * @param spaceNo
+	 * @param reviewContent
+	 * @param memberNo
+	 * @param resNo 
+	 * @return result
+	 * @throws Exception
+	 */
+	public int insertReview(int spaceNo, String reviewContent, int memberNo, int resNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.insertReview(spaceNo, reviewContent, memberNo, resNo, conn);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+				
+		return result;
+	}
+	
+	
+
 }

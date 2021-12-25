@@ -26,13 +26,13 @@
                     <input type="password" placeholder="비밀번호" class="login-input" name="pwd1" id="pwd1">
                 </div>
                 <div class="login-options">
-                    <label><input type="checkbox"> 로그인 기억하기</label>
+                    <label><input type="checkbox" name="save"> 로그인 기억하기</label>
                     <a href="${contextPath}/member/findPwd">비밀번호 찾기</a>
                 </div>
                 <button type="submit" class="login-btn">이메일로 로그인</button>
                 </form>
                 <div class="sign-up-wrap">
-                    <span>아직 빌려주오의 회원이 아니신가요?</span>
+                    <span style="font-size: 13px;">아직 빌려주오의 회원이 아니신가요?</span>
                     <a href="${contextPath}/member/signup">회원가입</a>
                 </div>
             </div>
@@ -43,6 +43,6 @@
 	<script src="${contextPath}/resources/js/memberLogin.js">
 		
 	</script>
-
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

@@ -35,10 +35,10 @@ main{z-index: 1; width: 1140px;}
 }
 
 /* 부제-2 영역  */
-.text-box{  word-break: keep-all;  word-wrap: break-word; margin-bottom: 50px; border: 1px solid transparent;}
+.text-box{  word-break: keep-all;  word-wrap: break-word; margin-bottom: 0px; border: 1px solid transparent;}
 
 /* 부제-2 */
-.h-copy{  margin: 0;  padding: 50px 100px 0 0;  font-size: 48px;  line-height: 60px;}
+.h-copy{  margin: 0;  padding: 50px 100px 50px 0;  font-size: 48px;  line-height: 60px;}
 
 /* 메뉴 탭 영역 */
 .nav-wrapper{ float:left; }
@@ -93,7 +93,7 @@ main{z-index: 1; width: 1140px;}
 .text-box .h-intro {
   position: relative;
   padding-bottom: 16px;
-  margin: 74px 0 28px;
+  margin: 74px 0 10px;
   color: #000;
   font-size: 18px;
   line-height: 30px;
@@ -283,3 +283,15 @@ li.selected {  background-color: #ffd014;}
 .space_detail{display : none}
 
 .room-info {margin-right:20px; font-weight:bold;}
+
+
+#heart{ cursor: pointer; }
+
+/* 리뷰 */
+.text-area{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #a0a0a0; box-sizing:border-box; font:inherit; resize:none;}
+.review-btn-area{text-align:right; padding:6px 0;}
+.review-btn-area > .reivew-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
+.review-btn-area > .reivew-cancel-btn{border-radius:6px; height:36px; line-height:35px; font-size:16px; width:100px; text-align:center; color:#fff; cursor:pointer; display:inline-block;}
+
+.review-btn-area > .btn_negative{background:#4d4d4d;}
+.review-btn-area > .btn_default{background:#704de4;}

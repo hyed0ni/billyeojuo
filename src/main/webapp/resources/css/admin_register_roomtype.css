@@ -4,44 +4,52 @@ label, input {
   display:inline-block;
 }
 
-input{
-  width: 150px;
-  height: 25px;
-}
-.right{
-  padding: 60px;
-  box-sizing: border-box;
-  
-}
-
-.right{
-  color: black;
-}
-.roomWrap, .roomWrap02{
-  width: 100%;
-
-}
 label{
+  width: 120px;
   font-size: 17px;
   line-height: 38px;
   font-weight: 500;
   text-align: left;
-  width: 110px;
 }
-.roomInfo01{
+
+input{
+  width: 150px;
+  height: 25px;
+}
+
+.spaceName{
+	text-align: left;
+}
+
+.right{
+  padding: 60px;
+  box-sizing: border-box;
+  color: black;
+}
+
+
+.roomWrap, .roomWrap02{
   width: 100%;
+
+}
+
+.roomInfo01{
+  width: 50%;
   margin-top: 30px;
+  float:left;
   box-sizing: border-box;
 }
+
 .roomInfo01>.roomWrap>.roomRadio{
   margin: 15px;
   width: 15px;
   height: 20px;
 }
 
-.roomInfo02{
+
+/* .roomInfo02{
   clear: left;
-}
+} */
 
 .roomWrap02{
   height: 250px;
@@ -54,3 +62,43 @@ label{
   overflow: scroll;
 }
 
+.roomMap{
+  width: 350px;
+  height: 260px;
+  display: inline-block;
+  margin-left: 55px;
+}
+
+.roomMap>.roomImg{
+  width: 100%;
+  height: 88%;
+  margin-bottom: 20px;
+  margin-right:0px;
+  border: 1px solid #ced4da;
+  background-color: white;
+  cursor: pointer;
+  overflow:auto;
+  position: relative;
+}
+
+.roomImg>img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+#fileArea {
+	display: none;
+}
+
+#addBtn{
+  font-size: 15px;
+  background-color: blueviolet;
+  color: white;
+  margin-bottom: 40px;
+}

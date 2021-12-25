@@ -145,6 +145,10 @@ public class MemberDAO {
 						loginMember.setEnrollDate(rs.getDate("MEMBER_REG_DT"));
 						loginMember.setMemberSMSChk(rs.getInt("MEMBER_SMSCHK"));
 						loginMember.setMemberSMSChk(rs.getInt("MEMBER_EMAILCHK"));
+						loginMember.setImgName(rs.getString("MEMBER_IMG_NM"));
+						loginMember.setImgOrg(rs.getString("MEMBER_IMG_ORG"));
+						loginMember.setImgPath(rs.getString("MEMBER_IMG_PATH"));
+						loginMember.setCertify(rs.getInt("MEMBER_CERTIFY"));
 
 					}
 
@@ -157,6 +161,107 @@ public class MemberDAO {
 				}
 				
 				return loginMember;
+	}
+
+	/** 회원탈퇴
+	 * @param loginMember
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(Member loginMember, Connection conn) throws Exception{
+		int result = 0;
+		try {
+			// SQL 얻어오기
+			String sql = prop.getProperty("secession");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, loginMember.getMemberNo());
+			
+			
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int findPwdUpdate(String findUpdatePwd1, String email, Connection conn) throws Exception{
+		
+		
+		int result = 0;
+
+		try {
+
+			String sql = prop.getProperty("findPwdUpdate");
+			
+			
+			
+			pstmt = conn.prepareStatement(sql);
+
+			
+
+			pstmt.setString(1, findUpdatePwd1);
+
+			pstmt.setString(2, email);
+
+			result = pstmt.executeUpdate();
+
+		} finally {
+
+			close(pstmt);
+		}
+
+		return result;
+		
+		
+		
+		
+	}
+
+	/** 이메일 인증
+	 * @param certifyPwd
+	 * @param email
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int certifyEmail(String certifyPwd, String email, Connection conn) throws Exception{
+		
+		int result = 0;
+		System.out.println(certifyPwd);
+		System.out.println(email);
+
+		try {
+
+			String sql = prop.getProperty("certifyEmail");
+			
+			
+			
+			pstmt = conn.prepareStatement(sql);
+
+
+			pstmt.setString(1, email);
+			
+			pstmt.setString(2, certifyPwd);
+
+
+			result = pstmt.executeUpdate();
+
+		} finally {
+
+			close(pstmt);
+		}
+
+		return result;
+		
+		
 	}
 }
 

@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import getonFast.hj.semi.member.vo.Member;
+import getonFast.hj.semi.my.model.vo.Qna;
 import getonFast.hj.semi.review.model.service.ReviewService;
 import getonFast.hj.semi.review.model.vo.Review;
 
@@ -18,6 +22,8 @@ public class ReviewController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		resp.setCharacterEncoding("UTF-8");
 		
 		String method = req.getMethod();
 		String uri = req.getRequestURI();
@@ -31,21 +37,40 @@ public class ReviewController extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		String message = null;
 		
+		Member loginMember = (Member)req.getSession().getAttribute("loginMember");
 		
 		try {
-			ReviewService service = new ReviewService();
-			
-			if (command.equals("list") || command.equals("")) {
-				int memberNo = 1;
+			if (loginMember != null) {
+				ReviewService service = new ReviewService();
 				
-				List<Review> reviewList = service.reviewList(memberNo);
+				int memberNo = loginMember.getMemberNo();
 				
-				req.setAttribute("reviewList", reviewList);
+				if (command.equals("list") || command.equals("")) {
+					
+					List<Review> reviewList = service.reviewList(memberNo);
+					req.setAttribute("reviewList", reviewList);
+					
+					req.setAttribute("css", "review");
+					
+					path = "/WEB-INF/views/review/review.jsp";
+					req.getRequestDispatcher(path).forward(req, resp);
+					
+				} else if (command.equals("insert")) {
+					int spaceNo = Integer.parseInt(req.getParameter("spaceNo"));
+					int resNo = Integer.parseInt(req.getParameter("resNo"));
+					String reviewContent = req.getParameter("reviewContent");
+					
+					int result = service.insertReview(spaceNo, reviewContent, memberNo, resNo);
+					
+					if (result > 0) {
+						List<Review> reviewSpaceList = service.reviewSpaceList(spaceNo);
+						new Gson().toJson(reviewSpaceList, resp.getWriter());
+					}
+
+				}
 				
-				req.setAttribute("css", "review");
-				
-				path = "/WEB-INF/views/review/review.jsp";
-				req.getRequestDispatcher(path).forward(req, resp);
+			} else {
+				resp.sendRedirect(contextPath + "/member/login");
 			}
 			
 			
@@ -53,6 +78,11 @@ public class ReviewController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
 	}
 
 }

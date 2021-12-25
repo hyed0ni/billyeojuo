@@ -34,9 +34,9 @@ header > .logo_area{width:180px; text-align:center; }
 header > .logo_area > a{font-size:28px; color:black; font-weight:bold;}
 
 header > .search_area{width:calc(100% - 260px); display:inline-block; height:80px; margin:0; padding:0; position:relative;}
-header > .search_area > .search{height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;}
+header > .search_area > form >.search{height:46px; width:400px; font-size:16px; padding:0 38px; border-radius:25px;}
 header > .search_area > .ico_search{position:absolute; top:28px; left:10px;}
-header > .search_area > .ico_cancel{position:absolute; top:32px; left:450px;}
+header > .search_area > .ico_cancel{position:absolute; top:32px; left:450px; cursor: pointer;}
 
 header > .menu_area{width:80px; text-align:center;}
 header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}
@@ -154,7 +154,7 @@ header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}
 .layerPop{display:none;}
 
 /* 문의 팝업 */
-.popup_wrap{width:470px; position:absolute; display:inline-block; vertical-align:middle; box-sizing:border-box; top:300px; left:50%; top:50%; transform:translate(-50%, -50%); z-index: 5050;}
+.popup_wrap{width:470px; position:fixed; display:inline-block; vertical-align:middle; box-sizing:border-box; top:300px; left:50%; top:50%; transform:translate(-50%, -50%); z-index: 5050;}
 .popup_wrap > .pop_header{text-align:left; font-size:18px; padding:20px 25px; border-radius:12px 12px 0 0; background:#704de4; color:#fff; font:inherit;}
 .popup_wrap > .pop_container{border-radius:0 0 12px 12px; background:#fff; padding:24px 26px 26px;}
 .popup_wrap > .pop_container > .reserve_price{margin-top:0; border-top:0; background:#fff; text-align:left; padding:0;}
@@ -168,7 +168,7 @@ header > .menu_area > .ico_menu{vertical-align:middle; cursor:pointer;}
 .popup_wrap > .pop_container > .reserve_price > .box_form > .option > .txt_count > em{vertical-align:top;}
 
 .popup_wrap > .pop_container > .reserve_price > .box_form > .input{position:relative; box-sizing:border-box;}
-.popup_wrap > .pop_container > .reserve_price > .box_form > .input > textarea{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #e0e0e0; box-sizing:border-box; font:inherit;}
+.popup_wrap > .pop_container > .reserve_price > .box_form > .input > textarea{height:115px; font-size:14px; display:inline-block; position:relative; width:100%; background-color:#fff; padding:15px 16px; vertical-align:top; border-radius:0; color:#000; border:1px solid #e0e0e0; box-sizing:border-box; font:inherit; resize:none;}
 
 .popup_wrap > .pop_container > .p_guide{display:block; margin-left:0; font-size:14px; line-height:18px; padding-left:23px; color:#ff3a48; position:relative; margin:20px 1px 0;}
 

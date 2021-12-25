@@ -52,7 +52,7 @@
 	<script src="${contextPath}/resources/js/member.js">
 		
 	</script>
-
+<jsp:include page="../common/footer.jsp"/>
 
 </body>
 

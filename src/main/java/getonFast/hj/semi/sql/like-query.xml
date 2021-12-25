@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectLikeListAll">
+	 	SELECT COUNT(*) FROM (
+	 	SELECT SPACE_NO
+		FROM SPACE
+		JOIN SPACE_ROOM USING(SPACE_NO)
+		LEFT JOIN SPACE_TYPE USING (SPACE_TYPE_NO)
+		LEFT JOIN SPACE_DIBS USING(SPACE_NO)
+		LEFT JOIN SPACE_IMG USING(SPACE_NO)
+		WHERE (SPACE_IMG_LEVEL = 1 OR SPACE_IMG_LEVEL IS NULL)
+		AND MEMBER_NO = ?
+		GROUP BY SPACE_NO, SPACE_NM, SPACE_SUB_NM, SPACE_ROOM_FIT,SPACE_IMG_PATH,SPACE_IMG_NM)
+	</entry>
+	
+	<entry key="selctLikeList">
+		  SELECT * FROM (
+		    SELECT ROWNUM RNUM, A.* 
+		    FROM (
+		      SELECT * 
+		      FROM LIKE_VIEW
+		      WHERE MEMBER_NO = ?
+		      ORDER BY SPACE_NO DESC
+		    ) A
+		) WHERE RNUM BETWEEN ? AND ?
+	</entry>
+</properties>

@@ -61,7 +61,7 @@
 
     <div class="used_area">
         <div>
-            <a href="${contextPath}/my/reserve">
+            <a href="${contextPath}/res/reserve">
                 <div>
                     <img src="${contextPath}/resources/images/header/ico_reservationlist.png" class="ico">
                     <div>예약 리스트</div>
@@ -136,8 +136,10 @@
     <div class="logo_area"><a href="${contextPath}">빌려주오</a></div>
     <div class="search_area">
         <img src="${contextPath}/resources/images/header/search-gray.png" class="ico_search">
-        <img src="${contextPath}/resources/images/header/search-cancel.png" class="ico_cancel">
-        <input type="text" class="input search" placeholder="지역, 공간유형, 공간명으로 찾아보세요">
+        <img src="${contextPath}/resources/images/header/search-cancel.png" class="ico_cancel" onclick="clearInput()">
+        <form action="${contextPath}/space/search?sv=${param.sv}">
+      		 <input type="text" class="input search" id="searchInput" name="sv" placeholder="지역, 공간유형, 공간명으로 찾아보세요" value="${param.sv}">
+        </form>
     </div>
     <div class="menu_area">
         <img src="${contextPath}/resources/images/header/menu.png" class="ico_menu">

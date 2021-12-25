@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <jsp:include page="../common/header.jsp" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-reservation.css">
@@ -7,12 +10,17 @@
 	<h2 style="margin: 0;">예약하기</h2>
 </section>
 <main>
-	<form class="detail-forms">
+	<form class="detail-forms" action="${contextPath}/res/insertRes" method="post" onsubmit="return validate();">
 
 		<div class="box-form">
 			<div class="heading">
 				<div>
-					예약 공간 <span class="option"> <strong class="txt-price">\0</strong> <em class="txt-unit">/패키지</em>
+					예약 공간 <span class="option"> 
+					
+					<!-- 공간룸 가격 -->
+					<strong class="txt-price">\ <fmt:formatNumber value="${spaceRoom.spaceRoomPrice}" pattern="#,###"/></strong> 
+					
+					<em class="txt-unit">/ 일</em>
 					</span>
 				</div>
 
@@ -20,21 +28,29 @@
 
 			<div style="padding: 30px;">
 				<div class="info_photo" style="padding-left: 170px; position: relative; padding-bottom: 30px; border-bottom: 1px solid #ebebeb;">
-					<h4 class="sp_name" style="font-size: 24px; margin: 0 0 20px 0; padding-bottom: 20px; border-bottom: 1px solid #ebebeb;">4명에서16명수용가능 공간-여기뿐, 프라이빗 하늘 T공간</h4>
-					<span class="img" style="position: absolute; top: 0; left: 0;"> <img src="https://moplqfgeemqv2103108.cdn.ntruss.com/service/163828638_35ce7ec9141773ece66564f92828a91f.jpg?type=m&amp;w=900&amp;h=900&amp;autorotate=true&amp;quality=90" width="140" height="140" alt="프라이빗 하늘 T공간">
+				
+					<!-- 공간 이름 + 공간룸 이름 -->
+					<h4 class="sp_name" style="font-size: 24px; margin: 0 0 20px 0; padding-bottom: 20px; border-bottom: 1px solid #ebebeb;">${space.spaceNm}, ${spaceRoom.spaceRoomNm}</h4>
+					<span class="img" style="position: absolute; top: 0; left: 0;">
+						<img src="${contextPath}${spaceImg.spaceImgPath}${spaceImg.spaceImgNm}" width="140" height="140">
 					</span>
-					<p>해당 공간에는 테이블과 의자가 구비되어 있습니다. 음식물 섭취 가능하며, 냄새가 많이 나는 요리들은 이용불가합니다. 전면전신거을, 조명, 스피커, 의자, 책상 있습니다. S 공간과 T공간은 한 층에 있습니다. ( 같이 예약시 추가 할인해드립니다.) 문의사항은 안심번호로 "하늘 파티룸 문의드려요"라고 말씀주시면 더욱 빠른 안내가 가능합니다.</p>
+					
+					<!-- 공간룸 설명 -->
+					<p>${spaceRoom.spaceRoomDesc}</p>
 				</div>
 
 				<ul class="list_detail">
-					<li><span class="tit">공간유형</span> <span class="data"> 파티룸 </span></li>
-					<li><span class="tit">예약인원</span> <span class="data">최소 1명 ~ 최대 10명</span></li>
-					<li><span class="tit">추가인원</span> <span class="data">5명 초과시 10,000원/인</span></li>
+				
+					<!-- 공간유형 이름 -->
+					<li><span class="tit">공간유형</span><span class="data">${spaceType.spaceTypeNm}</span></li>
+					
+					<!-- 공간룸 수용인원 -->
+					<li><span class="tit">예약인원</span><span class="data">${spaceRoom.spaceRoomFit}</span></li>
+					<input type="hidden" name="resPersonnel" value="1명">
 				</ul>
 
 			</div>
 		</div>
-
 
 		<div class="box-form">
 			<div class="heading">
@@ -43,7 +59,7 @@
 
 			<div class="meetspace-reserve-info">
 				<p class="meetspace-reserve-date">
-					예약날짜 <span class="meetspace-reserve-price"> 2021.12.20 (월) 13시 ~ 19시 </span>
+					예약날짜 <span class="meetspace-reserve-price"> ${param.use_date} </span>
 				</p>
 				<p class="meetspace-reserve-date">
 					예약인원 <span class="meetspace-reserve-price">1명</span>
@@ -53,8 +69,6 @@
 			<p class="meetspace-reserve-help">호스트 확인 후 예약이 가능합니다.</p>
 		</div>
 
-
-
 		<div class="box-form">
 			<div class="heading">
 				<div>
@@ -63,7 +77,6 @@
 				</div>
 			</div>
 
-
 			<div class="reserve_person_wrap">
 				<dl class="flex_box">
 					<dt class="tit">
@@ -71,7 +84,7 @@
 					</dt>
 					<dd class="flex">
 						<div class="input">
-							<input id="name" name="name" type="text">
+							<input id="name" name="resNm" type="text" value="${loginMember.memberName}" required>
 						</div>
 					</dd>
 				</dl>
@@ -92,10 +105,10 @@
 								</div>
 							</div>
 							<div class="col4">
-								<input id="phone2" name="phone" type="tel" required="required" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+								<input id="phone2" name="phone" type="tel" required maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 							</div>
 							<div class="col4">
-								<input id="phone3" name="phone" type="tel" required="required" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+								<input id="phone3" name="phone" type="tel" required maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
 							</div>
 						</div>
 					</dd>
@@ -106,7 +119,7 @@
 					</dt>
 					<dd class="flex">
 						<div class="input">
-							<input id="email" name="email" type="email" placeholder="이메일 주소를 입력해 주세요.">
+							<input id="email" name="resEmail" type="email" placeholder="이메일 주소를 입력해 주세요." value="${loginMember.memberEmail}" required>
 						</div>
 					</dd>
 				</dl>
@@ -116,7 +129,7 @@
 					</dt>
 					<dd class="flex">
 						<div class="input">
-							<input id="reservationPurpose" name="purpose" type="text" placeholder="촬영, 파티, 모임, 수업 등 공간의 사용 목적을 입력해주세요.">
+							<input id="reservationPurpose" name="resPurpose" type="text" placeholder="촬영, 파티, 모임, 수업 등 공간의 사용 목적을 입력해주세요.">
 						</div>
 					</dd>
 				</dl>
@@ -126,7 +139,7 @@
 					</dt>
 					<dd class="flex" style="height: 134px;">
 						<div class="input">
-							<textarea id="request" name="req_text" placeholder="남기고 싶은말을 적어주세요. (최대 500자)" maxlength="500"></textarea>
+							<textarea id="request" name="resReq" placeholder="남기고 싶은말을 적어주세요. (최대 500자)" maxlength="500"></textarea>
 						</div>
 					</dd>
 				</dl>
@@ -136,20 +149,21 @@
 			</p>
 		</div>
 
-
 		<article class="box_form box_notice">
 			<div class="heading">
 				<h3>예약시 주의사항</h3>
 			</div>
+			
+			<!-- 예약시 주의사항 -->
 			<div class="list_wrap">
+			
+				<c:set var="temp" value="${fn:replace(space.precautions, '<br>', '|')}"/>
+				<c:set var="arr" value="${fn:split(temp, '|')}"/> 
+					
 				<ol class="notice_list">
-					<li><span class="num">1</span> 청소보증금이 50,000원 발생합니다. 청소보증금은 2일안으로 돌려드립니다. 이용 후 정리하시고 퇴실 부탁드립니다.</li>
-					<li><span class="num">2</span> 시설이용시 시설파손으로 인해 생기는 문제는 원상복구를 하셔야 합니다.(음주시 평소와 다르기때문에 가끔 발생하는 문제입니다. 이용시 조심해주세요)</li>
-					<li><span class="num">3</span> 해당 공간은 비싼파티룸을 대신하여 저렴하게 파티룸으로 이용하게끔 해드리고 있습니다. 높은 퀄리티는 제공드리지 못하지만 최선을 다해 필요한것에 대해 제공드리겠습니다.</li>
-					<li><span class="num">4</span> 이용시에 꼭 정리정돈하여 퇴실하셔야 합니다.</li>
-					<li><span class="num">5</span> 12월 예약건은 입금후 2시간 이전or 예약 31일전까지는 100% 환불이 가능하며, 그 외에는 환불규정에 따르게 됩니다.</li>
-					<li><span class="num">6</span> 원하시는 시간대가 있으시면 별도문의부탁드립니다.</li>
-					<li><span class="num">7</span> 궁금하신 내용은 010-7741-5257로 문의 부탁드립니다.</li>
+					<c:forEach items="${arr}" var="precautions" varStatus="vs">
+						<li><span class="num">${vs.count}</span>${precautions}</li>
+					</c:forEach>
 				</ol>
 			</div>
 		</article>
@@ -224,17 +238,7 @@
 			<i class="sp_icon ico_alert"></i> 서비스 이용약관 동의는 필수입니다.
 		</p>
 
-
-
-
-
-
-
-
-
-
-
-		<div id="sidebar" style="position: absolute; width: 350px; height: 356px; top: 0; right: 0; background-color: #fff;">
+		<div id="sidebar" style="position: absolute; width: 350px; height: 300px; top: 0; right: 0; background-color: #fff;">
 			<div style="height: 40px; line-height: 38px; font-weight: bold; color: #000; border-bottom: 3px solid #704de4; background-color: #f6f6f6;">
 				<div>결제 예정금액</div>
 			</div>
@@ -246,24 +250,15 @@
 							<dl class="info_date">
 								<dt>예약날짜</dt>
 								<dd>
-									<span class="line">2021.12.31 (금)</span>
+									<span class="line">${param.use_date}</span>
 								</dd>
 							</dl>
-							<dl class="info_date">
-								<dt>예약시간</dt>
-								<dd>
-									<span class="line">10시 ~ 17시, 7시간</span>
-								</dd>
-							</dl>
-							<dl class="info_person">
+							
+							<dl class="info_person" style="border-top: 1px solid #ebebeb;">
 								<dt>예약인원</dt>
 								<dd>1명</dd>
 							</dl>
-							<dl class="info_price">
-								<dd>
-									<strong class="txt_price">\150,000</strong>
-								</dd>
-							</dl>
+							
 						</div>
 						<div class="total_box">
 							<dl class="pull_box">
@@ -271,22 +266,23 @@
 									<strong class="txt_price">\</strong>
 								</dt>
 								<dd class="pull_right align_right">
-									<strong class="txt_price">150,000</strong>
+									<strong class="txt_price"><fmt:formatNumber value="${spaceRoom.spaceRoomPrice}" pattern="#,###"/></strong>
 								</dd>
 							</dl>
 						</div>
 					</div>
 				</div>
 
-
-
 				<div>
-					<a href="javascript:payment();" style="width: 100%; height: 60px; line-height: 60px; text-align: center; background-color: #704de4; color: #fff; display: inline-block;">결제하기</a>
+					<!-- <a href="../my/reservation_detail" style="width: 100%; height: 60px; line-height: 60px; text-align: center; background-color: #704de4; color: #fff; display: inline-block;">결제하기</a> -->
+					<button style="width: 100%; height: 60px; line-height: 60px; text-align: center; background-color: #704de4; color: #fff; display: inline-block;">결제하기</button>
 				</div>
 			</div>
 
 		</div>
-		</from>
+		<input type="hidden" name="spaceRoomNo" value="${param.space_room_no}">
+		<input type="hidden" name="useDate" value="${param.use_date}">
+		</form>
 </main>
 
 <jsp:include page="../common/footer.jsp" />
@@ -351,11 +347,8 @@
 	
    //사이드바 스크롤
    $(function(){
-
       const scrollHeight = 180;
-
       function sidebar(){
-         
          
          // 화면 스크롤이 footer 위쪽 550px 위치 아래로 내려간 경우
          if( $(window).scrollTop() > $(".footer").offset().top - 550  ) {
@@ -363,7 +356,6 @@
             // 아이디가 sidebar인 요소의 top 속성을 변경
             document.getElementById('sidebar').style.top = $(".footer").offset().top - 700+'px';
          }
-         
          
          // 화면 스크롤이 상단에서 180px 위치 아래로 내려간 경우
          else if($(window).scrollTop() > scrollHeight){
@@ -389,26 +381,36 @@
    
    // 전체 동의 체크박스 값 변경 시
    $("#terms_agree").on("change", function(){
+	   
       // 체크된 경우
-      if($(this).prop("checked")){
+      if ($(this).prop("checked"))
          $(".notice_list [type=checkbox]").prop("checked", true);
 
-      }else{ // 해제된 경우
+      else // 해제된 경우
          $(".notice_list [type=checkbox]").prop("checked", false);
-      }
    })
 
    // 서비스 동의 체크박스 값 변경 시
    $(".notice_list [type=checkbox]").on("change", function(){
+	   
       // 모두 체크된 경우
-      if($(".notice_list [type=checkbox]").length == $(".notice_list [type=checkbox]:checked").length){
-         $("#terms_agree").prop("checked", true);
-      }else{
-         $("#terms_agree").prop("checked", false);
-      }
+      if ($(".notice_list [type=checkbox]").length == $(".notice_list [type=checkbox]:checked").length)
+    	  $("#terms_agree").prop("checked", true);
+      
+      else
+    	  $("#terms_agree").prop("checked", false);
 
    });
+   
+   // 서비스 동의 전체 동의 선택이 되지 않은 경우
+   function validate() {
+	   if (!$('#terms_agree').prop("checked")) {
+		   alert("서비스 이용약관 동의는 필수입니다.");
+		   return false;
+	   }
+	   
+	   if (!confirm("결제하시겠습니까?")) return false;
+   }
+   
 </script>
-
-
 </html>

@@ -1,6 +1,7 @@
 package getonFast.hj.semi.member.service;
 
 import java.sql.Connection;
+import java.util.Map;
 
 
 import static getonFast.hj.semi.common.JDBCTemplate.*;
@@ -77,6 +78,64 @@ public class MemberService {
 				return loginMember;
 		
 	}
+	
+	/** 회원 탈퇴
+	 * @param loginMember
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(Member loginMember) throws Exception{
+		// DBCP에서 커넥션 얻어오기
+				Connection conn = getConnection();
+				
+				int result =dao.secession(loginMember, conn);
+				
+				if(result > 0) commit(conn);
+				else           rollback(conn);
+				
+				close(conn);
+				
+				return result;
+	}
+
+	/** 이메일 링크 비밀번호 변경
+	 * @param findUpdatePwd1
+	 * @param email
+	 * @return result
+	 * @throws Exception
+	 */
+	public int findPwdUpdate(String findUpdatePwd1, String email) throws Exception{
+		Connection conn = getConnection();
+		int result =dao.findPwdUpdate(findUpdatePwd1, email, conn);
+		
+		if(result > 0) commit(conn);
+		else           rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 이메일 인증
+	 * @param certifyPwd
+	 * @param email
+	 * @return result
+	 * @throws Exception
+	 */
+	public int certifyEmail(String certifyPwd, String email) throws Exception{
+		
+		Connection conn = getConnection();
+		int result =dao.certifyEmail(certifyPwd, email, conn);
+		
+		if(result > 0) commit(conn);
+		else           rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+
 
 	
 

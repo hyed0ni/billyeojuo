@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.main.model.service.MainService;
-import getonFast.hj.semi.main.model.vo.Recommend;
+import getonFast.hj.semi.main.model.vo.SpaceList;
 import getonFast.hj.semi.main.model.vo.SpaceType;
 import getonFast.hj.semi.promotion.model.service.PromotionService;
 import getonFast.hj.semi.promotion.model.vo.Promotion;
@@ -41,7 +41,7 @@ public class MainServlet extends HttpServlet {
 			
 			//추천공간
 			
-			List<Recommend> recommendList = service.selectRecommendList();
+			List<SpaceList> recommendList = service.selectRecommendList();
 			
 			req.setAttribute("recommendList", recommendList.subList(0, 6));
 			
@@ -58,6 +58,9 @@ public class MainServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		
 		
 	}
 	
