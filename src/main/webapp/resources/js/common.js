@@ -126,9 +126,15 @@ $(document).on("click", "#qnaWrite", function(){
 			if (result > 0) {
 				alert("등록되었습니다.");
 				layerPopClose();
-				
+
+				// 문의 페이지
 				if ($(".l_area").length) {
 					qnaListRoad("all");
+				}
+
+				// 공간상세 페이지
+				if ($(".qna_list").length) {
+					qnaSpaceListRoad("space");
 				}
 				
 			} else {
@@ -143,6 +149,114 @@ $(document).on("click", "#qnaWrite", function(){
 		
 	});
 });
+
+// qna 목록
+function qnaListRoad(sortValue, spaceNo="") {
+	$.ajax({
+		url : contextPath + "/my/qna/sort",
+		data : {
+			sort : sortValue,
+			spaceNo : spaceNo
+		},
+		dataType : "json",
+		success : function (qnaList) {
+			$(".l_area").empty();
+			
+			if (sortValue == "all") {
+				$("#qna_sort").val("all").prop("selected", true);
+			}
+			
+			let html = "";
+			$.each(qnaList, function (index, qna) {
+				
+				let spaceImg = "";
+				if (qna.spaceImgNm) {
+					spaceImg = `<img class="list_img" src="${contextPath}${qna.spaceImgPath}${qna.spaceImgNm}">`;
+				} else {
+					spaceImg = `<img class="list_img" src="${contextPath}/resources/images/defaultUser.jpg">`;
+				}
+				
+				html += `
+					<div class="list">
+	                    <div class="img_area">
+							${spaceImg}
+    	            	</div>
+	                    <div class="content_area">
+	                        <div class="title">${qna.queTitle}</div>
+	                        <div class="content">${qna.queContent}</div>
+	                        <div class="date">${qna.queDt}</div>
+	                    </div>
+	                </div>
+				`;
+			
+			});
+			
+			$(".l_area").html(html);
+			
+
+		},
+		error : function (req, status, error) {
+			console.log("오류가 발생했습니다.");
+			console.log(req.responseText);
+		}
+	});
+}
+
+// 공간상세 qna 목록
+function qnaSpaceListRoad(sortValue, spaceNo="") {
+	$.ajax({
+		url : contextPath + "/my/qna/space",
+		data : {
+			sort : sortValue,
+			spaceNo : spaceNo
+		},
+		dataType : "json",
+		success : function (qnaList) {
+			// $(".qna_list").empty(); // 기존 댓글 내용 모두 삭제
+
+			if (sortValue == "all") {
+				$("#qna_sort").val("all").prop("selected", true);
+			}
+		
+			// 이용 후기 갯수 추가
+			$("#s-qna .txt-primary em").text(qnaList.length);
+			
+			// let html = "";
+			$.each(qnaList, function (index, qnaSpace) {
+				const imgCheck = "${empty qnaSpace.memberImgNm}";
+		
+				let qnaImg = "";
+				if (imgCheck) {
+					qnaImg = `<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>`
+				} else {
+					qnaImg = `<span class="pf-img" style="background-image: url(${contextPath}${qnaSpace.spaceImgPath}${qnaSpace.spaceImgNm});"></span>`
+				}
+
+				html = `
+					<li class="rlist">
+						<div class="rbox-mine">
+							${qnaImg}
+							<strong class="guest-name">${qnaSpace.memberNm}</strong>
+							<p class="p-review">
+								${qnaSpace.queContent}
+							</p>
+							<div class="rbox-info-base">
+								<span class="time-info">${qnaSpace.queDt}</span>
+							</div>
+						</div>
+					</li>
+				`;
+				
+				//$(".qna_list").append(html);
+			});
+
+		},
+		error : function (req, status, error) {
+			console.log("오류가 발생했습니다.");
+			console.log(req.responseText);
+		}
+	});
+}
 
 // 팝업 취소
 $(document).on("click", ".btn_pop_close, .btn.cancel", function(){

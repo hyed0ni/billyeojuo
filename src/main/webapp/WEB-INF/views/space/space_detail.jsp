@@ -3,9 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<jsp:include page="../common/header.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/jquery-ui.css">
 
-<jsp:include page="../common/header.jsp"/>
 
 <main>
     <section class="cont detail-forms">
@@ -185,7 +185,7 @@
                     </div>
                     
                     <div class="review_box">
-                        <ul class="review_list">
+                        <ul class="review_list qna_list">
 	                        <c:forEach items="${qnaSpaceList}" var="qnaSpace">
 	                        	<li class="rlist">
 	                                <!-- 게스트 문의 -->
@@ -262,162 +262,6 @@
                         </ul>
                     </div>
 				</div>
-				
-                <%--
-                <div>
-                    <div id="s-qna" class="text-box">
-                        <h4 class="h-intro">Q&A <strong class="txt-primary"><em style="font-style: initial;">16</em>개</strong></h4>
-                        <a class="btn-qna-write"><span class="sp-icon icon-write"></span> <span>질문 작성하기</span></a>
-                    </div>
-
-                    <div class="review_box">
-                        <ul class="review_list">
-                            <li class="rlist">
-
-                                <!-- 게스트 문의 -->
-                                <div class="rbox-mine">
-
-                                    <!-- 프로필 이미지 -->
-                                    <span class="pf-img"
-                                        style="background-image: url('https://kr.object.ncloudstorage.com/scloud-service/service/163854526_f97d3d748b273f6b8f062d90a949e0c6.jpeg');"></span>
-                                    <strong class="guest-name">la16</strong>
-                                    <p class="p-review">
-                                        12/13 올나잇 결제 중에 취소됐는데 예약 안되는건가요?
-                                    </p>
-                                    <div class="rbox-info-base">
-                                        <span class="time-info">2021.12.04 00:29:38</span>
-                                    </div>
-                                </div>
-
-                                <!-- 호스트 답글 -->
-                                <div class="rbox-reply">
-                                    <p class="p-tit-reply"><em>호스트</em>의 답글</p>
-                                    <p class="p-review">
-                                        저희 예약은 현재 정상적으로 진행되고 있는 것으로 알고 있습니다 혹시 계속 예약에 문제가 있으시면 오전중에 전화로 연락 주세요 저희가
-                                        확인해 보겠습니다
-                                    </p>
-                                    <!---->
-                                    <div class="rbox-info-base">
-                                        <p class="time-info">2021.12.04 01:21:10 </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <!-- 삭제된 게스트 문의 -->
-                            <li class="rlist del-review">
-                                <div class="rbox-mine">
-                                    <strong class="guest-name">Latte1210</strong>
-                                    <p class="p-review">
-                                        게스트에 의해 삭제된 문의입니다.
-                                    </p>
-                                    <div class="rbox-info-base"></div>
-                                </div>
-                            </li>
-
-                            <li class="rlist">
-                                <div class="rbox-mine">
-                                    <span class="pf-img"
-                                        style="background-image: url('https://kr.object.ncloudstorage.com/scloud-service/service/163800592_0e26daccee248a36bc0f7e30b10dca7f.jpeg');"></span>
-                                    <strong class="guest-name">다소니</strong>
-                                    <p class="p-review">
-                                        보증금에 대한 것은 호스트분께서 따로 연락 주시나요?̊̈
-                                    </p>
-                                    <div class="rbox-info-base">
-                                        <span class="time-info">2021.11.27 18:37:56</span>
-                                    </div>
-                                </div>
-
-                                <div class="rbox-reply">
-                                    <p class="p-tit-reply"><em>호스트</em>의 답글</p>
-                                    <p class="p-review">
-                                        네 하루전 쯤 따로 연락드리고 있습니다
-                                    </p>
-                                    <div class="rbox-info-base">
-                                        <p class="time-info"> 2021.11.27 18:38:52</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <!-- Q&A 페이징 -->
-                        <!-- 화살표 이미지 찾아야됨 -->
-                        <div class="paging">
-                            <a class="btn btn_prev_list_end"> &lt;&lt; </a>
-                            <a class="btn btn_prev_list"> &lt; </a>
-                            <a class="num active">1</a>
-                            <a class="num">2</a>
-                            <a class="num">3</a>
-                            <a class="num">4</a>
-                            <a class="num">5</a>
-                            <a class="btn btn_next_list active"> &gt; </a>
-                            <a class="btn btn_next_list_end active"> &gt;&gt; </a>
-                        </div>
-                    </div>
-                </div>
-				--%>
-				
-                <!-- 리뷰  -->
-                <%--
-                <div>
-                    <div id="s-review" class="text-box">
-                        <h4 class="h-intro">
-                            이용 후기<strong class="txt-primary"><em>6</em>개</strong>
-                        </h4>
-
-                    </div>
-                    <div class="review_box">
-                        <ul class="review_list">
-                            <li class="rlist">
-
-                                <!-- 리뷰 -->
-                                <div class="rbox-mine">
-
-                                    <!-- 프로필 이미지 -->
-                                    <span class="pf-img"
-                                        style="background-image: url('https://kr.object.ncloudstorage.com/scloud-service/service/163854526_f97d3d748b273f6b8f062d90a949e0c6.jpeg');"></span>
-                                    <strong class="guest-name">달려라방탄</strong>
-                                   
-                                    <p class="p-review">
-                                        음. 이걸 뭐라고 할까요. 공간은 진짜 좋았는데 인터넷이 완전 똥망입니다 온라인 콘 보려고 일부러 홍대에 티비로 볼 수 있는 공간 찾아서 예약했는데 정말 WTF 🤯🤬😡인터넷때문에 4K로도 볼 수 없었어요 깨끗한 공간을 찾으시는 분에겐 정말 딱인데요 온라인콘이나 안정적인 인터넷을 원하시는 분은 비추입니다
-                                    </p>
-
-                                    <div class="rbox-info-base">
-                                        <span class="time-info">2021.12.04 00:29:38</span>
-                                    </div>
-                                </div>
-
-                                <!-- 호스트 답글 -->
-                                <div class="rbox-reply">
-                                    <p class="p-tit-reply"><em>호스트</em>의 답글</p>
-                                    <p class="p-review">
-                                        우선 후기에 감사드립니다. 인터넷 상태 때문에 즐거우셨어야 할 소중한 시간에 불편함을 드려 정말 죄송하다는 말씀 드립니다. 파티 공간을 운영함에 있어서, 미처 온라인 콘서트와 같은 빠른 인터넷이 필요한 상황을 인지하지 못하여 사전에 관련된 정보를 드리지 못한 점도 죄송하게 생각하고 있습니다. 개선해야 할 상황에 대하여 짚어 주신 것에 감사합니다. 고객님께서 지적해주신 부분에 대하여 같은 문제가 발생하지 않도록 더욱 노력하는 드라마티코가 되도록 하겠습니다.
-                                    </p>
-                                    <!---->
-                                    <div class="rbox-info-base">
-                                        <p class="time-info">2021.12.04 01:21:10 </p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-
-                        <!-- Q&A 페이징 -->
-                        <!-- 화살표 이미지 찾아야됨 -->
-                        <div class="paging">
-                            <a class="btn btn_prev_list_end"> &lt;&lt; </a>
-                            <a class="btn btn_prev_list"> &lt; </a>
-                            <a class="num active">1</a>
-                            <a class="num">2</a>
-                            <a class="num">3</a>
-                            <a class="num">4</a>
-                            <a class="num">5</a>
-                            <a class="btn btn_next_list active"> &gt; </a>
-                            <a class="btn btn_next_list_end active"> &gt;&gt; </a>
-                        </div>
-                    </div>
-                </div>
-                --%>
-                <!--------------------------------------------------------------------------------------------------------------------------->
 
                 <form action="reservation" method="post" style="position:absolute; width:350px; height:400px; top:0; right:0;">
 					<input type="hidden" class="space_room_no" name="space_room_no">
@@ -536,6 +380,8 @@
         sticky(); // 페이지 로딩 시 sticky 함수 호출
         $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
+        qnaSpaceListRoad("space", "${param.no}");
+
     });
     
     // 스크롤 내리다가 메뉴 내용을 만나게 되면 체크 - 준비
@@ -610,7 +456,9 @@
     		
 	    	$.ajax({
 	    		url : "heart",
-	    		data : {"spaceNo" : ${param.no}},
+	    		data : {
+                    "spaceNo" : "${param.no}"
+                },
 	    		success : function(spaceHeart) {
 					
 	    			if (spaceHeart > 0) {
@@ -637,7 +485,9 @@
     		
 	    	$.ajax({
 	    		url : "selectHeart",
-	    		data : {"spaceNo" : ${param.no}},
+	    		data : {
+                    "spaceNo" : "${param.no}"
+                },
 	    		success : function(result) {
 	    			
 	    			if (result > 0) {
@@ -650,7 +500,7 @@
     })();
     
     
-    // 리뷰
+    // 리뷰 등록
     $(".review-btn-area .submit").on("click", function () {
 		if ($("#reviewTextarea").val().trim().length == 0) {
 			alert("내용을 입력해주세요");
@@ -662,12 +512,14 @@
 			url : contextPath + "/my/review/insert",
 			method : "post",
 			data : {
-				spaceNo : ${param.no},
+				spaceNo : "${param.no}",
 				resNo	: "${reviewUse}",
 				reviewContent : $("#reviewTextarea").val()
 			},
 			dataType : "json",
 			success : function (reviewList) {
+                $(".review-write_area").empty();
+
 				reviewListLoad(reviewList);
 				
 			},
@@ -679,40 +531,38 @@
 		});
 	});
 	
+    // 리뷰 리스트
 	function reviewListLoad(reviewList) {
 		$(".review_list").empty(); // 기존 댓글 내용 모두 삭제
+
+        // 이용 후기 갯수 추가
+        $("#s-review .txt-primary em").text(reviewList.length);
 		
 		// let html = "";
 		$.each(reviewList, function (index, reviewSpace) {
-			console.log(reviewSpace);
-			
-			
-			
+			const imgCheck = "${empty loginMember.imgName}";
+
 			let reviewImg = "";
-			if (${empty loginMember.imgName}) {
+			if (imgCheck) {
 				reviewImg = `<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>`;
 			} else {
-				
 				reviewImg = `<span class="pf-img" style="background-image: url(${contextPath}${reviewSpace.member.imgPath}${reviewSpace.member.imgName});"></span>`;
 			}
-			
-			let html = `
+
+            let html = `
 				<li class="rlist">
                     <div class="rbox-mine">
-                        ` + reviewImg + `
-                        
-                        <strong class="guest-name">` + reviewSpace.member.memberName + `</strong>
-                        <p class="p-review">
-                            ` + reviewSpace.revContent + `
-                        </p>
+                        ${ "${reviewImg}" }
+                        <strong class="guest-name">${ "${reviewSpace.member.memberName}" }</strong>
+                        <p class="p-review">${ "${reviewSpace.revContent}" }</p>
                         <div class="rbox-info-base">
-                            <span class="time-info">` + reviewSpace.revDt + `</span>
+                            <span class="time-info">${ "${reviewSpace.revDt}" }</span>
                         </div>
                     </div>
                 </li>
 			`;
 			
-			$(".review_list").append(html);
+			//$(".review_list").append(html);
 		});
 	}
 </script>
