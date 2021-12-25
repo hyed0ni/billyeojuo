@@ -3,12 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<jsp:include page="../common/header.jsp"/>
-<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/space-style.css">
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/jquery-ui.css">
-<style>
-.ui-widget.ui-widget-content{width:100%;}
-</style>
+
+<jsp:include page="../common/header.jsp"/>
 
 <main>
     <section class="cont detail-forms">
@@ -492,7 +489,7 @@
 												<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">	                                
 													<li style="width:100px; height:50px; float:left;">
 														<div style="width:100px; display:flex; align-items:center; justify-content:end;">
-															<span style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}.svg) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
+															<span style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
 															<span style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
 														</div>
 													</li>

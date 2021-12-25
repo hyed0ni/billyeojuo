@@ -295,3 +295,7 @@ li.selected {  background-color: #ffd014;}
 
 .review-btn-area > .btn_negative{background:#4d4d4d;}
 .review-btn-area > .btn_default{background:#704de4;}
+
+/* jquery ui */
+.ui-widget.ui-widget-content{width:100%;}
+.ui-widget-header .ui-icon{background-image:url(../images/jquery_ui/ui-icons_444444_256x240.png)}
