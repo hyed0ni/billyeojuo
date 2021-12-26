@@ -16,7 +16,7 @@
 <main>
   <section id="booking-wrap">
   <section class="booking-title">
-    <div class="booking-img">
+    <div class="booking-img" style="background-image:url('${contextPath}${res.space.spaceImgPath}${res.space.spaceImgNm}')">
       <h3>${res.space.spaceNm}</h3><h3>결제 및 예약내역입니다.</h3>
     </div>
   </section>

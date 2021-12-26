@@ -19,17 +19,17 @@
 		<div class="title">예약 내역 리스트</div>
 		<div class="reserve_area">
 			<div class="sort_area">
-			
-				<select class="selectbox">
-					<option value="reserve">예약번호순</option>
-					<option value="used">이용일자순</option>
+				
+				<select id="sort" class="selectbox">
+					<option value="reserve" <c:if test="${param.sort == 'reserve'}">selected</c:if>>예약번호순</option>
+					<option value="used" <c:if test="${param.sort == 'used'}">selected</c:if>>이용일자순</option>
 				</select>
 				
-				<select class="selectbox">
-					<option>전체</option>
-					<option>결제완료</option>
-					<option>이용완료</option>
-					<option>취소환불</option>
+				<select id="status" class="selectbox">
+					<option value="all">전체</option>
+					<option value="approve">결제완료</option>
+					<option value="payment">이용완료</option>
+					<option value="cancel">취소환불</option>
 				</select>
 			</div>
 			
@@ -91,6 +91,29 @@
 
 <!-- footer include -->
 <jsp:include page="../common/footer.jsp"/>
+
+<script>
+	/* 취소환불 예약 상세 조회 불가 */
+	$(".list_area > a").on("click", function(e) {
+		if ($(this).find(".tag.cancel").length == 1)
+			e.preventDefault();
+	});
+	
+	/* 예약번호순, 이용일자순 정렬 */
+	document.getElementById("sort").addEventListener("change", function() {
+		location.href = "reserve?sort=" + this.value;
+	});
+	
+	/* 예약 상태별 조회 */
+	document.getElementById("status").addEventListener("change", function() {
+		if (this.value == "all") $(".list").show();
+		else {
+			$("." + this.value).parents(".list").show();
+			$(".tag:not(."+ this.value+")").parents(".list").hide();
+		}
+	});
+	
+</script>
 
 </body>
 </html>
