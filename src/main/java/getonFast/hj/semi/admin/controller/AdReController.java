@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.admin.model.Service.AdReService;
 
-@WebServlet("")
+@WebServlet("/admin/review")
 public class AdReController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
