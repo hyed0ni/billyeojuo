@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
 <%-- JSTL c태그 사용을 위한 taglib 추가 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -159,10 +160,24 @@
             <p style="width: 200px; text-align: right;"><fmt:formatNumber value="${res.space.spaceRoomPrice}" pattern="#,###"/>원</p>
           </div>
         </div>
+        
+        <c:set var="today" value="<%=new java.util.Date()%>"/>
+		<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/></c:set>
+		
+        <%-- 사용일 String -> Date로 변환 --%>
+        <fmt:parseDate value="${fn:split(res.useDate, ' ')[0]}" var="use" pattern="yyyy-MM-dd"/>
+		<fmt:parseNumber value="${use.time / (1000*60*60*24)}" integerOnly="true" var="useDate"></fmt:parseNumber>
+		
+		<%-- 오늘 날짜 String -> Date로 변환 --%>
+		<fmt:parseDate value="${date}" var="sys" pattern="yyyy-MM-dd"/>
+		<fmt:parseNumber value="${sys.time / (1000*60*60*24)}" integerOnly="true" var="sysDate"></fmt:parseNumber>
 
-        <div id="cancel-btn" class="btn"> 
-          <a href="">결제 취소</a>
-        </div>
+		<c:if test="${useDate - sysDate > 0}">
+			<div id="cancel-btn" class="btn"> 
+	          <a id="cancelBtn" href="reservation_cancel?rno=${param.rno}">결제 취소</a>
+	        </div>
+		</c:if>
+
       </article>
     </aside>
 
@@ -180,6 +195,12 @@
 	</script>
    <c:remove var="message" scope="session"/>
 </c:if>
+
+<script>
+	document.getElementById("cancelBtn").addEventListener("click", function(e) {
+		if (!confirm("결제를 취소하시겠습니까?")) e.preventDefault();
+	});
+</script>
 
 </body>
 </html>

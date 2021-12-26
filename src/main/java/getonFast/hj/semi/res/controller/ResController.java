@@ -102,6 +102,21 @@ public class ResController extends HttpServlet {
 	            dispatcher = req.getRequestDispatcher(path);
 	            dispatcher.forward(req, resp);
 			}
+			
+			else if (command.equals("reservation_cancel")) {
+				int resNo = Integer.parseInt(req.getParameter("rno"));
+				
+				int updateDt = service.updateDt(resNo);
+				
+				if (updateDt > 0) {
+					req.getSession().setAttribute("message", "결제 취소가 완료되었습니다.");
+					resp.sendRedirect("reserve");
+					
+				} else {
+					req.getSession().setAttribute("message", "결제 취소에 실패하였습니다.");
+					resp.sendRedirect(req.getHeader("referer"));
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
