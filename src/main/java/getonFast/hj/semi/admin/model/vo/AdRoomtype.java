@@ -1,5 +1,7 @@
 package getonFast.hj.semi.admin.model.vo;
 
+import java.util.List;
+
 public class AdRoomtype {
 	private int roomNo;
 	private int spaceNo;
@@ -10,6 +12,17 @@ public class AdRoomtype {
 	private int optionNo;
 	private String roomImg;
 	
+	List<AdSpaceRoomOption> rommOption;
+	
+	
+	public List<AdSpaceRoomOption> getRommOption() {
+		return rommOption;
+	}
+
+	public void setRommOption(List<AdSpaceRoomOption> rommOption) {
+		this.rommOption = rommOption;
+	}
+
 	public AdRoomtype() {
 		// TODO Auto-generated constructor stub
 	}

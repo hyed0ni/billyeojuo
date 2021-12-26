@@ -30,6 +30,55 @@
     }
 	
 	function createRoom() {
-		
-	}
-	
+    let html = `
+    <div>
+    <article class="roomInfo01">
+      <div class="roomWrap">
+          <label for="spaceName" >공간 타입 이름</label> 
+          <input type="text" id="spaceName" name="spaceName" required style="width: 435px;" >
+      </div>
+      
+      <div class="roomWrap">
+        <label for="spaceSubName">가격</label> 
+        <input type="text" id="spaceSubName" name="spaceSubName" required> 원
+      </div>
+        
+      <div class="roomWrap">
+          <label for="spaceAddr">이용 인원</label> 
+          <input type="text" id="spaceAddr" name="spaceAddr" required > 명
+        </div>
+
+        <div class="roomWrap"> 
+        <input type="text" class="test"></input>
+          <label for="roomOption">공간옵션</label> 
+          <input type="radio" name="roomOption" class="roomRadio"> 금연
+          <input type="radio" name="roomOption" class="roomRadio"> 취사가능
+          <input type="radio" name="roomOption" class="roomRadio"> 금연
+          <input type="radio" name="roomOption" class="roomRadio"> 금연
+          <input type="radio" name="roomOption" class="roomRadio"> 금연
+        </div>
+      </article>
+      
+    <article class="roomMap">
+      <label>룸 이미지</label>
+      <div class="roomImg">
+        <img>
+      </div>
+    </article>
+      
+      <div id="fileArea">
+      <input type="file" name="img" onchange="loadImg(this)"> 
+      </div>
+
+    <article class="roomInfo02">
+      <div class="roomWrap02">
+        <div>
+          <label for="roomBasic">공간소개</label>
+        </div>
+        <textarea class="roomInfoForm" id="roomBasic" name="roomBasic"></textarea>
+      </div>
+    </article>
+  </div>
+    `;
+    $(".roomTypeWrap").append(html);
+  }

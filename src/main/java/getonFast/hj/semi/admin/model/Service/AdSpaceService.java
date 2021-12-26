@@ -111,17 +111,17 @@ public class AdSpaceService {
 	}
 
 
-	public int insertRoom(AdRoomtype roomType, String[] roomOption, int rn) throws Exception {
+	public int insertRoom(List<AdRoomtype> roomType, String[] roomOption, int rn, List<AdRoomtype> imgList) throws Exception {
 		Connection conn = getConnection();
 		int result = 0;
 		
 		//다음차례 룸 넘버 얻어오기 
 		int roomNo = dao.nextRoomNo(conn);
-		roomType.setRoomNo(roomNo);
+		AdRoomtype.setRoomNo(roomNo);
 		
 		//룸타입의 룸소개 개행문자 변경 
 		String desc = roomType.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
-		roomType.setRoomDesc(desc);
+		AdRoomtype.setRoomDesc(desc);
 		
 		//룸타입 삽입
 		result = dao.insertRoomType(roomType,rn,conn);

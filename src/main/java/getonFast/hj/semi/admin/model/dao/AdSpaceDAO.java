@@ -180,7 +180,7 @@ public class AdSpaceDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoomType(AdRoomtype roomType, int rn, Connection conn) throws Exception {
+	public int insertRoomType(List<AdRoomtype> roomType, int rn, Connection conn) throws Exception {
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertRoopType");

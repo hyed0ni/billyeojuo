@@ -18,7 +18,7 @@
           <h2 style="text-align: center;">공간 타입등록</h2>
           
           <article class="roomTypeWrap">
-          
+          	<div>
 	          <article class="roomInfo01">
 	          	<div class="roomWrap">
 	                <label for="spaceName" >공간 타입 이름</label> 
@@ -35,6 +35,7 @@
 	                <input type="text" id="spaceAddr" name="spaceAddr" required > 명
 	              </div>
 	
+	        <input type="text" name="ttt[]" class="test" value=""></input>
 	              <div class="roomWrap">
 	                <label for="roomOption">공간옵션</label> 
 	                <input type="radio" name="roomOption" class="roomRadio"> 금연
@@ -64,7 +65,7 @@
 	              <textarea class="roomInfoForm" id="roomBasic" name="roomBasic"></textarea>
 	            </div>
 	          </article>
-          
+          </div>
           </article>
           
           
