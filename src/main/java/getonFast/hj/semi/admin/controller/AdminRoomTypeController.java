@@ -152,6 +152,7 @@ public class AdminRoomTypeController extends HttpServlet{
 
 					optionList.add(spaceRoomOption);
 				}
+				System.out.println(optionList);
 				
 				//사진
 				

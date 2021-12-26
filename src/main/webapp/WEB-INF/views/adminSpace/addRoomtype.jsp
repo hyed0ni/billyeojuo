@@ -83,72 +83,74 @@
   </main>
   
   <jsp:include page="../adminCommon/admin_footer.jsp"/>
-
-  
-  
- <script>
-   function createRoom(){
-       let index = 0;
-       let html = `
-            <div>
-                <article class="roomInfo01">
-                   <div class="roomWrap">
-                      <label for="spaceName" >공간 타입 이름</label> 
-                      <input type="text" id="roomName" name="roomName" required style="width: 435px;" >
-                  </div>
-                  
-                  <div class="roomWrap">
-                    <label for="spaceSubName">가격</label> 
-                    <input type="text" id="roomPrice" name="roomPrice" required> 원
-                  </div>
-                    
-                   <div class="roomWrap">
-                      <label for="spaceAddr">이용 인원</label> 
-                      <input type="text" id="roomFit" name="roomFit" required > 명
-                    </div>
-      
-             
-                      <label for="roomOption">공간옵션</label> 
-                    <div class="roomWrap">
-                   <c:forEach items="${adSpaceOption}" var="rt"> 
-                      <input type="checkbox" name="roomOption" class="roomRadio" value="${rt.adOptionNo}"> ${rt.adOptionName}
-                    </c:forEach>
-                    </div>
-                  </article>
-                  
-                <article class="roomMap">
-                   <label>룸 이미지</label>
-                  <div class="roomImg">
-                    <img>
-                  </div>
-                </article>
-                   
-                  <div id="fileArea">
-                  <input type="file" name="img' + index + ' onchange="loadImg(this,'+ (index++) +'')"> 
-                  </div>
-         
-                <article class="roomInfo02">
-                  <div class="roomWrap02">
-                    <div>
-                      <label for="roomBasic">공간소개</label>
-                    </div>
-                    <textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>
-                  </div>
-                </article>
-             </div>
-       `;
-       $(".roomTypeWrap").append(html);
-
-      // 룸타입 갯수
-      const roomCnt =  Number($("input[name='roomCount']").val());
-      
-      $("input[name='roomCount']").val(roomCnt+1);
-
-      index++;
-     }
-  </script>
-  
-  
   <script src="${contextPath}/resources/js/adminRoomtType.js"></script>
+  
+   <script>
+        let index = 1;
+        function createRoom(){
+        	
+            let html = 
+                      '<div>'
+                    + '<article class="roomInfo01">'
+                        + '<div class="roomWrap">'
+                            + '<label for="spaceName" >공간 타입 이름</label>'
+                            + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" >'
+                        + '</div>'
+                        
+                        + '<div class="roomWrap">'
+                            + '<label for="spaceSubName">가격</label>'
+                            + '<input type="text" id="roomPrice" name="roomPrice" required> 원'
+                        + '</div>'
+                            
+                        + '<div class="roomWrap">'
+                            + '<label for="spaceAddr">이용 인원</label> '
+                            + '<input type="text" id="roomFit" name="roomFit" required > 명'
+                        + '</div>'
+            
+                    
+                        + '<label for="roomOption">공간옵션</label> '
+                        + '<div class="roomWrap">'
+                            <c:forEach items="${adSpaceOption}" var="rt"> 
+                                + '<input type="checkbox" name="roomOption'+index+'" class="roomRadio" value="${rt.adOptionNo}"> ${rt.adOptionName}'
+                            </c:forEach>
+                        + '</div>'
+                    + '</article>'
+                       
+                    + '<article class="roomMap">'
+                        + '<label>룸 이미지</label>'
+                            + '<div class="roomImg">'
+                                + '<img>'
+                            + '</div>'
+                    + '</article>'
+                        
+                    + '<div id="fileArea">'
+                        + '<input type="file" name="img' + index + '" onchange="loadImg(this,'+ index +')"> '
+                    + '</div>'
+              
+                    + '<article class="roomInfo02">'
+                        + '<div class="roomWrap02">'
+                            + '<div>'
+                                + '<label for="roomBasic">공간소개</label>'
+                            + '</div>'
+                            + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>'
+                        + '</div>'
+                    + '</article>'
+                + '</div>';
+                
+            $(".roomTypeWrap").append(html);
+     
+           // 룸타입 갯수
+           const roomCnt =  Number($("input[name='roomCount']").val());
+           
+           $("input[name='roomCount']").val(roomCnt+1);
+    
+           index++;
+          
+          }
+       </script>
+
+  
+  
+
 </body>
 </html>
