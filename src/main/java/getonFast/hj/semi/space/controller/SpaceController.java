@@ -15,7 +15,6 @@ import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.my.model.service.QnaService;
 import getonFast.hj.semi.my.model.vo.Qna;
 import getonFast.hj.semi.res.model.service.ResService;
-import getonFast.hj.semi.res.model.vo.Res;
 import getonFast.hj.semi.review.model.service.ReviewService;
 import getonFast.hj.semi.review.model.vo.Review;
 
