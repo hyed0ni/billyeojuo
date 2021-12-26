@@ -63,6 +63,23 @@ public class ResService {
 		
 		return res;
 	}
+	
+	/** 결제취소 상태값 변경
+	 * @param resNo
+	 * @return updateDt
+	 * @throws Exception
+	 */
+	public int updateDt(int resNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int updateDt = dao.updateDt(resNo, conn);
+		
+		if (updateDt > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		return updateDt;
+	}
 
 	/**
 	 * 공간 상세 이용 후기 작성 여부
