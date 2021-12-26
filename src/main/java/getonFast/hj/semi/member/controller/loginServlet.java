@@ -40,7 +40,13 @@ public class loginServlet extends HttpServlet {
 
 		String memberEmail = req.getParameter("email");
 		String memberPw = req.getParameter("pwd1");
+		//*******************************************************
+		String beforeUrl = req.getHeader("referer");
 
+		if (beforeUrl != null && !beforeUrl.equals(req.getRequestURL().toString())) {
+			req.getSession().setAttribute("beforeUrl", beforeUrl);
+		}
+		//****************************************************************8
 
 		try {
 
@@ -84,7 +90,7 @@ public class loginServlet extends HttpServlet {
 						System.out.println("admin hi");
 						
 					}else {
-						resp.sendRedirect(req.getContextPath());
+						resp.sendRedirect(beforeUrl);
 					}
 
 				} else if (loginMember.getStatusCode() == 12) {

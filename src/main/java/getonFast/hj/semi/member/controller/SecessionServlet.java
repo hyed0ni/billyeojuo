@@ -47,7 +47,7 @@ public class SecessionServlet extends HttpServlet{
 			
 			if(result > 0) { // 성공
 				
-				message = "그래 니 인성이 그렇지 뭐...";
+				message = "회원탈퇴가 완료되었습니다.";
 				path = req.getContextPath(); // 메인 페이지
 				session.invalidate(); // 로그아웃 (세션 무효화)
 				// -> 기존 session 변수에 저장된 세션객체가 무효화 되었기 때문에
