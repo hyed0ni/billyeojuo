@@ -36,4 +36,10 @@
 	<entry key="insertRoomOption">
 	INSERT INTO SPACE_ROOM_OPTION VALUES(?,?)
 	</entry>
+	
+	<entry key="insertRoomImg">
+		INSERT
+	</entry>
+	
+	<entry key=""></entry>
 </properties>

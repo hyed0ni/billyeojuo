@@ -99,28 +99,50 @@ public class AdminRoomTypeController extends HttpServlet{
 				List<AdRoomtype> roomType = new ArrayList<AdRoomtype>();
 				ListIterator<AdRoomtype> iter = roomType.listIterator();
 				
-				while(iter.hasNext()){
-					
-					int	i = 0;
-					
-					AdRoomtype rt = new AdRoomtype();
-					rt.setSpaceNo(rn);
-					rt.setRoomName(roomName[i]);
-					rt.setRoomDesc(roomDesc[i]);
-					rt.setRoomFit(roomFit[i]);
-					/*roomType.setOptionNo(optionNo);*/
-					rt.setRoomPrice(roomPrice[i]);
-					
-					roomType.add(rt);
-					
-					i++;
-				}
-
+//				while(iter.hasNext()){
+//					
+//					int	i = 0;
+//					
+//					AdRoomtype rt = new AdRoomtype();
+//					rt.setSpaceNo(rn);
+//					rt.setRoomName(roomName[i]);
+//					rt.setRoomDesc(roomDesc[i]);
+//					rt.setRoomFit(roomFit[i]);
+//					/*roomType.setOptionNo(optionNo);*/
+//					rt.setRoomPrice(roomPrice[i]);
+//					
+//					roomType.add(rt);
+//					
+//					i++;
+//				}
+				
+//				System.out.println("------------------");
+	            
+	            int roomCount = Integer.parseInt(mReq.getParameter("roomCount"));
+	            System.out.println("roomCount : " + roomCount);
+	            
+	            for(int cnt=0; cnt < roomCount; cnt++) {
+	               AdRoomtype rt = new AdRoomtype();
+	               rt.setSpaceNo(rn);
+	               rt.setRoomName(roomName[cnt]);
+	               rt.setRoomDesc(roomDesc[cnt]);
+	               rt.setRoomFit(roomFit[cnt]);
+	               /*roomType.setOptionNo(optionNo);*/
+	               rt.setRoomPrice(roomPrice[cnt]);
+	               
+	               roomType.add(rt);
+	            }
+	            System.out.println(roomType);
+	            
+//	System.out.println("------------------");
+				
 				
 				
 				// 룸 옵션
 				String[] roomOption = mReq.getParameterValues("roomOption");
+				System.out.println(roomOption[0]);
 
+				
 				List<AdSpaceRoomOption> optionList = new ArrayList<AdSpaceRoomOption>();
 
 				for (String ro : roomOption) {
@@ -130,7 +152,6 @@ public class AdminRoomTypeController extends HttpServlet{
 
 					optionList.add(spaceRoomOption);
 				}
-				
 				
 				//사진
 				
@@ -155,7 +176,7 @@ public class AdminRoomTypeController extends HttpServlet{
 
 					
 				// 서비스 호출
-				int result = service.insertRoom(roomType, roomOption, rn, imgList);
+				int result = service.insertRoom(roomType, optionList, rn, imgList);
 				
 				// 결과반환
 				if (result > 0) {

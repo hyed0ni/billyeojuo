@@ -175,22 +175,22 @@ public class AdSpaceDAO {
 
 	/** 룸 타입 등록 
 	 * @param roomType
-	 * @param rn 
 	 * @param conn
+	 * @param rn 
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoomType(List<AdRoomtype> roomType, int rn, Connection conn) throws Exception {
+	public int insertRoomType(AdRoomtype rt, Connection conn, int rn) throws Exception {
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertRoopType");
 	
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, roomType.getRoomNo());
-			pstmt.setString(2, roomType.getRoomName());
-			pstmt.setInt(3, roomType.getRoomPrice());
-			pstmt.setString(4, roomType.getRoomFit());
-			pstmt.setString(5, roomType.getRoomDesc());
+			pstmt.setInt(1, rt.getRoomNo());
+			pstmt.setString(2, rt.getRoomName());
+			pstmt.setInt(3, rt.getRoomPrice());
+			pstmt.setString(4, rt.getRoomFit());
+			pstmt.setString(5, rt.getRoomDesc());
 			pstmt.setInt(6, rn);
 			
 			result= pstmt.executeUpdate();
@@ -250,6 +250,25 @@ public class AdSpaceDAO {
 			
 		}
 		
+		return result;
+	}
+
+
+	public int insertRoomImg(AdRoomtype img, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertRoomImg");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1,img.getRoomNo());
+			pstmt.setString(2,img.getRoomImg());
+			
+			result =pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
 		return result;
 	}
 

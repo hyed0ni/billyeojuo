@@ -15,6 +15,7 @@
     <div class="contents">
       <section class="right">
         <form action="addRoomType?rn=${param.rn}" method="post"  enctype="multipart/form-data" role="form" onsubmit="return spaceValidate();">
+        <input type="hidden" name="roomCount" value="1">
           <h2 style="text-align: center;">공간 타입등록</h2>
           
           <article class="roomTypeWrap">
@@ -22,27 +23,25 @@
 	          <article class="roomInfo01">
 	          	<div class="roomWrap">
 	                <label for="spaceName" >공간 타입 이름</label> 
-	                <input type="text" id="spaceName" name="spaceName" required style="width: 435px;" >
+	                <input type="text" id="spaceName" name="roomName" required style="width: 435px;" >
 	            </div>
 	            
 	            <div class="roomWrap">
 	              <label for="spaceSubName">가격</label> 
-	              <input type="text" id="spaceSubName" name="spaceSubName" required> 원
+	              <input type="text" id="spaceSubName" name="roomPrice" required> 원
 	            </div>
 	              
 	             <div class="roomWrap">
 	                <label for="spaceAddr">이용 인원</label> 
-	                <input type="text" id="spaceAddr" name="spaceAddr" required > 명
+	                <input type="text" id="spaceAddr" name="roomFit" required > 명
 	              </div>
 	
-	        <input type="text" name="ttt[]" class="test" value=""></input>
-	              <div class="roomWrap">
+	       
 	                <label for="roomOption">공간옵션</label> 
-	                <input type="radio" name="roomOption" class="roomRadio"> 금연
-	                <input type="radio" name="roomOption" class="roomRadio"> 취사가능
-	                <input type="radio" name="roomOption" class="roomRadio"> 금연
-	                <input type="radio" name="roomOption" class="roomRadio"> 금연
-	                <input type="radio" name="roomOption" class="roomRadio"> 금연
+	              <div class="roomWrap">
+	       		<c:forEach items="${adSpaceOption}" var="rt"> 
+	                <input type="checkbox" name="roomOption" class="roomRadio" value="${rt.adOptionNo}"> ${rt.adOptionName}
+	              </c:forEach>
 	              </div>
 	            </article>
 	            
@@ -54,7 +53,7 @@
 	          </article>
 	         	 
 	            <div id="fileArea">
-	            <input type="file" name="img" onchange="loadImg(this)"> 
+	            <input type="file" name="img0" onchange="loadImg(this,0)"> 
 	            </div>
 		
 	          <article class="roomInfo02">
@@ -62,7 +61,7 @@
 	              <div>
 	                <label for="roomBasic">공간소개</label>
 	              </div>
-	              <textarea class="roomInfoForm" id="roomBasic" name="roomBasic"></textarea>
+	              <textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>
 	            </div>
 	          </article>
           </div>
@@ -71,18 +70,85 @@
           
           
            <article style="margin-bottom: 40px; text-align: center;">
-            <button type="button" id="addBtn" onclick="createRoom()">룸타입 추가</button> <br>
+            <button type="button" id="addBtn" onclick="createRoom();">룸타입 추가</button> <br>
             <button class="btn" >등록하기</button>
             <button class="btn" onclick="">취소</button>
           </article>
         </form>
+        
 
+		
       </section> 
     </div>
   </main>
   
   <jsp:include page="../adminCommon/admin_footer.jsp"/>
-  <script src="${contextPath}/resources/js/adminRoomtType.js"></script>
+
   
+  
+ <script>
+   function createRoom(){
+       let index = 0;
+       let html = `
+            <div>
+                <article class="roomInfo01">
+                   <div class="roomWrap">
+                      <label for="spaceName" >공간 타입 이름</label> 
+                      <input type="text" id="roomName" name="roomName" required style="width: 435px;" >
+                  </div>
+                  
+                  <div class="roomWrap">
+                    <label for="spaceSubName">가격</label> 
+                    <input type="text" id="roomPrice" name="roomPrice" required> 원
+                  </div>
+                    
+                   <div class="roomWrap">
+                      <label for="spaceAddr">이용 인원</label> 
+                      <input type="text" id="roomFit" name="roomFit" required > 명
+                    </div>
+      
+             
+                      <label for="roomOption">공간옵션</label> 
+                    <div class="roomWrap">
+                   <c:forEach items="${adSpaceOption}" var="rt"> 
+                      <input type="checkbox" name="roomOption" class="roomRadio" value="${rt.adOptionNo}"> ${rt.adOptionName}
+                    </c:forEach>
+                    </div>
+                  </article>
+                  
+                <article class="roomMap">
+                   <label>룸 이미지</label>
+                  <div class="roomImg">
+                    <img>
+                  </div>
+                </article>
+                   
+                  <div id="fileArea">
+                  <input type="file" name="img' + index + ' onchange="loadImg(this,'+ (index++) +'')"> 
+                  </div>
+         
+                <article class="roomInfo02">
+                  <div class="roomWrap02">
+                    <div>
+                      <label for="roomBasic">공간소개</label>
+                    </div>
+                    <textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>
+                  </div>
+                </article>
+             </div>
+       `;
+       $(".roomTypeWrap").append(html);
+
+      // 룸타입 갯수
+      const roomCnt =  Number($("input[name='roomCount']").val());
+      
+      $("input[name='roomCount']").val(roomCnt+1);
+
+      index++;
+     }
+  </script>
+  
+  
+  <script src="${contextPath}/resources/js/adminRoomtType.js"></script>
 </body>
 </html>
