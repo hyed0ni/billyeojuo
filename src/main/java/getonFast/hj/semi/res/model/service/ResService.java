@@ -40,12 +40,13 @@ public class ResService {
 	
 	/** 예약정보 조회
 	 * @param resNo
+	 * @param sort
 	 * @return resList
 	 * @throws Exception
 	 */
-	public List<Res> selectResList(int memberNo) throws Exception {
+	public List<Res> selectResList(int memberNo, String sort) throws Exception {
 		Connection conn = getConnection();
-		List<Res> resList = dao.selectResList(memberNo, conn);
+		List<Res> resList = dao.selectResList(memberNo, sort, conn);
 		close(conn);
 		
 		return resList;
@@ -62,6 +63,23 @@ public class ResService {
 		close(conn);
 		
 		return res;
+	}
+	
+	/** 결제취소 상태값 변경
+	 * @param resNo
+	 * @return updateDt
+	 * @throws Exception
+	 */
+	public int updateDt(int resNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int updateDt = dao.updateDt(resNo, conn);
+		
+		if (updateDt > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		return updateDt;
 	}
 
 	/**
