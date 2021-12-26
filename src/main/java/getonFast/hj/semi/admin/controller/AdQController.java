@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import getonFast.hj.semi.admin.model.Service.AdQService;
 
-@WebServlet("")
+@WebServlet("/admin/question")
 public class AdQController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
