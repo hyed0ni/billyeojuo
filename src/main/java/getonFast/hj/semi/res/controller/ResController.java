@@ -76,11 +76,13 @@ public class ResController extends HttpServlet {
 			}
 			
 			else if (command.equals("reserve")) {
+				String sort = req.getParameter("sort");
+				if (sort == null) sort = "reserve";
 				
 				Member loginMember = (Member)req.getSession().getAttribute("loginMember");
 				int memberNo = loginMember.getMemberNo();
 				
-				List<Res> resList = service.selectResList(memberNo);
+				List<Res> resList = service.selectResList(memberNo, sort);
 	        	req.setAttribute("resList", resList);
 	        	
 	        	req.setAttribute("css", "reserve");
@@ -113,7 +115,7 @@ public class ResController extends HttpServlet {
 					resp.sendRedirect("reserve");
 					
 				} else {
-					req.getSession().setAttribute("message", "결제 취소에 실패하였습니다.");
+					req.getSession().setAttribute("message", "결제 취소에 실패하였습니다. 다시 시도해주세요.");
 					resp.sendRedirect(req.getHeader("referer"));
 				}
 			}

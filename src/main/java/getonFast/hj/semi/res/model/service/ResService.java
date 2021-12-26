@@ -40,12 +40,13 @@ public class ResService {
 	
 	/** 예약정보 조회
 	 * @param resNo
+	 * @param sort
 	 * @return resList
 	 * @throws Exception
 	 */
-	public List<Res> selectResList(int memberNo) throws Exception {
+	public List<Res> selectResList(int memberNo, String sort) throws Exception {
 		Connection conn = getConnection();
-		List<Res> resList = dao.selectResList(memberNo, conn);
+		List<Res> resList = dao.selectResList(memberNo, sort, conn);
 		close(conn);
 		
 		return resList;
