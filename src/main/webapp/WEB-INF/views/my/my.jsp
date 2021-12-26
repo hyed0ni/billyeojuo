@@ -398,6 +398,7 @@ function changeImage(input) {
                 
                 if(data.result > 0) {
                     alert("프로필사진을 변경했습니다.");
+                    
                 }else {
                     alert("일시적인 오류가 발생했습니다.");
                     return false;

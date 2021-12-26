@@ -97,15 +97,16 @@ public class ResDAO {
 	
 	/** 예약정보 조회
 	 * @param resNo
+	 * @param sort
 	 * @param conn
 	 * @return resList
 	 * @throws Exception
 	 */
-	public List<Res> selectResList(int memberNo, Connection conn) throws Exception {
+	public List<Res> selectResList(int memberNo, String sort, Connection conn) throws Exception {
 		List<Res> resList = new ArrayList<Res>();
 		
 		try {
-			String sql = prop.getProperty("selectResList");
+			String sql = prop.getProperty("selectResList-" + sort);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberNo);
@@ -167,6 +168,7 @@ public class ResDAO {
 				res.setResReq(rs.getString("RES_REQ"));
 				res.setPayDate(rs.getString("PAY_DATE"));
 				res.setUseDate(rs.getString("USE_DATE"));
+				res.setResDt(rs.getInt("RES_DT"));
 				
 				res.setSpace(new Space());
 				
@@ -188,6 +190,30 @@ public class ResDAO {
 		}
 		
 		return res;
+	}
+	
+	/** 결제취소 상태값 변경
+	 * @param resNo
+	 * @param conn
+	 * @return updateDt
+	 * @throws Exception
+	 */
+	public int updateDt(int resNo, Connection conn) throws Exception {
+		int updateDt = 0;
+		
+		try {
+			String sql = prop.getProperty("updateDt");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, resNo);
+			
+			updateDt = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return updateDt;
 	}
 
 	/**
@@ -226,4 +252,5 @@ public class ResDAO {
 		
 		return selectResReview;
 	}
+
 }

@@ -140,7 +140,6 @@ public class MyController extends HttpServlet {
 			}
 			
 				
-	
 
 		} catch (Exception e) {
 			e.printStackTrace();

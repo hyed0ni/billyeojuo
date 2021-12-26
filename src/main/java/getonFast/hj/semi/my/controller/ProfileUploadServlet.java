@@ -123,14 +123,16 @@ public class ProfileUploadServlet extends HttpServlet{
 					  
 					 int result = service.updateProfile(temp, memberNo);
 					 
-					 System.out.println(member);
-					
+					 
 					
 					 if(result > 0) {
 
+						 loginMember.setImgName(temp.getImgName());
+						 loginMember.setImgOrg(temp.getImgOrg());
+						 
 						 map.put("result", 1);
 
-							
+						 
 						 
 					 }else {
 						 
@@ -139,6 +141,9 @@ public class ProfileUploadServlet extends HttpServlet{
 					 new Gson().toJson(map, resp.getWriter());
 					  
 				  }
+				  
+				  
+				  
 			}
 
 			
