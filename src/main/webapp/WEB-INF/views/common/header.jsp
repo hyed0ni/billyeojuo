@@ -47,7 +47,16 @@
 				<a href="${contextPath}/my">
 					<div class="profile_area">
 						<div class="profile_img">
-						    <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}">
+							<c:choose>
+								<c:when test="${empty sessionScope.loginMember.imgName}">
+									<img src="${contextPath}/resources/images/header/defaultUser.jpg">
+								</c:when>
+								<c:otherwise>
+									<img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}">
+								</c:otherwise>
+								
+							</c:choose>
+						    <%-- <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}"> --%>
 						</div>
 						<div class="profile_txt login">
 						    <div class="nickname"><strong>${sessionScope.loginMember.memberName}</strong></div>
