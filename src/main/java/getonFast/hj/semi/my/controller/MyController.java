@@ -102,7 +102,7 @@ public class MyController extends HttpServlet {
 				int result = service.updatePhone(member);
 
 				if (result > 0) {
-					session.setAttribute("message", "회원 전화번호가 수정 되었습니다.");
+					
 
 					loginMember.setMemberPhone(inputPhone);
 					map.put("result", 1);
@@ -115,29 +115,7 @@ public class MyController extends HttpServlet {
 				
 			}
 			
-			if(inputNewPwd != null) {
 			
-				
-				
-				 int result = service.pwdUpdate(member, inputPwd);
-				
-				 
-
-					if (result > 0) { // 성공
-
-						map.put("result", 1);
-
-					} else { // 실패
-						map.put("result", 0);
-					}
-					new Gson().toJson(map, resp.getWriter());
-					
-					/*
-					 * resp.sendRedirect(path);
-					 */
-				
-				
-			}
 			
 				
 

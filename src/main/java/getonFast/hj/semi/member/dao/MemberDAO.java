@@ -137,7 +137,7 @@ public class MemberDAO {
 						loginMember = new Member();
 
 						loginMember.setMemberNo(rs.getInt("MEMBER_NO"));
-						loginMember.setMemberEmail(memberEmail); 
+						loginMember.setMemberEmail(memberEmail);
 						loginMember.setMemberName(rs.getString("MEMBER_NM"));
 						loginMember.setMemberPhone(rs.getString("MEMBER_PNO"));
 						loginMember.setStatusCode(rs.getInt("MEMBER_ST"));
@@ -239,7 +239,7 @@ public class MemberDAO {
 		System.out.println(email);
 
 		try {
-
+			
 			String sql = prop.getProperty("certifyEmail");
 			
 			
@@ -260,6 +260,49 @@ public class MemberDAO {
 		}
 
 		return result;
+		
+		
+	}
+
+	public Member checkCertifyEmailPwd(Member member, Connection conn) throws Exception{
+		
+		System.out.println(member);
+
+		try {
+			
+			String sql = prop.getProperty("checkCertifyEmailPwd");
+			
+			
+			
+			pstmt = conn.prepareStatement(sql);
+
+
+			pstmt.setString(1, member.getMemberEmail());
+			
+			pstmt.setString(2, member.getMemberPw());
+		
+
+
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				member = new Member();
+
+				member.setMemberNo(rs.getInt("MEMBER_NO"));
+				member.setMemberEmail(rs.getString("MEMBER_EMAIL"));
+				member.setMemberPw(rs.getString("MEMBER_PW"));
+				member.setMemberName(rs.getString("MEMBER_NM"));
+
+			}
+
+		} finally {
+
+			close(rs);
+			close(pstmt);
+		}
+
+		return member;
+		
 		
 		
 	}

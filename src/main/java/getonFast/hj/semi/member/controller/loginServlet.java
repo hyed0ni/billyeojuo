@@ -50,7 +50,7 @@ public class loginServlet extends HttpServlet {
 			
 			HttpSession session = req.getSession();
 			
-			System.out.println(loginMember);
+			
 			
 			if (loginMember != null) {
 				

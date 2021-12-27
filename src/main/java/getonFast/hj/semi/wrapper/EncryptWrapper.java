@@ -27,10 +27,11 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 		
 		String value = null;
 		switch (name) {
-		case "memberPw" : 
+		case "findUpdatePwd1" : 
 		case "pwd1" : 
-		case "currentPw" : 
-		case "newPw1" :
+		case "certifyPwd" : 
+		case "prepassword" :
+		case "newPwd1" :
 			/* 암호화 코드 작성 */ 
 			value = getSha512(super.getParameter(name));
 			break;
@@ -70,6 +71,8 @@ public class EncryptWrapper extends HttpServletRequestWrapper {
 			encPwd = Base64.getEncoder().encodeToString(md.digest());
 			// md.digest() : 암호화된 코드를 꺼내옴
 			
+
+
 		}catch (NoSuchAlgorithmException e) {
 			// SHA-512 해쉬함수가 없는 경우 발생
 			e.printStackTrace();

@@ -88,9 +88,9 @@
                                     <div>${sessionScope.loginMember.memberEmail}</div>
                                     <c:choose>
                                         <c:when test="${sessionScope.loginMember.certify == 0}">
-                                        <form action="${contextPath}/member/sendEmail2" method="get">
-                                        <button type="submit" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="certify">인증하기</button>
-                                        </form>
+                                       
+                                        <button type="submit" data-member-email="${sessionScope.loginMember.memberEmail}" style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="certify">인증하기</button>
+                                        
                                     </c:when>
                                     <c:otherwise>
                                         <span style="position:absolute; top:20px; right:0; padding:0 4px; height:22px; border:1px solid #704de4; box-sizing:border-box; color:#704de4" class="#">인증완료</span>
@@ -240,13 +240,33 @@ $(document).on('click', '.name_change_confirm', function(){
 });
 
 // 이메일 인증
- $(document).on('click', '.certify', function(){
+$(document).on('click', '.certify', function(){
 
-    alert("이메일을 전송했습니다.")
+    var member_email = $(this).data('memberEmail');
+
+    $.ajax({
+        url: 'member/sendEmail2',
+        dataType: 'json',
+        type: 'get',
+        success: function(data) {
+
+            if(data.result == 1) {
+                alert("이메일을 전송했습니다.");
+
+/* $.ajax({
+    url
+}) */
+            }else {
+                alert("");
+                return false;
+            }
+
+        }
+    })
 
 
 
- });
+});
 
 
 $(document).on('click ', '.ph_change_confirm', function(){
@@ -330,7 +350,7 @@ $(document).on('click', '.pwd_change_confirm', function(){
     // 현재 비밀번호(데이터) == 입력한 비밀번호
     $.ajax({
 
-        url: "my",
+        url: "member/updatePwd",
         type: "POST",
         data: { "prepassword": prepassword.val(), "newPwd1" : newPwd1.val() },
         dataType : "JSON",
@@ -398,7 +418,7 @@ function changeImage(input) {
                 
                 if(data.result > 0) {
                     alert("프로필사진을 변경했습니다.");
-                    
+
                 }else {
                     alert("일시적인 오류가 발생했습니다.");
                     return false;
