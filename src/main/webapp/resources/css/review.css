@@ -16,13 +16,13 @@
 .review > .review_area > .review_header > .search_area > .btn_area{width:15%; float:left; line-height:94px; text-align:center;}
 .review > .review_area > .review_header > .search_area > .btn_area > .search_btn{width:120px; height:48px; line-height:46px; vertical-align:middle; background-color:#704de4; color:#fff; font-size:20px; border:0; cursor:pointer;}
 
-.review > .review_area > .list_area > .list{box-sizing:border-box; border:1px solid black; padding:10px; width:100%; margin-bottom:10px;}
-.review > .review_area > .list_area > .list > .img_area{display:inline-block;}
-.review > .review_area > .list_area > .list > .img_area > .list_img{width:230px; height:150px; object-fit:cover;}
+.review > .review_area > .list_area > a > .list{box-sizing:border-box; border:1px solid black; padding:10px; width:100%; margin-bottom:10px;}
+.review > .review_area > .list_area > a > .list > .img_area{display:inline-block;}
+.review > .review_area > .list_area > a > .list > .img_area > .list_img{width:230px; height:150px; object-fit:cover;}
 
-.review > .review_area > .list_area > .list > .content_area{display:inline-block; width:75%; padding:10px 20px; vertical-align:top;}
-.review > .review_area > .list_area > .list > .content_area .title{font-size:18px; font-weight:bold; margin-bottom:5px;}
-.review > .review_area > .list_area > .list > .content_area .content{margin-bottom:5px;}
-.review > .review_area > .list_area > .list > .content_area .date{font-size:12px;}
-.review > .review_area > .list_area > .list > .content_area > .comment_area{margin:10px 0 0 15px;}
-.review > .review_area > .list_area > .list > .content_area > .comment_area > .comment_title{font-size:18px; color:#704de4; margin-bottom:5px;}
+.review > .review_area > .list_area > a > .list > .content_area{display:inline-block; width:75%; padding:10px 20px; vertical-align:top;}
+.review > .review_area > .list_area > a > .list > .content_area .title{font-size:18px; font-weight:bold; margin-bottom:5px;}
+.review > .review_area > .list_area > a > .list > .content_area .content{margin-bottom:5px;}
+.review > .review_area > .list_area > a > .list > .content_area .date{font-size:12px;}
+.review > .review_area > .list_area > a > .list > .content_area > .comment_area{margin:10px 0 0 15px;}
+.review > .review_area > .list_area > a > .list > .content_area > .comment_area > .comment_title{font-size:18px; color:#704de4; margin-bottom:5px;}

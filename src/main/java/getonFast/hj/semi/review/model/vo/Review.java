@@ -1,6 +1,7 @@
 package getonFast.hj.semi.review.model.vo;
 
 import getonFast.hj.semi.member.vo.Member;
+import getonFast.hj.semi.space.model.vo.Space;
 
 public class Review {
 	private int revNo;
@@ -12,6 +13,7 @@ public class Review {
 	private int spaceNo;
 	
 	private Member member;
+	private Space space;
 	
 	public Review() {}
 
@@ -77,6 +79,14 @@ public class Review {
 
 	public void setMember(Member member) {
 		this.member = member;
+	}
+
+	public Space getSpace() {
+		return space;
+	}
+
+	public void setSpace(Space space) {
+		this.space = space;
 	}
 	
 	
