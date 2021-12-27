@@ -16,7 +16,7 @@
 .favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_tag_area > span:first-child{font-weight:500; }
 .favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_tag_area > span:first-child > .bar {width:1px; height:10px; background-color:rgba(114, 114, 114, 1); position:absolute; top:7px; margin-left:4px;}
 .favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_price_area{margin-top:13px; font-size:12px; margin-bottom: 5px;}
-.favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_price_area > .price_area{display:inline-block; margin-right:60px; margin-left:2px; min-width: 120px;}
+.favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_price_area > .price_area{display:inline-block; margin-right:50px; margin-left:2px; min-width: 120px;}
 .favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_price_area > .price_area > .price_font{font-size:20px;}
 .favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_price_area > .person{display:inline-block;}
 .favorites > .favorites_area > .list_area > ul > .list > a > .list_title_area > .list_price_area > .person > span >.ico_person{width:16px; height:16px; vertical-align:top;}
