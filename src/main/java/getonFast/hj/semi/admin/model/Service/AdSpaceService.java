@@ -123,6 +123,8 @@ public class AdSpaceService {
 		Connection conn = getConnection();
 		int result = 0;
 		
+		System.out.println("------------roomType------------");
+		System.out.println(roomType);
 		for(AdRoomtype rt : roomType) {
 			//다음차례 룸 넘버 얻어오기
 			int roomNo = dao.nextRoomNo(conn);
@@ -132,7 +134,7 @@ public class AdSpaceService {
 			
 			//룸타입의 룸소개 개행문자 변경 
 			String desc = rt.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
-			rt.setRoomFit(desc);
+			rt.setRoomDesc(desc);
 			
 			//룸타입 삽입
 			result = dao.insertRoomType(rt, rn, conn);
