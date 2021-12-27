@@ -6,7 +6,6 @@
 <jsp:include page="../common/header.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/jquery-ui.css">
 
-
 <main>
     <section class="cont detail-forms">
     
