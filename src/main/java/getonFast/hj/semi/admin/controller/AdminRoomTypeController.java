@@ -139,20 +139,28 @@ public class AdminRoomTypeController extends HttpServlet{
 				
 				
 				// 룸 옵션
-				String[] roomOption = mReq.getParameterValues("roomOption");
-				System.out.println(roomOption[0]);
-
-				
-				List<AdSpaceRoomOption> optionList = new ArrayList<AdSpaceRoomOption>();
-
-				for (String ro : roomOption) {
-					AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
-					int RoomOptionNo = Integer.parseInt(ro);
-					spaceRoomOption.setOptionNo(RoomOptionNo);
-
-					optionList.add(spaceRoomOption);
-				}
-				System.out.println(optionList);
+//				String[] roomOption = mReq.getParameterValues("roomOption");
+//				System.out.println(roomOption[0]);
+//
+//				
+//				List<AdSpaceRoomOption> optionList = new ArrayList<AdSpaceRoomOption>();
+//
+//				for (String ro : roomOption) {
+//					AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
+//					int RoomOptionNo = Integer.parseInt(ro);
+//					spaceRoomOption.setOptionNo(RoomOptionNo);
+//
+//					optionList.add(spaceRoomOption);
+//				}
+//				System.out.println(optionList);
+	            
+	            String[] roomOption = mReq.getParameterValues("roomOption");
+	            
+	            List<String[]> optionArrList = new ArrayList<>();
+	            for(int i=1; i<=roomOption.length ; i++){
+	              String[] optionArr = req.getParameterValues("option" + i);
+	              optionArrList.add(optionArr);
+	            }
 				
 				//사진
 				
@@ -177,7 +185,7 @@ public class AdminRoomTypeController extends HttpServlet{
 
 					
 				// 서비스 호출
-				int result = service.insertRoom(roomType, optionList, rn, imgList);
+				int result = service.insertRoom(roomType, optionArrList, rn, imgList);
 				
 				// 결과반환
 				if (result > 0) {

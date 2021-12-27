@@ -76,11 +76,13 @@ public class ResController extends HttpServlet {
 			}
 			
 			else if (command.equals("reserve")) {
+				String sort = req.getParameter("sort");
+				if (sort == null) sort = "reserve";
 				
 				Member loginMember = (Member)req.getSession().getAttribute("loginMember");
 				int memberNo = loginMember.getMemberNo();
 				
-				List<Res> resList = service.selectResList(memberNo);
+				List<Res> resList = service.selectResList(memberNo, sort);
 	        	req.setAttribute("resList", resList);
 	        	
 	        	req.setAttribute("css", "reserve");
@@ -101,6 +103,21 @@ public class ResController extends HttpServlet {
 	            path = "/WEB-INF/views/my/reservation_detail.jsp";
 	            dispatcher = req.getRequestDispatcher(path);
 	            dispatcher.forward(req, resp);
+			}
+			
+			else if (command.equals("reservation_cancel")) {
+				int resNo = Integer.parseInt(req.getParameter("rno"));
+				
+				int updateDt = service.updateDt(resNo);
+				
+				if (updateDt > 0) {
+					req.getSession().setAttribute("message", "결제 취소가 완료되었습니다.");
+					resp.sendRedirect("reserve");
+					
+				} else {
+					req.getSession().setAttribute("message", "결제 취소에 실패하였습니다. 다시 시도해주세요.");
+					resp.sendRedirect(req.getHeader("referer"));
+				}
 			}
 
 		} catch (Exception e) {

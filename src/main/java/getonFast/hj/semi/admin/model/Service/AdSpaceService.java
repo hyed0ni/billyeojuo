@@ -113,13 +113,13 @@ public class AdSpaceService {
 
 	/** 룸 타입 등록
 	 * @param roomType
-	 * @param optionList
+	 * @param optionArrList
 	 * @param rn
 	 * @param imgList
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoom(List<AdRoomtype> roomType, List<AdSpaceRoomOption> optionList, int rn, List<AdRoomtype> imgList) throws Exception {
+	public int insertRoom(List<AdRoomtype> roomType, List<String[]> optionArrList, int rn, List<AdRoomtype> imgList) throws Exception {
 		Connection conn = getConnection();
 		int result = 0;
 		
@@ -139,7 +139,7 @@ public class AdSpaceService {
 			//룸옵션 삽입
 			if(result > 0) {
 				
-				for(AdSpaceRoomOption spaceRoomOption : optionList) {
+				for(AdSpaceRoomOption spaceRoomOption : optionArrList) {
 					spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
 					result = dao.insertspaceRoomOption(spaceRoomOption,conn);
 					if(result == 0) {

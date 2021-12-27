@@ -22,11 +22,15 @@
                 <div class="login-divide">또는</div>
                 <form class="form-signin" method="POST" action="${contextPath}/member/login" onsubmit="return loginValidate()">
                 <div class="login-input-wrap">
-                    <input type="text" placeholder="이메일" class="login-input" name="email" id="email">
+                    <input type="text" placeholder="이메일" class="login-input" name="email" id="email" value="${ cookie.saveId.value }">
                     <input type="password" placeholder="비밀번호" class="login-input" name="pwd1" id="pwd1">
                 </div>
                 <div class="login-options">
-                    <label><input type="checkbox" name="save"> 로그인 기억하기</label>
+                    <c:if test="${!empty cookie.saveId.value}">
+                        <c:set var="chk" value="checked" />
+                        
+                     </c:if>
+                    <label><input type="checkbox" name="save" ${chk} > 로그인 기억하기</label>
                     <a href="${contextPath}/member/findPwd">비밀번호 찾기</a>
                 </div>
                 <button type="submit" class="login-btn">이메일로 로그인</button>

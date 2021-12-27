@@ -1,12 +1,9 @@
   
   // 영역 클릭시 file 클릭 
-  $(function() {
-    $(".roomImg" ).on("click", function() {
-	const index = $(".roomImg").index(this);
-     $("[type=file]").eq(index).click();
-    });
-
-	});
+(document).on("click", ".roomImg", function () {
+      const index = $(".roomImg").index(this);
+       $("[type=file]").eq(index).click();
+   });
   
 //파일을 첨부 했을 경우 미리 보기가 가능하도록 하는 함수
   function loadImg(value,num) {

@@ -52,7 +52,7 @@
 	            </div>
 	          </article>
 	         	 
-	            <div id="fileArea">
+	            <div class="fileArea">
 	            <input type="file" name="img0" onchange="loadImg(this,0)"> 
 	            </div>
 		
@@ -123,7 +123,7 @@
                             + '</div>'
                     + '</article>'
                         
-                    + '<div id="fileArea">'
+                    + '<div class="fileArea">'
                         + '<input type="file" name="img' + index + '" onchange="loadImg(this,'+ index +')"> '
                     + '</div>'
               
