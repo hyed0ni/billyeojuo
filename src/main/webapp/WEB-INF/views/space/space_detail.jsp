@@ -262,137 +262,127 @@
                         </ul>
                     </div>
 				</div>
-				
-				<!--------------------------------------------------------------------------------------------------------------------------->
 
-                <form action="reservation" method="post" id="res_form" style="position:absolute; width:350px; height:400px; top:0; right:0;">
-					<input type="hidden" class="space_room_no" name="space_room_no">
-					<input type="hidden" class="selected_dt" name="use_date">
-                    <div
-                        style="height:40px; line-height:38px; font-weight:bold; color:#000; border-bottom:3px solid #704de4; background-color:#f6f6f6;">
-                        <div>세부공간 선택</div>
-                        <div style="position:absolute; top:0; right:5px;">
-                            <img id="heart" src="${contextPath}/resources/images/icon/favorite_border.svg" style="vertical-align:middle;">
-                        </div>
-                    </div>
-
-                    <div style="background-color: white;">
-                    
-                    	<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs" >
-                    	
-	                        <div class="space_btn" style="padding:20px 10px;">
-	                            <div style="position:relative; display:flex;">
-	                                <input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}"
-	                                    style="position:absolute; height:100%;">
-	                                    
-	                                <!-- 공간룸 이름 -->
-	                                <label for="a-${vs.count}"
-	                                    style="padding-left:25px; display:inline-block; width:170px;">${spaceRoom.spaceRoomNm}</label>
-	                                <div style="width:135px; display:flex; align-items:center; justify-content:end;">
-	                                
-	                                	<!-- 공간룸 가격 -->
-	                                    <strong style="font-size:20px;">\ <fmt:formatNumber value="${spaceRoom.spaceRoomPrice}" pattern="#,###"/></strong> 
-	                                    <span style="font-size:11px; margin-left:5px;"> / 일</span>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        
-	                        <div class="space_detail space-a group_${vs.index}" style="width:100%; border:1px solid #704de4; box-sizing:border-box;">
-	                            <div style="position:relative; text-align:center; margin-bottom:20px;">
-	                            
-	                            	<!-- 공간룸 이미지 -->
-	                                <img src="${contextPath}/resources/images/space_room_img/${spaceRoom.spaceRoomImg}"
-	                                    style="width:320px; height:200px; margin:20px auto;">
-	                            </div>
-	                            
-	                            <!-- 공간룸 설명 -->
-	                            <div style="width:320px; margin:20px auto;">
-	                                ${spaceRoom.spaceRoomDesc}
-	                            </div>
-	                            
-	                            <div style="width:320px; margin:20px auto;">
-	                                <ul>
-	                                
-	                                	<!-- 공간유형 이름 -->
-	                                    <li style="border-bottom: 1px solid #ebebeb; padding: 10px;">
-	                                        <span class="room-info">공간유형</span>
-	                                        <span>${spaceType.spaceTypeNm}</span>
-	                                    </li>
-	                                    
-	                                    <!-- 공간룸 수용인원 -->
-	                                    <li style="padding: 10px;">
-	                                        <span class="room-info">수용인원</span>
-	                                        <span>${spaceRoom.spaceRoomFit}</span>
-	                                    </li>
-	                                </ul>
-	                            </div>
+				<div class="space_detail_area">
+					<form action="reservation" method="post" id="res_form">
+						<input type="hidden" class="space_room_no" name="space_room_no">
+						<input type="hidden" class="selected_dt" name="use_date">
+						<div class="text_area">
+							<div>세부공간 선택</div>
+							<div class="img_area">
+								<img id="heart" src="${contextPath}/resources/images/icon/favorite_border.svg">
+							</div>
+						</div>
 	
-								<!-- 공간옵션 -->
-	                            <div style="width:320px; margin:20px auto;">
-	                                <ul style="display:table-cell;">
-	                                
-										<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
-											<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
+						<div class="space_room_area">
+							<c:forEach items="${spaceRoomList}" var="spaceRoom" varStatus="vs" >
+								
+								<div class="space_room_detail_area space_btn">
+									<div class="space_room_detail">
+										<input type="radio" name="spaceRoomNo" id="a-${vs.count}" value="${spaceRoom.spaceRoomNo}">
 											
-												<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
-													<li style="width:100px; height:50px; float:left;">
-													
-														<div style="width:100px; display:flex; align-items:center; justify-content:end;">
-															<span style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}) no-repeat; background-size:contain; width:34px; height:34px; display:inline-block;"></span>
-															<span style="font-size:12px; width:45px; margin:0 5px 0 15px;">${option.optionNm}</span>
-														</div>
-														
-													</li>
-												</c:forEach>
-												
-											</c:if>
-										</c:forEach>
+										<!-- 공간룸 이름 -->
+										<label for="a-${vs.count}">${spaceRoom.spaceRoomNm}</label>
+										<div class="room_area">
 										
-	                                </ul>
-	                            </div>
-
-	                            <div style="width:320px; margin:20px auto;">
-	                                <div
-	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
-	                                    날짜 선택
-	                                    <span id="selectedDateText" class="purple" style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
-	                                </div>
-	                                <div>
-	                                    <div class="datepicker"></div>
-	                                </div>
-	                            </div>
+											<!-- 공간룸 가격 -->
+											<strong>\ <fmt:formatNumber value="${spaceRoom.spaceRoomPrice}" pattern="#,###"/></strong> 
+											<span> / 일</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="space_detail space-a group_${vs.index}">
+									<div class="space_detail_img_area">
+										<!-- 공간룸 이미지 -->
+										<img src="${contextPath}/resources/images/space_room_img/${spaceRoom.spaceRoomImg}">
+									</div>
+									
+									<!-- 공간룸 설명 -->
+									<div class="space_detail_description">
+										${spaceRoom.spaceRoomDesc}
+									</div>
+									
+									<div class="space_detail_content_area">
+										<ul>
+											<!-- 공간유형 이름 -->
+											<li>
+												<span class="room-info">공간유형</span>
+												<span>${spaceType.spaceTypeNm}</span>
+											</li>
+											<!-- 공간룸 수용인원 -->
+											<li>
+												<span class="room-info">수용인원</span>
+												<span>${spaceRoom.spaceRoomFit}</span>
+											</li>
+										</ul>
+									</div>
+		
+									<!-- 공간옵션 -->
+									<div class="room_option_area">
+										<ul>
+											<c:forEach items="${spaceOptionMap}" var="roomOption" varStatus="vs2">
+												<c:if test="${spaceRoom.spaceRoomNo == roomOption.key}">
+												
+													<c:forEach items="${roomOption.value}" var="option" varStatus="vs3">
+														<li>
+															<div class="option_area">
+																<span class="option_img" style="background: url(${contextPath}/resources/images/space_option/${option.optionIcon}) no-repeat;"></span>
+																<span class="option_text">${option.optionNm}</span>
+															</div>
+														</li>
+													</c:forEach>
+													
+												</c:if>
+											</c:forEach>
+										</ul>
+									</div>
+	
+									<div class="space_detail_date_area">
+										<div class="date_text">
+											날짜 선택
+											<span id="selectedDateText" class="purple"></span>
+										</div>
+										<div>
+											<div class="datepicker"></div>
+										</div>
+									</div>
+									
+									
+									<div class="space_detail_date_area">
+		                            	<div
+		                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
+		                                    인원 선택
+		                                    <span id="selectedDateText" class="purple" style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
+		                                </div>
+		                                <div>
+		                                	<select name="res_personnel" class="person"
+		                                	style="width: 320px; height: 28px; font-size: 18px; text-align: center; font-weight: bold;">
+		                                		<option value="1명">1명</option>
+		                                		<option value="2명">2명</option>
+		                                		<option value="3명">3명</option>
+		                                		<option value="4명">4명</option>
+		                                		<option value="5명">5명</option>
+		                                		<option value="6명">6명</option>
+		                                		<option value="7명">7명</option>
+		                                		<option value="8명">8명</option>
+		                                		<option value="9명">9명</option>
+		                                		<option value="10명">10명</option>
+		                                	</select>
+		                                </div>
+		                            </div>
 	                            
-	                            <div style="width:320px; margin:20px auto;">
-	                            	<div
-	                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
-	                                    인원 선택
-	                                    <span id="selectedDateText" class="purple" style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
-	                                </div>
-	                                <div>
-	                                	<select name="res_personnel" class="person"
-	                                	style="width: 320px; height: 28px; font-size: 18px; text-align: center; font-weight: bold;">
-	                                		<option value="1명">1명</option>
-	                                		<option value="2명">2명</option>
-	                                		<option value="3명">3명</option>
-	                                		<option value="4명">4명</option>
-	                                		<option value="5명">5명</option>
-	                                		<option value="6명">6명</option>
-	                                		<option value="7명">7명</option>
-	                                		<option value="8명">8명</option>
-	                                		<option value="9명">9명</option>
-	                                		<option value="10명">10명</option>
-	                                	</select>
-	                                </div>
-	                            </div>
-	                        </div>
-                    	
-                    	</c:forEach>
-
-                        <div>
-                            <button style="width:100%; height:60px; line-height:60px; text-align:center; background-color:#704de4; color:#fff; display:inline-block;">예약하기</button>
-                        </div>
-                    </div>
-                </form>
+								</div>
+							
+							</c:forEach>
+	
+							<div class="space_room_btn_area">
+								<button class="space_room_btn">예약하기</button>
+							</div>
+						</div>
+					</form>
+				</div>
+                
 			</div>
         </section>
     </section>
@@ -406,6 +396,22 @@
         $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
         qnaSpaceListRoad("space", "${param.no}");
+        
+        document.getElementById("res_form").addEventListener("submit", function(e) {
+        	const spaceRoomNo = document.getElementsByName("space_room_no")[0].value;
+        	const useDate = document.getElementsByName("use_date")[0].value;
+        	
+        	if (spaceRoomNo == "") {
+        		alert("공간룸을 선택해주세요.");
+        		e.preventDefault();
+        	}
+        	
+        	else if (useDate == "") {
+        		alert("날짜를 선택해주세요.");
+        		e.preventDefault();
+        	}
+        	
+        });
 
     });
     
@@ -524,7 +530,6 @@
     	}
     })();
     
-    
     // 리뷰 등록
     $(".review-btn-area .submit").on("click", function () {
 		if ($("#reviewTextarea").val().trim().length == 0) {
@@ -587,7 +592,7 @@
                 </li>
 			`;
 			
-			//$(".review_list").append(html);
+			$(".review_list").append(html);
 		});
 	}
 </script>
@@ -610,22 +615,6 @@ $( function() {
 	});
 
 } );
-
-document.getElementById("res_form").addEventListener("submit", function(e) {
-	const spaceRoomNo = document.getElementsByName("space_room_no")[0].value;
-	const useDate = document.getElementsByName("use_date")[0].value;
-	
-	if (spaceRoomNo == "") {
-		alert("공간룸을 선택해주세요.");
-		e.preventDefault();
-	}
-	
-	else if (useDate == "") {
-		alert("날짜를 선택해주세요.");
-		e.preventDefault();
-	}
-	
-});
 </script>
 
 </body>
