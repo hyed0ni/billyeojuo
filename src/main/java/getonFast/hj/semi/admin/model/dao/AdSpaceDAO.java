@@ -175,22 +175,22 @@ public class AdSpaceDAO {
 
 	/** 룸 타입 등록 
 	 * @param roomType
-	 * @param rn 
 	 * @param conn
+	 * @param rn 
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoomType(AdRoomtype roomType, int rn, Connection conn) throws Exception {
+	public int insertRoomType(AdRoomtype rt, int rn, Connection conn) throws Exception {
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertRoopType");
 	
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, roomType.getRoomNo());
-			pstmt.setString(2, roomType.getRoomName());
-			pstmt.setInt(3, roomType.getRoomPrice());
-			pstmt.setString(4, roomType.getRoomFit());
-			pstmt.setString(5, roomType.getRoomDesc());
+			pstmt.setInt(1, rt.getRoomNo());
+			pstmt.setString(2, rt.getRoomName());
+			pstmt.setInt(3, rt.getRoomPrice());
+			pstmt.setString(4, rt.getRoomFit());
+			pstmt.setString(5, rt.getRoomDesc());
 			pstmt.setInt(6, rn);
 			
 			result= pstmt.executeUpdate();
@@ -251,6 +251,62 @@ public class AdSpaceDAO {
 		}
 		
 		return result;
+	}
+
+
+	public int insertRoomImg(AdRoomtype img, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("insertRoomImg");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, img.getRoomImg());
+			pstmt.setInt(2, img.getRoomNo());
+			
+			result =pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+	/**
+	 * 공간 목록
+	 * @param conn
+	 * @return adSpaceList
+	 * @throws Exception
+	 */
+	public List<AdSpace> selectAdSpaceList(Connection conn) throws Exception {
+		List<AdSpace> adSpaceList = new ArrayList<AdSpace>();
+		
+		try {
+			String sql = prop.getProperty("selectAdSpaceList");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				AdSpace adSpace = new AdSpace();
+				adSpace.setSpaceNo(rs.getInt("SPACE_NO"));
+				adSpace.setSpaceName(rs.getString("SPACE_NM"));
+				adSpace.setSpaceSubName(rs.getString("SPACE_SUB_NM"));
+				adSpace.setSpaceStatus(rs.getInt("SPACE_ST"));
+				
+				adSpaceList.add(adSpace);
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return adSpaceList;
 	}
 
 

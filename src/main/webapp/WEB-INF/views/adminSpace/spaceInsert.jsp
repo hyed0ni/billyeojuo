@@ -45,7 +45,7 @@
 
             <div class="spaceWrap">
               <label for="spacePhone">전화번호</label> 
-              <input type="text" id="spacePhone" name="spacePhone" required>
+              <input type="text" id="spacePhone" name="spacePhone" placeholder=" '-'을 포함하여 작성 (ex 010-1233-1234)" required>
             </div>
 
             <div class="spaceWrap">

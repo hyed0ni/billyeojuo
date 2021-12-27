@@ -3,7 +3,9 @@ package getonFast.hj.semi.admin.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -75,64 +77,131 @@ public class AdminRoomTypeController extends HttpServlet{
 				MultipartRequest mReq = new MultipartRequest(req, realPath, maxSize, "UTF-8", new MyRenamePolicy());
 				
 				// 룸타입
-				String roomName = mReq.getParameter("roomName");
-				String roomDesc = mReq.getParameter("roomDesc");
-				String roomFit = mReq.getParameter("roomFit");
-				int optionNo = Integer.parseInt(mReq.getParameter("roomPrice"));
-				int roomPrice = Integer.parseInt(mReq.getParameter("roomPrice"));
-			
-				AdRoomtype roomType = new AdRoomtype();
-				roomType.setSpaceNo(rn);
-				roomType.setRoomName(roomName);
-				roomType.setRoomDesc(roomDesc);
-				roomType.setRoomFit(roomFit);
-				roomType.setOptionNo(optionNo);
-				roomType.setRoomPrice(roomPrice);
+				
+				String[] roomName = mReq.getParameterValues("roomName");
+				String[] roomDesc = mReq.getParameterValues("roomDesc");
+				String[] roomFit = mReq.getParameterValues("roomFit");
+				String[] rp = mReq.getParameterValues( "roomPrice" );
+				
+				//rp int배열로 변경
+				int[] roomPrice = null;
+				
+				if(rp != null) {
+					roomPrice = new int[rp.length];
+					
+					for(int i=0 ; i <rp.length ; i ++) {
+						roomPrice[i] = Integer.parseInt( rp[i] );
+					}
+				}
+				
+				
+				//룸타입 배열 만들기 
+				List<AdRoomtype> roomType = new ArrayList<AdRoomtype>();
+				ListIterator<AdRoomtype> iter = roomType.listIterator();
+				
+//				while(iter.hasNext()){
+//					
+//					int	i = 0;
+//					
+//					AdRoomtype rt = new AdRoomtype();
+//					rt.setSpaceNo(rn);
+//					rt.setRoomName(roomName[i]);
+//					rt.setRoomDesc(roomDesc[i]);
+//					rt.setRoomFit(roomFit[i]);
+//					/*roomType.setOptionNo(optionNo);*/
+//					rt.setRoomPrice(roomPrice[i]);
+//					
+//					roomType.add(rt);
+//					
+//					i++;
+//				}
+				
+//				System.out.println("------------------");
+	            
+	            int roomCount = Integer.parseInt(mReq.getParameter("roomCount"));
+	            System.out.println("roomCount : " + roomCount);
+	            
+	            for(int cnt=0; cnt < roomCount; cnt++) {
+	               AdRoomtype rt = new AdRoomtype();
+	               rt.setSpaceNo(rn);
+	               rt.setRoomName(roomName[cnt]);
+	               rt.setRoomDesc(roomDesc[cnt]);
+	               rt.setRoomFit(roomFit[cnt]);
+	               /*roomType.setOptionNo(optionNo);*/
+	               rt.setRoomPrice(roomPrice[cnt]);
+	               
+	               roomType.add(rt);
+	            }
+	            System.out.println(roomType);
+	            
+//	System.out.println("------------------");
+				
 				
 				
 				// 룸 옵션
-				String[] roomOption = mReq.getParameterValues("roomOption");
+	            // 1번
+//				String[] roomOption = mReq.getParameterValues("roomOption");
+//				System.out.println(roomOption[0]);
+//
+//				
+//				List<AdSpaceRoomOption> optionList = new ArrayList<AdSpaceRoomOption>();
+//
+//				for (String ro : roomOption) {
+//					AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
+//					int RoomOptionNo = Integer.parseInt(ro);
+//					spaceRoomOption.setOptionNo(RoomOptionNo);
+//
+//					optionList.add(spaceRoomOption);
+//				}
+//				System.out.println(optionList);
+	            
+	            // 2번
+//	            List<String[]> optionArrList = new ArrayList<>();
+//	            for(int i=1; i<=roomOption.length ; i++){
+//	              String[] optionArr = req.getParameterValues("option" + i);
+//	              optionArrList.add(optionArr);
+//	            }
+	            
+//	            System.out.println(optionArrList);
 
-				List<AdSpaceRoomOption> optionList = new ArrayList<AdSpaceRoomOption>();
-
-				for (String ro : roomOption) {
-					AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
-					int RoomOptionNo = Integer.parseInt(ro);
-					spaceRoomOption.setOptionNo(RoomOptionNo);
-
-					optionList.add(spaceRoomOption);
-					
-				
+	            // 1번 따라만든..
+	            String[] roomOption = mReq.getParameterValues("roomOption");
+	            
+	            List<AdSpaceRoomOption> optionArrList = new ArrayList<AdSpaceRoomOption>();
+	            for(String ro : roomOption) {
+	            	System.out.println("ro : " + ro);
+	            	AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
+	            	spaceRoomOption.setOptionNo(Integer.parseInt(ro));
+	            	
+	            	optionArrList.add(spaceRoomOption);
+	            }
+	            
+	            System.out.println("-----------optionArrList--------------");
+	            System.out.println(optionArrList);
+	            
 				//사진
-				Enumeration<String> files = mReq.getFileNames();
-				// Enumeration<String> == iterator(ResultSet과 유사): 반복 접근자
-				// form에서 전달된 input type="file" name속성 모두 반환
-				// 파일이 업로드 되지 않아도 모든 요소를 얻어옴
 				
-				if (files.hasMoreElements()) {
+				Enumeration<String> files = mReq.getFileNames();
+				
+				List<AdRoomtype> imgList = new ArrayList<AdRoomtype>();
+
+				while (files.hasMoreElements()) {
 					// 다음 요소(name)가 있으면 true
 
 					String name = files.nextElement(); // 다음요소 내려오기
 
 					// 업로드된 파일이 존재할 경우(변경된 name 있음)
 					if (mReq.getOriginalFileName(name) != null) {
-						AdSpaceImage temp = new AdSpaceImage();
-						temp.setImgName(mReq.getFilesystemName(name));
-						temp.setImgOriginal(mReq.getOriginalFileName(name));
-						temp.setImgPath(filePath); // root는 이미 작성 되어있음
-
-						// name img0~ img3에서 숫자를 제외한 img문자열을 제거 후 imgLevel set
-						temp.setImgLevel(Integer.parseInt(name.replace("img", "")));
-
+						AdRoomtype temp = new AdRoomtype();
+						temp.setRoomImg(mReq.getFilesystemName(name));
+						
 						// imgList에 추가
-					
+						imgList.add(temp);
 					}
-
 				}
-					
-					
+				
 				// 서비스 호출
-				int result = service.insertRoom(roomType, roomOption, rn);
+				int result = service.insertRoom(roomType, optionArrList, rn, imgList);
 				
 				// 결과반환
 				if (result > 0) {
@@ -140,26 +209,26 @@ public class AdminRoomTypeController extends HttpServlet{
 					
 					// 상세조회 redirect 주소
 //					path = "view?no=" + result + "&cp=1";
-					path = "/WEB-INF/views/adminSpace/list.jsp";
+					path = "list";
 					
 				} else {
 					message = "게시글 등록 중 문제 발생";
 					// 게시글 화면으로 redirect
-					path = "/WEB-INF/views/adminSpace/addRoomtype.jsp";
+					path = "addRoomtype";
 				}
 				
 				session.setAttribute("message", message);
 				resp.sendRedirect(path);
 		
 				}
-			}
-		}catch (Exception e) {
+
+
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+	
 	}
+		
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

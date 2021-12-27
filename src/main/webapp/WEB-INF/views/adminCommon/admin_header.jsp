@@ -39,14 +39,14 @@
         <div class="menu">
           <h3>주요 기능</h3>
         </div>
-        <div class="menu">
-          <h3>회원 관리</h3>
+        <div class="menu" onclick="location.href='${contextPath}/admin/member/list';">
+          <h3>회원 조회</h3>
         </div>
         <div class="menu">
           <h3>예약 관리</h3>
         </div>
-        <div class="menu">
-          <h3>대여장소 관리</h3>
+        <div class="menu" onclick="location.href='${contextPath}/adminSpace/insert';">
+          <h3>대여장소 등록</h3>
             <!-- <div class="sub-menu">
               <h4>대여공간 등록</h4>
             </div>
@@ -60,7 +60,7 @@
         </div>
         <div class="menu">
           <h3>세부 관리</h3>
-            <div class="sub-menu" onclick="location.href = '${contextPath}/board/insert';">
+            <div class="sub-menu" >
               <h4>기획전 관리</h4>
             </div>
             <div  class="sub-menu">

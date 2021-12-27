@@ -47,11 +47,12 @@ input{
 }
 
 
-/* .roomInfo02{
+.roomInfo02{
   clear: left;
-} */
+}
 
 .roomWrap02{
+  margin-top: 20px;
   height: 250px;
   
 }

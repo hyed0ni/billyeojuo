@@ -1,13 +1,18 @@
   
-  // 영역 클릭시 file 클릭 
-  $(function() {
-    $(".roomImg" ).on("click", function() {
-      $("[type=file]").click();
-    });
+  // 영역 클릭시 file 클릭
+$(function () {
+	$(document).on("click", ".roomImg", function () {
+		const index = $(".roomImg").index(this);
+		$("[type=file]").eq(index).click();
 	});
+}) 
+
   
 //파일을 첨부 했을 경우 미리 보기가 가능하도록 하는 함수
-  function loadImg(value) {
+  function loadImg(value,num) {
+	if(value.files && value.files[0]){
+		
+
       var reader = new FileReader();
       // 자바스크립트 FileReader
       // 웹 애플리케이션이 비동기적으로 데이터를 읽기 위하여 읽을 파일을 가리키는 File 혹은 Blob객체를 이용해 파일의 내용을 읽고 사용자의 컴퓨터에 저장하는 것을 가능하게 해주는 객체
@@ -24,12 +29,9 @@
         // e.target.result
         // -> 파일 읽기 동작을 성공한 객체에(fileTag) 올라간 결과(이미지 또는 파일)
 
-        $(".roomImg").children("img").attr("src", e.target.result);
-        $(".roomImg").children("label").empty()
+        $(".roomImg").eq(num).children("img").attr("src", e.target.result);
+        $(".roomImg").eq(num).children("label").empty()
       }
-    }
-	
-	function createRoom() {
-		
 	}
+    }
 	

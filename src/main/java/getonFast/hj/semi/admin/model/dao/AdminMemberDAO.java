@@ -48,6 +48,7 @@ public class AdminMemberDAO {
 			String sql = prop.getProperty("selectMemberList");
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, search);
 			
 			rs = pstmt.executeQuery();
 			

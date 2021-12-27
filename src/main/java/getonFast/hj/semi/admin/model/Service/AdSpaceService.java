@@ -111,35 +111,83 @@ public class AdSpaceService {
 	}
 
 
-	public int insertRoom(AdRoomtype roomType, String[] roomOption, int rn) throws Exception {
+	/** 룸 타입 등록
+	 * @param roomType
+	 * @param optionArrList
+	 * @param rn
+	 * @param imgList
+	 * @return
+	 * @throws Exception
+	 */
+	public int insertRoom(List<AdRoomtype> roomType, List<AdSpaceRoomOption> optionArrList, int rn, List<AdRoomtype> imgList) throws Exception {
 		Connection conn = getConnection();
 		int result = 0;
 		
-		//다음차례 룸 넘버 얻어오기 
-		int roomNo = dao.nextRoomNo(conn);
-		roomType.setRoomNo(roomNo);
+		for(AdRoomtype rt : roomType) {
+			//다음차례 룸 넘버 얻어오기
+			int roomNo = dao.nextRoomNo(conn);
+			
+			
+			rt.setRoomNo(roomNo);
+			
+			//룸타입의 룸소개 개행문자 변경 
+			String desc = rt.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
+			rt.setRoomFit(desc);
+			
+			//룸타입 삽입
+			result = dao.insertRoomType(rt, rn, conn);
+			
+			//룸옵션 삽입
+			if(result > 0) {
+				
+				for(AdSpaceRoomOption spaceRoomOption : optionArrList) {
+					spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
+					result = dao.insertspaceRoomOption(spaceRoomOption, conn);
+					if(result == 0) {
+						rollback(conn);
+						break;
+					}
+				}
+			} 
+			
+			if(result > 0) {
+				for(AdRoomtype img : imgList) {
+					img.setRoomNo(roomNo);
+					result = dao.insertRoomImg(img, conn);
+					
+					if(result == 0 ) {
+						rollback(conn);
+						break;
+					}
+				}
+			}
+			if(result >0) {
+				commit(conn);
+				result = roomNo;
+				
+			}else rollback(conn);
 		
-		//룸타입의 룸소개 개행문자 변경 
-		String desc = roomType.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
-		roomType.setRoomDesc(desc);
+		}
+		close(conn);
 		
-		//룸타입 삽입
-		result = dao.insertRoomType(roomType,rn,conn);
-		
-//		//룸옵션 삽입
-//		if(result > 0) {
-//			
-//			for(AdSpaceRoomOption spaceRoomOption : optionList) {
-//				spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
-//				result = dao.insertspaceRoomOption(o,conn);
-//				if(result == 0) {
-//					rollback(conn);
-//					break;
-//				}
-//			}
-//		}
 		
 		return result ;
+	}
+
+
+	/**
+	 * 공간 목록
+	 * @return adSpaceList
+	 * @throws Exception
+	 */
+	public List<AdSpace> selectAdSpaceList() throws Exception {
+		Connection conn = getConnection();
+		
+		List<AdSpace> adSpaceList = dao.selectAdSpaceList(conn);
+		
+		close(conn);
+		
+		return adSpaceList;
 	}
 
 }

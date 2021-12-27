@@ -17,6 +17,7 @@ public class AdminMemberService {
 	 * @throws Exception
 	 */
 	public List<AdminMember> selectMemberList(String search) throws Exception {
+		
 		Connection conn = getConnection();
 		
 		List<AdminMember> memberList = dao.selectMemberList(search, conn);

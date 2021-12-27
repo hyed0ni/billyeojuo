@@ -54,11 +54,8 @@ public class AdminRegisterController extends HttpServlet {
 					List<AdSpaceType> adSpaceType = service.selectSpaceType();
 					
 					req.setAttribute("adSpaceType", adSpaceType);
-					
 
 					path = "/WEB-INF/views/adminSpace/spaceInsert.jsp";
-
-					System.out.println(path);
 
 					dispatcher = req.getRequestDispatcher(path);
 					dispatcher.forward(req, resp);
@@ -169,6 +166,17 @@ public class AdminRegisterController extends HttpServlet {
 					resp.sendRedirect(path);
 				}
 				
+			} else if (command.equals("list")) {
+				// 공간 타입, 공간옵션 조회
+				List<AdSpace> adSpaceList = service.selectAdSpaceList();
+				
+				req.setAttribute("adSpaceList", adSpaceList);
+				System.out.println(adSpaceList);
+
+				path = "/WEB-INF/views/adminSpace/list.jsp";
+
+				dispatcher = req.getRequestDispatcher(path);
+				dispatcher.forward(req, resp);
 				
 			} else if (command.equals("addRoomType")) {
 				
