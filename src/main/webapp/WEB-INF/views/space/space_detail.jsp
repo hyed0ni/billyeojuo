@@ -185,7 +185,7 @@
                     </div>
                     
                     <div class="review_box">
-                        <ul class="review_list qna_list">
+                        <ul class="qna_list">
 	                        <c:forEach items="${qnaSpaceList}" var="qnaSpace">
 	                        	<li class="rlist">
 	                                <!-- 게스트 문의 -->
