@@ -5,6 +5,7 @@ package getonFast.hj.semi.member.controller;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Properties;
 
 import javax.activation.CommandMap;
@@ -27,6 +28,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import getonFast.hj.semi.member.vo.Member;
 
 @WebServlet("/member/sendEmail2")
@@ -36,11 +39,12 @@ public class SendEmailServlet2 extends HttpServlet{
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	   HttpSession my_session = req.getSession();
-	   System.out.println(my_session);
+	   HashMap<String, Integer> map = new HashMap();
 	   Member loginMember = (Member) my_session.getAttribute("loginMember");
 	   
       // 입력 받은 이메일
       String inputEmail = loginMember.getMemberEmail();
+      //String inputEmail = req.getParameter("memberEmail");
       
          // 메일 인코딩
        final String bodyEncoding = "UTF-8"; //콘텐츠 인코딩
@@ -127,11 +131,16 @@ public class SendEmailServlet2 extends HttpServlet{
          Transport t = session.getTransport("smtp");
          t.connect(username, password);   
          t.sendMessage(message, message.getAllRecipients());
+         if (t != null) {
+
+			map.put("result", 1);
+
+		}
+		new Gson().toJson(map, resp.getWriter());
          t.close();
          
          //Transport.send( message );
-         
-         resp.sendRedirect("my");
+
          
        } catch ( Exception e ) {
          e.printStackTrace();

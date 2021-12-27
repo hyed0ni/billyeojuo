@@ -37,23 +37,28 @@
 </script>
 
 <script>
+
+var is_checked_password = true;
+var is_checked_password_confirm = true;
 		
     // 비밀번호 유효성 검사
 // 영어 대/소문자, 숫자, 특수문자(!,@,#,-,_) 6~20글자 
 $("#findUpdatePwd1").on("input", function() {
 
-const regExp = /^[a-zA-z\d\!\@\#\-\_]{6,20}$/;
-const findUpdatePwd1 = $(this).val();
-var is_checked_password = true;
+    const regExp = /^[a-zA-z\d\!\@\#\-\_]{6,20}$/;
+    const findUpdatePwd1 = $(this).val();
 
-if (regExp.test(findUpdatePwd1)) {
-    $("#checkPwd1").text("알맞은 비밀번호 형식입니다.").css("color", "green");
-    $("#checkPwd1").show();
-   
-} else {
-    $("#checkPwd1").text("잘못된 비밀번호 형식입니다.").css("color", "red");
-    $("#checkPwd1").show();
-}
+
+    if (regExp.test(findUpdatePwd1)) {
+        $("#checkPwd1").text("알맞은 비밀번호 형식입니다.").css("color", "green");
+        $("#checkPwd1").show();
+        is_checked_password = true;
+    } else {
+        $("#checkPwd1").text("잘못된 비밀번호 형식입니다.").css("color", "red");
+        $("#checkPwd1").show();
+        is_checked_password = false;
+
+    }
 
 });
 
@@ -67,21 +72,20 @@ const checkPwd2 = document.getElementById("checkPwd2");
 
 if (pwd2.trim().length == 0) { 
     checkPwd2.innerText = "";
-    is_checked_password = false;
+    is_checked_password_confirm = false;
     $("#checkPwd2").hide();
 
 } else if (pwd1 == pwd2) {
     checkPwd2.innerText = "일치합니다.";
     checkPwd2.style.color = "green";
-    is_checked_password = true;
+    is_checked_password_confirm = true;
     $("#checkPwd2").show();
     
 } else {
     checkPwd2.innerText = "일치하지 않습니다.";
     checkPwd2.style.color = "red";
-    is_checked_password = false;
+    is_checked_password_confirm = false;
     $("#checkPwd2").show();
-   
 }
 
 });
@@ -97,15 +101,16 @@ $('.change-password-btn').on('click', function() {
         return false;
     }
 
-    if(is_checked_password === false) {
-        alert('어림도 없다.');
+    if(is_checked_password === false || is_checked_password_confirm === false) {
+        alert('비밀번호가 틀립니다.');
         return false;
     }
+
     if(!confirm('비밀번호를 변경하시겠습니까?')) {
         return false;
     }
 
-    alert("비밀번호가 변경되었습니다.")
+    alert("비밀번호가 변경되었습니다.");
 })
 
 

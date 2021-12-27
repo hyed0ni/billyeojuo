@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebFilter(filterName = "loginFilter", urlPatterns
-= {"/my", "/my/favorites", "/my/qna", "/my/review", "/res/reserve", "/res/reservation_detail", "/space/reservation"})
+= {"/member/updatePwd", "/my/favorites", "/my/qna", "/my/review", "/res/reserve", "/res/reservation_detail", "/space/reservation", "/member/certify"})
 
 public class LoginFilter implements Filter {
    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

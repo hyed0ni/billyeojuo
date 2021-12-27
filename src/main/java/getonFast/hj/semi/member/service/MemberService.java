@@ -135,6 +135,18 @@ public class MemberService {
 		return result;
 	}
 
+	public Member checkCertifyEmailPwd(Member member) throws Exception{
+		
+		Connection conn = getConnection();
+		member = dao.checkCertifyEmailPwd(member, conn);
+		
+		
+		close(conn);
+		
+		return member;
+		
+	}
+
 
 
 	

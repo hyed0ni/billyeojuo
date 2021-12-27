@@ -41,6 +41,16 @@
 		MEMBER_EMAIL = ?
 	</entry>
 	
+	<!-- 이메일 인증 check -->
+	<entry key="checkCertifyEmailPwd">
+		SELECT *
+		FROM MEMBER
+		WHERE 
+		MEMBER_EMAIL = ?
+		AND
+		MEMBER_PW = ?
+	</entry>
+	
 	<!-- 이메일 인증 -->
 	<entry key="certifyEmail">
 		UPDATE MEMBER SET
