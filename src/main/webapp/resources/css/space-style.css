@@ -328,7 +328,7 @@ li.selected {  background-color: #ffd014;}
 .space_detail_area .space_room_area > .space_detail > .room_option_area > ul > li{width:100px; height:50px; float:left;}
 .space_detail_area .space_room_area > .space_detail > .room_option_area > ul > li > .option_area{width:100px; display:flex; align-items:center; justify-content:end;}
 .space_detail_area .space_room_area > .space_detail > .room_option_area > ul > li > .option_area > .option_img{background-size:contain; width:34px; height:34px; display:inline-block;}
-.space_detail_area .space_room_area > .space_detail > .room_option_area > ul > li > .option_area > .option_text{font-size:12px; width:45px; margin:0 5px 0 15px;}
+.space_detail_area .space_room_area > .space_detail > .room_option_area > ul > li > .option_area > .option_text{font-size:11px; width:45px; margin:0 5px 0 15px;}
 
 .space_detail_area .space_room_area > .space_detail > .space_detail_date_area{width:320px; margin:20px auto;}
 .space_detail_area .space_room_area > .space_detail > .space_detail_date_area > .date_text{height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;}
