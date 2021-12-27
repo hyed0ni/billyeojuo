@@ -57,9 +57,9 @@
             success : function (result) {
                 console.log(result);
 
-                $.each(qnaList, function (index, qna) {
+                $.each(result, function (index, member) {
 				
-                    let spaceImg = "";
+/*                     let spaceImg = "";
                     if (qna.spaceImgNm) {
                         spaceImg = `<img class="list_img" src="${contextPath}${qna.spaceImgPath}${qna.spaceImgNm}">`;
                     } else {
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     `;
-                
+ */                
                 });
                 
 
@@ -88,38 +88,6 @@
                 console.log(req.responseText);
 	    	}
         });
-
-        // const memberTable11 = $("#memberList").DataTable({
-        //     autoWidth: false,
-        //     info: false,
-        //     lengthChange: false,
-        //     ordering: false,
-        //     paging: false,
-        //     searching: false,
-        //     serverSide: true,
-        //     ajax : {
-        //         type : "POST",
-        //         url : "${contextPath}/admin/member/list",
-        //         ataType : "JSON",
-        //         async : false,
-        //         data : function () {
-        //             return {
-        //                 page : 1,
-        //                 search : $(".search").val()
-        //             }
-        //         }
-        //     },
-        //     columns: [{
-        //         data: "memberNo",
-        //     }, {
-        //         data: "memberEmail",
-        //     }, {
-        //         data: "memberNm",
-        //     }],
-        //     language: {
-        //         zeroRecords: "회원 정보가 없습니다."
-        //     }
-        // });
 
     }());
 
