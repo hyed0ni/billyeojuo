@@ -15,30 +15,31 @@
     <div id="contents">
         <div >
                 <div>
-                    <input type="text" name="search" class="search">
+                    <input type="text" name="search" class="search" placeholder="이메일 입력">
                     <button type="button" class="ajaxBtn" onclick="memberList();">버튼</button>
                 </div>
         </div>
 
-        <table id="memberList" class="row-border cell-border" cellspacing="0" width="100%"  style="margin-top: 30px;">
-           	<thead style="font-size: 18px; margin-bottom: 10px;">
-				<tr>
+        <table id="memberList" class="row-border cell-border" cellspacing="0" width="100%"  style="margin-top: 30px; background-color: white;" >
+           	<thead style="font-size: 18px; margin-bottom: 10px; ">
+				<tr style="border-bottom:1px solid grey;">
 					<th>회원번호</th>
 					<th>회원 상태</th>
 					<th>닉네임</th>
 					<th>이메일</th>
 					<th>가입일</th>
+					<th>탈퇴일</th>
 				</tr>
 			</thead>
 				
-	         <tbody>
-	            <tr>
+	         <tbody style="text-align: center;margin-top: 30px; border-bottom:1px solid grey;">
+<!-- 	            <tr>
 	                <td>회원번호</td>
 	                <td>회원 상태 </td>
 	                <td>회원이름</td>
 	                <td>회원이메일 </td>
 	                <td>가입일 </td>
-	            </tr>
+	            </tr> -->
 	         </tbody>
         </table>
     </div>
@@ -49,55 +50,37 @@
 
 <script>
 function memberList() {
-        // $(document).on('change', '.groupBy', function() {
-        //     location.href = "/statistics/eventProduct/" + $(this).val() + "?startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
-        // });
+	   $.ajax({
+	        url : "${contextPath}/admin/member/list",
+	        data : { "search" : $(".search").val()},
+	        method : "POST",
+	        dataType : "json",
+	        
+	        success : function (memberList) {
+	         $("tbody").html("");
+	            $.each(memberList, function (index, member) {
+	               console.log(member);
+	               const tr = $('<tr>');
+	            const tdNo = $('<td>').text(member.memberNo);
+	            const tdNm = $('<td>').text(member.memberNm);
+	            const tdEmail = $('<td>').text(member.memberEmail);
+	            const tdRegDt = $('<td>').text(member.memberRegDt);
+	            const tdSecDt = $('<td>').text(member.memberSecDt);
+	            const tdSt = $('<td>').text(member.memberSt);
 
-        $(".ajaxBtn").on("click", function () {
-            console.log("${contextPath}/admin/member/list");
-             memberTable;
-        })
+	            tr.append(tdNo,tdSt, tdNm, tdEmail,tdRegDt,tdSecDt );
+	               
+	            $("tbody").append(tr);
+	            });
+	            
 
-        const memberTable = $.ajax({
-            url : "${contextPath}/admin/member/list",
-            data : { "search" : $(".search").val()},
-            method : "POST",
-            dataType : "json",
-            
-            success : function (memberList) {
-                 console.log(memberList);
-
-                	
-                $.each(memberList, function (index, member) {
-                	const tbody = $('<tbody>')
-                	const td = $('<td>')
-                	const tr = $('<tr>')
-				
-                	const memberNo =  td.text(member.memberNo)
-                	const memberNm =  td.text(member.memberNm)
-                	const memberEmail =  td.text(member.memberEmail)
-                	const memberRegDt =  td.text(member.memberRegDt)
-                	const memberSt =  td.text(member.memberSt)
-                	
-                	tr.append(memberNo,  memberNm,  memberEmail,  memberRegDt,  memberSt)
-                	
-                	tbody.append(tr)
-                	
-                	
-              	   console.log("end");
-                	
-                	
-                });
-                
-
-            },
-            error : function (req, status, error) {
-                console.log("조회 실패");
-                console.log(req.responseText);
-	    	}
-        });
-
-    }
+	        },
+	        error : function (req, status, error) {
+	            console.log("조회 실패");
+	            console.log(req.responseText);
+	       }
+	    });
+	}
 
 </script>  
 </body>
