@@ -93,7 +93,7 @@ function layerPopQna(layerValue) {
 				</div>
 			</div>
 			<a title="레이어팝업 닫힘" class="btn_pop_close">
-				<img src="` + contextPath + `/resources/images/common/close_white_18.svg" />
+				<img src="${contextPath}/resources/images/common/close_white_18.svg" />
 			</a>
 		</div>
 	`;
@@ -247,7 +247,7 @@ function qnaSpaceListRoad(sortValue, spaceNo="") {
 					</li>
 				`;
 				
-				//$(".qna_list").append(html);
+				$(".qna_list").append(html);
 			});
 
 		},

@@ -40,13 +40,7 @@ public class loginServlet extends HttpServlet {
 
 		String memberEmail = req.getParameter("email");
 		String memberPw = req.getParameter("pwd1");
-		//*******************************************************
-		String beforeUrl = req.getHeader("referer");
-
-		if (beforeUrl != null && !beforeUrl.equals(req.getRequestURL().toString())) {
-			req.getSession().setAttribute("beforeUrl", beforeUrl);
-		}
-		//****************************************************************8
+		
 
 		try {
 
@@ -90,7 +84,9 @@ public class loginServlet extends HttpServlet {
 						System.out.println("admin hi");
 						
 					}else {
-						resp.sendRedirect(beforeUrl);
+						
+						resp.sendRedirect((String)req.getSession().getAttribute("beforeUrl"));
+						
 					}
 
 				} else if (loginMember.getStatusCode() == 12) {
@@ -98,7 +94,7 @@ public class loginServlet extends HttpServlet {
 					System.out.println("12");
 
 					session.setAttribute("message", "정지된 회원입니다.");
-					resp.sendRedirect("login");
+					resp.sendRedirect(req.getContextPath());
 				}
 
 			} else { // 로그인 실패한 경우
