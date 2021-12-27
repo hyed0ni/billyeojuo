@@ -155,7 +155,7 @@ public class AdminRegisterController extends HttpServlet {
 					if (result > 0) {
 						// 상세조회 redirect 주소
 //						path = "view?no=" + result + "&cp=1";
-						path = "addRoomtype";
+						path = "addRoomType?rn="+result;
 
 					} else {
 						message = "게시글 등록 중 문제 발생";
@@ -167,16 +167,19 @@ public class AdminRegisterController extends HttpServlet {
 				}
 				
 			} else if (command.equals("list")) {
-				// 공간 타입, 공간옵션 조회
-				List<AdSpace> adSpaceList = service.selectAdSpaceList();
 				
-				req.setAttribute("adSpaceList", adSpaceList);
-				System.out.println(adSpaceList);
-
-				path = "/WEB-INF/views/adminSpace/list.jsp";
-
-				dispatcher = req.getRequestDispatcher(path);
-				dispatcher.forward(req, resp);
+				resp.sendRedirect("insert");
+				
+				// 공간 타입, 공간옵션 조회
+//				List<AdSpace> adSpaceList = service.selectAdSpaceList();
+				
+//				req.setAttribute("adSpaceList", adSpaceList);
+//				System.out.println(adSpaceList);
+//
+//				path = "/WEB-INF/views/adminSpace/list.jsp";
+//
+//				dispatcher = req.getRequestDispatcher(path);
+//				dispatcher.forward(req, resp);
 				
 			} else if (command.equals("addRoomType")) {
 				

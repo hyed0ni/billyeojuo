@@ -177,7 +177,6 @@ function qnaListRoad(sortValue, spaceNo="") {
 			
 			let html = "";
 			$.each(qnaList, function (index, qna) {
-				
 				let spaceImg = "";
 				if (qna.spaceImgNm) {
 					spaceImg = `<img class="list_img" src="${contextPath}${qna.spaceImgPath}${qna.spaceImgNm}">`;
@@ -232,13 +231,13 @@ function qnaSpaceListRoad(sortValue, spaceNo="") {
 			
 			// let html = "";
 			$.each(qnaList, function (index, qnaSpace) {
-				const imgCheck = "${empty qnaSpace.memberImgNm}";
-		
+				const imgCheck = qnaSpace.memberImgNm;
+				
 				let qnaImg = "";
 				if (imgCheck) {
-					qnaImg = `<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>`
+					qnaImg = `<span class="pf-img" style="background-image: url(${contextPath}${qnaSpace.memberImgPath}${qnaSpace.memberImgNm});"></span>`
 				} else {
-					qnaImg = `<span class="pf-img" style="background-image: url(${contextPath}${qnaSpace.spaceImgPath}${qnaSpace.spaceImgNm});"></span>`
+					qnaImg = `<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>`
 				}
 
 				html = `

@@ -24,19 +24,19 @@
 	          	<div class="roomWrap">
 	                <label for="spaceName" >공간 타입 이름</label> 
 	                <!-- <input type="text" id="spaceName" name="roomName" required style="width: 435px;" > -->
-	                <input type="text" id="spaceName" name="roomName" required style="width: 435px;" value="공간타입">
+	                <input type="text" id="spaceName" name="roomName" required style="width: 435px;" value="A그룹(1~8명)">
 	            </div>
 	            
 	            <div class="roomWrap">
 	              <label for="spaceSubName">가격</label> 
 	              <!-- <input type="text" id="spaceSubName" name="roomPrice" required> 원 -->
-	              <input type="text" id="spaceSubName" name="roomPrice" required value="100000"> 원
+	              <input type="text" id="spaceSubName" name="roomPrice" required value="33000"> 원
 	            </div>
 	              
 	             <div class="roomWrap">
 	                <label for="spaceAddr">이용 인원</label> 
 	                <!-- <input type="text" id="spaceAddr" name="roomFit" required > 명 -->
-	                <input type="text" id="spaceAddr" name="roomFit" required value="10" > 명
+	                <input type="text" id="spaceAddr" name="roomFit" required value="최소 1명 ~ 최대 8명" > 명
 	              </div>
 	
 	       
@@ -65,7 +65,18 @@
 	                <label for="roomBasic">공간소개</label>
 	              </div>
 	              <!-- <textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea> -->
-	              <textarea class="roomInfoForm" id="roomBasic" name="roomDesc">공간을 설명 합니다.</textarea>
+	              <textarea class="roomInfoForm" id="roomBasic" name="roomDesc">
+**12/4(금)~1/2(토)는 파티룸 성수기로 별도 대관료 적용합니다***
+금,토 저녁6~12시까지: 30만원
+금, 토 저녁6~다음날 아침8시까지: 40만원
+1. 사용인원이 '8명 이하' 인 경우.
+2. 기본사용시간은 3시간.
+3. 금, 토, 공휴일 전날 저녁(17~24시)은 대관료가 시간당 4만원씩입니다.
+4. 음식과 주류 반입시 10만원 추가 
+5. 대관목적에 따라 시설보증금 5~10만원 별도. 
+6. 시설보증금 환불 기준 : 공간 내부 정리 상태, 분리수거 배출,  흡연, 기물 파손 및 분실 여부, 예약인원 준수여부 확인 후 전액환불.
+7. 정기대관은 할인혜택드리니 별도 문의 주세요.
+	              </textarea>
 	            </div>
 	          </article>
           </div>
@@ -97,19 +108,19 @@
                         + '<div class="roomWrap">'
                             + '<label for="spaceName" >공간 타입 이름</label>'
                             /* + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" >' */
-                            + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" value="추가 공간 타입" >'
+                            + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" value="B그룹(9~14명)" >'
                         + '</div>'
                         
                         + '<div class="roomWrap">'
                             + '<label for="spaceSubName">가격</label>'
                             /* + '<input type="text" id="roomPrice" name="roomPrice" required> 원' */
-                            + '<input type="text" id="roomPrice" name="roomPrice" required value="200000"> 원'
+                            + '<input type="text" id="roomPrice" name="roomPrice" required value="44000"> 원'
                         + '</div>'
                             
                         + '<div class="roomWrap">'
                             + '<label for="spaceAddr">이용 인원</label> '
                             /* + '<input type="text" id="roomFit" name="roomFit" required > 명' */
-                            + '<input type="text" id="roomFit" name="roomFit" required value="5"> 명'
+                            + '<input type="text" id="roomFit" name="roomFit" required value="최소 9명 ~ 최대 14명"> 명'
                         + '</div>'
             
                     
@@ -138,7 +149,15 @@
                                 + '<label for="roomBasic">공간소개</label>'
                             + '</div>'
                             /* + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>' */
-                            + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc">추가 공간타입 입니다.</textarea>'
+                            + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc">'
+                            + '1. 사용인원이 \'9명~14명 이하\' 인 경우.\n'
+                            + '2. 기본사용시간은 3시간.\n'
+                            + '3. 금, 토, 공휴일 전날 17~24시는 대관료가 시간당 5만원씩입니다.\n'
+                            + '4. 배달음식과 주류반입시 10만원 추가\n'
+                            + '5. 대관목적에 따라 시설보증금 5~10만원 별도. \n'
+                            + '6. 시설보증금 환불 기준 : 공간 내부 정리 상태, 분리수거 배출,  흡연, 기물 파손 및 분실 여부, 예약인원 준수여부 확인 후 전액환불.\n'
+                            + '7. 정기대관은 할인혜택드리니 별도 문의 주세요. \n'
+                            + '</textarea>'
                         + '</div>'
                     + '</article>'
                 + '</div>';

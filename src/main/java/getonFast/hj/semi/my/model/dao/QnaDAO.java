@@ -166,6 +166,8 @@ public class QnaDAO {
 			}
 			
 		} finally {
+			close(rs);
+			close(pstmt);
 			
 		}
 		
