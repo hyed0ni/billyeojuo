@@ -14,7 +14,7 @@
             <div class="top-title-wrap">
                 <h2 class="title">비밀번호 찾기</h2>
             </div>
-            <form action="${contextPath}/member/sendEmail" method="get" >
+            <form action="${contextPath}/member/sendEmail" method="get" onsubmit="return findPwdValidate()">
             <div class="login-box">
                 <div class="login-input-wrap">
                     <input type="text" placeholder="이메일" class="login-input" name="inputEmail" id="login-input">

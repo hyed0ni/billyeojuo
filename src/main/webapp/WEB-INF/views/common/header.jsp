@@ -47,7 +47,7 @@
 				<a href="${contextPath}/my">
 					<div class="profile_area">
 						<div class="profile_img">
-						    <img src="${contextPath}/resources/images/header/defaultUser.jpg">
+						    <img src="${contextPath}${sessionScope.loginMember.imgPath}${sessionScope.loginMember.imgName}">
 						</div>
 						<div class="profile_txt login">
 						    <div class="nickname"><strong>${sessionScope.loginMember.memberName}</strong></div>

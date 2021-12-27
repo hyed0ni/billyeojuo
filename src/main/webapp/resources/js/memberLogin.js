@@ -39,13 +39,7 @@ function findPwdValidate() {
     return false;
 
   }else{
-
-    $.ajax({
-
-
-
-
-    })
+  
 
     alert("이메일 전송이 완료되었습니다.");
 
