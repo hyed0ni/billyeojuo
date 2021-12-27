@@ -127,12 +127,11 @@ public class AdSpaceService {
 			//다음차례 룸 넘버 얻어오기
 			int roomNo = dao.nextRoomNo(conn);
 			
-			
 			rt.setRoomNo(roomNo);
 			
 			//룸타입의 룸소개 개행문자 변경 
 			String desc = rt.getRoomDesc().replaceAll("\n\r|\n|\r|\r\n","<br>");
-			rt.setRoomFit(desc);
+			rt.setRoomDesc(desc);
 			
 			//룸타입 삽입
 			result = dao.insertRoomType(rt, rn, conn);

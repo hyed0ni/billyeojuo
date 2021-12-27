@@ -184,6 +184,9 @@ public class AdSpaceDAO {
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertRoopType");
+			
+			System.out.println(rt.getRoomFit());
+			System.out.println(rt.getRoomDesc());
 	
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, rt.getRoomNo());

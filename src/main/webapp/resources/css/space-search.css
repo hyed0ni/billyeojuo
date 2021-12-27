@@ -70,7 +70,7 @@
 #space-wrapper>.space-space-list>a>.img-box{
   width: 100%;
   height: 66%;
-  background-size: 100%;
+  background-size: cover;
 }
 
 

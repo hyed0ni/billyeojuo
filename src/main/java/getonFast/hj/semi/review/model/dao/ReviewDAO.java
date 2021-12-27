@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import getonFast.hj.semi.member.vo.Member;
 import getonFast.hj.semi.review.model.vo.Review;
+import getonFast.hj.semi.space.model.vo.Space;
 
 public class ReviewDAO {
 	
@@ -64,6 +65,14 @@ public class ReviewDAO {
 				review.setRevDt(rs.getString("REV_DT"));
 				review.setRevSt(rs.getInt("REV_ST"));
 				review.setResNo(rs.getInt("RES_NO"));
+				review.setSpaceNo(rs.getInt("SPACE_NO"));
+				review.setSpaceRoomNo(rs.getInt("SPACE_ROOM_NO"));
+
+				Space space = new Space();
+				space.setSpaceNm(rs.getString("SPACE_NM"));
+				space.setSpaceImgPath(rs.getString("SPACE_IMG_PATH"));
+				space.setSpaceImgNm(rs.getString("SPACE_IMG_NM"));
+				review.setSpace(space);
 				
 				reviewList.add(review);
 				

@@ -185,32 +185,6 @@
                     
                     <div class="review_box">
                         <ul class="qna_list">
-	                        <c:forEach items="${qnaSpaceList}" var="qnaSpace">
-	                        	<li class="rlist">
-	                                <!-- 게스트 문의 -->
-	                                <div class="rbox-mine">
-	                                    <!-- 프로필 이미지 -->
-	                                    <c:choose>
-	                                    	<c:when test="${!empty qnaSpace.memberImgNm}">
-	                                    		<span class="pf-img" style="background-image: url(${contextPath}${qnaSpace.memberImgPath}${qnaSpace.memberImgNm});"></span>	
-	                                    	</c:when>
-	                                    	
-	                                    	<c:otherwise>
-	                                    		<span class="pf-img" style="background-image: url(${contextPath}/resources/images/defaultUser.jpg);"></span>
-	                                    	<img class="list_img" src="">
-	                                    	</c:otherwise>
-	                                    </c:choose>
-	                                    
-	                                    <strong class="guest-name">${qnaSpace.memberNm}</strong>
-	                                    <p class="p-review">
-	                                    	${qnaSpace.queContent}
-	                                    </p>
-	                                    <div class="rbox-info-base">
-	                                        <span class="time-info">${qnaSpace.queDt }</span>
-	                                    </div>
-	                                </div>
-	                            </li>
-	                        </c:forEach>
                         </ul>
                     </div>
                 </div>
