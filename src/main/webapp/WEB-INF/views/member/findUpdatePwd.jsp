@@ -19,11 +19,11 @@
                 <input type="hidden" name="email" value="${param.email}">
             <div class="login-box">
                 <div class="login-input-wrap" style="margin-bottom: 20px;"><span style="display: block; padding-bottom: 10px;">새 비밀번호 입력</span>
-                    <input type="text" placeholder="" class="login-input" name="findUpdatePwd1" id="findUpdatePwd1" style="margin-bottom: 10px;">
+                    <input type="password" placeholder="" class="login-input" name="findUpdatePwd1" id="findUpdatePwd1" style="margin-bottom: 10px;">
                     <span id="checkPwd1"></span>
                 </div>
                 <div class="login-iput-wrap"> <span style="display: block; padding-bottom: 10px;">새 비밀번호 확인</span>
-                    <input type="text" placeholder="" class="login-input" name="findUpdatePwd2" id="findUpdatePwd2" style="margin-bottom: 10px;">
+                    <input type="password" placeholder="" class="login-input" name="findUpdatePwd2" id="findUpdatePwd2" style="margin-bottom: 10px;">
                     <span id="checkPwd2"></span>
                 </div>
                 <button  type="submit"  class="login-btn change-password-btn">비밀번호 변경</button>
@@ -105,6 +105,7 @@ $('.change-password-btn').on('click', function() {
         return false;
     }
 
+    alert("비밀번호가 변경되었습니다.")
 })
 
 
