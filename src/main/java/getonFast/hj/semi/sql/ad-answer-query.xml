@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+	<!-- 이용후기 조회 -->
+	<entry key="selectReply">
+		SELECT REV_NO, REV_CONTENT, REV_DT, REPLY_ST FROM REVIEW JOIN REPLY ON (REV_NO = REPLY_NO)
+	</entry>
+	
+	<!-- 이용후기 답글 등록 -->
+	<entry key="insertReply">
+		INSERT INTO REPLY VALUES(?, DEFAULT, ?, DEFAULT)
+	</entry>
+	
+	<!-- 이용후기 상태값 변경 -->
+	<entry key="insertReply">
+		INSERT INTO REPLY VALUES(?, DEFAULT, ?, DEFAULT)
+	</entry>
+	
+	<!-- q&a 조회 -->
+	<entry key="insertReply">
+		INSERT INTO REPLY VALUES(?, DEFAULT, ?, DEFAULT)
+	</entry>
+	
+	<!-- q&a 답글 등록 -->
+	<entry key="insertReply">
+		INSERT INTO ANSWER VALUES(?, ?, DEFAULT, DEFAULT)
+	</entry>
 </properties>

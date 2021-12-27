@@ -46,8 +46,8 @@
 					
 					<!-- 공간룸 수용인원 -->
 					<li><span class="tit">예약인원</span><span class="data">${spaceRoom.spaceRoomFit}</span></li>
-					<input type="hidden" name="resPersonnel" value="1명">
 				</ul>
+				<input type="hidden" name="resPersonnel" value="${param.res_personnel}">
 
 			</div>
 		</div>
@@ -59,10 +59,10 @@
 
 			<div class="meetspace-reserve-info">
 				<p class="meetspace-reserve-date">
-					예약날짜 <span class="meetspace-reserve-price"> ${param.use_date} </span>
+					예약날짜 <span class="meetspace-reserve-price">${param.use_date}</span>
 				</p>
 				<p class="meetspace-reserve-date">
-					예약인원 <span class="meetspace-reserve-price">1명</span>
+					예약인원 <span class="meetspace-reserve-price">${param.res_personnel}</span>
 				</p>
 			</div>
 
@@ -256,7 +256,7 @@
 							
 							<dl class="info_person" style="border-top: 1px solid #ebebeb;">
 								<dt>예약인원</dt>
-								<dd>1명</dd>
+								<dd>${param.res_personnel}</dd>
 							</dl>
 							
 						</div>
@@ -282,6 +282,7 @@
 		</div>
 		<input type="hidden" name="spaceRoomNo" value="${param.space_room_no}">
 		<input type="hidden" name="useDate" value="${param.use_date}">
+		
 		</form>
 </main>
 
@@ -406,6 +407,7 @@
    function validate() {
 	   if (!$('#terms_agree').prop("checked")) {
 		   alert("서비스 이용약관 동의는 필수입니다.");
+		   $('#terms_agree').focus();
 		   return false;
 	   }
 	   
