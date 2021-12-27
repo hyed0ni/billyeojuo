@@ -95,8 +95,10 @@
 <script>
 	/* 취소환불 예약 상세 조회 불가 */
 	$(".list_area > a").on("click", function(e) {
-		if ($(this).find(".tag.cancel").length == 1)
+		if ($(this).find(".tag.cancel").length == 1) {
+			alert("결제 취소된 예약입니다.");
 			e.preventDefault();
+		}
 	});
 	
 	/* 예약번호순, 이용일자순 정렬 */
