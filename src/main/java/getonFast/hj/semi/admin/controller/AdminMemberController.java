@@ -48,6 +48,7 @@ public class AdminMemberController extends HttpServlet {
 					path = "/WEB-INF/views/admin/member.jsp";
 					dispatcher = req.getRequestDispatcher(path);
 					dispatcher.forward(req, resp);	
+					
 				} else {
 					String search = req.getParameter("search");
 					System.out.println(search);
@@ -58,8 +59,6 @@ public class AdminMemberController extends HttpServlet {
 					new Gson().toJson(memberList, resp.getWriter());
 				
 				}
-				
-				
 				
 			}
 			
