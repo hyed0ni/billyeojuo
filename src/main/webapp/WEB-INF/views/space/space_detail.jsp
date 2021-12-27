@@ -264,7 +264,7 @@
 				</div>
 
 				<div class="space_detail_area">
-					<form action="reservation" method="post">
+					<form action="reservation" method="post" id="res_form">
 						<input type="hidden" class="space_room_no" name="space_room_no">
 						<input type="hidden" class="selected_dt" name="use_date">
 						<div class="text_area">
@@ -347,6 +347,31 @@
 											<div class="datepicker"></div>
 										</div>
 									</div>
+									
+									
+									<div class="space_detail_date_area">
+		                            	<div
+		                                    style="height:34px; border-bottom:3px solid #704de4; margin-bottom:10px; color:#000; font-size:18px; font-weight:bold;">
+		                                    인원 선택
+		                                    <span id="selectedDateText" class="purple" style="float:right; display:inline-block; letter-spacing:-0.5px;"></span>
+		                                </div>
+		                                <div>
+		                                	<select name="res_personnel" class="person"
+		                                	style="width: 320px; height: 28px; font-size: 18px; text-align: center; font-weight: bold;">
+		                                		<option value="1명">1명</option>
+		                                		<option value="2명">2명</option>
+		                                		<option value="3명">3명</option>
+		                                		<option value="4명">4명</option>
+		                                		<option value="5명">5명</option>
+		                                		<option value="6명">6명</option>
+		                                		<option value="7명">7명</option>
+		                                		<option value="8명">8명</option>
+		                                		<option value="9명">9명</option>
+		                                		<option value="10명">10명</option>
+		                                	</select>
+		                                </div>
+		                            </div>
+	                            
 								</div>
 							
 							</c:forEach>
@@ -371,6 +396,22 @@
         $(window).scroll(sticky); // 페이지 내에서 스크롤 시 sticky함수 호출하는 이벤트
 
         qnaSpaceListRoad("space", "${param.no}");
+        
+        document.getElementById("res_form").addEventListener("submit", function(e) {
+        	const spaceRoomNo = document.getElementsByName("space_room_no")[0].value;
+        	const useDate = document.getElementsByName("use_date")[0].value;
+        	
+        	if (spaceRoomNo == "") {
+        		alert("공간룸을 선택해주세요.");
+        		e.preventDefault();
+        	}
+        	
+        	else if (useDate == "") {
+        		alert("날짜를 선택해주세요.");
+        		e.preventDefault();
+        	}
+        	
+        });
 
     });
     
