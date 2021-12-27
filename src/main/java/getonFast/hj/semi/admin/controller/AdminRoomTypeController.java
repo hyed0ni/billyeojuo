@@ -139,6 +139,7 @@ public class AdminRoomTypeController extends HttpServlet{
 				
 				
 				// 룸 옵션
+	            // 1번
 //				String[] roomOption = mReq.getParameterValues("roomOption");
 //				System.out.println(roomOption[0]);
 //
@@ -154,14 +155,30 @@ public class AdminRoomTypeController extends HttpServlet{
 //				}
 //				System.out.println(optionList);
 	            
+	            // 2번
+//	            List<String[]> optionArrList = new ArrayList<>();
+//	            for(int i=1; i<=roomOption.length ; i++){
+//	              String[] optionArr = req.getParameterValues("option" + i);
+//	              optionArrList.add(optionArr);
+//	            }
+	            
+//	            System.out.println(optionArrList);
+
+	            // 1번 따라만든..
 	            String[] roomOption = mReq.getParameterValues("roomOption");
 	            
-	            List<String[]> optionArrList = new ArrayList<>();
-	            for(int i=1; i<=roomOption.length ; i++){
-	              String[] optionArr = req.getParameterValues("option" + i);
-	              optionArrList.add(optionArr);
+	            List<AdSpaceRoomOption> optionArrList = new ArrayList<AdSpaceRoomOption>();
+	            for(String ro : roomOption) {
+	            	System.out.println("ro : " + ro);
+	            	AdSpaceRoomOption spaceRoomOption = new AdSpaceRoomOption();
+	            	spaceRoomOption.setOptionNo(Integer.parseInt(ro));
+	            	
+	            	optionArrList.add(spaceRoomOption);
 	            }
-				
+	            
+	            System.out.println("-----------optionArrList--------------");
+	            System.out.println(optionArrList);
+	            
 				//사진
 				
 				Enumeration<String> files = mReq.getFileNames();
@@ -182,8 +199,7 @@ public class AdminRoomTypeController extends HttpServlet{
 						imgList.add(temp);
 					}
 				}
-
-					
+				
 				// 서비스 호출
 				int result = service.insertRoom(roomType, optionArrList, rn, imgList);
 				
@@ -193,12 +209,12 @@ public class AdminRoomTypeController extends HttpServlet{
 					
 					// 상세조회 redirect 주소
 //					path = "view?no=" + result + "&cp=1";
-					path = "/WEB-INF/views/adminSpace/list.jsp";
+					path = "list";
 					
 				} else {
 					message = "게시글 등록 중 문제 발생";
 					// 게시글 화면으로 redirect
-					path = "/WEB-INF/views/adminSpace/addRoomtype.jsp";
+					path = "addRoomtype";
 				}
 				
 				session.setAttribute("message", message);

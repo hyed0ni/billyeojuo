@@ -23,17 +23,20 @@
 	          <article class="roomInfo01">
 	          	<div class="roomWrap">
 	                <label for="spaceName" >공간 타입 이름</label> 
-	                <input type="text" id="spaceName" name="roomName" required style="width: 435px;" >
+	                <!-- <input type="text" id="spaceName" name="roomName" required style="width: 435px;" > -->
+	                <input type="text" id="spaceName" name="roomName" required style="width: 435px;" value="공간타입">
 	            </div>
 	            
 	            <div class="roomWrap">
 	              <label for="spaceSubName">가격</label> 
-	              <input type="text" id="spaceSubName" name="roomPrice" required> 원
+	              <!-- <input type="text" id="spaceSubName" name="roomPrice" required> 원 -->
+	              <input type="text" id="spaceSubName" name="roomPrice" required value="100000"> 원
 	            </div>
 	              
 	             <div class="roomWrap">
 	                <label for="spaceAddr">이용 인원</label> 
-	                <input type="text" id="spaceAddr" name="roomFit" required > 명
+	                <!-- <input type="text" id="spaceAddr" name="roomFit" required > 명 -->
+	                <input type="text" id="spaceAddr" name="roomFit" required value="10" > 명
 	              </div>
 	
 	       
@@ -61,13 +64,12 @@
 	              <div>
 	                <label for="roomBasic">공간소개</label>
 	              </div>
-	              <textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>
+	              <!-- <textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea> -->
+	              <textarea class="roomInfoForm" id="roomBasic" name="roomDesc">공간을 설명 합니다.</textarea>
 	            </div>
 	          </article>
           </div>
           </article>
-          
-          
           
            <article style="margin-bottom: 40px; text-align: center;">
             <button type="button" id="addBtn" onclick="createRoom();">룸타입 추가</button> <br>
@@ -94,17 +96,20 @@
                     + '<article class="roomInfo01">'
                         + '<div class="roomWrap">'
                             + '<label for="spaceName" >공간 타입 이름</label>'
-                            + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" >'
+                            /* + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" >' */
+                            + '<input type="text" id="roomName" name="roomName" required style="width: 435px;" value="추가 공간 타입" >'
                         + '</div>'
                         
                         + '<div class="roomWrap">'
                             + '<label for="spaceSubName">가격</label>'
-                            + '<input type="text" id="roomPrice" name="roomPrice" required> 원'
+                            /* + '<input type="text" id="roomPrice" name="roomPrice" required> 원' */
+                            + '<input type="text" id="roomPrice" name="roomPrice" required value="200000"> 원'
                         + '</div>'
                             
                         + '<div class="roomWrap">'
                             + '<label for="spaceAddr">이용 인원</label> '
-                            + '<input type="text" id="roomFit" name="roomFit" required > 명'
+                            /* + '<input type="text" id="roomFit" name="roomFit" required > 명' */
+                            + '<input type="text" id="roomFit" name="roomFit" required value="5"> 명'
                         + '</div>'
             
                     
@@ -132,7 +137,8 @@
                             + '<div>'
                                 + '<label for="roomBasic">공간소개</label>'
                             + '</div>'
-                            + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>'
+                            /* + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc"></textarea>' */
+                            + '<textarea class="roomInfoForm" id="roomBasic" name="roomDesc">추가 공간타입 입니다.</textarea>'
                         + '</div>'
                     + '</article>'
                 + '</div>';

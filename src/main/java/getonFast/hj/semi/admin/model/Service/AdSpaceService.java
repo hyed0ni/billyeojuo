@@ -119,13 +119,15 @@ public class AdSpaceService {
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoom(List<AdRoomtype> roomType, List<String[]> optionArrList, int rn, List<AdRoomtype> imgList) throws Exception {
+	public int insertRoom(List<AdRoomtype> roomType, List<AdSpaceRoomOption> optionArrList, int rn, List<AdRoomtype> imgList) throws Exception {
 		Connection conn = getConnection();
 		int result = 0;
 		
 		for(AdRoomtype rt : roomType) {
-			//다음차례 룸 넘버 얻어오기 
+			//다음차례 룸 넘버 얻어오기
 			int roomNo = dao.nextRoomNo(conn);
+			
+			
 			rt.setRoomNo(roomNo);
 			
 			//룸타입의 룸소개 개행문자 변경 
@@ -133,26 +135,25 @@ public class AdSpaceService {
 			rt.setRoomFit(desc);
 			
 			//룸타입 삽입
-			result = dao.insertRoomType(rt,conn, rn);
-			
+			result = dao.insertRoomType(rt, rn, conn);
 			
 			//룸옵션 삽입
 			if(result > 0) {
 				
 				for(AdSpaceRoomOption spaceRoomOption : optionArrList) {
 					spaceRoomOption.setRoomNo(roomNo); // 공간 번호 세팅
-					result = dao.insertspaceRoomOption(spaceRoomOption,conn);
+					result = dao.insertspaceRoomOption(spaceRoomOption, conn);
 					if(result == 0) {
 						rollback(conn);
 						break;
 					}
-				} 
+				}
 			} 
 			
 			if(result > 0) {
 				for(AdRoomtype img : imgList) {
 					img.setRoomNo(roomNo);
-					result = dao.insertRoomImg(img,conn);
+					result = dao.insertRoomImg(img, conn);
 					
 					if(result == 0 ) {
 						rollback(conn);
@@ -171,6 +172,22 @@ public class AdSpaceService {
 		
 		
 		return result ;
+	}
+
+
+	/**
+	 * 공간 목록
+	 * @return adSpaceList
+	 * @throws Exception
+	 */
+	public List<AdSpace> selectAdSpaceList() throws Exception {
+		Connection conn = getConnection();
+		
+		List<AdSpace> adSpaceList = dao.selectAdSpaceList(conn);
+		
+		close(conn);
+		
+		return adSpaceList;
 	}
 
 }

@@ -26,7 +26,7 @@
 	</entry>
 	
 	<entry key="insertRoopType">
-	INSERT INTO SPACE_ROOM(SPACE_ROOM_NO,SPACE_ROOM_NM,SPACE_ROOM_PRICE,SPACE_ROOM_FIT,SPACE_ROOM_DESC,SPACE_NO)
+	INSERT INTO SPACE_ROOM(SPACE_ROOM_NO, SPACE_ROOM_NM, SPACE_ROOM_PRICE, SPACE_ROOM_FIT, SPACE_ROOM_DESC, SPACE_NO)
 	VALUES(?,?,?,?,?,?)
 	</entry>
 	
@@ -39,8 +39,10 @@
 	</entry>
 	
 	<entry key="insertRoomImg">
-		UPDATE SPACE_ROOM SET (SPACE_ROOM_IMG = ?) WHERE SPACE_ROOM_NO = ?
+		UPDATE SPACE_ROOM SET SPACE_ROOM_IMG = ? WHERE SPACE_ROOM_NO = ?
 	</entry>
 	
-	<entry key=""></entry>
+	<entry key="selectAdSpaceList">
+		SELECT SPACE_NO, SPACE_NM, SPACE_SUB_NM, SPACE_ST FROM SPACE
+	</entry>
 </properties>

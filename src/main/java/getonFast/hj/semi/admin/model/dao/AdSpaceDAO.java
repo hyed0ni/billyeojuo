@@ -180,7 +180,7 @@ public class AdSpaceDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public int insertRoomType(AdRoomtype rt, Connection conn, int rn) throws Exception {
+	public int insertRoomType(AdRoomtype rt, int rn, Connection conn) throws Exception {
 		int result = 0;
 		try {
 			String sql = prop.getProperty("insertRoopType");
@@ -259,10 +259,11 @@ public class AdSpaceDAO {
 		
 		try {
 			String sql = prop.getProperty("insertRoomImg");
+			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1,img.getRoomNo());
-			pstmt.setString(2,img.getRoomImg());
+			pstmt.setString(1, img.getRoomImg());
+			pstmt.setInt(2, img.getRoomNo());
 			
 			result =pstmt.executeUpdate();
 			
@@ -270,6 +271,42 @@ public class AdSpaceDAO {
 			close(pstmt);
 		}
 		return result;
+	}
+
+
+	/**
+	 * 공간 목록
+	 * @param conn
+	 * @return adSpaceList
+	 * @throws Exception
+	 */
+	public List<AdSpace> selectAdSpaceList(Connection conn) throws Exception {
+		List<AdSpace> adSpaceList = new ArrayList<AdSpace>();
+		
+		try {
+			String sql = prop.getProperty("selectAdSpaceList");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				AdSpace adSpace = new AdSpace();
+				adSpace.setSpaceNo(rs.getInt("SPACE_NO"));
+				adSpace.setSpaceName(rs.getString("SPACE_NM"));
+				adSpace.setSpaceSubName(rs.getString("SPACE_SUB_NM"));
+				adSpace.setSpaceStatus(rs.getInt("SPACE_ST"));
+				
+				adSpaceList.add(adSpace);
+
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return adSpaceList;
 	}
 
 
