@@ -123,12 +123,9 @@ public class AdSpaceService {
 		Connection conn = getConnection();
 		int result = 0;
 		
-		System.out.println("------------roomType------------");
-		System.out.println(roomType);
 		for(AdRoomtype rt : roomType) {
 			//다음차례 룸 넘버 얻어오기
 			int roomNo = dao.nextRoomNo(conn);
-			
 			
 			rt.setRoomNo(roomNo);
 			
