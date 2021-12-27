@@ -47,7 +47,7 @@
 					<!-- 공간룸 수용인원 -->
 					<li><span class="tit">예약인원</span><span class="data">${spaceRoom.spaceRoomFit}</span></li>
 				</ul>
-				<input type="hidden" name="resPersonnel" value="${param.res_personnel}">
+				<input type="hidden" name="resPersonnel" value="${param.res_personnel}"> 
 
 			</div>
 		</div>
