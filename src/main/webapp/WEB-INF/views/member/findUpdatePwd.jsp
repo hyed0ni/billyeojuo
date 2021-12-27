@@ -102,7 +102,7 @@ $('.change-password-btn').on('click', function() {
     }
 
     if(is_checked_password === false || is_checked_password_confirm === false) {
-        alert('비밀번호가 틀립니다.');
+        alert('비밀번호가 일치하지 않습니다.');
         return false;
     }
 

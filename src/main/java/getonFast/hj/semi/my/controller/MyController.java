@@ -84,7 +84,7 @@ public class MyController extends HttpServlet {
 				
 
 				if (result > 0) {
-					session.setAttribute("message", "회원 닉네임이 수정 되었습니다.");
+					
 
 					loginMember.setMemberName(inputName);
 					
