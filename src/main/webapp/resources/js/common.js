@@ -115,39 +115,48 @@ $(document).on("click", "#qnaWrite", function(){
 		return false;	
 	}
 	
-	$.ajax({
-		url : contextPath + "/my/qna/insert",
-		method : "post",
-		data : {
-			spaceNo : $("input[name='spaceNo']").val(),
-			queContent : $("#queContent").val()
-		},
-		success : function (result) {
-			if (result > 0) {
-				alert("등록되었습니다.");
-				layerPopClose();
-
-				// 문의 페이지
-				if ($(".l_area").length) {
-					qnaListRoad("all");
+	const spaceNo = $("input[name='spaceNo']").val();
+	
+	if (loginMemberNo > 0) {
+		$.ajax({
+			url : contextPath + "/my/qna/insert",
+			method : "post",
+			data : {
+				spaceNo : spaceNo,
+				queContent : $("#queContent").val()
+			},
+			success : function (result) {
+				if (result > 0) {
+					alert("등록되었습니다.");
+					layerPopClose();
+	
+					// 문의 페이지
+					if ($(".l_area").length) {
+						qnaListRoad("all");
+					}
+	
+					// 공간상세 페이지
+					if ($(".qna_list").length && spaceNo > 0) {
+						qnaSpaceListRoad("space", spaceNo);
+					}
+					
+				} else {
+					alert("문의 실패 하였습니다.");
 				}
-
-				// 공간상세 페이지
-				if ($(".qna_list").length) {
-					qnaSpaceListRoad("space");
-				}
-				
-			} else {
-				alert("문의 실패 하였습니다.");
+					
+			},
+			error : function (req, status, error) {
+				console.log("문의 등록 실패");
+				console.log(req.responseText);
 			}
-				
-		},
-		error : function (req, status, error) {
-			console.log("문의 등록 실패");
-			console.log(req.responseText);
-		}
-		
-	});
+			
+		});
+
+	} else {
+		alert("로그인이 필요 합니다.");
+		location.href = contextPath + "/member/login";
+	}
+	
 });
 
 // qna 목록
@@ -212,7 +221,7 @@ function qnaSpaceListRoad(sortValue, spaceNo="") {
 		},
 		dataType : "json",
 		success : function (qnaList) {
-			// $(".qna_list").empty(); // 기존 댓글 내용 모두 삭제
+			$(".qna_list").empty(); // 기존 댓글 내용 모두 삭제
 
 			if (sortValue == "all") {
 				$("#qna_sort").val("all").prop("selected", true);
