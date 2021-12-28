@@ -31,18 +31,14 @@ public class signupServlet extends HttpServlet {
 		int memberSMSChk = req.getParameter("sms_check") == null ? 0 : 1;
 		int memberEmailChk = req.getParameter("email_check") == null ? 0 : 1;
 		
-		System.out.println(memberSMSChk);
-		System.out.println(memberEmailChk);
-		
+	
 		
 		String memberName = req.getParameter("name");
 		String memberEmail = req.getParameter("email");
 		String memberPw = req.getParameter("pwd1");
 		
 		
-		System.out.println(memberName);
-		System.out.println(memberEmail);
-		System.out.println(memberPw);
+	
 		
 
 		Member member = new Member(memberName, memberEmail, memberPw, memberSMSChk, memberEmailChk );
@@ -60,7 +56,9 @@ public class signupServlet extends HttpServlet {
 			HttpSession session = req.getSession();
 
 			session.setAttribute("message", message);
-
+			System.out.println("****************************");
+			System.out.println(member);
+			System.out.println("****************************");
 			
 			resp.sendRedirect(req.getContextPath());
 

@@ -12,86 +12,89 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import getonFast.hj.semi.member.service.MemberService;
 import getonFast.hj.semi.member.vo.Member;
+import getonFast.hj.semi.my.model.service.MyService;
 
-@WebServlet("/member/certify")
-public class CertifyEmail extends HttpServlet {
+@WebServlet("/member/updatePwd")
+
+public class UpdatePwdServlet extends HttpServlet{
+
+	loginServlet loginServelt = new loginServlet();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("css", "my");
 
-		req.setAttribute("css", "style");
-
-		String path = "/WEB-INF/views/member/certify.jsp";
+		String path = "/WEB-INF/views/my/my.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
-
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String certifyPwd = req.getParameter("certifyPwd");
-		String certifyEmail = req.getParameter("email");
-		Member member = new Member();
+				
 		
-		member.setMemberEmail(certifyEmail);
-		member.setMemberPw(certifyPwd);
+		String inputPwd = req.getParameter("prepassword");
+		
+		String inputNewPwd = req.getParameter("newPwd1");
+		
+	
+
+		Member member = new Member();
+
+		
+		member.setMemberPw(inputNewPwd);
+
 
 		HttpSession session = req.getSession();
 
 		Member loginMember = (Member) session.getAttribute("loginMember");
+
+		member.setMemberNo(loginMember.getMemberNo());
 		
 		HashMap<String, Integer> map = new HashMap();
 		
-
-		try {
-
-			MemberService service = new MemberService();
-			
-			member = service.checkCertifyEmailPwd(member);
-			
-			
-
-			
-			if(member.getMemberEmail() != null) {
 		
+		try {
+			MyService service = new MyService();
+			
+			if(inputNewPwd != null) {
 				
-				int result = service.certifyEmail(certifyPwd, certifyEmail);
 				
-				System.out.println("result:: ==============");
-				System.out.println(result);
-				System.out.println("result::e ==============");
-	
-				if (result > 0) {
-					map.put("result", 1);
+				
+				 int result = service.pwdUpdate(member, inputPwd);
+				
+				 
+
+					if (result > 0) { // 성공
+
+						map.put("result", 1);
+
+					} else { // 실패
+						map.put("result", 0);
+					}
+					new Gson().toJson(map, resp.getWriter());
 					
-					loginMember.setCertify(1);
-					
-				} else {
-	
-					map.put("result", 0);
-				}
+					/*
+					 * resp.sendRedirect(path);
+					 */
 				
-			}else {
-				
-				map.put("result", 2);
 				
 			}
 			
-			new Gson().toJson(map, resp.getWriter());
-
+			
+			
 		} catch (Exception e) {
-
 			e.printStackTrace();
 
-			req.setAttribute("errorMessage", "오류 발생");
+			req.setAttribute("errorMessage", "회원 정보 수정 과정에서 오류 발생");
 			req.setAttribute("e", e);
 
 			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
-
 		}
-
+		
+	
 	}
-
+	
+	
 }

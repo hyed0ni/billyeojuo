@@ -30,7 +30,7 @@
 			</ul>
 		</div>
 		<div class="footer-contents-3">
-			<span>스페이스클라우드는 통신판매중개자이며 통신판매의 당사자가 아닙니다. <br>따라서 스페이스클라우드는 공간 거래정보 및 거래에 대해 책임지지 않습니다.</span>
+			<span>빌러주오는 통신판매중개자이며 통신판매의 당사자가 아닙니다. <br>따라서 스페이스클라우드는 공간 거래정보 및 거래에 대해 책임지지 않습니다.</span>
 			<span>Copyright NSPACE Corp. All Rights Reserved.</span>
 		</div>
 	</div>

@@ -128,6 +128,7 @@ public class ProfileUploadServlet extends HttpServlet{
 					 if(result > 0) {
 
 						 loginMember.setImgName(temp.getImgName());
+						 loginMember.setImgPath(temp.getImgPath());
 						 loginMember.setImgOrg(temp.getImgOrg());
 						 
 						 map.put("result", 1);
