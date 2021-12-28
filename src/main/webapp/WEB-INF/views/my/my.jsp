@@ -194,7 +194,7 @@ $(document).on('click', '.pwd_change_cancle', function() {
 $(document).on('click', '.name_change_confirm', function(){
 
     const inputNickname = $(this).prev().val(); 
-	const regExp = /^[가-힣ㄱ-ㅎa-zA-Z0-9._-]{2,}\$/;
+	const regExp = /^[가-힣]{2,5}$/;
 
 	if (inputNickname == '') {
 		alert("닉네임을 입력해 주세요.");
