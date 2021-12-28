@@ -78,7 +78,7 @@
 				</c:forEach>
 				
 			<c:choose>
-				<c:when test="${pagination.currentPage} != ${pagination.endPage}">
+				<c:when test="${pagination.endPage != pagination.maxPage}">
 				<a href="${contextPath}/space/search?sv=${param.sv}&cp=${pagination.nextPage}" class="nextPage arrow"  style="color: #6d3afb;">▶</a>
 				</c:when>
 				<c:otherwise>
