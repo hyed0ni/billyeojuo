@@ -409,21 +409,33 @@
         else
         	nav[0].classList.remove("nav-fixed");
 
-
         // 스크롤 내리다가 메뉴 내용을 만나게 되면 체크 - 동작
         if( window.pageYOffset < arr[0]-140){
              $(".nav-area  a").parent().removeClass("selected");
              
         }else{
-
+        	
+        	
             for(let i=0; i<arr.length-1 ; i++){
-                if(window.pageYOffset >= arr[i]-140 &&  window.pageYOffset < arr[i+1]-140){
+            	let value = 140;
+            	let value2 = 140;
+            	
+            	if($(".txt-primary").eq(0).text() == '0개'){
+            		value = 350;
+            		value2 = 400;
+            	}
+            	
+                if(window.pageYOffset >= arr[i]-value &&  window.pageYOffset < arr[i+1]-value2){
                     $(".nav-area  a").parent().removeClass("selected");
                     $(".nav-area  a").eq(i).parent().addClass("selected");       
                 }
             }
 
-            if(window.pageYOffset > arr[arr.length-1]-140){
+            let value3 = 140;
+            
+            if($(".txt-primary").eq(1).text() == '0개') value3 = 400;
+            
+            if(window.pageYOffset > arr[arr.length-1]-value3){
                 $(".nav-area  a").parent().removeClass("selected");
                 $(".nav-area  a").eq(arr.length-1).parent().addClass("selected");       
             }
@@ -440,7 +452,17 @@
        
         // 해당 메뉴 내용 위치로 이동
         const id = $(this).attr("title");
-        $(window).scrollTop($("#"+id).offset().top - 120)
+        
+        if(id == "s-qna" && $(".txt-primary").eq(0).text() == '0개'){
+	        $(window).scrollTop($("#"+id).offset().top - 340)
+	        
+        }else if(id == "s-review" && $(".txt-primary").eq(1).text() == '0개'){
+       	 	$(window).scrollTop($("#"+id).offset().top - 390)	
+       
+        }else{
+	        $(window).scrollTop($("#"+id).offset().top - 120)
+        }
+        
        
     })
     
