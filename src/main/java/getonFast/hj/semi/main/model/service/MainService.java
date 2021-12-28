@@ -61,7 +61,7 @@ public class MainService {
 			listCount = 1;
 		}
 		
-		int pageSize = (int)(Math.ceil((double)listCount/limit));
+		int pageSize = 5;
 		
 		
 		close(conn);
