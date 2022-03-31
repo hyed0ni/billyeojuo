@@ -19,18 +19,18 @@
 
           <div class="spaceWrap">
             <label for="spaceName">공간명</label> 
-            <input type="text" id="spaceName" name="spaceName" style="width: 90%;" required value="카이 플레이스(회의,촬영,파티)" >
+            <input type="text" id="spaceName" name="spaceName" style="width: 810px;" required value="카이 플레이스(회의,촬영,파티)" >
           </div>
             
           <div class="spaceWrap">
             <label for="spaceSubName">공간부제</label> 
-            <input type="text" id="spaceSubName" name="spaceSubName"  style="width: 90%;" value="사당역에서 1분, 25평 단독대관" >
+            <input type="text" id="spaceSubName" name="spaceSubName"  style="width: 810px;" value="사당역에서 1분, 25평 단독대관" >
           </div>
           
           <article class="spaceInfo01">
             <div class="spaceWrap">
               <label for="spaceCategory">공간유형</label> 
-              <select	 id="spaceCategory" name="spaceTypeNo" style="width: 150px; height: 25px;" required>
+              <select	 id="spaceCategory" name="spaceTypeNo" style="width: 150px; height: 25px; border: 0px;" required>
              		<c:forEach items="${adSpaceType}" var="a">
 						<option value="${a.adSpaceTypeNo}">${a.adSpaceTypeName}</option>
 											
@@ -59,32 +59,32 @@
             </div>
           </article>
 
-          <label style="margin-top: 20%;">지도이미지</label>
+          <label style="margin-top: 20px;font-size: 17px; font-weight: bold; display: block;">지도이미지</label>
           <article class="spaceMap">
             <div class="spaceImg">
               <img>
             </div>
           </article>
           
-          <label style="margin-top: 20%; clear: left;">공간이미지</label>
+          <label style="margin-top: 20%; clear: left;  font-size: 17px; font-weight: bold">공간이미지</label>
           <article class="spacePic">
             <div class="spaceImg">
-            <label style="margin-top: 20%;">+이미지추가</label>
+            <label style="margin-top: 20%;" class="addImage">+이미지추가</label>
               <img >
             </div>
 
             <div class="spaceImg">
-              <label style="margin-top: 20%;">+이미지추가</label>
+              <label style="margin-top: 20%;" class="addImage">+이미지추가</label>
               <img>
             </div>
           
             <div class="spaceImg">
-	          <label style="margin-top: 20%;">+이미지추가</label>
+	          <label style="margin-top: 20%;"class="addImage">+이미지추가</label>
               <img>
             </div>
           
             <div class="spaceImg" style="margin-right: 0px">
-	          <label style="margin-top: 20%;">+이미지추가</label>
+	          <label style="margin-top: 20%;"class="addImage">+이미지추가</label>
               <img>
             </div>
 
@@ -101,7 +101,7 @@
           <article class="spaceInfo02">
             <div class="spaceWrap02">
               <div>
-                <label for="spaceBasic">공간소개</label>
+                <label for="spaceBasic" style="margin-top: 20px;margin-bottom: 10px; clear: left;  font-size: 17px; font-weight: bold; display: block;"" >공간소개</label>
               </div>
               <textarea class="infoForm" id="spaceIntro" name="spaceIntro">
 마음까지 힐링되는 공간,카이플레이스입니다.
@@ -124,7 +124,7 @@
 
             <div class="spaceWrap02">
               <div>
-                <label for="spaceFacility">시설안내</label>
+                <label for="spaceFacility" style="margin-top: 20px; margin-bottom: 10px;  font-size: 17px; font-weight: bold; display: block;">시설안내</label>
               </div>
               <textarea class="infoForm" id="spaceGuide" name="spaceGuide">
 165인치 스마트TV(5.1채널 스피커), 블루투스 스피커 (IPTV 시청가능, 노트북은 개별 지참)
@@ -142,7 +142,7 @@
 
             <div class="spaceWrap02">
               <div>
-                <label for="precautions">주의사항</label>
+                <label for="precautions" style="margin-top: 20px; margin-bottom: 10px;  font-size: 17px; font-weight: bold; display: block;"">주의사항</label>
               </div>
               <textarea class="infoForm" id="precautions" name="precautions">
 결제 전 예약 문의시 대관 목적과 사용인원을 반드시 말씀해주세요.
@@ -160,7 +160,7 @@
 
             <div class="spaceWrap02">
               <div>
-                <label for="refundPolicy">환불규정</label>
+                <label for="refundPolicy"style="margin-top: 20px; margin-bottom: 10px;  font-size: 17px; font-weight: bold; display: block;">환불규정</label>
               </div>
               <textarea class="infoForm" id="refundPolicy" name="refundPolicy">
 총 금액의 100% 환불
