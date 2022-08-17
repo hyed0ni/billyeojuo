@@ -5,6 +5,11 @@
 
 <br>
 
+## ⌛ 제작 기간
+2021년 10월 28일 ~ 2021년 12월 28일 (2개월)
+
+<br>
+
 ## ⚒️ 개발 환경 및 사용 기술
 <p>
   <img src="https://img.shields.io/badge/java-007396?style=flat-square&logo=java&logoColor=white">
@@ -23,7 +28,7 @@
 
 ## 📂 폴더 구조
 ```
-📁 billyeojuo
+📦 billyeojuo
 ├── 📁 src/main
 │   ├── 📁 java/getonFast/hj/semi
 │   │   ├── 📁 admin
