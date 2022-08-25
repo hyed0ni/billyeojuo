@@ -26,6 +26,11 @@
 
 <br>
 
+## ⛓️ ERD
+![HYEJIN_BUS ERD(논리,물리)](https://user-images.githubusercontent.com/110330040/186585005-2d553bfe-ea70-4365-acf1-c1311414e244.png)
+
+<br>
+
 ## 📂 폴더 구조
 ```
 📦 billyeojuo
